@@ -158,24 +158,56 @@
     tmux.enable = true;
     chromium.enable = true;
     neovim.enable = true;
+
+    # hyprland
+    hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+      xwayland.enable = true;
+    };
+  };
+
+  environment.sessionVariables = {
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    NIXOS_OZONE_WL = "1";
   };
 
   # List packages installed in system profile. To search, run: `nix search wget`
-  environment.systemPackages = with pkgs; [
-    # Will sometimes need to clear vivaldi GPUCache after update
-    # rm -rf ~/.config/vivaldi/Default/GPUCache ~/.config/vivaldi/Default/Storage/ext/**/GPUCache
-    vivaldi
-    widevine-cdm
-    python3
-    ffmpeg-headless
+  environment.systemPackages = (with pkgs; [
     home-manager
-    wget
+
     alacritty
     eza
     ripgrep
     bat
-    vscode
-  ];
+
+    python3
+    ffmpeg-headless
+    wget
+
+    # Will sometimes need to clear vivaldi GPUCache after update
+    # rm -rf ~/.config/vivaldi/Default/GPUCache ~/.config/vivaldi/Default/Storage/ext/**/GPUCache
+    vivaldi
+    widevine-cdm
+  ]) ++ (with pkgs.unstable; [
+    vscodium
+    obsidian
+
+    # hyprland
+    xdg-desktop-portal-hyprland
+    swww
+    waybar
+    dunst
+    libnotify
+    rofi-wayland
+    networkmanagerapplet
+    grim
+    slurp
+    wl-clipboard
+  ]);
+
+  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+
 
   virtualisation.docker.enable = true;
 

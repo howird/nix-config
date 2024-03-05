@@ -1,5 +1,3 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   inputs,
   outputs,
@@ -21,30 +19,12 @@
   ];
 
   nixpkgs = {
-    # You can add overlays here
     overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
     ];
-    # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-      # TODO(howird): update obsidian version to not use this electron version
-      permittedInsecurePackages = [ "electron-25.9.0" ];
-    };
+    config = { allowUnfree = true; };
   };
 
   home = {
@@ -53,73 +33,264 @@
     sessionPath = [
       "$HOME/.local/bin"
     ];
-    packages = with pkgs; [
-      obsidian
+    packages = ( with pkgs; [
       stremio
+    ]) ++ ( with pkgs.unstable; [
+      discord
+    ]);
+  };
+
+  programs.home-manager.enable = true;
+
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+    userName  = "Howard Nguyen-Huu";
+    userEmail = "howardnguyenhuu@gmail.com";
+    aliases = {
+      ci = "commit";
+      co = "checkout";
+      s = "status";
+    };
+
+    # extraConfig = {
+    #   # Sign all commits using ssh key
+    #   commit.gpgsign = true;
+    #   gpg.format = "ssh";
+    #   user.signingkey = "~/.ssh/id_ed25519.pub";
+    # };
+  };
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
+
+  programs.zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    shellAliases = {
+      ll = "ls -l";
+      vim = "nvim";
+      code = "codium";
+      nixwird = "sudo nixos-rebuild switch --flake /home/howird/.config/nix";
+      nixwird-hm = "home-manager switch --flake /home/howird/.config/nix";
+    };
+    history = {
+      size = 10000;
+      path = "$HOME/.config/zsh/history";
+    };
+    oh-my-zsh = {
+      enable = true;
+      # plugins = [ "powerlevel10k" ];
+      theme = "robbyrussell";
+    };
+  };
+
+  programs.vscode = {
+    enable = true;
+    package = pkgs.unstable.vscodium;
+    extensions = with pkgs.unstable.vscode-extensions; [
+      ms-python.python
+      vscodevim.vim
+      yzhang.markdown-all-in-one
+      rust-lang.rust-analyzer
+      mechatroner.rainbow-csv
+      oderwat.indent-rainbow
+      ms-azuretools.vscode-docker
+      ms-vscode-remote.remote-ssh
+      jnoortheen.nix-ide
+      njpwerner.autodocstring
+      eamodio.gitlens
+      github.vscode-github-actions
+      ms-azuretools.vscode-docker
+      ms-vscode-remote.remote-containers
+      github.copilot
+      github.copilot-chat
     ];
   };
 
-  # Add stuff for your user as you see fit:
-
-  # Enable home-manager and git
-  programs = {
-    home-manager.enable = true;
-
-    git = {
+  wayland.windowManager.hyprland = {
       enable = true;
-      lfs.enable = true;
-      userName  = "Howard Nguyen-Huu";
-      userEmail = "howardnguyenhuu@gmail.com";
-      aliases = {
-        ci = "commit";
-        co = "checkout";
-        s = "status";
-      };
-    };
-
-    zsh = {
-      enable = true;
-      enableAutosuggestions = true;
-      enableCompletion = true;
-      shellAliases = {
-        ll = "ls -l";
-        vim = "nvim";
-        nix-rs = "sudo nixos-rebuild switch --flake /home/howird/.config/nix";
-        nix-hm-rs = "home-manager switch --flake /home/howird/.config/nix";
-      };
-      history = {
-        size = 10000;
-        path = "$HOME/.config/zsh/history";
-      };
-      oh-my-zsh = {
-        enable = true;
-        # plugins = [ "powerlevel10k" ];
-        theme = "robbyrussell";
-      };
-    };
-
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-    };
-
-    vscode = {
-      enable = true;
-      # package = pkgs.vscode.fhsWithPackages (ps: with ps; [ rustup zlib openssl.dev pkg-config ]);
-      extensions = with pkgs.vscode-extensions; [
-        ms-python.python
-        vscodevim.vim
-        yzhang.markdown-all-in-one
-        rust-lang.rust-analyzer
-        mechatroner.rainbow-csv
-        oderwat.indent-rainbow
-        ms-azuretools.vscode-docker
-        ms-vscode-remote.remote-ssh
-        jnoortheen.nix-ide
-        njpwerner.autodocstring
+      plugins = [
+        # inputs.hyprland-plugins.packages."${pkgs.system}".borders-plus-plus
       ];
+
+      settings = {
+        exec-once = let
+          startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
+            ${pkgs.waybar}/bin/waybar &
+            ${pkgs.swww}/bin/swww init &
+
+            sleep 1
+
+            ${pkgs.swww}/bin/swww img ${./wallpaper.jpg} &
+          '';
+        in ''${startupScript}/bin/start'';
+
+        # "plugin:borders-plus-plus" = {
+        #   add_borders = 1; # 0 - 9
+        #   # you can add up to 9 borders
+        #   "col.border_1" = "rgb(ffffff)";
+        #   "col.border_2" = "rgb(2222ff)";
+
+        #   # -1 means "default" as in the one defined in general:border_size
+        #   border_size_1 = 10;
+        #   border_size_2 = -1;
+
+        #   # makes outer edges match rounding of the parent. Turn on / off to better understand. Default = on.
+        #   natural_rounding = "yes";
+        # };
+
+        "$terminal" = "alacritty";
+        "$mainMod" = "SUPER";
+        "$browser" = "vivaldi";
+        "$fileManager" = "nautilus";
+        "$menu" = "rofi -show run";
+
+        # Some default env vars.
+        env = [
+          "XCURSOR_SIZE,24"
+          "QT_QPA_PLATFORMTHEME,qt5ct" # change to qt6ct if you have that
+        ];
+
+        # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
+        input = {
+          kb_layout = "us";
+        #     kb_variant =
+        #     kb_model =
+        #     kb_options =
+        #     kb_rules =
+
+          follow_mouse = 1;
+
+          touchpad = {
+            natural_scroll = false;
+          };
+
+          sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
+        };
+
+        general = {
+            gaps_in = 5;
+            gaps_out = 20;
+            border_size = 2;
+            #col.active_border = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+            #col.inactive_border = "rgba(595959aa)";
+            layout = "dwindle";
+            allow_tearing = false;
+        };
+
+        decoration = {
+            rounding = 10;
+
+            blur = {
+                enabled = true;
+                size = 3;
+                passes = 1;
+                vibrancy = 0.1696;
+            };
+
+            drop_shadow = true;
+            shadow_range = 4;
+            shadow_render_power = 3;
+            #col.shadow = "rgba(1a1a1aee)";
+        };
+
+        animations = {
+            enabled = true;
+            bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+            animation = [
+              "windows, 1, 7, myBezier"
+              "windowsOut, 1, 7, default, popin 80%"
+              "border, 1, 10, default"
+              "borderangle, 1, 8, default"
+              "fade, 1, 7, default"
+              "workspaces, 1, 6, default"
+            ];
+        };
+
+        dwindle = {
+            # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+            pseudotile = true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+            preserve_split = true; # you probably want this
+        };
+
+        master = {
+          # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+          new_is_master = true;
+        };
+
+        gestures = {
+          # See https://wiki.hyprland.org/Configuring/Variables/ for more
+          workspace_swipe = false;
+        };
+
+        misc = {
+          force_default_wallpaper = 0;
+        };
+
+        # windowrulev2 = "suppressevent maximize, class:.*"; # You'll probably like this.
+
+        bind = [
+          # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
+          "$mainMod, Q, exec, $terminal"
+          "$mainMod, C, killactive,"
+          "$mainMod, M, exit,"
+          "$mainMod, B, exec, $browser"
+          "$mainMod, E, exec, $fileManager"
+          "$mainMod, V, togglefloating,"
+          "$mainMod, R, exec, $menu"
+          "$mainMod, P, pseudo," # dwindle
+          "$mainMod, J, togglesplit," # dwindle
+
+          # Move focus with mainMod + arrow keys
+          "$mainMod, left, movefocus, l"
+          "$mainMod, right, movefocus, r"
+          "$mainMod, up, movefocus, u"
+          "$mainMod, down, movefocus, d"
+
+          # Switch workspaces with mainMod + [0-9]
+          "$mainMod, 1, workspace, 1"
+          "$mainMod, 2, workspace, 2"
+          "$mainMod, 3, workspace, 3"
+          "$mainMod, 4, workspace, 4"
+          "$mainMod, 5, workspace, 5"
+          "$mainMod, 6, workspace, 6"
+          "$mainMod, 7, workspace, 7"
+          "$mainMod, 8, workspace, 8"
+          "$mainMod, 9, workspace, 9"
+          "$mainMod, 0, workspace, 10"
+
+          # Move active window to a workspace with mainMod + SHIFT + [0-9]
+          "$mainMod SHIFT, 1, movetoworkspace, 1"
+          "$mainMod SHIFT, 2, movetoworkspace, 2"
+          "$mainMod SHIFT, 3, movetoworkspace, 3"
+          "$mainMod SHIFT, 4, movetoworkspace, 4"
+          "$mainMod SHIFT, 5, movetoworkspace, 5"
+          "$mainMod SHIFT, 6, movetoworkspace, 6"
+          "$mainMod SHIFT, 7, movetoworkspace, 7"
+          "$mainMod SHIFT, 8, movetoworkspace, 8"
+          "$mainMod SHIFT, 9, movetoworkspace, 9"
+          "$mainMod SHIFT, 0, movetoworkspace, 10"
+
+          # Example special workspace (scratchpad)
+          "$mainMod, S, togglespecialworkspace, magic"
+          "$mainMod SHIFT, S, movetoworkspace, special:magic"
+
+          # Scroll through existing workspaces with mainMod + scroll
+          "$mainMod, mouse_down, workspace, e+1"
+          "$mainMod, mouse_up, workspace, e-1"
+        ];
+
+        # Move/resize windows with mainMod + LMB/RMB and dragging
+        bindm = [
+          "$mainMod, mouse:272, movewindow"
+          "$mainMod, mouse:273, resizewindow"
+        ];
+      };
     };
-  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
