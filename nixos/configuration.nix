@@ -89,8 +89,7 @@
   i18n.defaultLocale = "en_CA.UTF-8";
 
   # Wayland Stuff
-  # programs.sway.enable = true;
-  # xdg.portal.wlr.enable = true;
+  xdg.portal.wlr.enable = true;
 
   # X11 windowing system.
   services.xserver = {
@@ -190,9 +189,6 @@
     vivaldi
     widevine-cdm
   ]) ++ (with pkgs.unstable; [
-    vscodium
-    obsidian
-
     # hyprland
     xdg-desktop-portal-hyprland
     swww

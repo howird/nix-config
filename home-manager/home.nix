@@ -36,6 +36,8 @@
     packages = ( with pkgs; [
       stremio
     ]) ++ ( with pkgs.unstable; [
+      lunarvim
+      obsidian
       discord
     ]);
   };
@@ -72,8 +74,7 @@
     enableCompletion = true;
     shellAliases = {
       ll = "ls -l";
-      vim = "nvim";
-      code = "codium";
+      vim = "lvim";
       nixwird = "sudo nixos-rebuild switch --flake /home/howird/.config/nix";
       nixwird-hm = "home-manager switch --flake /home/howird/.config/nix";
     };
@@ -89,7 +90,7 @@
       }
       {
         name = "powerlevel10k-config";
-        src = ./p10k-config;
+        src = ./.;
         file = ".p10k.zsh";
       }
     ];
@@ -97,7 +98,7 @@
 
   programs.vscode = {
     enable = true;
-    package = pkgs.unstable.vscodium;
+    package = pkgs.unstable.vscode;
     extensions = with pkgs.unstable.vscode-extensions; [
       ms-python.python
       vscodevim.vim
@@ -149,14 +150,8 @@
         #   # makes outer edges match rounding of the parent. Turn on / off to better understand. Default = on.
         #   natural_rounding = "yes";
         # };
-
-        "$terminal" = "alacritty";
-        "$mainMod" = "SUPER";
-        "$browser" = "vivaldi";
-        "$fileManager" = "nautilus";
-        "$menu" = "rofi -show run";
-
         # Some default env vars.
+
         env = [
           "XCURSOR_SIZE,24"
           "QT_QPA_PLATFORMTHEME,qt5ct" # change to qt6ct if you have that
@@ -165,17 +160,10 @@
         # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
         input = {
           kb_layout = "us";
-        #     kb_variant =
-        #     kb_model =
-        #     kb_options =
-        #     kb_rules =
-
           follow_mouse = 1;
-
           touchpad = {
-            natural_scroll = false;
+          natural_scroll = true;
           };
-
           sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
         };
 
@@ -240,15 +228,30 @@
 
         # windowrulev2 = "suppressevent maximize, class:.*"; # You'll probably like this.
 
+      monitor = [
+        "eDP-1,1920x1080@60.03100,0x0,1.0"
+      ];
+
+      "$terminal" = "alacritty";
+      "$mainMod" = "SUPER";
+      "$shftMod" = "SUPERSHIFT";
+      "$browser" = "vivaldi";
+      "$fileManager" = "nautilus";
+      "$menu" = "rofi -show run";
+
         bind = [
           # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-          "$mainMod, Q, exec, $terminal"
-          "$mainMod, C, killactive,"
-          "$mainMod, M, exit,"
+        "$mainMod, T, exec, $terminal"
+        "$mainMod, Q, killactive,"
+        "$mainMod SHIFT, Q, exit,"
+        "$mainMod, R, exec, $menu"
           "$mainMod, B, exec, $browser"
           "$mainMod, E, exec, $fileManager"
+        "$mainMod, O, exec, obsidian"
+        "$mainMod, C, exec, code"
+        "$mainMod, F, fullscreen, 0"
+        "$mainMod SHIFT, F, fullscreen, 1"
           "$mainMod, V, togglefloating,"
-          "$mainMod, R, exec, $menu"
           "$mainMod, P, pseudo," # dwindle
           "$mainMod, J, togglesplit," # dwindle
 
@@ -257,6 +260,10 @@
           "$mainMod, right, movefocus, r"
           "$mainMod, up, movefocus, u"
           "$mainMod, down, movefocus, d"
+        "$mainMod, h, movefocus, l"
+        "$mainMod, l, movefocus, r"
+        "$mainMod, k, movefocus, u"
+        "$mainMod, j, movefocus, d"
 
           # Switch workspaces with mainMod + [0-9]
           "$mainMod, 1, workspace, 1"
@@ -298,6 +305,12 @@
         ];
       };
     };
+
+  dconf.settings = {
+    "org/gnome/mutter" = {
+      experimental-features = [ "scale-monitor-framebuffer" ];
+    };
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
