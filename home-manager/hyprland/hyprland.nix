@@ -6,6 +6,11 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./waybar.nix
+    ./rofi.nix
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     plugins = [
@@ -15,14 +20,14 @@
     settings = {
       exec-once = let
         startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-          ${pkgs.waybar}/bin/waybar &
-          ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &
+          ${pkgs.unstable.waybar}/bin/waybar &
+          ${pkgs.unstable.networkmanagerapplet}/bin/nm-applet --indicator &
     
-          ${pkgs.swww}/bin/swww init &
+          ${pkgs.unstable.swww}/bin/swww init &
 
           sleep 1
 
-          ${pkgs.swww}/bin/swww img ${./wallpaper.jpg} &
+          ${pkgs.unstable.swww}/bin/swww img ${./wallpaper.jpg} &
         '';
       in ''${startupScript}/bin/start'';
 
@@ -142,7 +147,6 @@
         "$mainMod, F, fullscreen, 0"
         "$mainMod SHIFT, F, togglefloating,"
 
-        "$mainMod TAB, workspace, cyclenext, prev"
         "$mainMod, P, pseudo," # dwindle
         "$mainMod, J, togglesplit," # dwindle
 
