@@ -19,6 +19,5 @@ home-manager switch --flake .
 - next times
 
 ```bash
-nix-rs
-nix-hm-rs
+nixwird && nixwird-hm
 ```
