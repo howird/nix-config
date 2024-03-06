@@ -157,6 +157,8 @@
     eza
     ripgrep
     bat
+    fd
+    fzf
 
     # programming
     python3

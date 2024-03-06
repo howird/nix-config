@@ -34,6 +34,9 @@
       --icons='Many icons' --transient=Yes
       */
       { name = "tide"; src = pkgs.fishPlugins.tide.src; }
+      { name = "bass"; src = pkgs.fishPlugins.bass.src; }
+      { name = "pisces"; src = pkgs.fishPlugins.pisces.src; }
+      { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
     ];
   };
 }
