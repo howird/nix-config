@@ -66,11 +66,11 @@
       switch-to-application-4 = "disabled";
     };
     "org/gnome/desktop/background" = {
-      "picture-uri" = "file://${ ./vietnam-wallpaper.jpg }";
-      "picture-uri-dark" = "file://${ ./vietnam-wallpaper.jpg }";
+      "picture-uri" = "file://${ ./wallpapers/fall-forest.jpg }";
+      "picture-uri-dark" = "file://${ ./wallpapers/fall-forest.jpg }";
     };
     "org/gnome/desktop/screensaver" = {
-      "picture-uri" = "file://${ ./vietnam-wallpaper.jpg }";
+      "picture-uri" = "file://${ ./wallpapers/fall-forest.jpg }";
     };
   };
 }
