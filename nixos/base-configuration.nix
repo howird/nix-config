@@ -1,5 +1,3 @@
-# This is your system's configuration file.
-# Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
   inputs,
   outputs,
@@ -8,7 +6,6 @@
   pkgs,
   ...
 }: {
-  # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
     # outputs.nixosModules.example
@@ -16,9 +13,6 @@
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
   ];
 
   nixpkgs = {
@@ -61,9 +55,7 @@
   #   config.nix.registry;
 
   nix.settings = {
-    # Enable flakes and new 'nix' command
     experimental-features = "nix-command flakes";
-    # Deduplicate and optimize nix store
     auto-optimise-store = true;
   };
 
@@ -134,13 +126,14 @@
       isNormalUser = true;
       description = "Howard Nguyen-Huu";
       extraGroups = [ "networkmanager" "wheel" "docker" "audio" ];
-      shell = pkgs.zsh;
+      shell = pkgs.fish;
     };
   };
 
   programs = {
     git.enable = true;
     zsh.enable = true;
+    fish.enable = true;
     nano.enable = false;
     tmux.enable = true;
     chromium.enable = true;
@@ -154,44 +147,32 @@
     };
   };
 
-  environment.sessionVariables = {
-    ELECTRON_OZONE_PLATFORM_HINT = "auto";
-    NIXOS_OZONE_WL = "1";
-  };
-
   # List packages installed in system profile. To search, run: `nix search wget`
   environment.systemPackages = (with pkgs; [
     home-manager
 
+    # utilities
+    wget
     alacritty
     eza
     ripgrep
     bat
 
+    # programming
     python3
     ffmpeg-headless
-    wget
+    nodejs
+    cargo
+    rustc
 
-    # Will sometimes need to clear vivaldi GPUCache after update
+    # vivaldi: sometimes its GPUCache must be cleared after an update
     # rm -rf ~/.config/vivaldi/Default/GPUCache ~/.config/vivaldi/Default/Storage/ext/**/GPUCache
     vivaldi
     widevine-cdm
   ]) ++ (with pkgs.unstable; [
-    # hyprland
-    xdg-desktop-portal-hyprland
-    swww
-    waybar
-    dunst
-    libnotify
-    rofi-wayland
-    networkmanagerapplet
-    grim
-    slurp
-    wl-clipboard
   ]);
 
-  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
-
+  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; }) ];
 
   virtualisation.docker.enable = true;
 

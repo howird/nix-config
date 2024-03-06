@@ -6,24 +6,34 @@
   pkgs,
   ...
 }: {
+  home.packages = with pkgs; [
+    grc
+  ];
+
   programs.fish = {
     enable = true;
-    # interactiveShellInit = ''
-    #   set fish_greeting # Disable greeting
-    # '';
+    package = pkgs.fish;
+    interactiveShellInit = ''
+      set fish_greeting # Disable greeting
+    '';
+    shellAliases = {
+      ll = "ls -l";
+      vim = "lvim";
+      nixwird = "sudo nixos-rebuild switch --flake /home/howird/.config/nix";
+      nixwird-hm = "home-manager switch --flake /home/howird/.config/nix";
+    };
     plugins = [
-      # Enable a plugin (here grc for colorized command output) from nixpkgs
       { name = "grc"; src = pkgs.fishPlugins.grc.src; }
-      # Manually packaging and enable a plugin
-      {
-        name = "z";
-        src = pkgs.fetchFromGitHub {
-          owner = "jethrokuan";
-          repo = "z";
-          rev = "e0e1b9dfdba362f8ab1ae8c1afc7ccf62b89f7eb";
-          sha256 = "0dbnir6jbwjpjalz14snzd3cgdysgcs3raznsijd6savad3qhijc";
-        };
-      }
+      /*
+      tide configure --auto --style=Rainbow --prompt_colors='True color' \
+      --show_time='12-hour format' --rainbow_prompt_separators=Vertical \
+      --powerline_prompt_heads=Sharp --powerline_prompt_tails=Sharp \
+      --powerline_prompt_style='Two lines, character' \
+      --prompt_connection=Dotted --powerline_right_prompt_frame=No \
+      --prompt_connection_andor_frame_color=Light --prompt_spacing=Sparse \
+      --icons='Many icons' --transient=Yes
+      */
+      { name = "tide"; src = pkgs.fishPlugins.tide.src; }
     ];
   };
 }

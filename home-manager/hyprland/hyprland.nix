@@ -11,6 +11,17 @@
     ./rofi.nix
   ];
 
+  home.packages = with pkgs.unstable; [
+    xdg-desktop-portal-hyprland
+    networkmanagerapplet
+    wl-clipboard
+    libnotify
+    dunst
+    slurp
+    grim
+    swww
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     plugins = [
@@ -48,7 +59,10 @@
 
       env = [
         "XCURSOR_SIZE,24"
+        "QT_QPA_PLATFORM,wayland"
         "QT_QPA_PLATFORMTHEME,qt5ct" # change to qt6ct if you have that
+        "ELECTRON_OZONE_PLATFORM_HINT,auto"
+        "NIXOS_OZONE_WL,1"
       ];
 
       # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
@@ -161,11 +175,6 @@
         "$mainMod, k, movefocus, u"
         "$mainMod, j, movefocus, d"
 
-        "$mainMod ALT, left, workspace, e-1"
-        "$mainMod ALT, right, workspace, e+1"
-        "$mainMod ALT, h, workspace, e-1"
-        "$mainMod ALT, l, workspace, e+1"
-
         # Switch workspaces with mainMod + [0-9]
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
@@ -178,6 +187,11 @@
         "$mainMod, 9, workspace, 9"
         "$mainMod, 0, workspace, 10"
 
+        "$mainMod ALT, left, workspace, -1"
+        "$mainMod ALT, right, workspace, +1"
+        "$mainMod ALT, h, workspace, -1"
+        "$mainMod ALT, l, workspace, +1"
+
         # Move active window to a workspace with mainMod + SHIFT + [0-9]
         "$mainMod SHIFT, 1, movetoworkspace, 1"
         "$mainMod SHIFT, 2, movetoworkspace, 2"
@@ -189,6 +203,11 @@
         "$mainMod SHIFT, 8, movetoworkspace, 8"
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
+
+        "$mainMod SHIFT, left, movetoworkspace, -1"
+        "$mainMod SHIFT, right, movetoworkspace, +1"
+        "$mainMod SHIFT, h, movetoworkspace, -1"
+        "$mainMod SHIFT, l, movetoworkspace, +1"
 
         # Example special workspace (scratchpad)
         "$mainMod, S, togglespecialworkspace, magic"
