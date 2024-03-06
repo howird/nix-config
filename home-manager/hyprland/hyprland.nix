@@ -38,7 +38,7 @@
 
           sleep 1
 
-          ${pkgs.unstable.swww}/bin/swww img ${./wallpaper.jpg} &
+          ${pkgs.unstable.swww}/bin/swww img ${../vietnam-wallpaper.jpg} &
         '';
       in ''${startupScript}/bin/start'';
 

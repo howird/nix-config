@@ -17,10 +17,11 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
     ./hyprland/hyprland.nix
+    ./gnome.nix
+    ./git.nix
+    ./alacritty.nix
     ./zsh/zsh.nix
     ./fish.nix
-    ./git.nix
-    ./gnome.nix
     ./vscode.nix
   ];
 

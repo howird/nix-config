@@ -97,9 +97,7 @@
 
     # these should be self explanatory
     gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-contacts
-    gnome-weather pkgs.gnome-connections pkgs.gnome-tour
-    #gnome-font-viewer gnome-logs gnome-maps gnome-music gnome-photos
-    #gnome-system-monitor gnome-disk-utility gnome-screenshot
+    gnome-weather gnome-maps gnome-music pkgs.gnome-connections pkgs.gnome-tour
   ];
 
   # Enable CUPS to print documents.
@@ -148,17 +146,25 @@
   };
 
   # List packages installed in system profile. To search, run: `nix search wget`
-  environment.systemPackages = (with pkgs; [
+  environment.systemPackages = with pkgs; [
     home-manager
 
     # utilities
     wget
-    alacritty
     eza
     ripgrep
     bat
     fd
     fzf
+    yt-dlp
+
+    # apps
+    vlc
+    # sometimes vivaldi's GPUCache must be cleared after an update
+    # rm -rf ~/.config/vivaldi/Default/GPUCache ~/.config/vivaldi/Default/Storage/ext/**/GPUCache
+    vivaldi
+    widevine-cdm
+    amberol
 
     # programming
     python3
@@ -167,12 +173,7 @@
     cargo
     rustc
 
-    # vivaldi: sometimes its GPUCache must be cleared after an update
-    # rm -rf ~/.config/vivaldi/Default/GPUCache ~/.config/vivaldi/Default/Storage/ext/**/GPUCache
-    vivaldi
-    widevine-cdm
-  ]) ++ (with pkgs.unstable; [
-  ]);
+  ];
 
   fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; }) ];
 
