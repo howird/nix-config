@@ -1,23 +1,29 @@
 # nix-config
 
-- first time
+## first time
+
+- Make the follwing changes the default nixos config with `sudoedit /etc/nixos/configuration.nix`
+    - Add `nix.settings.experimental-features = "nix-command flakes";`
+    - Add `git` to `environment.systemPackages`
+
+- Apply the updates: `sudo nixos-rebuild switch`
+
+- Clone this repo:
 
 ```bash
 git clone https://github.com/howird/nix-config.git /home/howird/.config/nix
-
-sudo rm /etc/nixos/configuration.nix /etc/nixos/hardware-configuration.nix
-sudo ln -s /home/howird/.config/nix/nixos/configuration.nix /etc/nixos/configuration.nix
-sudo ln -s /home/howird/.config/nix/nixos/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
-sudo nixos-rebuild switch
-
-cd ~/.config/nix
-nix flake init
-sudo nixos-rebuild switch --flake .
-home-manager switch --flake .
 ```
 
-- next times
+- Setup your system (remember to write the correct hostname):
 
 ```bash
-nixwird && nixwird-hm
+sudo nixos-rebuild switch --flake .#<hostname>
+home-manager switch --flake .#howird@<hostname>
+```
+
+## next times
+
+```bash
+nixwird
+nixwird-hm
 ```

@@ -19,9 +19,6 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
-
-    # Import your generated (nixos-generate-config) hardware configuration
-    ./hardware-configuration.nix
   ];
 
   nixpkgs = {
@@ -74,11 +71,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # synaptics touchpad t480s
-  boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];
-
-  networking.hostName = "nixwird-t480";
-
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -99,11 +91,6 @@
     desktopManager.gnome.enable = true;
     excludePackages = [ pkgs.xterm ];
 
-    # Enable touchpad support (enabled default in most desktopManager)
-    # libinput.enable = false;
-    # synaptics.enable = true;
-  
-    # configure keymap
     layout = "us";
     xkbVariant = "";
   };

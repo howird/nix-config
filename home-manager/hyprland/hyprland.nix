@@ -146,6 +146,7 @@
 
         "$mainMod, F, fullscreen, 0"
         "$mainMod SHIFT, F, togglefloating,"
+        "$mainMod, TAB, workspace, previous"
 
         "$mainMod, P, pseudo," # dwindle
         "$mainMod, J, togglesplit," # dwindle
@@ -159,6 +160,11 @@
         "$mainMod, l, movefocus, r"
         "$mainMod, k, movefocus, u"
         "$mainMod, j, movefocus, d"
+
+        "$mainMod ALT, left, workspace, e-1"
+        "$mainMod ALT, right, workspace, e+1"
+        "$mainMod ALT, h, workspace, e-1"
+        "$mainMod ALT, l, workspace, e+1"
 
         # Switch workspaces with mainMod + [0-9]
         "$mainMod, 1, workspace, 1"

@@ -16,6 +16,7 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+    hardware.url = "github:nixos/nixos-hardware";
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
@@ -63,7 +64,17 @@
       nixwird-t480 = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./nixos/configuration.nix
+          ./nixos/base-configuration.nix
+          ./nixos/t480/configuration.nix
+          inputs.hardware.nixosModules.lenovo-thinkpad-t480s
+        ];
+      };
+      nixwird-pc = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./nixos/base-configuration.nix
+          ./nixos/pc/configuration.nix
+          # hardware.nixosModules.
         ];
       };
     };
@@ -73,7 +84,6 @@
     homeConfigurations = {
       "howird@nixwird-t480" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        # unstable-pkgs = unstable-nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./home-manager/home.nix
