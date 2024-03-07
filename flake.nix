@@ -11,12 +11,16 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Other flakes
+    hardware.url = "github:nixos/nixos-hardware";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    hardware.url = "github:nixos/nixos-hardware";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
@@ -24,7 +28,6 @@
     self,
     nixpkgs,
     home-manager,
-    hardware,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -67,7 +70,6 @@
         modules = [
           ./nixos/base-configuration.nix
           ./nixos/t480/configuration.nix
-          hardware.nixosModules.lenovo-thinkpad-t480s
         ];
       };
       nixwird-pc = nixpkgs.lib.nixosSystem {
@@ -75,7 +77,6 @@
         modules = [
           ./nixos/base-configuration.nix
           ./nixos/pc/configuration.nix
-          # hardware.nixosModules.
         ];
       };
     };

@@ -15,15 +15,17 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
     ./hyprland/hyprland.nix
     ./gnome.nix
     ./git.nix
+    ./nvim.nix
+    ./vscode.nix
     ./alacritty.nix
     ./zsh/zsh.nix
     ./fish.nix
-    ./vscode.nix
   ];
+
+  programs.home-manager.enable = true;
 
   nixpkgs = {
     overlays = [
@@ -49,13 +51,6 @@
       obsidian
       discord
     ]);
-  };
-
-  programs.home-manager.enable = true;
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
   };
 
   # Nicely reload system units when changing configs

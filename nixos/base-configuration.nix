@@ -91,11 +91,9 @@
   environment.gnome.excludePackages = with pkgs.gnome; [
     epiphany    # web browser
     yelp        # help viewer
-    # file-roller # archive manager
     geary       # email client
     seahorse    # password manager
 
-    # these should be self explanatory
     gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-contacts
     gnome-weather gnome-maps gnome-music pkgs.gnome-connections pkgs.gnome-tour
   ];
@@ -113,10 +111,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
   users.users = {
@@ -132,17 +126,8 @@
     git.enable = true;
     zsh.enable = true;
     fish.enable = true;
-    nano.enable = false;
     tmux.enable = true;
     chromium.enable = true;
-    neovim.enable = true;
-
-    # hyprland
-    hyprland = {
-      enable = true;
-      package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-      xwayland.enable = true;
-    };
   };
 
   # List packages installed in system profile. To search, run: `nix search wget`
@@ -172,7 +157,6 @@
     nodejs
     cargo
     rustc
-
   ];
 
   fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; }) ];
