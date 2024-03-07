@@ -72,26 +72,6 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  # hyprland
-  xdg.portal.wlr.enable = true;
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-    xwayland.enable = true;
-  };
-  
-  # Disable GNOME default applications
-  # https://discourse.nixos.org/t/howto-disable-most-gnome-default-applications-and-what-they-are/13505
-  environment.gnome.excludePackages = with pkgs.gnome; [
-    epiphany    # web browser
-    yelp        # help viewer
-    geary       # email client
-    seahorse    # password manager
-
-    gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-contacts
-    gnome-weather gnome-maps gnome-music pkgs.gnome-connections pkgs.gnome-tour
-  ];
-
   # X11 windowing system.
   services.xserver = {
     enable = true;
@@ -128,14 +108,6 @@
     };
   };
 
-  programs = {
-    git.enable = true;
-    zsh.enable = true;
-    fish.enable = true;
-    tmux.enable = true;
-    chromium.enable = true;
-  };
-
   # List packages installed in system profile. To search, run: `nix search wget`
   environment.systemPackages = with pkgs; [
     home-manager
@@ -163,6 +135,34 @@
     nodejs
     cargo
     rustc
+  ];
+
+  programs = {
+    git.enable = true;
+    zsh.enable = true;
+    fish.enable = true;
+    tmux.enable = true;
+    chromium.enable = true;
+  };
+
+  # hyprland
+  xdg.portal.wlr.enable = true;
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    xwayland.enable = true;
+  };
+  
+  # Disable GNOME default applications
+  # https://discourse.nixos.org/t/howto-disable-most-gnome-default-applications-and-what-they-are/13505
+  environment.gnome.excludePackages = with pkgs.gnome; [
+    epiphany    # web browser
+    yelp        # help viewer
+    geary       # email client
+    seahorse    # password manager
+
+    gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-contacts
+    gnome-weather gnome-maps gnome-music pkgs.gnome-connections pkgs.gnome-tour
   ];
 
   fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; }) ];

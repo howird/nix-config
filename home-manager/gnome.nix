@@ -13,7 +13,11 @@
 
   dconf.settings = {
     "org/gnome/mutter" = {
+      dynamic-workspaces = true;
       experimental-features = [ "scale-monitor-framebuffer" ];
+    };
+    "org/gnome/shell/app-switcher" = {
+      current-workspace-only = true;
     };
     "org/gnome/desktop/wm/keybindings" = {
       move-to-monitor-left = "disabled";
@@ -26,8 +30,8 @@
       move-to-workspace-right = [ "<Shift><Super>Right" ];
       switch-applications = "disabled";
       switch-applications-backward = "disabled";
-      switch-to-workspace-left = [ "<Super>Left" ];
-      switch-to-workspace-right = [ "<Super>Right" ];
+      switch-to-workspace-left = [ "<Super><Alt>Left" ];
+      switch-to-workspace-right = [ "<Super><Alt>Right" ];
       switch-windows = [ "<Alt>Tab" ];
       switch-windows-backward = [ "<Shift><Alt>Tab" ];
     };
