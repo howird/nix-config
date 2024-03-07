@@ -34,14 +34,12 @@
     };
 
     "org/gnome/desktop/wm/keybindings" = {
-      switch-to-workspace-1 = [ "<Super>1" ];
-      switch-to-workspace-2 = [ "<Super>2" ];
-      switch-to-workspace-3 = [ "<Super>3" ];
-      switch-to-workspace-4 = [ "<Super>4" ];
+      switch-to-workspace-1 = [ "<Super><Alt>1" ];
+      switch-to-workspace-2 = [ "<Super><Alt>2" ];
+      switch-to-workspace-3 = [ "<Super><Alt>3" ];
+      switch-to-workspace-4 = [ "<Super><Alt>4" ];
       switch-to-workspace-left = [ "<Super>Left" ];
       switch-to-workspace-right = [ "<Super>Right" ];
-      switch-applications = "disabled";
-      switch-applications-backward = "disabled";
 
       move-to-workspace-1 = [ "<Shift><Super>1" ];
       move-to-workspace-2 = [ "<Shift><Super>2" ];
@@ -54,17 +52,17 @@
 
       switch-windows = [ "<Alt>Tab" ];
       switch-windows-backward = [ "<Shift><Alt>Tab" ];
+      switch-applications = "disabled";
+      switch-applications-backward = "disabled";
 
       toggle-fullscreen = [ "<Super>f" ];
     };
 
-    "org/gnome/shell" = {
-      favorite-apps = {
-        switch-to-application-1 = "disabled";
-        switch-to-application-2 = "disabled";
-        switch-to-application-3 = "disabled";
-        switch-to-application-4 = "disabled";
-      };
+    "org/gnome/shell/keybindings" = {
+      switch-to-application-1 = "disabled";
+      switch-to-application-2 = "disabled";
+      switch-to-application-3 = "disabled";
+      switch-to-application-4 = "disabled";
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
@@ -98,13 +96,6 @@
       binding = "<Super>c";
       command = "code";
       name = "code";
-    };
-
-    "org/gnome/shell/keybindings" = {
-      switch-to-application-1 = "disabled";
-      switch-to-application-2 = "disabled";
-      switch-to-application-3 = "disabled";
-      switch-to-application-4 = "disabled";
     };
 
     "org/gnome/desktop/background" = {
