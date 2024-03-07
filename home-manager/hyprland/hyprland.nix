@@ -177,6 +177,8 @@
         "$mainMod, l, movefocus, r"
         "$mainMod, k, movefocus, u"
         "$mainMod, j, movefocus, d"
+        "ALT, TAB, cyclenext, prev"
+        "ALT SHIFT, TAB, cyclenext, next"
 
         # Switch workspaces with mainMod + [0-9]
         "$mainMod, 1, workspace, 1"
