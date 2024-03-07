@@ -166,7 +166,7 @@
     gnome-weather gnome-maps gnome-music pkgs.gnome-connections pkgs.gnome-tour
   ];
 
-  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; }) ];
+  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
   virtualisation.docker.enable = true;
 

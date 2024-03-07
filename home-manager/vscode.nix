@@ -27,5 +27,10 @@
       github.copilot
       github.copilot-chat
     ];
+    userSettings = {
+      "git.autofetch" = true;
+      "editor.fontFamily" = "JetBrainsMono Nerd Font";
+      "editor.fontLigatures" = true;
+    };
   };
 }

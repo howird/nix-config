@@ -17,6 +17,12 @@
       colors = {
         background = "#fff7f7";
       };
+      font = {
+        regular = {
+          family = "JetBrainsMono Nerd Font";
+          style = "monospace";
+        };
+      };
     };
   };
 }
