@@ -113,6 +113,7 @@
     home-manager
 
     # utilities
+    neofetch
     wget
     eza
     ripgrep

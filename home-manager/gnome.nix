@@ -34,6 +34,7 @@
       switch-to-workspace-right = [ "<Super><Alt>Right" ];
       switch-windows = [ "<Alt>Tab" ];
       switch-windows-backward = [ "<Shift><Alt>Tab" ];
+      toggle-fullscreen = [ "<Super>f" ];
     };
     "org/gnome/shell" = {
       favorite-apps = [
