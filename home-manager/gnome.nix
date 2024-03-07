@@ -56,6 +56,7 @@
       switch-applications-backward = "disabled";
 
       toggle-fullscreen = [ "<Super>f" ];
+      close = [ "<Super>q" ];
     };
 
     "org/gnome/shell/keybindings" = {
@@ -72,6 +73,7 @@
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
       ];
+      logout = [ "<Shift><Super>q" ];
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
