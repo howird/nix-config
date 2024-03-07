@@ -28,7 +28,7 @@
     xwayland.enable = true;
 
     plugins = [
-      # inputs.hyprland-plugins.packages."${pkgs.system}".borders-plus-plus
+      inputs.hyprland-plugins.packages."${pkgs.system}".borders-plus-plus
     ];
 
     settings = {
@@ -45,20 +45,21 @@
         '';
       in ''${startupScript}/bin/start'';
 
-      # "plugin:borders-plus-plus" = {
-      #   add_borders = 1; # 0 - 9
-      #   # you can add up to 9 borders
-      #   "col.border_1" = "rgb(ffffff)";
-      #   "col.border_2" = "rgb(2222ff)";
+      plugin = {
+        borders-plus-plus = {
+          add_borders = 1; # 0 - 9
+          # you can add up to 9 borders
+          "col.border_1" = "rgb(ffffff)";
+          "col.border_2" = "rgb(2222ff)";
 
-      #   # -1 means "default" as in the one defined in general:border_size
-      #   border_size_1 = 10;
-      #   border_size_2 = -1;
+          # -1 means "default" as in the one defined in general:border_size
+          border_size_1 = 10;
+          border_size_2 = -1;
 
-      #   # makes outer edges match rounding of the parent. Turn on / off to better understand. Default = on.
-      #   natural_rounding = "yes";
-      # };
-      # Some default env vars.
+          # makes outer edges match rounding of the parent. Turn on / off to better understand. Default = on.
+          natural_rounding = "yes";
+        };
+      };
 
       env = [
         "XCURSOR_SIZE,24"
@@ -164,19 +165,20 @@
         "$mainMod, F, fullscreen, 0"
         "$mainMod SHIFT, F, togglefloating,"
         "$mainMod, TAB, workspace, previous"
+        "$mainMod SHIFT, TAB, workspace, next"
 
         "$mainMod, P, pseudo," # dwindle
         "$mainMod, J, togglesplit," # dwindle
 
         # Move focus with mainMod + arrow keys
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
-        "$mainMod, h, movefocus, l"
-        "$mainMod, l, movefocus, r"
-        "$mainMod, k, movefocus, u"
-        "$mainMod, j, movefocus, d"
+        "ALT, left, movefocus, l"
+        "ALT, right, movefocus, r"
+        "ALT, up, movefocus, u"
+        "ALT, down, movefocus, d"
+        "ALT, h, movefocus, l"
+        "ALT, l, movefocus, r"
+        "ALT, k, movefocus, u"
+        "ALT, j, movefocus, d"
         "ALT, TAB, cyclenext, prev"
         "ALT SHIFT, TAB, cyclenext, next"
 
@@ -192,10 +194,10 @@
         "$mainMod, 9, workspace, 9"
         "$mainMod, 0, workspace, 10"
 
-        "$mainMod ALT, left, workspace, -1"
-        "$mainMod ALT, right, workspace, +1"
-        "$mainMod ALT, h, workspace, -1"
-        "$mainMod ALT, l, workspace, +1"
+        "$mainMod, left, workspace, -1"
+        "$mainMod, right, workspace, +1"
+        "$mainMod, h, workspace, -1"
+        "$mainMod, l, workspace, +1"
 
         # Move active window to a workspace with mainMod + SHIFT + [0-9]
         "$mainMod SHIFT, 1, movetoworkspace, 1"
