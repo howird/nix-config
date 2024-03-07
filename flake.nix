@@ -24,6 +24,7 @@
     self,
     nixpkgs,
     home-manager,
+    hardware,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -66,7 +67,7 @@
         modules = [
           ./nixos/base-configuration.nix
           ./nixos/t480/configuration.nix
-          inputs.hardware.nixosModules.lenovo-thinkpad-t480s
+          hardware.nixosModules.lenovo-thinkpad-t480s
         ];
       };
       nixwird-pc = nixpkgs.lib.nixosSystem {
@@ -83,6 +84,13 @@
     # Available through 'home-manager --flake .#howird@nixwird-t480'
     homeConfigurations = {
       "howird@nixwird-t480" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          ./home-manager/home.nix
+        ];
+      };
+      "howird@nixwird-pc" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
