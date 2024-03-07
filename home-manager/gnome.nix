@@ -31,7 +31,7 @@
       switch-windows = [ "<Alt>Tab" ];
       switch-windows-backward = [ "<Shift><Alt>Tab" ];
     };
-    "org/gnome/shell"{
+    "org/gnome/shell" = {
       favorite-apps = [
         "vivaldi-stable.desktop"
         "code.desktop"
