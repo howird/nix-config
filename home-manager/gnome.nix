@@ -31,6 +31,16 @@
       switch-windows = [ "<Alt>Tab" ];
       switch-windows-backward = [ "<Shift><Alt>Tab" ];
     };
+    "org/gnome/shell"{
+      favorite-apps = [
+        "vivaldi-stable.desktop"
+        "code.desktop"
+        "Alacritty.desktop"
+        "obsidian.desktop"
+        "org.gnome.Nautilus.desktop"
+        "smartcode-stremio.desktop"
+      ];
+    };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
