@@ -121,6 +121,8 @@
     fd
     fzf
     yt-dlp
+    gitui
+    ncspot
 
     # apps
     vlc
@@ -129,6 +131,7 @@
     vivaldi
     widevine-cdm
     amberol
+    openconnect
 
     # programming
     python3

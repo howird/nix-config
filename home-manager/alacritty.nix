@@ -20,7 +20,19 @@
       font = {
         regular = {
           family = "JetBrainsMono Nerd Font";
-          style = "monospace";
+          style = "Medium";
+        };
+        bold = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Bold";
+        };
+        italic = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Italic";
+        };
+        bold_italic = {
+          family = "JetBrainsMono Nerd Font";
+          style = "SemiBold Italic";
         };
       };
     };

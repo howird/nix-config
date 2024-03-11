@@ -23,6 +23,7 @@
     ./alacritty.nix
     ./zsh/zsh.nix
     ./fish.nix
+    ./tmux.nix
   ];
 
   programs.home-manager.enable = true;

@@ -29,3 +29,27 @@ home-manager switch --flake .#howird@<hostname>
 nixwird
 nixwird-hm
 ```
+
+## Configuring
+
+### GNOME
+
+- Should modify GNOME by
+
+```bash
+dconf dump / > old-conf.txt
+```
+
+- Modify using GNOME settings GUI, then:
+
+```bash
+dconf dump / > new-conf.txt
+```
+
+- Then compare the differences with:
+
+```bash
+code --diff old-conf.txt new-conf.txt
+```
+
+- Then update `./home-manager/gnome.nix`
