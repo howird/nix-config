@@ -31,6 +31,8 @@
       "git.autofetch" = true;
       "editor.fontFamily" = "JetBrainsMono Nerd Font";
       "editor.fontLigatures" = true;
+      "editor.lineNumbers" = "relative";
+      "vim.smartRelativeLine" = true;
     };
   };
 }

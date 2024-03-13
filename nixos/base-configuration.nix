@@ -132,6 +132,7 @@
     widevine-cdm
     amberol
     openconnect
+    gimp
 
     # programming
     python3

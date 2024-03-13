@@ -11,10 +11,16 @@
     enableAutosuggestions = true;
     enableCompletion = true;
     shellAliases = {
-      ll = "ls -l";
-      vim = "lvim";
       nixwird = "sudo nixos-rebuild switch --flake /home/howird/.config/nix";
       nixwird-hm = "home-manager switch --flake /home/howird/.config/nix";
+
+      ll = "ls -l";
+      vim = "lvim";
+
+      tl = "tmux list-sessions";
+      ts = "tmux new-session -s";
+      ta = "tmux attach-session -t";
+      tks = "tmux kill-session -t";
     };
     history = {
       size = 10000;
