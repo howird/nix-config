@@ -41,7 +41,7 @@
 
           sleep 1
 
-          ${pkgs.unstable.swww}/bin/swww img ${ ../wallpapers/fall-forest.jpg } &
+          ${pkgs.unstable.swww}/bin/swww img ${ ../../misc/wallpapers/fall-forest.jpg } &
         '';
       in ''${startupScript}/bin/start'';
 

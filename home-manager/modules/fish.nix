@@ -38,6 +38,8 @@
       ts = "tmux new-session -s";
       ta = "tmux attach-session -t";
       tks = "tmux kill-session -t";
+
+      campus-ssh-toggle = "bash ${ ../misc/campus-ssh-toggle.sh }";
     };
     plugins = [
       { name = "grc"; src = pkgs.fishPlugins.grc.src; }

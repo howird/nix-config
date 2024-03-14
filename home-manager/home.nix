@@ -15,15 +15,15 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    ./hyprland/hyprland.nix
-    ./gnome.nix
-    ./git.nix
-    ./nvim.nix
-    ./vscode.nix
-    ./alacritty.nix
-    ./zsh/zsh.nix
-    ./fish.nix
-    ./tmux.nix
+    ./modules/hyprland/hyprland.nix
+    ./modules/gnome.nix
+    ./modules/git.nix
+    ./modules/nvim.nix
+    ./modules/vscode.nix
+    ./modules/alacritty.nix
+    ./modules/zsh.nix
+    ./modules/fish.nix
+    ./modules/tmux.nix
   ];
 
   programs.home-manager.enable = true;

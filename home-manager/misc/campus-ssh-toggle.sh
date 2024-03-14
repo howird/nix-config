@@ -1,0 +1,35 @@
+# I use this script to comment/comment out the first two lines of my `~/.ssh/config`.
+# These lines configure some of my ssh hosts to use a jumphost, which is not needed
+# when I am on campus.
+
+FILE=~/.ssh/config
+TEMP_FILE=$(mktemp)
+
+if [ ! -f "$FILE" ]; then
+    echo "File does not exist."
+    return 1
+fi
+
+# Check the current state of the first two lines
+firstLineCommented=$(sed -n '1p' "$FILE" | grep -c '^#')
+secondLineCommented=$(sed -n '2p' "$FILE" | grep -c '^#')
+
+# Use awk to toggle comment for the first two lines and determine the action
+awk 'NR == 1 || NR == 2 {print (substr($0, 1, 1) == "#" ? substr($0, 2) : "#" $0)} NR > 2 {print $0}' "$FILE" > "$TEMP_FILE"
+
+if [ $? -eq 0 ]; then
+    mv "$TEMP_FILE" "$FILE"
+    chmod 600 "$FILE"
+
+    # Determine the message based on initial state
+    if [ $firstLineCommented -eq 1 ] || [ $secondLineCommented -eq 1 ]; then
+        echo "eceterm jumphost ENABLED. you should be OFF campus."
+    else
+        echo "eceterm jumphost DISABLED. you should be ON campus."
+    fi
+else
+    echo "An error occurred while processing the file."
+    rm "$TEMP_FILE"
+    return 1
+fi
+

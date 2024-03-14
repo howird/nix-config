@@ -21,6 +21,8 @@
       ts = "tmux new-session -s";
       ta = "tmux attach-session -t";
       tks = "tmux kill-session -t";
+
+      campus-ssh-toggle = "bash ${ ../misc/campus-ssh-toggle.sh }";
     };
     history = {
       size = 10000;
@@ -34,7 +36,7 @@
       }
       {
         name = "powerlevel10k-config";
-        src = ./.;
+        src = ../misc;
         file = ".p10k.zsh";
       }
     ];

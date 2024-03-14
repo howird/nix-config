@@ -104,12 +104,12 @@
     };
 
     "org/gnome/desktop/background" = {
-      "picture-uri" = "file://${ ./wallpapers/fall-forest.jpg }";
-      "picture-uri-dark" = "file://${ ./wallpapers/fall-forest.jpg }";
+      "picture-uri" = "file://${ ../misc/wallpapers/fall-forest.jpg }";
+      "picture-uri-dark" = "file://${ ../misc/wallpapers/fall-forest.jpg }";
     };
 
     "org/gnome/desktop/screensaver" = {
-      "picture-uri" = "file://${ ./wallpapers/fall-forest.jpg }";
+      "picture-uri" = "file://${ ../misc/wallpapers/fall-forest.jpg }";
     };
   };
 }
