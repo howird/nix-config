@@ -115,6 +115,7 @@
     # utilities
     neofetch
     wget
+    zoxide
     eza
     ripgrep
     bat
