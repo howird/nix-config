@@ -60,8 +60,7 @@
     };
 
     "org/gnome/shell/keybindings" = {
-      screenshot = [ "<Shift><Super>s" ];
-      show-screenshot-ui = [ "<Super>s" ];
+      show-screenshot-ui = [ "<Shift><Super>s" ];
       switch-to-application-1 = "disabled";
       switch-to-application-2 = "disabled";
       switch-to-application-3 = "disabled";
