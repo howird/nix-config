@@ -48,7 +48,6 @@
       stremio
       spotify
     ]) ++ ( with pkgs.unstable; [
-      lunarvim
       obsidian
       discord
     ]);
