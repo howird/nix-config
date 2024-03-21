@@ -114,6 +114,9 @@
 
     # utilities
     neofetch
+    htop
+    pciutils
+    cachix
     wget
     zoxide
     eza
