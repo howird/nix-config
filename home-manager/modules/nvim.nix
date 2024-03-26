@@ -21,8 +21,6 @@
     plugins.harpoon.enable = true;
 
     plugins.lualine.enable = true;
-    # in nvim, run: ":TransparentEnable"
-    extraPlugins = [ pkgs.unstable.vimPlugins.transparent-nvim ];
     colorschemes.onedark.enable = true;
 
     plugins.lsp = {

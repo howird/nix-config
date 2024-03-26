@@ -21,6 +21,7 @@
       url = "github:nix-community/nixvim/nixos-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # vscode-server.url = "github:nix-community/nixos-vscode-server";
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
@@ -77,6 +78,10 @@
         modules = [
           ./nixos/base-configuration.nix
           ./nixos/pc/configuration.nix
+          # inputs.vscode-server.nixosModules.default
+          #   ({ config, pkgs, ... }: {
+          #     services.vscode-server.enable = true;
+          #   })
         ];
       };
     };
@@ -89,6 +94,7 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./home-manager/home.nix
+          ./home-manager/home-t480.nix
         ];
       };
       "howird@nixwird-pc" = home-manager.lib.homeManagerConfiguration {
@@ -96,6 +102,7 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./home-manager/home.nix
+          ./home-manager/home-pc.nix
         ];
       };
     };

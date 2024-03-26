@@ -15,7 +15,6 @@
   ];
 
   # GPU STUFF
-  services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
   hardware.opengl = {
     enable = true;
     driSupport = true;
@@ -31,4 +30,7 @@
       PasswordAuthentication = false;
     };
   };
+  environment.systemPackages = with pkgs; [
+    lm_sensors
+  ];
 }

@@ -109,12 +109,14 @@
   };
 
   # List packages installed in system profile. To search, run: `nix search wget`
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = # let ollama = pkgs.ollama.override { acceleration = "rocm"; }; in
+  with pkgs; [
     home-manager
 
     # utilities
     neofetch
     htop
+    lsof
     pciutils
     cachix
     wget
