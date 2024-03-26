@@ -34,7 +34,6 @@
       "editor.lineNumbers" = "relative";
       "vim.smartRelativeLine" = true;
       "remote.autoForwardPortsSource" = "hybrid";
-      "remote.SSH.useLocalServer" = false;
     };
   };
 }
