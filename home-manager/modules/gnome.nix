@@ -25,7 +25,7 @@
         "obsidian.desktop"
         "discord.desktop"
         "org.gnome.Nautilus.desktop"
-        "smartcode-stremio.desktop"
+        # "smartcode-stremio.desktop"
       ];
     };
 

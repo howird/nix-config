@@ -45,7 +45,7 @@
     ];
     packages = ( with pkgs; [
       texliveMedium
-      stremio
+      # stremio
       spotify
     ]) ++ ( with pkgs.unstable; [
       obsidian
