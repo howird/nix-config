@@ -9,6 +9,7 @@
   imports = [
     ./modules/gnome.nix
     ./modules/hyprland.nix
+    ./modules/ros.nix
   ];
 
   nixpkgs = {
@@ -18,6 +19,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
+      inputs.nix-ros-overlay.overlays.default
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -53,6 +55,16 @@
   nix.settings = {
     experimental-features = "nix-command flakes";
     auto-optimise-store = true;
+    substituters = [
+      "https://cache.nixos.org"
+      "https://cuda-maintainers.cachix.org"
+      "https://ros.cachix.org"
+    ];
+    trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+      "ros.cachix.org-1:dSyZxI8geDCJrwgvCOHDoAfOm5sV1wCPjBkKL+38Rvo="
+    ];
   };
 
   # Bootloader
@@ -93,8 +105,7 @@
   };
 
   # List packages installed in system profile. To search, run: `nix search wget`
-  environment.systemPackages = # let ollama = pkgs.ollama.override { acceleration = "rocm"; }; in
-  with pkgs; [
+  environment.systemPackages = (with pkgs; [
     home-manager
 
     # utilities
@@ -128,12 +139,12 @@
     nodejs
     cargo
     rustc
-  ] ++ [
+  ]) ++ (with pkgs.unstable; [
     # sometimes vivaldi's GPUCache must be cleared after an update
     # rm -rf ~/.config/vivaldi/Default/GPUCache ~/.config/vivaldi/Default/Storage/ext/**/GPUCache
-    pkgs.unstable.vivaldi
-    pkgs.unstable.widevine-cdm
-  ];
+    vivaldi
+    widevine-cdm
+  ]);
 
   programs = {
     git.enable = true;

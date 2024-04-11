@@ -21,8 +21,9 @@
       url = "github:nix-community/nixvim/nixos-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-ros-overlay.url = "github:lopsided98/nix-ros-overlay";
     # vscode-server.url = "github:nix-community/nixos-vscode-server";
-    nix-colors.url = "github:misterio77/nix-colors";
+    # nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = {

@@ -20,4 +20,11 @@
       config.allowUnfree = true;
     };
   };
+
+  # ros = final: _prev: {
+  #   unstable = import inputs.ros {
+  #     system = final.system;
+  #     config.allowUnfree = true;
+  #   };
+  # };
 }
