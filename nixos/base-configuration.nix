@@ -68,8 +68,8 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing.enable = true; # Enable CUPS to print documents.
+  hardware.opentabletdriver.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -113,13 +113,10 @@
     yt-dlp
     gitui
     ncspot
+    xournalpp
 
     # apps
     vlc
-    # sometimes vivaldi's GPUCache must be cleared after an update
-    # rm -rf ~/.config/vivaldi/Default/GPUCache ~/.config/vivaldi/Default/Storage/ext/**/GPUCache
-    vivaldi
-    widevine-cdm
     amberol
     openconnect
     gimp
@@ -131,6 +128,11 @@
     nodejs
     cargo
     rustc
+  ] ++ [
+    # sometimes vivaldi's GPUCache must be cleared after an update
+    # rm -rf ~/.config/vivaldi/Default/GPUCache ~/.config/vivaldi/Default/Storage/ext/**/GPUCache
+    pkgs.unstable.vivaldi
+    pkgs.unstable.widevine-cdm
   ];
 
   programs = {
