@@ -74,6 +74,13 @@
           ./nixos/t480/configuration.nix
         ];
       };
+      nixwird-framework = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./nixos/base-configuration.nix
+          ./nixos/framework/configuration.nix
+        ];
+      };
       nixwird-pc = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [

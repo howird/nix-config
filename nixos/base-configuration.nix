@@ -78,7 +78,7 @@
   time.timeZone = "America/Toronto";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_CA.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
 
   services.printing.enable = true; # Enable CUPS to print documents.
   hardware.opentabletdriver.enable = true;
@@ -139,6 +139,8 @@
     nodejs
     cargo
     rustc
+    gcc
+    gnumake
   ]) ++ (with pkgs.unstable; [
     # sometimes vivaldi's GPUCache must be cleared after an update
     # rm -rf ~/.config/vivaldi/Default/GPUCache ~/.config/vivaldi/Default/Storage/ext/**/GPUCache
