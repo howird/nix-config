@@ -44,7 +44,7 @@
       "$HOME/.local/bin"
     ];
     packages = ( with pkgs; [
-      texliveMedium
+      texlive.combined.scheme-full
       # stremio
       spotify
     ]) ++ ( with pkgs.unstable; [

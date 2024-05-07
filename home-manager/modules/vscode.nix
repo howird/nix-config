@@ -26,6 +26,7 @@
       ms-vscode-remote.remote-containers
       github.copilot
       github.copilot-chat
+      # James-Yu.latex-workshop
     ];
     userSettings = {
       "git.autofetch" = true;
