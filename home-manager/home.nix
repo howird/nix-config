@@ -15,8 +15,7 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    ./modules/hyprland/hyprland.nix
-    ./modules/gnome.nix
+    # ./modules/gnome.nix
     ./modules/git.nix
     ./modules/nvim.nix
     ./modules/vscode.nix
@@ -32,7 +31,7 @@
     overlays = [
       outputs.overlays.additions
       outputs.overlays.modifications
-      outputs.overlays.unstable-packages
+      outputs.overlays.stable-packages
     ];
     config = { allowUnfree = true; };
   };
@@ -43,11 +42,11 @@
     sessionPath = [
       "$HOME/.local/bin"
     ];
-    packages = ( with pkgs; [
+    packages = ( with pkgs.stable; [
       texlive.combined.scheme-full
       # stremio
       spotify
-    ]) ++ ( with pkgs.unstable; [
+    ]) ++ ( with pkgs; [
       obsidian
       discord
     ]);

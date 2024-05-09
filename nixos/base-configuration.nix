@@ -7,8 +7,7 @@
   ...
 }: {
   imports = [
-    ./modules/gnome.nix
-    ./modules/hyprland.nix
+    ./modules/kde.nix
     ./modules/ros.nix
   ];
 
@@ -18,7 +17,7 @@
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
-      outputs.overlays.unstable-packages
+      outputs.overlays.stable-packages
       inputs.nix-ros-overlay.overlays.default
 
       # You can also add overlays exported from other flakes:
@@ -105,7 +104,7 @@
   };
 
   # List packages installed in system profile. To search, run: `nix search wget`
-  environment.systemPackages = (with pkgs; [
+  environment.systemPackages = (with pkgs.stable; [
     home-manager
 
     # utilities
@@ -132,6 +131,7 @@
     openconnect
     gimp
     gtkwave
+    teams-for-linux
 
     # programming
     python3
@@ -141,11 +141,12 @@
     rustc
     gcc
     gnumake
-  ]) ++ (with pkgs.unstable; [
+
     # sometimes vivaldi's GPUCache must be cleared after an update
     # rm -rf ~/.config/vivaldi/Default/GPUCache ~/.config/vivaldi/Default/Storage/ext/**/GPUCache
     vivaldi
     widevine-cdm
+  ]) ++ (with pkgs; [
   ]);
 
   programs = {
@@ -156,7 +157,7 @@
     chromium.enable = true;
   };
 
-  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+  fonts.packages = with pkgs.stable; [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
   virtualisation.docker.enable = true;
 

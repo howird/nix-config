@@ -8,8 +8,8 @@
 }: {
   programs.vscode = {
     enable = true;
-    package = pkgs.unstable.vscode;
-    extensions = with pkgs.unstable.vscode-extensions; [
+    package = pkgs.vscode;
+    extensions = with pkgs.vscode-extensions; [
       ms-python.python
       vscodevim.vim
       yzhang.markdown-all-in-one
