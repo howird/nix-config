@@ -11,8 +11,8 @@
     autosuggestion.enable = true;
     enableCompletion = true;
     shellAliases = {
-      nixwird = "sudo nixos-rebuild switch --flake /home/howird/.config/nix --no-cache-eval";
-      nixwird-hm = "home-manager switch --flake /home/howird/.config/nix --option eval-cache false";
+      nixwird = "sudo nixos-rebuild switch --flake /home/howird/.config/nix";
+      nixwird-hm = "home-manager switch --flake /home/howird/.config/nix";
 
       tl = "tmux list-sessions";
       ts = "tmux new-session -s";

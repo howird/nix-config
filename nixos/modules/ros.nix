@@ -7,9 +7,6 @@
   ...
 }: {
 
-  environment.systemPackages = with pkgs.rosPackages.humble; [
-    pkgs.colcon
-    ros-core
+  environment.systemPackages = with pkgs.rosPackages.foxy; [
   ];
-
 }

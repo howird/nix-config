@@ -14,14 +14,14 @@
         opacity = 0.85;
         blur = true;
       };
-      colors = {
-        background = "#fff7f7";
-      };
+      # colors = {
+      #   background = "#fff7f7";
+      # };
       font = {
-        regular = {
-          family = "JetBrainsMono Nerd Font";
-          style = "Medium";
-        };
+        # regular = {
+        #   family = "JetBrainsMono Nerd Font";
+        #   style = "Medium";
+        # };
         bold = {
           family = "JetBrainsMono Nerd Font";
           style = "Bold";

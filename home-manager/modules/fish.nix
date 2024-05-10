@@ -28,7 +28,7 @@
       '
     '';
     shellAliases = {
-      nixwird = "sudo nixos-rebuild switch --flake /home/howird/.config/nix --no-cache-eval";
+      nixwird = "sudo nixos-rebuild switch --flake /home/howird/.config/nix --option eval-cache false";
       nixwird-hm = "home-manager switch --flake /home/howird/.config/nix --option eval-cache false";
 
       tl = "tmux list-sessions";

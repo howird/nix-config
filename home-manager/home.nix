@@ -6,15 +6,8 @@
   pkgs,
   ...
 }: {
-  # You can import other home-manager modules here
   imports = [
-    # If you want to use modules your own flake exports (from modules/home-manager):
-    # outputs.homeManagerModules.example
-
-    # Or modules exported from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModules.default
-
-    # You can also split up your configuration and import pieces of it here:
+    ./modules/kde.nix
     ./modules/git.nix
     ./modules/nvim.nix
     ./modules/vscode.nix
@@ -22,6 +15,7 @@
     ./modules/zsh.nix
     ./modules/fish.nix
     ./modules/tmux.nix
+    ./modules/chromium.nix
   ];
 
   programs.home-manager.enable = true;
@@ -30,7 +24,6 @@
     overlays = [
       outputs.overlays.additions
       outputs.overlays.modifications
-      outputs.overlays.stable-packages
     ];
     config = { allowUnfree = true; };
   };
@@ -41,12 +34,7 @@
     sessionPath = [
       "$HOME/.local/bin"
     ];
-    packages = ( with pkgs.stable; [
-    ]) ++ ( with pkgs; [
-      # sometimes vivaldi's GPUCache must be cleared after an update
-      # rm -rf ~/.config/vivaldi/Default/GPUCache ~/.config/vivaldi/Default/Storage/ext/**/GPUCache
-      vivaldi
-      widevine-cdm
+    packages = with pkgs; [
       openconnect
       gtkwave
 
@@ -58,7 +46,7 @@
 
       stremio
       spotify
-    ]);
+    ];
   };
 
   # Nicely reload system units when changing configs
