@@ -13,10 +13,14 @@
   ];
 
   options = {
-    myDesktop = lib.mkOption {
-      type = lib.types.nonEmptyStr;
-      default = "kde";
-      description = ''must be "kde", "hyprland", or "gnome".'';
+    myDesktop = {
+      kde = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Whether to enable kde.";
+      };
+      hyprland = lib.mkEnableOption "hyprland";
+      gnome = lib.mkEnableOption "gnome";
     };
   };
 }

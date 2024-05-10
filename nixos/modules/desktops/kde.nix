@@ -5,14 +5,10 @@
   config,
   pkgs,
   ...
-}: {
-  config = let
-    enable = config.myDesktop == "kde";
-  in {
-    services.desktopManager.plasma6.enable = enable;
-    services.displayManager.sddm = {
-      enable = enable;
-      wayland.enable = enable;
-    };
+}: lib.mkIf config.myDesktop.kde {
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
   };
 }

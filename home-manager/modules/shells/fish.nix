@@ -5,7 +5,7 @@
   config,
   pkgs,
   ...
-}: {
+}: lib.mkIf config.myShell.fish {
   home.packages = if config.programs.fish.enable then
       with pkgs; [
         grc
@@ -14,6 +14,7 @@
       [];
 
   programs.fish = {
+    enable = true;
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
 
@@ -28,7 +29,7 @@
         --icons='Many icons' --transient=Yes
       '
     '';
-    shellAliases = config.myShellAliases;
+    shellAliases = config.myShell.aliases;
     plugins = [
       { name = "grc"; src = pkgs.fishPlugins.grc.src; }
       { name = "tide"; src = pkgs.fishPlugins.tide.src; }

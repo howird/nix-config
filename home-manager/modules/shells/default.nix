@@ -12,17 +12,21 @@
   ];
 
   options = {
-    myShellAliases = lib.mkOption {
-      type = lib.types.attrs;
-      default = {};
+    myShell = {
+      fish = lib.mkEnableOption "fish";
+      zsh = lib.mkEnableOption "zsh";
+      aliases = lib.mkOption {
+        type = lib.types.attrs;
+        default = {};
+      };
     };
   };
 
   config = {
-    programs.fish.enable = true;
-    programs.zsh.enable = true;
+    myShell.fish = true;
+    myShell.zsh = true;
 
-    myShellAliases = {
+    myShell.aliases = {
       nixwird = "sudo nixos-rebuild switch --flake /home/howird/.config/nix";
       nixwird-hm = "home-manager switch --flake /home/howird/.config/nix";
 

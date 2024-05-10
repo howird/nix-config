@@ -5,11 +5,12 @@
   config,
   pkgs,
   ...
-}: {
+}: lib.mkIf config.myShell.zsh {
   programs.zsh = {
+    enable = true;
     autosuggestion.enable = true;
     enableCompletion = true;
-    shellAliases = config.myShellAliases;
+    shellAliases = config.myShell.aliases;
     history = {
       size = 10000;
       path = "$HOME/.config/zsh/history";

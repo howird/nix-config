@@ -5,8 +5,6 @@
   config,
   pkgs,
   ...
-}: {
-  config = lib.mkIf (!config.myDesktop.gnome) {
+}: lib.mkIf config.myDesktop.kde {
 
-  };
 }

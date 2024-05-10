@@ -11,7 +11,7 @@
     ./modules/desktops/default.nix
   ];
 
-  myDesktop = "kde";
+  myDesktop.kde = true;
 
   nixpkgs = {
     # You can add overlays here
