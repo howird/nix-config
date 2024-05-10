@@ -6,5 +6,7 @@
   pkgs,
   ...
 }: {
+  config = lib.mkIf (!config.myDesktop.gnome) {
 
+  };
 }

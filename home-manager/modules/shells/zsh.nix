@@ -7,20 +7,9 @@
   ...
 }: {
   programs.zsh = {
-    enable = true;
     autosuggestion.enable = true;
     enableCompletion = true;
-    shellAliases = {
-      nixwird = "sudo nixos-rebuild switch --flake /home/howird/.config/nix";
-      nixwird-hm = "home-manager switch --flake /home/howird/.config/nix";
-
-      tl = "tmux list-sessions";
-      ts = "tmux new-session -s";
-      ta = "tmux attach-session -t";
-      tks = "tmux kill-session -t";
-
-      campus-ssh-toggle = "bash ${ ../misc/campus-ssh-toggle.sh }";
-    };
+    shellAliases = config.myShellAliases;
     history = {
       size = 10000;
       path = "$HOME/.config/zsh/history";
@@ -33,7 +22,7 @@
       }
       {
         name = "powerlevel10k-config";
-        src = ../misc;
+        src = ../../misc;
         file = ".p10k.zsh";
       }
     ];

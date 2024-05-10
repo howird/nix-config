@@ -6,13 +6,14 @@
   pkgs,
   ...
 }: {
-  home.packages = with pkgs; [
-    grc
-  ];
+  home.packages = if config.programs.fish.enable then
+      with pkgs; [
+        grc
+      ]
+    else
+      [];
 
   programs.fish = {
-    enable = true;
-    package = pkgs.fish;
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
 
@@ -27,17 +28,7 @@
         --icons='Many icons' --transient=Yes
       '
     '';
-    shellAliases = {
-      nixwird = "sudo nixos-rebuild switch --flake /home/howird/.config/nix --option eval-cache false";
-      nixwird-hm = "home-manager switch --flake /home/howird/.config/nix --option eval-cache false";
-
-      tl = "tmux list-sessions";
-      ts = "tmux new-session -s";
-      ta = "tmux attach-session -t";
-      tks = "tmux kill-session -t";
-
-      campus-ssh-toggle = "bash ${ ../misc/campus-ssh-toggle.sh }";
-    };
+    shellAliases = config.myShellAliases;
     plugins = [
       { name = "grc"; src = pkgs.fishPlugins.grc.src; }
       { name = "tide"; src = pkgs.fishPlugins.tide.src; }
