@@ -34,14 +34,14 @@
     settings = {
       exec-once = let
         startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-          ${pkgs.unstable.waybar}/bin/waybar &
-          ${pkgs.unstable.networkmanagerapplet}/bin/nm-applet --indicator &
+          ${pkgs.waybar}/bin/waybar &
+          ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &
     
-          ${pkgs.unstable.swww}/bin/swww init &
+          ${pkgs.swww}/bin/swww init &
 
           sleep 1
 
-          ${pkgs.unstable.swww}/bin/swww img ${ ../../misc/wallpapers/fall-forest.jpg } &
+          ${pkgs.swww}/bin/swww img ${ ../../misc/wallpapers/fall-forest.jpg } &
         '';
       in ''${startupScript}/bin/start'';
 

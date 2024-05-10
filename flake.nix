@@ -7,7 +7,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Other flakes
@@ -18,7 +18,7 @@
     #   inputs.hyprland.follows = "hyprland";
     # };
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-23.11";
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-ros-overlay.url = "github:lopsided98/nix-ros-overlay";
@@ -103,6 +103,14 @@
         modules = [
           ./home-manager/home.nix
           ./home-manager/home-t480.nix
+        ];
+      };
+      "howird@nixwird-framework" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          ./home-manager/home.nix
+          ./home-manager/home-framework.nix
         ];
       };
       "howird@nixwird-pc" = home-manager.lib.homeManagerConfiguration {

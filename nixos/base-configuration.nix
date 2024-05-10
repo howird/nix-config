@@ -82,6 +82,12 @@
   services.printing.enable = true; # Enable CUPS to print documents.
   hardware.opentabletdriver.enable = true;
 
+  services.xserver.enable = true;
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
+
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -104,7 +110,7 @@
   };
 
   # List packages installed in system profile. To search, run: `nix search wget`
-  environment.systemPackages = (with pkgs.stable; [
+  environment.systemPackages = with pkgs; [
     home-manager
 
     # utilities
@@ -123,15 +129,13 @@
     yt-dlp
     gitui
     ncspot
-    xournalpp
 
     # apps
+    firefox
     vlc
     amberol
-    openconnect
     gimp
-    gtkwave
-    teams-for-linux
+    xournalpp
 
     # programming
     python3
@@ -141,13 +145,7 @@
     rustc
     gcc
     gnumake
-
-    # sometimes vivaldi's GPUCache must be cleared after an update
-    # rm -rf ~/.config/vivaldi/Default/GPUCache ~/.config/vivaldi/Default/Storage/ext/**/GPUCache
-    vivaldi
-    widevine-cdm
-  ]) ++ (with pkgs; [
-  ]);
+  ];
 
   programs = {
     git.enable = true;
@@ -157,7 +155,7 @@
     chromium.enable = true;
   };
 
-  fonts.packages = with pkgs.stable; [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
   virtualisation.docker.enable = true;
 

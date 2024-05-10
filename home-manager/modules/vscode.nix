@@ -10,23 +10,25 @@
     enable = true;
     package = pkgs.vscode;
     extensions = with pkgs.vscode-extensions; [
-      ms-python.python
       vscodevim.vim
-      yzhang.markdown-all-in-one
-      rust-lang.rust-analyzer
-      mechatroner.rainbow-csv
-      oderwat.indent-rainbow
-      ms-azuretools.vscode-docker
-      ms-vscode-remote.remote-ssh
-      jnoortheen.nix-ide
-      njpwerner.autodocstring
-      eamodio.gitlens
-      github.vscode-github-actions
-      ms-azuretools.vscode-docker
       ms-vscode-remote.remote-containers
+      ms-vscode-remote.remote-ssh
+      ms-azuretools.vscode-docker
+      github.vscode-github-actions
+      eamodio.gitlens
+
       github.copilot
       github.copilot-chat
+
+      jnoortheen.nix-ide
+      ms-python.python
+      yzhang.markdown-all-in-one
+      rust-lang.rust-analyzer
       # James-Yu.latex-workshop
+
+      mechatroner.rainbow-csv
+      oderwat.indent-rainbow
+      njpwerner.autodocstring
     ];
     userSettings = {
       "git.autofetch" = true;

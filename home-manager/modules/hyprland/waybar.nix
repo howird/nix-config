@@ -8,7 +8,7 @@
 }: {
   programs.waybar = {
     enable = true;
-    package = pkgs.unstable.waybar;
+    package = pkgs.waybar;
     # settings = ;
     # style = ;
   };

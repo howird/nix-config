@@ -28,7 +28,7 @@
       servers = {
         bashls.enable = true;
         clangd.enable = true;
-        # dockerls.enable = true;
+        dockerls.enable = true;
         html.enable = true;
         jsonls.enable = true;
         pyright.enable = true;
@@ -44,7 +44,7 @@
 
     vimAlias = true;
 
-    options = {
+    opts = {
       number = true;
       relativenumber = true;
       shiftwidth = 4;

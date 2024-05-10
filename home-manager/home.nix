@@ -15,7 +15,6 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    # ./modules/gnome.nix
     ./modules/git.nix
     ./modules/nvim.nix
     ./modules/vscode.nix
@@ -43,12 +42,22 @@
       "$HOME/.local/bin"
     ];
     packages = ( with pkgs.stable; [
-      texlive.combined.scheme-full
-      # stremio
-      spotify
     ]) ++ ( with pkgs; [
+      # sometimes vivaldi's GPUCache must be cleared after an update
+      # rm -rf ~/.config/vivaldi/Default/GPUCache ~/.config/vivaldi/Default/Storage/ext/**/GPUCache
+      vivaldi
+      widevine-cdm
+      openconnect
+      gtkwave
+
       obsidian
+      texlive.combined.scheme-full
+
       discord
+      teams-for-linux
+
+      stremio
+      spotify
     ]);
   };
 
