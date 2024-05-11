@@ -6,12 +6,9 @@
   pkgs,
   ...
 }: lib.mkIf config.myShell.fish {
-  home.packages = if config.programs.fish.enable then
-      with pkgs; [
-        grc
-      ]
-    else
-      [];
+  home.packages = with pkgs; [
+    grc
+  ];
 
   programs.fish = {
     enable = true;

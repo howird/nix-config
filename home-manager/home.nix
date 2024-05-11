@@ -21,7 +21,7 @@
 
   config = {
     myDesktop.kde = true;
-    myWallpaper = "fall-forest.jpg";
+    myWallpaper = ./misc/wallpapers/fall-forest.jpg;
 
     programs.home-manager.enable = true;
 

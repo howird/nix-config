@@ -16,4 +16,8 @@
       "--ozone-platform=wayland"
     ];
   };
+
+  home.packages = lib.mkIf (config.myDesktop.kde || config.myDesktop.hyprland) [
+    pkgs.libsForQt5.qtwayland
+  ];
 }

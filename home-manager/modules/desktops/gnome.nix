@@ -6,6 +6,11 @@
   pkgs,
   ...
 }: lib.mkIf config.myDesktop.gnome {
+  home.packages = with pkgs; [
+    gnome.dconf-editor
+    gnome.gnome-tweaks
+  ];
+
   dconf.settings = {
     "org/gnome/mutter" = {
       dynamic-workspaces = true;

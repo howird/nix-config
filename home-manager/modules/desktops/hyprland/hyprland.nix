@@ -12,6 +12,17 @@
   ];
 
   config = lib.mkIf config.myDesktop.hyprland {
+    home.packages = with pkgs; [
+      xdg-desktop-portal-hyprland
+      networkmanagerapplet
+      wl-clipboard
+      libnotify
+      dunst
+      slurp
+      grim
+      swww
+    ];
+
     wayland.windowManager.hyprland = {
       enable = config.myDesktop == "hyprland";
       package = inputs.hyprland.packages."${pkgs.system}".hyprland;
