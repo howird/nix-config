@@ -11,9 +11,7 @@
     ./nvim-keymaps.nix
   ];
 
-  programs.nixvim = {
-    enable = true;
-
+  programs.nixvim = lib.mkIf config.myEditor.nvim {
     plugins.treesitter.enable = true;
     plugins.fugitive.enable = true;
     plugins.undotree.enable = true;

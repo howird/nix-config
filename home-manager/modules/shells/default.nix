@@ -29,6 +29,7 @@
     myShell.aliases = {
       nixwird = "sudo nixos-rebuild switch --flake /home/howird/.config/nix";
       nixwird-hm = "home-manager switch --flake /home/howird/.config/nix";
+      nixwird-edit = "code ~/.config/nix || vim ~/.config/nix";
 
       tl = "tmux list-sessions";
       ts = "tmux new-session -s";
@@ -36,6 +37,9 @@
       tks = "tmux kill-session -t";
 
       campus-ssh-toggle = "bash ${ ../../misc/campus-ssh-toggle.sh }";
+
+      vault = "cd ~/vault";
+      work = "cd ~/howork";
     };
   };
 }

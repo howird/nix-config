@@ -70,7 +70,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   services.printing.enable = true; # Enable CUPS to print documents.
-  hardware.opentabletdriver.enable = true;
+  services.xserver.wacom.enable = true;
 
   services.xserver.enable = true;
   services.xserver.xkb = {

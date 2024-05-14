@@ -11,6 +11,11 @@
     ./nvim/nvim.nix
   ];
 
-  programs.nixvim.enable = true;
-  programs.vscode.enable = true;
+  options = {
+    myEditor = {
+      vscode = lib.mkEnableOption "vscode";
+      vscodium = lib.mkEnableOption "vscodium";
+      nvim = lib.mkEnableOption "nvim";
+    };
+  };
 }

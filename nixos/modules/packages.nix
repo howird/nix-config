@@ -26,6 +26,7 @@
     yt-dlp
     gitui
     ncspot
+    sshfs
 
     # apps
     firefox

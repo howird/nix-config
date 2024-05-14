@@ -23,6 +23,9 @@
     myDesktop.kde = true;
     myWallpaper = ./misc/wallpapers/fall-forest.jpg;
 
+    myEditor.vscode = true;
+    myEditor.nvim = true;
+
     programs.home-manager.enable = true;
 
     nixpkgs = {
