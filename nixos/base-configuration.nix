@@ -89,6 +89,8 @@
     pulse.enable = true;
     jack.enable = true;
   };
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
 
   users.users = {
     howird = {

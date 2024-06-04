@@ -12,8 +12,7 @@
       # view project
       { mode = "n";
         key = "<leader>pv";
-        action = "vim.cmd.Ex";
-        lua = true;
+        action.__raw = "vim.cmd.Ex";
       }
 
       # move blocks of text in visual mode with shift + J/K
@@ -63,28 +62,24 @@
       {
         mode = "x";
         key = "<leader>p";
-        action = ''[["_dP]]'';
-        lua = true;
+        action.__raw = ''[["_dP]]'';
       }
       {
         mode = ["n" "v"];
         key = "<leader>d";
-        action = ''[["_d]]'';
-        lua = true;
+        action.__raw = ''[["_d]]'';
       }
 
       # yank to system clipboard
       {
         mode = ["n" "v"];
         key = "<leader>y";
-        action = ''[["+y]]'';
-        lua = true;
+        action.__raw = ''[["+y]]'';
       }
       {
         mode = "n";
         key = "<leader>Y";
-        action = ''[["+Y]]'';
-        lua = true;
+        action.__raw = ''[["+Y]]'';
       }
 
       # makes ctrl + c save and exit vertical insert mode
@@ -111,8 +106,7 @@
       {
         mode = "n";
         key = "<leader>f";
-        action = "vim.lsp.buf.format";
-        lua = true;
+        action.__raw = "vim.lsp.buf.format";
       }
 
       # quickfix navigation
@@ -141,8 +135,7 @@
       {
         mode = "n";
         key = "<leader>s";
-        action = "[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]";
-        lua = true;
+        action.__raw = "[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]";
       }
 
       # chmod +x current file
@@ -157,84 +150,72 @@
       {
         mode = "n";
         key = "<leader>gs";
-        action = "vim.cmd.Git";
-        lua = true;
+        action.__raw = "vim.cmd.Git";
       }
 
       # undotree
       {
         mode = "n";
         key = "<leader>u";
-        action = "vim.cmd.UndotreeToggle";
-        lua = true;
+        action.__raw = "vim.cmd.UndotreeToggle";
       }
 
       # telescope
       {
         mode = "n";
         key ="<leader>pf";
-        action = "require('telescope.builtin').find_files";
-        lua = true;
+        action.__raw = "require('telescope.builtin').find_files";
       }
       {
         mode = "n";
         key ="<C-p>";
-        action = "require('telescope.builtin').git_files";
-        lua = true;
+        action.__raw = "require('telescope.builtin').git_files";
       }
       {
         mode = "n";
         key ="<leader>ps";
-        action = ''
+        action.__raw = ''
         function()
           require('telescope.builtin').grep_string({ search = vim.fn.input("Grep > ") })
         end
         '';
-        lua = true;
       }
       {
         mode = "n";
         key = "<leader>vh";
-        action = "require('telescope.builtin').help_tags";
-        lua = true;
+        action.__raw = "require('telescope.builtin').help_tags";
       }
 
       # harpoon
       { 
         mode = "n";
         key = "<leader>a";
-        action = "require('harpoon.mark').add_file";
-        lua = true;
+        action.__raw = "require('harpoon.mark').add_file";
       }
       { 
         mode = "n";
         key = "<C-e>";
-        action = "require('harpoon.ui').toggle_quick_menu";
-        lua = true;
+        action.__raw = "require('harpoon.ui').toggle_quick_menu";
       }
       {
         mode = "n";
         key = "<C-h>";
-        action = "function() require('harpoon.ui').nav_file(1) end";
-        lua = true;
+        action.__raw = "function() require('harpoon.ui').nav_file(1) end";
       }
       {
         mode = "n";
         key = "<C-j>";
-        action = "function() require('harpoon.ui').nav_file(2) end";
-        lua = true;
+        action.__raw = "function() require('harpoon.ui').nav_file(2) end";
       }
       {
         mode = "n";
         key = "<C-k>";
-        action = "function() require('harpoon.ui').nav_file(3) end";
-        lua = true;
+        action.__raw = "function() require('harpoon.ui').nav_file(3) end";
       }
       {
         mode = "n";
         key = "<C-l>";
-        action = "function() require('harpoon.ui').nav_file(4) end";
-        lua = true;
+        action.__raw = "function() require('harpoon.ui').nav_file(4) end";
       }
     ];
   };

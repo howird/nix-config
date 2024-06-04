@@ -12,6 +12,7 @@
   ];
 
   programs.nixvim = lib.mkIf config.myEditor.nvim {
+    enable = true;
     plugins.treesitter.enable = true;
     plugins.fugitive.enable = true;
     plugins.undotree.enable = true;

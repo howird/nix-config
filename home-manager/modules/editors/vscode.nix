@@ -16,7 +16,9 @@
         ms-vscode-remote.remote-ssh
         ms-azuretools.vscode-docker
         github.vscode-github-actions
-        eamodio.gitlens
+        mkhl.direnv
+        mhutchie.git-graph
+        waderyan.gitblame
 
         github.copilot
         github.copilot-chat
@@ -25,6 +27,7 @@
         ms-python.python
         yzhang.markdown-all-in-one
         rust-lang.rust-analyzer
+        svelte.svelte-vscode
         # James-Yu.latex-workshop
 
         mechatroner.rainbow-csv
