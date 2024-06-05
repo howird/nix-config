@@ -13,5 +13,8 @@
 
   networking.hostName = "nixwird-t480";
 
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
   boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];
 }

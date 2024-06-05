@@ -16,6 +16,9 @@
 
   networking.hostName = "nixwird-framework";
 
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
   services.logind = {
     lidSwitch = "suspend-then-hibernate";
     extraConfig = ''
