@@ -12,11 +12,11 @@
     ./modules/desktops/default.nix
     ./modules/editors/default.nix
     ./modules/shells/default.nix
+    ./modules/browsers/default.nix
 
     ./modules/git.nix
     ./modules/alacritty.nix
     ./modules/tmux.nix
-    ./modules/chromium.nix
   ];
 
   config = {

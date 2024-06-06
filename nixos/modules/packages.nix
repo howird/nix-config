@@ -23,6 +23,8 @@
     bat
     fd
     fzf
+    python3
+    ffmpeg-headless
     yt-dlp
     gitui
     ncspot
@@ -30,19 +32,11 @@
 
     # apps
     firefox
+    chromium
     vlc
     amberol
     gimp
     xournalpp
-
-    # programming
-    python3
-    ffmpeg-headless
-    nodejs
-    cargo
-    rustc
-    gcc
-    gnumake
   ];
 
   programs = {
