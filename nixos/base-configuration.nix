@@ -9,6 +9,7 @@
   imports = [
     ./modules/packages.nix
     ./modules/desktops/default.nix
+    inputs.nix-ld.nixosModules.nix-ld
   ];
 
   myDesktop.kde = true;
@@ -18,8 +19,6 @@
     overlays = [
       outputs.overlays.additions
       outputs.overlays.modifications
-
-      inputs.nix-ros-overlay.overlays.default
     ];
     config = {
       allowUnfree = true;
@@ -102,6 +101,7 @@
   fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
   virtualisation.docker.enable = true;
+  programs.nix-ld.dev.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11";

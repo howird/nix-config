@@ -16,24 +16,35 @@
         ms-vscode-remote.remote-ssh
         ms-azuretools.vscode-docker
         github.vscode-github-actions
+        vadimcn.vscode-lldb
         mkhl.direnv
         mhutchie.git-graph
         waderyan.gitblame
+        streetsidesoftware.code-spell-checker
+        # wayou.vscode-todo-highlight
+        wmaurer.change-case
 
         github.copilot
         github.copilot-chat
 
-        jnoortheen.nix-ide
-        ms-python.python
-        yzhang.markdown-all-in-one
-        rust-lang.rust-analyzer
-        svelte.svelte-vscode
-        # James-Yu.latex-workshop
-
         mechatroner.rainbow-csv
         oderwat.indent-rainbow
         njpwerner.autodocstring
-      ];
+
+        # vitaliymaz.vscode-svg-previewer
+        yzhang.markdown-all-in-one
+        tamasfe.even-better-toml
+        redhat.vscode-yaml
+        ms-python.python
+        jnoortheen.nix-ide
+        rust-lang.rust-analyzer
+        serayuzgur.crates
+        svelte.svelte-vscode
+        bradlc.vscode-tailwindcss
+        dbaeumer.vscode-eslint
+
+        # James-Yu.latex-workshop
+      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [ ];
       userSettings = {
         "git.autofetch" = true;
         "editor.fontFamily" = "JetBrainsMono Nerd Font";
@@ -41,6 +52,7 @@
         "editor.lineNumbers" = "relative";
         "vim.smartRelativeLine" = true;
         "remote.autoForwardPortsSource" = "hybrid";
+        "svelte.enable-ts-plugin" = true;
       };
     };
   };

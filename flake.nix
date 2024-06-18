@@ -9,21 +9,23 @@
     };
 
     hardware.url = "github:nixos/nixos-hardware";
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-    plasma-manager = {
-      url = "github:pjones/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
+    # hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland-plugins = {
+    #   url = "github:hyprwm/hyprland-plugins";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
+    # plasma-manager = {
+    #   url = "github:pjones/plasma-manager";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.home-manager.follows = "home-manager";
+    # };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-ros-overlay.url = "github:lopsided98/nix-ros-overlay";
+    # nix-ros-overlay.url = "github:lopsided98/nix-ros-overlay";
+    nix-ld.url = "github:Mic92/nix-ld";
+    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
@@ -42,8 +44,11 @@
       "aarch64-darwin"
       "x86_64-darwin"
     ];
-    # This is a function that generates an attribute by calling a function you
-    # pass to it, with each system as an argument
+
+    # IN PYTHON:
+    # def genAttrs(systems):
+    #   return lambda fn: { system: fn(system) for system in systems }
+    # forAllSystems = genAttrs(systems)
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
     # Your custom packages
