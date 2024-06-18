@@ -6,7 +6,6 @@
   pkgs,
   ...
 }: {
-
   environment.systemPackages = with pkgs.rosPackages.foxy; [
   ];
 }

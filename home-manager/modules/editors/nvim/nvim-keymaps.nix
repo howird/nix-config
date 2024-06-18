@@ -10,7 +10,8 @@
     programs.nixvim.globals.mapleader = " ";
     programs.nixvim.keymaps = [
       # view project
-      { mode = "n";
+      {
+        mode = "n";
         key = "<leader>pv";
         action.__raw = "vim.cmd.Ex";
       }
@@ -143,7 +144,7 @@
         mode = "n";
         key = "<leader>x";
         action = "<cmd>!chmod +x %<CR>";
-        options = { silent = true; };
+        options = {silent = true;};
       }
 
       # git
@@ -163,21 +164,21 @@
       # telescope
       {
         mode = "n";
-        key ="<leader>pf";
+        key = "<leader>pf";
         action.__raw = "require('telescope.builtin').find_files";
       }
       {
         mode = "n";
-        key ="<C-p>";
+        key = "<C-p>";
         action.__raw = "require('telescope.builtin').git_files";
       }
       {
         mode = "n";
-        key ="<leader>ps";
+        key = "<leader>ps";
         action.__raw = ''
-        function()
-          require('telescope.builtin').grep_string({ search = vim.fn.input("Grep > ") })
-        end
+          function()
+            require('telescope.builtin').grep_string({ search = vim.fn.input("Grep > ") })
+          end
         '';
       }
       {
@@ -187,12 +188,12 @@
       }
 
       # harpoon
-      { 
+      {
         mode = "n";
         key = "<leader>a";
         action.__raw = "require('harpoon.mark').add_file";
       }
-      { 
+      {
         mode = "n";
         key = "<C-e>";
         action.__raw = "require('harpoon.ui').toggle_quick_menu";

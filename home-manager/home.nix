@@ -33,7 +33,7 @@
         outputs.overlays.additions
         outputs.overlays.modifications
       ];
-      config = { allowUnfree = true; };
+      config = {allowUnfree = true;};
     };
 
     home = {

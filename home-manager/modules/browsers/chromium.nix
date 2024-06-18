@@ -11,7 +11,10 @@
       enable = true;
       # sometimes vivaldi's GPUCache must be cleared after an update
       # rm -rf ~/.config/vivaldi/Default/GPUCache ~/.config/vivaldi/Default/Storage/ext/**/GPUCache
-      package = with config.myBrowser; if vivaldi then pkgs.vivaldi else pkgs.chromium;
+      package = with config.myBrowser;
+        if vivaldi
+        then pkgs.vivaldi
+        else pkgs.chromium;
       commandLineArgs = lib.mkIf (config.myDesktop.kde || config.myDesktop.hyprland) [
         "--enable-features=UseOzonePlatform"
         "--ozone-platform=wayland"

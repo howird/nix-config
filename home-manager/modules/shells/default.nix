@@ -29,14 +29,18 @@
     myShell.aliases = {
       nixwird = "sudo nixos-rebuild switch --flake /home/howird/.config/nix";
       nixwird-hm = "home-manager switch --flake /home/howird/.config/nix";
-      nixwird-edit = ''${if (with config.myEditor; (vscode || vscodium)) then "code" else "vim"} ~/.config/nix && cd ~/.config/nix'';
+      nixwird-edit = ''${
+          if (with config.myEditor; (vscode || vscodium))
+          then "code"
+          else "vim"
+        } ~/.config/nix && cd ~/.config/nix'';
 
       tl = "tmux list-sessions";
       ts = "tmux new-session -s";
       ta = "tmux attach-session -t";
       tks = "tmux kill-session -t";
 
-      campus-ssh-toggle = "bash ${ ../../misc/campus-ssh-toggle.sh }";
+      campus-ssh-toggle = "bash ${../../misc/campus-ssh-toggle.sh}";
 
       vault = "cd ~/vault";
       work = "cd ~/howork";

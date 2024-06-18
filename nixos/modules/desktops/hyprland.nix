@@ -5,7 +5,8 @@
   config,
   pkgs,
   ...
-}:  lib.mkIf config.myDesktop.hyprland {
+}:
+lib.mkIf config.myDesktop.hyprland {
   xdg.portal.wlr.enable = true;
   programs.hyprland = {
     enable = true;

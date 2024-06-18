@@ -5,7 +5,8 @@
   config,
   pkgs,
   ...
-}: lib.mkIf config.myShell.zsh {
+}:
+lib.mkIf config.myShell.zsh {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;

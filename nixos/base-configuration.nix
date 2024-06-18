@@ -93,12 +93,12 @@
     howird = {
       isNormalUser = true;
       description = "Howard Nguyen-Huu";
-      extraGroups = [ "networkmanager" "wheel" "docker" "audio" ];
+      extraGroups = ["networkmanager" "wheel" "docker" "audio"];
       shell = pkgs.fish;
     };
   };
 
-  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+  fonts.packages = with pkgs; [(nerdfonts.override {fonts = ["JetBrainsMono"];})];
 
   virtualisation.docker.enable = true;
   programs.nix-ld.dev.enable = true;

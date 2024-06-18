@@ -5,6 +5,6 @@
   config,
   pkgs,
   ...
-}: lib.mkIf config.myDesktop.kde {
-
+}:
+lib.mkIf config.myDesktop.kde {
 }
