@@ -17,9 +17,4 @@
       floorp = lib.mkEnableOption "floorp";
     };
   };
-
-  config = {
-    myBrowser.vivaldi = true;
-    myBrowser.floorp = true;
-  };
 }

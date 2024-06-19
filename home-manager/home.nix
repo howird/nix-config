@@ -26,6 +26,10 @@
     myEditor.vscode = true;
     myEditor.nvim = true;
 
+    myBrowser.vivaldi = true;
+    # floorp currently not building
+    # myBrowser.floorp = true;
+
     programs.home-manager.enable = true;
 
     nixpkgs = {

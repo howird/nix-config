@@ -32,18 +32,20 @@ nixwird-hm
 
 ## Configuring
 
-### GNOME
+### GNOME and KDE Plasma
 
-- Should modify GNOME by
+- We configure most of our settings declaratively using home-manager, so to update our desktop settings, we first cache our current settings with:
 
 ```bash
-dconf dump / > old-conf.txt
+dconf dump / > old-conf.txt # GNOME
+nix run github:pjones/plasma-manager / > old-conf.txt # KDE Plasma
 ```
 
-- Modify using GNOME settings GUI, then:
+- Modify using the settings GUI, then:
 
 ```bash
-dconf dump / > new-conf.txt
+dconf dump / > new-conf.txt # GNOME
+nix run github:pjones/plasma-manager / > new-conf.txt # KDE Plasma
 ```
 
 - Then compare the differences with:
@@ -52,4 +54,4 @@ dconf dump / > new-conf.txt
 code --diff old-conf.txt new-conf.txt
 ```
 
-- Then update `./home-manager/gnome.nix`
+- Then update `gnome.nix` or `kde.nix` accordingly in `./home-manager/modules/desktops`
