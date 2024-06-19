@@ -15,7 +15,7 @@
       overrideConfig = true;
 
       workspace = {
-        cursor.theme = "breeze_cursors";
+        # cursor.theme = "breeze_cursors";
         clickItemTo = "select";
         colorScheme = "BreezeDark";
         theme = "breeze-dark";
@@ -52,9 +52,9 @@
 
         effects = {
           shakeCursor.enable = true;
-          translucency.enable = true;
-          desktopSwitching.animation = "slide";
-          blur.enable = true;
+          # translucency.enable = true;
+          # desktopSwitching.animation = "slide";
+          # blur.enable = true;
         };
 
         virtualDesktops = {
