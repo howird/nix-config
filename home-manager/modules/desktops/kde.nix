@@ -8,9 +8,82 @@
 }: {
   imports = [inputs.plasma-manager.homeManagerModules.plasma-manager];
   config = lib.mkIf config.myDesktop.kde {
+    # rm -frv ~/.config/plasma* ~/.config/k* ~/.local/share/plasma* ~/.gtkrc-2.0
+    # then restart
     programs.plasma = {
       enable = true;
       overrideConfig = true;
+
+      workspace = {
+        cursor.theme = "breeze_cursors";
+        clickItemTo = "select";
+        colorScheme = "BreezeDark";
+        theme = "breeze-dark";
+        lookAndFeel = "org.kde.breezedark.desktop";
+        wallpaper = config.myWallpaper;
+      };
+
+      hotkeys.commands = {
+        "terminal" = {
+          name = "Launch Terminal";
+          key = "Meta+T";
+          command = "alacritty";
+        };
+        "browser" = {
+          name = "Launch Browser";
+          key = "Meta+B";
+          command = "vivaldi";
+        };
+        "obsidian" = {
+          name = "Launch Obsidian";
+          key = "Meta+O";
+          command = "obsidian";
+        };
+        "code" = {
+          name = "Launch Code";
+          key = "Meta+C";
+          command = "code";
+        };
+      };
+
+      kwin = {
+        titlebarButtons.right = ["minimize" "maximize" "close"];
+        titlebarButtons.left = ["on-all-desktops" "keep-above-windows"];
+
+        effects = {
+          shakeCursor.enable = true;
+          translucency.enable = true;
+          desktopSwitching.animation = "slide";
+          blur.enable = true;
+        };
+
+        virtualDesktops = {
+          rows = 1;
+          names = ["Research - Reading" "Research - Impl" "Learning" "OSS" "Personal" "Misc"];
+        };
+      };
+
+      panels = [
+        {
+          height = 48;
+          lengthMode = "fit";
+          location = "bottom";
+          alignment = "center";
+          hiding = "dodgewindows";
+          floating = true;
+          screen = 0;
+        }
+      ];
+
+      spectacle.shortcuts = {
+        captureRectangularRegion = "Meta+Shift+S";
+        captureActiveWindow = "Meta+Ctrl+S";
+        captureCurrentMonitor = "Meta+Alt+S";
+
+        recordRegion = "Meta+Shift+R";
+        recordWindow = "Meta+Ctrl+R";
+        recordScreen = "Meta+Alt+R";
+      };
 
       shortcuts = {
         kwin = {
@@ -22,8 +95,8 @@
 
           "Switch Window Up" = [];
           "Switch Window Down" = [];
-          "Switch Window Right" = "Meta+Shift+Right";
-          "Switch Window Left" = "Meta+Shift+Left";
+          "Switch Window Right" = [];
+          "Switch Window Left" = [];
 
           "Switch to Desktop 1" = "Meta+1";
           "Switch to Desktop 2" = "Meta+2";
@@ -33,8 +106,9 @@
           "Switch to Desktop 6" = "Meta+6";
           "Switch to Desktop 7" = "Meta+7";
           "Switch to Desktop 8" = "Meta+8";
-          "Switch to Next Desktop" = "Meta+Tab";
-          "Switch to Previous Desktop" = "Meta+Shift+Tab";
+
+          "Switch to Next Desktop" = [];
+          "Switch to Previous Desktop" = [];
 
           "Window Close" = "Meta+Q";
           "Window Maximize" = "Meta+F";
@@ -58,7 +132,6 @@
           "Window to Desktop 6" = "Meta+Shift+6";
           "Window to Desktop 7" = "Meta+Shift+7";
           "Window to Desktop 8" = "Meta+Shift+8";
-          "Window to Desktop 9" = "Meta+Shift+9";
 
           "Window to Next Desktop" = [];
           "Window to Next Screen" = [];
@@ -77,12 +150,20 @@
           "activate task manager entry 8" = "Meta+Alt+8";
 
           "manage activities" = "Meta+A";
-          "next activity" = "Meta+Ctrl+Tab";
-          "previous activity" = "Meta+Ctrl+Shift+Tab";
-          "stop current activity" = "Meta+Ctrl+Q";
+          "next activity" = "Meta+Tab";
+          "previous activity" = "Meta+Shift+Tab";
+          "stop current activity" = "Meta+Shift+A";
           "switch to next activity" = [];
           "switch to previous activity" = [];
           "toggle do not disturb" = [];
+        };
+
+        ksmserver = {
+          "Lock Session" = ["Meta+Shift+Q" "Screensaver"];
+          "Log Out" = "Ctrl+Alt+Del";
+          "Log Out Without Confirmation" = [];
+          "Reboot" = [];
+          "Reboot Without Confirmation" = [];
         };
 
         wacomtablet = {
@@ -98,9 +179,11 @@
       };
 
       configFile = {
-        "kscreenlockerrc"."Greeter/Wallpaper/org.kde.image/General"."Image" = "${config.myWallpaper}";
-        "kscreenlockerrc"."Greeter/Wallpaper/org.kde.image/General"."PreviewImage" = "${config.myWallpaper}";
-        "plasma-localerc"."Formats"."LANG" = "en_US.UTF-8";
+        kdeglobals.General = {
+          "TerminalApplication" = "alacritty";
+          "TerminalService" = "Alacritty.desktop";
+          "fixed" = "JetBrainsMonoNL Nerd Font Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
+        };
       };
     };
   };
