@@ -7,9 +7,8 @@
   ...
 }: {
   home.packages = with pkgs; [
-    openconnect
-    gtkwave
-    krita
+    kicad
+    blender-hip
 
     obsidian
     texlive.combined.scheme-full
@@ -17,7 +16,6 @@
 
     discord
     teams-for-linux
-    element-desktop
 
     stremio
     spotify

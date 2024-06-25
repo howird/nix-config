@@ -14,14 +14,17 @@
       enable = true;
       overrideConfig = true;
 
-      workspace = {
-        # cursor.theme = "breeze_cursors";
-        clickItemTo = "select";
-        colorScheme = "BreezeDark";
-        theme = "breeze-dark";
-        lookAndFeel = "org.kde.breezedark.desktop";
-        wallpaper = config.myWallpaper;
-      };
+      configFile.plasmarc.Theme.name = "breeze-dark";
+      configFile.kdeglobals.KDE.SingleClick = false;
+      # this breaks my volume buttons so we use the above instead
+      # workspace = {
+      #   cursor.theme = "breeze_cursors";
+      #   clickItemTo = "select";
+      #   colorScheme = "BreezeDark";
+      #   theme = "breeze-dark";
+      #   lookAndFeel = "org.kde.breezedark.desktop";
+      #   wallpaper = config.myWallpaper;
+      # };
 
       hotkeys.commands = {
         "terminal" = {
@@ -66,11 +69,23 @@
       panels = [
         {
           height = 48;
-          lengthMode = "fit";
+          lengthMode = "fill";
           location = "bottom";
           alignment = "center";
           hiding = "dodgewindows";
           floating = true;
+          # search in:
+          # plasma-workspace-*/share/plasma/plasmoids
+          # kdeplasma-addons-*/share/plasma/plasmoids
+          widgets = [
+            "org.kde.plasma.kickoff"
+            "org.kde.plasma.pager"
+            "org.kde.plasma.icontasks"
+            "org.kde.plasma.marginsseparator"
+            "org.kde.plasma.mediacontroller"
+            "org.kde.plasma.systemtray"
+            "org.kde.plasma.digitalclock"
+          ];
           screen = 0;
         }
       ];
@@ -86,7 +101,10 @@
       };
 
       shortcuts = {
+        "kaccess"."Toggle Screen Reader On and Off" = [];
+
         kwin = {
+          "Edit Tiles" = [];
           "Overview" = "Meta+Up";
           "Switch One Desktop Down" = [];
           "Switch One Desktop Up" = [];
@@ -178,13 +196,12 @@
         };
       };
 
-      configFile = {
-        kdeglobals.General = {
-          "TerminalApplication" = "alacritty";
-          "TerminalService" = "Alacritty.desktop";
-          "fixed" = "JetBrainsMonoNL Nerd Font Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
-        };
+      configFile.kdeglobals.General = {
+        "TerminalApplication" = "alacritty";
+        "TerminalService" = "Alacritty.desktop";
+        "fixed" = "JetBrainsMonoNL Nerd Font Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
       };
+      configFile.kcminputrc."Libinput/2362/628/PIXA3854:00 093A:0274 Touchpad"."NaturalScroll" = true;
     };
   };
 }

@@ -27,8 +27,7 @@
     myEditor.nvim = true;
 
     myBrowser.vivaldi = true;
-    # floorp currently not building
-    # myBrowser.floorp = true;
+    myBrowser.floorp = true;
 
     programs.home-manager.enable = true;
 

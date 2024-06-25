@@ -33,7 +33,7 @@
           if (with config.myEditor; (vscode || vscodium))
           then "code"
           else "vim"
-        } ~/.config/nix && cd ~/.config/nix'';
+        } ~/.config/nix'';
 
       tl = "tmux list-sessions";
       ts = "tmux new-session -s";
@@ -42,6 +42,7 @@
 
       campus-ssh-toggle = "bash ${../../misc/campus-ssh-toggle.sh}";
 
+      nixconf = "cd ~/.config/nix";
       vault = "cd ~/vault";
       work = "cd ~/howork";
       code = lib.mkIf config.myEditor.vscodium "codium";
