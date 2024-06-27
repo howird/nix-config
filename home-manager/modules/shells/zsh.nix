@@ -9,8 +9,10 @@
 lib.mkIf config.myShell.zsh {
   programs.zsh = {
     enable = true;
-    autosuggestion.enable = true;
     enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    historySubstringSearch.enable = true;
     shellAliases = config.myShell.aliases;
     history = {
       size = 10000;
@@ -27,6 +29,21 @@ lib.mkIf config.myShell.zsh {
         src = ../../misc;
         file = ".p10k.zsh";
       }
+      {
+        name = "zsh-vi-mode";
+        src = pkgs.zsh-vi-mode;
+        file = "share/zsh-vi-mode/zsh-vi-mode.zsh";
+      }
+      {
+        name = "zsh-autopair";
+        src = pkgs.zsh-autopair;
+        file = "share/zsh/zsh-autopair/autopair.zsh";
+      }
+      # {
+      #   name = "zsh-system-clipboard";
+      #   src = pkgs.zsh-system-clipboard;
+      #   file = "share/zsh/zsh-system-clipboard/zsh-system-clipboard.zsh";
+      # }
     ];
   };
 }

@@ -55,9 +55,9 @@
 
         effects = {
           shakeCursor.enable = true;
-          # translucency.enable = true;
-          # desktopSwitching.animation = "slide";
-          # blur.enable = true;
+          translucency.enable = true;
+          desktopSwitching.animation = "slide";
+          blur.enable = true;
         };
 
         virtualDesktops = {

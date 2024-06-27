@@ -41,8 +41,7 @@
 
   programs = {
     git.enable = true;
-    zsh.enable = true;
-    fish.enable = true;
     tmux.enable = true;
+    zsh.enable = true;
   };
 }

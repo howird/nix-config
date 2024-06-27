@@ -94,7 +94,7 @@
       isNormalUser = true;
       description = "Howard Nguyen-Huu";
       extraGroups = ["networkmanager" "wheel" "docker" "audio"];
-      shell = pkgs.fish;
+      shell = pkgs.zsh;
     };
   };
 

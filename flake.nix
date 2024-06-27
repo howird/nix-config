@@ -1,31 +1,27 @@
 {
-  description = "Your new nix config";
+  description = "";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    # https://github.com/nix-community/home-manager/issues/5552
-    # https://github.com/nix-community/home-manager/pull/5573
-    home-manager.url = "github:kkoniuszy/home-manager/fix-sd-switch-failure";
-    # home-manager = {
-    #   url = "github:nix-community/home-manager";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     hardware.url = "github:nixos/nixos-hardware";
 
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     plasma-manager = {
       url = "github:pjones/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-ld.url = "github:Mic92/nix-ld";
-    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
+    nix-ld = {
+      url = "github:Mic92/nix-ld";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -91,10 +87,6 @@
         modules = [
           ./nixos/base-configuration.nix
           ./nixos/pc/configuration.nix
-          # inputs.vscode-server.nixosModules.default
-          #   ({ config, pkgs, ... }: {
-          #     services.vscode-server.enable = true;
-          #   })
         ];
       };
     };

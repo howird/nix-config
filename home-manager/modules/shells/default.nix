@@ -23,7 +23,6 @@
   };
 
   config = {
-    myShell.fish = true;
     myShell.zsh = true;
 
     myShell.aliases = {
