@@ -7,9 +7,10 @@
   ...
 }: {
   imports = [
-    ./modules/packages.nix
-    ./modules/desktops/default.nix
     inputs.nix-ld.nixosModules.nix-ld
+    ./modules/packages.nix
+    ./modules/desktops
+    ./modules/stylix.nix
   ];
 
   myDesktop.kde = true;

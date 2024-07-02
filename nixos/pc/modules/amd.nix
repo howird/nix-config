@@ -10,7 +10,7 @@
 
   services.xserver.videoDrivers = ["amdgpu"];
 
-  hardware.opengl.extraPackages = with pkgs.rocmPackages; [
+  hardware.graphics.extraPackages = with pkgs.rocmPackages; [
     clr
     clr.icd
   ];

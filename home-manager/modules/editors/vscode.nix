@@ -13,6 +13,18 @@
         if config.myEditor.vscode
         then pkgs.vscode-fhs
         else pkgs.vscodium-fhs;
+
+      userSettings = {
+        "git.autofetch" = true;
+        "editor.fontFamily" = "JetBrainsMono Nerd Font";
+        "editor.fontLigatures" = true;
+        "editor.lineNumbers" = "relative";
+        "vim.smartRelativeLine" = true;
+        "remote.autoForwardPortsSource" = "hybrid";
+        "svelte.enable-ts-plugin" = true;
+        "vim.useCtrlKeys" = false;
+      };
+
       extensions = with pkgs.vscode-extensions;
         [
           vscodevim.vim
@@ -36,6 +48,7 @@
           njpwerner.autodocstring
 
           # vitaliymaz.vscode-svg-previewer
+          ms-toolsai.jupyter
           tomoki1207.pdf
           yzhang.markdown-all-in-one
           tamasfe.even-better-toml
@@ -51,15 +64,6 @@
           # James-Yu.latex-workshop
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [];
-      userSettings = {
-        "git.autofetch" = true;
-        "editor.fontFamily" = "JetBrainsMono Nerd Font";
-        "editor.fontLigatures" = true;
-        "editor.lineNumbers" = "relative";
-        "vim.smartRelativeLine" = true;
-        "remote.autoForwardPortsSource" = "hybrid";
-        "svelte.enable-ts-plugin" = true;
-      };
     };
   };
 }
