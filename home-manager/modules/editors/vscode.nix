@@ -36,6 +36,7 @@
           njpwerner.autodocstring
 
           # vitaliymaz.vscode-svg-previewer
+          tomoki1207.pdf
           yzhang.markdown-all-in-one
           tamasfe.even-better-toml
           redhat.vscode-yaml

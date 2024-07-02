@@ -17,17 +17,10 @@
     pciutils
     cachix
     wget
-    zoxide
-    eza
-    ripgrep
-    bat
-    fd
     fzf
     python3
     ffmpeg-headless
     yt-dlp
-    gitui
-    ncspot
     sshfs
 
     # apps

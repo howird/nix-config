@@ -41,10 +41,28 @@
 
       campus-ssh-toggle = "bash ${../../misc/campus-ssh-toggle.sh}";
 
-      nixconf = "cd ~/.config/nix";
-      vault = "cd ~/vault";
-      work = "cd ~/howork";
+      ls = "exa";
+      ll = "exa -l";
+      la = "exa -la";
+      cat = "bat";
+
       code = lib.mkIf config.myEditor.vscodium "codium";
     };
+
+    programs.fzf = {
+      enable = true;
+      enableZshIntegration = config.myShell.zsh;
+      enableFishIntegration = config.myShell.fish;
+    };
+
+    home.packages = with pkgs; [
+      zoxide
+      eza
+      ripgrep
+      bat
+      fd
+      gitui
+      ncspot
+    ];
   };
 }

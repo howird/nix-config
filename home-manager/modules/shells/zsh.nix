@@ -14,10 +14,16 @@ lib.mkIf config.myShell.zsh {
     syntaxHighlighting.enable = true;
     historySubstringSearch.enable = true;
     shellAliases = config.myShell.aliases;
+
+    initExtra = ''
+      eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
+    '';
+
     history = {
       size = 10000;
       path = "$HOME/.config/zsh/history";
     };
+
     plugins = [
       {
         name = "powerlevel10k";
@@ -39,11 +45,6 @@ lib.mkIf config.myShell.zsh {
         src = pkgs.zsh-autopair;
         file = "share/zsh/zsh-autopair/autopair.zsh";
       }
-      # {
-      #   name = "zsh-system-clipboard";
-      #   src = pkgs.zsh-system-clipboard;
-      #   file = "share/zsh/zsh-system-clipboard/zsh-system-clipboard.zsh";
-      # }
     ];
   };
 }

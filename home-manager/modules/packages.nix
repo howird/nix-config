@@ -9,6 +9,9 @@
   home.packages = with pkgs; [
     kicad
     blender-hip
+    freecad
+    obs-studio
+    kdenlive
 
     obsidian
     texlive.combined.scheme-full
