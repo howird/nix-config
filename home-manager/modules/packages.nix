@@ -20,6 +20,7 @@
     discord
     teams-for-linux
 
+    qbittorrent
     stremio
     spotify
   ];

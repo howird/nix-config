@@ -11,7 +11,7 @@
     home-manager
 
     # utilities
-    neofetch
+    fastfetch
     htop
     lsof
     pciutils

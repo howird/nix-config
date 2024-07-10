@@ -62,33 +62,33 @@
 
         virtualDesktops = {
           rows = 1;
-          names = ["Research - Reading" "Research - Impl" "Learning" "OSS" "Personal" "Misc"];
+          names = ["Impl - Main" "Learning" "Impl - Side" "Misc"];
         };
       };
 
-      panels = [
-        {
-          height = 48;
-          lengthMode = "fill";
-          location = "bottom";
-          alignment = "center";
-          hiding = "dodgewindows";
-          floating = true;
-          # search in:
-          # plasma-workspace-*/share/plasma/plasmoids
-          # kdeplasma-addons-*/share/plasma/plasmoids
-          widgets = [
-            "org.kde.plasma.kickoff"
-            "org.kde.plasma.pager"
-            "org.kde.plasma.icontasks"
-            "org.kde.plasma.marginsseparator"
-            "org.kde.plasma.mediacontroller"
-            "org.kde.plasma.systemtray"
-            "org.kde.plasma.digitalclock"
-          ];
-          screen = 0;
-        }
-      ];
+      # panels = [
+      #   {
+      #     height = 48;
+      #     lengthMode = "fill";
+      #     location = "bottom";
+      #     alignment = "center";
+      #     hiding = "dodgewindows";
+      #     floating = true;
+      #     # search in:
+      #     # plasma-workspace-*/share/plasma/plasmoids
+      #     # kdeplasma-addons-*/share/plasma/plasmoids
+      #     widgets = [
+      #       "org.kde.plasma.kickoff"
+      #       "org.kde.plasma.pager"
+      #       "org.kde.plasma.icontasks"
+      #       "org.kde.plasma.marginsseparator"
+      #       "org.kde.plasma.mediacontroller"
+      #       "org.kde.plasma.systemtray"
+      #       "org.kde.plasma.digitalclock"
+      #     ];
+      #     screen = 0;
+      #   }
+      # ];
 
       spectacle.shortcuts = {
         captureRectangularRegion = "Meta+Shift+S";
