@@ -9,10 +9,10 @@
   imports = [
     ./modules/packages.nix
 
-    ./modules/desktops/default.nix
-    ./modules/editors/default.nix
-    ./modules/shells/default.nix
-    ./modules/browsers/default.nix
+    ./modules/desktops
+    ./modules/editors
+    ./modules/shells
+    ./modules/browsers
 
     ./modules/git.nix
     ./modules/alacritty.nix
@@ -21,7 +21,6 @@
 
   config = {
     myDesktop.kde = true;
-    myWallpaper = ./misc/wallpapers/fall-forest.jpg;
 
     myEditor.vscode = true;
     myEditor.nvim = true;
