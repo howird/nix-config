@@ -47,6 +47,8 @@
       number = true;
       relativenumber = true;
       shiftwidth = 4;
+      incsearch = true;
+      scrolloff = 8;
     };
   };
 }

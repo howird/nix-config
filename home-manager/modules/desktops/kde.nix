@@ -10,6 +10,11 @@
   config = lib.mkIf config.myDesktop.kde {
     # rm -frv ~/.config/plasma* ~/.config/k* ~/.local/share/plasma* ~/.gtkrc-2.0
     # then restart
+
+    home.packages = with pkgs; [
+      kdePackages.plasma-browser-integration
+    ];
+
     programs.plasma = {
       enable = true;
       overrideConfig = true;

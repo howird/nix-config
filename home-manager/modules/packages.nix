@@ -9,7 +9,6 @@
   home.packages = with pkgs; [
     kicad
     blender-hip
-    freecad
     obs-studio
     kdenlive
 
@@ -21,7 +20,6 @@
     teams-for-linux
 
     qbittorrent
-    stremio
     spotify
   ];
 
