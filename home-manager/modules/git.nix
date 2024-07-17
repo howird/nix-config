@@ -10,7 +10,7 @@
     enable = true;
     lfs.enable = true;
     userName = "Howard Nguyen-Huu";
-    userEmail = "howardnguyenhuu@gmail.com";
+    userEmail = config.myEmail;
     aliases = {
       ci = "commit";
       co = "checkout";

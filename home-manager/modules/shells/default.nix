@@ -47,6 +47,12 @@
       code = lib.mkIf config.myEditor.vscodium "codium";
     };
 
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      enableZshIntegration = config.myShell.zsh;
+      enableFishIntegration = config.myShell.fish;
+    };
     programs.fzf = {
       enable = true;
       enableZshIntegration = config.myShell.zsh;

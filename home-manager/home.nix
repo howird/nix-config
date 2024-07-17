@@ -9,6 +9,7 @@
   imports = [
     ./modules/shells
     ./modules/editors
+
     ./modules/git.nix
     ./modules/tmux.nix
   ];
@@ -17,13 +18,7 @@
     myShell.zsh = true;
     myEditor.nvim = true;
 
-    programs.direnv = {
-      enable = true;
-      enableBashIntegration = true;
-      nix-direnv.enable = true;
-    };
     programs.home-manager.enable = true;
-
     home = {
       username = config.myUsername;
       homeDirectory = "/home/${config.myUsername}";
