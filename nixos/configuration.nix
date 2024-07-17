@@ -7,7 +7,6 @@
   ...
 }: {
   imports = [
-    inputs.nix-ld.nixosModules.nix-ld
     ./modules/packages.nix
     ./modules/desktops
     ./modules/stylix.nix
@@ -88,7 +87,6 @@
   };
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -111,7 +109,7 @@
   fonts.packages = with pkgs; [(nerdfonts.override {fonts = ["JetBrainsMono"];})];
 
   virtualisation.docker.enable = true;
-  programs.nix-ld.dev.enable = true;
+  programs.nix-ld.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11";

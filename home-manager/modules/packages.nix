@@ -7,13 +7,13 @@
   ...
 }: {
   home.packages = with pkgs; [
-    kicad
+    # kicad
     blender-hip
     obs-studio
     kdenlive
 
     obsidian
-    texlive.combined.scheme-full
+    # texlive.combined.scheme-full
     zotero
 
     discord
