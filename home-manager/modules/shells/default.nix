@@ -23,8 +23,6 @@
   };
 
   config = {
-    myShell.zsh = true;
-
     myShell.aliases = {
       nixwird = "sudo nixos-rebuild switch --flake /home/howird/.config/nix";
       nixwird-hm = "home-manager switch --flake /home/howird/.config/nix";

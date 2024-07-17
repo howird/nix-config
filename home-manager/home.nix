@@ -7,28 +7,28 @@
   ...
 }: {
   imports = [
-    ./modules/packages.nix
-
-    ./modules/desktops
-    ./modules/editors
     ./modules/shells
-    ./modules/browsers
-
+    ./modules/editors
     ./modules/git.nix
-    ./modules/alacritty.nix
     ./modules/tmux.nix
   ];
 
   config = {
-    myDesktop.kde = true;
-
-    myEditor.vscode = true;
+    myShell.zsh = true;
     myEditor.nvim = true;
 
-    myBrowser.vivaldi = true;
-    myBrowser.floorp = true;
-
+    programs.direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      nix-direnv.enable = true;
+    };
     programs.home-manager.enable = true;
+
+    home = {
+      username = config.myUsername;
+      homeDirectory = "/home/${config.myUsername}";
+      sessionPath = ["$HOME/.local/bin"];
+    };
 
     nixpkgs = {
       overlays = [
@@ -38,18 +38,30 @@
       config = {allowUnfree = true;};
     };
 
-    home = {
-      username = "howird";
-      homeDirectory = "/home/howird";
-      sessionPath = [
-        "$HOME/.local/bin"
-      ];
-    };
-
     # Nicely reload system units when changing configs
     systemd.user.startServices = "sd-switch";
 
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     home.stateVersion = "23.11";
+  };
+
+  options = {
+    myUsername = lib.mkOption {
+      type = lib.types.str;
+      default = "howird";
+      description = "your username";
+    };
+
+    myName = lib.mkOption {
+      type = lib.types.str;
+      default = "Howard Nguyen-Huu";
+      description = "your name";
+    };
+
+    myEmail = lib.mkOption {
+      type = lib.types.str;
+      default = "howardnguyenhuu@gmail.com";
+      description = "your email";
+    };
   };
 }

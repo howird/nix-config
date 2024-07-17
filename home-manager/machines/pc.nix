@@ -6,4 +6,8 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ../home.nix
+    ../home-desktop.nix
+  ];
 }

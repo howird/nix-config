@@ -72,21 +72,21 @@
       nixwird-t480 = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./nixos/base-configuration.nix
+          ./nixos/configuration.nix
           ./nixos/t480/configuration.nix
         ];
       };
       nixwird-framework = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./nixos/base-configuration.nix
+          ./nixos/configuration.nix
           ./nixos/framework/configuration.nix
         ];
       };
       nixwird-pc = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./nixos/base-configuration.nix
+          ./nixos/configuration.nix
           ./nixos/pc/configuration.nix
         ];
       };
@@ -99,24 +99,28 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./home-manager/home.nix
-          ./home-manager/home-t480.nix
+          ./home-manager/machines/t480.nix
         ];
       };
       "howird@nixwird-framework" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./home-manager/home.nix
-          ./home-manager/home-framework.nix
+          ./home-manager/machines/framework.nix
         ];
       };
       "howird@nixwird-pc" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./home-manager/home.nix
-          ./home-manager/home-pc.nix
+          ./home-manager/machines/pc.nix
+        ];
+      };
+      "howard@vip" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          ./home-manager/machines/vip.nix
         ];
       };
     };
