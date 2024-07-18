@@ -19,13 +19,17 @@
         type = lib.types.attrs;
         default = {};
       };
+      hmFlakeArgs = lib.mkOption {
+        type = lib.types.str;
+        default = "";
+      };
     };
   };
 
   config = {
     myShell.aliases = {
-      nixwird = "sudo nixos-rebuild switch --flake /home/howird/.config/nix";
-      nixwird-hm = "home-manager switch --flake /home/howird/.config/nix";
+      nixwird = "sudo nixos-rebuild switch --flake /home/${config.myUsername}/.config/nix";
+      nixwird-hm = "home-manager switch --flake /home/${config.myUsername}/.config/nix${config.myShell.hmFlakeArgs}";
       nixwird-edit = ''${
           if (with config.myEditor; (vscode || vscodium))
           then "code"
