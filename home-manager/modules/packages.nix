@@ -7,7 +7,11 @@
   ...
 }: {
   home.packages = with pkgs; [
-    # kicad
+    openconnect_openssl
+    networkmanager
+    kdePackages.plasma-nm
+
+    kicad
     blender-hip
     obs-studio
     kdenlive

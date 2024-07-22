@@ -23,6 +23,7 @@
         "remote.autoForwardPortsSource" = "hybrid";
         "svelte.enable-ts-plugin" = true;
         "vim.useCtrlKeys" = false;
+        "redhat.telemetry.enabled" = false;
       };
 
       extensions = with pkgs.vscode-extensions;
