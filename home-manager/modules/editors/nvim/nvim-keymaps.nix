@@ -169,6 +169,11 @@
       }
       {
         mode = "n";
+        key = "<leader>pb";
+        action.__raw = "require('telescope.builtin').buffers";
+      }
+      {
+        mode = "n";
         key = "<C-p>";
         action.__raw = "require('telescope.builtin').git_files";
       }
