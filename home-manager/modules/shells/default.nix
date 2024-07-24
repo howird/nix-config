@@ -41,7 +41,7 @@
       ta = "tmux attach-session -t";
       tks = "tmux kill-session -t";
 
-      campus-ssh-toggle = "bash ${../../misc/campus-ssh-toggle.sh}";
+      campus-ssh-toggle = "bash ${./scripts/campus-ssh-toggle.sh}";
 
       ls = "exa";
       ll = "exa -l";

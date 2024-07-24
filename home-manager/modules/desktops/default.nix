@@ -18,5 +18,10 @@
       hyprland = lib.mkEnableOption "hyprland";
       gnome = lib.mkEnableOption "gnome";
     };
+    myWallpaper = lib.mkOption {
+      type = lib.types.path;
+      default = ./wallpapers/fall-forest.jpg;
+      description = "Wallpaper filename.";
+    };
   };
 }

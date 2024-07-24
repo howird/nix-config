@@ -32,7 +32,7 @@ lib.mkIf config.myShell.zsh {
       }
       {
         name = "powerlevel10k-config";
-        src = ../../misc;
+        src = ./scripts;
         file = ".p10k.zsh";
       }
       {

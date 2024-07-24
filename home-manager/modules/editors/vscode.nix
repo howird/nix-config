@@ -23,6 +23,7 @@
         "remote.autoForwardPortsSource" = "hybrid";
         "svelte.enable-ts-plugin" = true;
         "vim.useCtrlKeys" = false;
+        "telemetry.enableTelemetry" = false;
         "redhat.telemetry.enabled" = false;
       };
 

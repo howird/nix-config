@@ -21,7 +21,7 @@
 
     myWallpaper = lib.mkOption {
       type = lib.types.path;
-      default = ../../../home-manager/misc/wallpapers/fall-forest.jpg;
+      default = ../../../home-manager/modules/desktops/wallpapers/fall-forest.jpg;
       description = "Wallpaper filename.";
     };
   };
