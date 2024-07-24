@@ -25,6 +25,7 @@
         "vim.useCtrlKeys" = false;
         "telemetry.enableTelemetry" = false;
         "redhat.telemetry.enabled" = false;
+        "files.associations" = { "*.kbd" = "lisp"; };
       };
 
       extensions = with pkgs.vscode-extensions;
@@ -62,6 +63,7 @@
           svelte.svelte-vscode
           bradlc.vscode-tailwindcss
           dbaeumer.vscode-eslint
+          mattn.lisp
 
           # James-Yu.latex-workshop
         ]

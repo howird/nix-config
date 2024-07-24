@@ -1,0 +1,99 @@
+;; to quit KANATA, press `ctrl+space+esc`
+
+(defcfg)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rctl
+)
+
+
+(defvar
+  tap-time 200
+  hold-time 250
+)
+
+(defalias
+  ;; LAYERS
+  nua (layer-while-held numarrows)
+  sym (layer-while-held symbols)
+  fns (layer-while-held functions)
+
+  ;; LEFT HOME ROWS
+  a (tap-hold-release $tap-time $hold-time a @sym)
+  s (tap-hold-release $tap-time $hold-time s lalt)
+  4 (tap-hold-release $tap-time $hold-time 4 lalt)
+  x (tap-hold-release $tap-time $hold-time x @fns)
+
+  d (tap-hold-release $tap-time $hold-time d lmet)
+  5 (tap-hold-release $tap-time $hold-time 5 lmet)
+  
+  f (tap-hold-release $tap-time $hold-time f lctl)
+  6 (tap-hold-release $tap-time $hold-time 6 lctl)
+
+  ;; RIGHT HOME ROWS
+  j (tap-hold-release $tap-time $hold-time j rctl)
+  k (tap-hold-release $tap-time $hold-time k rmet)
+  l (tap-hold-release $tap-time $hold-time l ralt)
+  . (tap-hold-release $tap-time $hold-time . @fns)
+  ; (tap-hold-release $tap-time $hold-time ; @sym)
+
+  ;; BOTTOM KEYS    
+  tbs (tap-hold-release $tap-time $hold-time tab lsft)
+  rtn (tap-hold-release $tap-time $hold-time ret @nua)
+
+  ;; SHIFTED KEYS
+  { S-[
+  } S-]
+  dqu S-'
+  obr S-9
+  cbr S-0
+  bng S-1
+  at  S-2
+  hsh S-3
+  csh S-4
+  pct S-5
+  hat S-6
+  and S-7
+  ast S-8
+  tld S-grv
+  pip S-\
+  lt S-,
+  gt S-.
+  und S--
+)
+
+(deflayer base
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   w    e    r    t    y    u    i    o    XX   XX   XX   XX
+  q    @a   @s   @d   @f   g    h    @j   @k   @l   @;   p    bspc
+  @tbs z    @x   c    v    b    n    m    ,    @.   /    @rtn
+  XX   @tbs bspc             spc          @rtn XX
+)
+
+(deflayer numarrows
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   7    8    9    +    XX   XX   up   XX   XX   XX   XX   XX
+  @ast /    @4   @5   @6   -    esc  left down rght XX   XX   del
+  @tbs 0    1    2    3    =    XX   XX   XX   XX   XX   @rtn
+  XX   @tbs del              @und         @rtn XX
+)
+
+(deflayer symbols
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   @tld @at  @csh grv  XX   @ast @hat @pip XX   XX   XX   XX
+  XX   XX   @bng @{   @}   '    @dqu [    ]    @and \    XX   XX
+  @tbs XX   XX   @obr @cbr @hsh @pct @lt  @gt  XX   XX   XX
+  XX   XX   XX               @und         XX   XX
+)
+
+(deflayer functions
+  XX   XX   f10  f11  f12  XX   XX   XX   XX     XX   XX   XX   XX   XX
+  XX   XX   f7   f8   f9   brup blup XX   volu   XX   XX   XX   XX   XX
+  XX   XX   f4   f5   f6   brdn bldn prev voldwn next XX   XX   XX
+  XX   XX   f1   f2   f3   XX   XX   XX   mute   XX   XX   XX
+  XX   XX   XX               pp           XX     XX
+)
