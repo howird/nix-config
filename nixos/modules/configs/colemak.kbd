@@ -1,0 +1,24 @@
+  #|
+  ;; COLMAK-DH-ANGLE HOME ROW MODS
+  a (tap-hold-release $tap-time $hold-time a @sym)
+  r (tap-hold-release $tap-time $hold-time r lalt)
+  x (tap-hold-release $tap-time $hold-time x @fns)
+  s (tap-hold-release $tap-time $hold-time s lmet)
+  t (tap-hold-release $tap-time $hold-time t lctl)
+
+  n (tap-hold-release $tap-time $hold-time n rctl)
+  e (tap-hold-release $tap-time $hold-time e rmet)
+  i (tap-hold-release $tap-time $hold-time i ralt)
+  . (tap-hold-release $tap-time $hold-time . @fns)
+  o (tap-hold-release $tap-time $hold-time o @sym)
+  |#
+
+#|
+(deflayer colemak_dh_anglemod
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   w    f    p    b    j    l    u    y    XX   XX   XX
+  q    @a   @r   @s   @t   g    m    @n   @e   @i   @o   ;    bspc
+  z    @x   c    d    v    esc  k    h    ,    @.   /    @rtn
+  XX   XX   @tbs             spc          @rtn XX
+)
+|#
