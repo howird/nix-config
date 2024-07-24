@@ -7,7 +7,7 @@
   ...
 }: {
   services.kanata.enable = true;
-  services.kanata.keyboards.framework = {
-    configFile = ./configs/kanata.kbd;
+  services.kanata.keyboards.keebwird = {
+    configFile = ./configs/qwerty.kbd;
   };
 }
