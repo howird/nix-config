@@ -63,17 +63,17 @@
 
 (deflayer base
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
-  XX   XX   w    e    r    t    y    u    i    o    XX   XX   XX
-  q    @a   @s   @d   @f   g    h    @j   @k   @l   @;   p    bspc
+  XX   q    w    e    r    t    y    u    i    o    p    XX   XX
+  XX   @a   @s   @d   @f   g    h    @j   @k   @l   @;   bspc XX
   z    @x   c    v    b    esc  n    m    ,    @.   /    @rtn
   XX   XX   @tbs             spc          @rtn XX
 )
 
 (deflayer numarrows
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
-  XX   XX   7    8    9    +    XX   XX   up   XX   XX   XX   XX
-  @ast /    4    5    6    -    XX   left down rght XX   XX   del
-  XX   0    1    2    3    =    XX   XX   XX   XX   XX   @rtn
+  XX   XX   7    8    9    +    XX   XX   XX   XX   XX   XX   XX
+  @ast /    4    5    6    -    left down up   rght XX   del  XX
+  0    1    2    3    =    XX   XX   XX   XX   XX   XX   @rtn
   XX   XX   @tbs             @und         @rtn XX
 )
 
@@ -86,9 +86,9 @@
 )
 
 (deflayer functions
-  XX   XX   f10  f11  f12  XX   XX   XX   XX     XX   XX   XX   XX
-  XX   XX   f7   f8   f9   brup XX   XX   volu   XX   XX   XX   XX
-  XX   XX   f4   f5   f6   brdn XX   prev voldwn next XX   XX   XX
-  XX   XX   f1   f2   f3   XX   XX   XX   mute   XX   XX   XX
-  XX   XX   XX               pp           XX     XX
+  XX   XX   f10  f11  f12  XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   f7   f8   f9   XX   XX   XX   mute XX   XX   XX   XX
+  XX   XX   f4   f5   f6   XX   prev vold volu next XX   XX   XX
+  XX   f1   f2   f3   XX   XX   XX   brdn brup XX   XX   XX
+  XX   XX   XX               pp           XX   XX
 )

@@ -11,6 +11,7 @@
     home-manager
 
     # utilities
+    busybox
     fastfetch
     htop
     lsof

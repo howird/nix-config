@@ -28,4 +28,11 @@
     '';
   };
   systemd.sleep.extraConfig = "HibernateDelaySec=1h";
+
+  services.kanata = {
+    enable = true;
+    keyboards.laptop = {
+      configFile = ./configs/qwerty.kbd;
+    };
+  };
 }
