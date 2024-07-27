@@ -11,9 +11,6 @@
     ./hardware-configuration.nix
   ];
 
-  # Need the latest kernel for WiFi support on Framework
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   networking.hostName = "nixwird-framework";
 
   hardware.bluetooth.enable = true;
@@ -32,7 +29,7 @@
   services.kanata = {
     enable = true;
     keyboards.laptop = {
-      configFile = ./configs/qwerty.kbd;
+      configFile = ../modules/configs/qwerty.kbd;
     };
   };
 }

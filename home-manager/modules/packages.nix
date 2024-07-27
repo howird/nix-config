@@ -17,7 +17,7 @@
     kdenlive
 
     obsidian
-    # texlive.combined.scheme-full
+    texliveFull
     zotero
 
     discord

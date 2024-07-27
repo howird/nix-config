@@ -25,7 +25,7 @@
         "vim.useCtrlKeys" = false;
         "telemetry.enableTelemetry" = false;
         "redhat.telemetry.enabled" = false;
-        "files.associations" = { "*.kbd" = "lisp"; };
+        "files.associations" = {"*.kbd" = "lisp";};
       };
 
       extensions = with pkgs.vscode-extensions;
