@@ -28,5 +28,6 @@
 
     # browsers
     myBrowser.vivaldi = true;
+    myBrowser.floorp = true;
   };
 }

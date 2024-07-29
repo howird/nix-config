@@ -23,6 +23,7 @@
     ffmpeg-headless
     yt-dlp
     sshfs
+    unrar
 
     # apps
     firefox
