@@ -10,6 +10,8 @@
     home.packages = with pkgs; [
       gnome.dconf-editor
       gnome.gnome-tweaks
+      gnome.networkmanager-openvpn
+      gnome.networkmanager-openconnect
     ];
 
     dconf.settings = {
@@ -38,15 +40,15 @@
         switch-to-workspace-2 = ["<Super><Alt>2"];
         switch-to-workspace-3 = ["<Super><Alt>3"];
         switch-to-workspace-4 = ["<Super><Alt>4"];
-        switch-to-workspace-left = ["<Super>Left"];
-        switch-to-workspace-right = ["<Super>Right"];
+        switch-to-workspace-left = ["<Super>H"];
+        switch-to-workspace-right = ["<Super>L"];
 
         move-to-workspace-1 = ["<Shift><Super>1"];
         move-to-workspace-2 = ["<Shift><Super>2"];
         move-to-workspace-3 = ["<Shift><Super>3"];
         move-to-workspace-4 = ["<Shift><Super>4"];
-        move-to-workspace-left = ["<Shift><Super>Left"];
-        move-to-workspace-right = ["<Shift><Super>Right"];
+        move-to-workspace-left = ["<Shift><Super>H"];
+        move-to-workspace-right = ["<Shift><Super>L"];
         move-to-monitor-left = "disabled";
         move-to-monitor-right = "disabled";
 

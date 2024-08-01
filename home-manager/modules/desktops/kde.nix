@@ -13,6 +13,9 @@
 
     home.packages = with pkgs; [
       kdePackages.plasma-browser-integration
+      kdePackages.networkmanager-qt
+      networkmanager-openvpn
+      networkmanager-openconnect
     ];
 
     programs.plasma = {
@@ -113,8 +116,8 @@
           "Overview" = "Meta+Up";
           "Switch One Desktop Down" = [];
           "Switch One Desktop Up" = [];
-          "Switch One Desktop to the Left" = "Meta+Left";
-          "Switch One Desktop to the Right" = "Meta+Right";
+          "Switch One Desktop to the Left" = "Meta+H";
+          "Switch One Desktop to the Right" = "Meta+L";
 
           "Switch Window Up" = [];
           "Switch Window Down" = [];
@@ -137,10 +140,10 @@
           "Window Maximize" = "Meta+F";
           "Window Minimize" = "Meta+Shift+F";
 
-          "Window One Desktop Down" = "Meta+Shift+Down";
-          "Window One Desktop Up" = "Meta+Shift+Up";
-          "Window One Desktop to the Left" = "Meta+Shift+Left";
-          "Window One Desktop to the Right" = "Meta+Shift+Right";
+          "Window One Desktop Down" = "Meta+Shift+J";
+          "Window One Desktop Up" = "Meta+Shift+K";
+          "Window One Desktop to the Left" = "Meta+Shift+H";
+          "Window One Desktop to the Right" = "Meta+Shift+L";
 
           "Window Quick Tile Bottom" = [];
           "Window Quick Tile Left" = [];

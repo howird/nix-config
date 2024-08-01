@@ -12,5 +12,6 @@
       enable = true;
       wayland.enable = true;
     };
+    environment.plasma6.excludePackages = [];
   };
 }

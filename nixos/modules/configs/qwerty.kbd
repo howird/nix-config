@@ -28,15 +28,18 @@
   ;; QWERTY HOME ROW MODS
   a (tap-hold-release $tap-time $hold-time a @sym)
   s (tap-hold-release $tap-time $hold-time s lalt)
-  x (tap-hold-release $tap-time $hold-time x @fns)
+  4 (tap-hold-release $tap-time $hold-time 4 lalt)
   d (tap-hold-release $tap-time $hold-time d lmet)
+  5 (tap-hold-release $tap-time $hold-time 5 lmet)
   f (tap-hold-release $tap-time $hold-time f lctl)
+  6 (tap-hold-release $tap-time $hold-time 6 lctl)
+  x (tap-hold-release $tap-time $hold-time x @fns)
 
   j (tap-hold-release $tap-time $hold-time j rctl)
   k (tap-hold-release $tap-time $hold-time k rmet)
   l (tap-hold-release $tap-time $hold-time l ralt)
-  . (tap-hold-release $tap-time $hold-time . @fns)
   ; (tap-hold-release $tap-time $hold-time ; @sym)
+  . (tap-hold-release $tap-time $hold-time . @fns)
 
   ;; BOTTOM KEYS    
   tbs (tap-hold-release $tap-time $hold-time tab lsft)
@@ -75,7 +78,7 @@
 (deflayer numarrows
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
   XX   @ast 7    8    9    +    XX   XX   XX   XX   XX   XX   XX
-  XX   /    4    5    6    -    left down up   rght XX   del  XX
+  XX   /    @4   @5   @6   -    left down up   rght XX   del  XX
   0    1    2    3    =    XX   XX   XX   XX   XX   XX   @rtn
   XX   XX   @tbs             @und         @rtn XX
 )
@@ -83,7 +86,7 @@
 (deflayer symbols
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
   XX   XX   @tld @at  @csh grv  XX   @ast @hat @pip XX   XX   XX
-  XX   XX   @bng @obr @cbr @dqu '    @{   @}   @and \    del  XX
+  XX   XX   @bng @{   @}   @dqu '    @obr @cbr @and \    del  XX
   XX   XX   [    ]    @hsh XX   @pct @lt  @gt  XX   XX   XX
   XX   XX   XX               @und         XX   XX
 )
