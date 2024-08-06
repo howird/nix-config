@@ -27,5 +27,5 @@
   systemd.sleep.extraConfig = "HibernateDelaySec=1h";
 
   services.kanata.enable = true;
-  services.kanata.keyboards.laptop.configFile = ../modules/configs/qwerty.kbd;
+  services.kanata.keyboards.laptop.configFile = ../../keyboards/kanata/qwerty.kbd;
 }

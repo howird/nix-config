@@ -61,6 +61,7 @@
   cbr S-0
   tld S-grv
   pip S-\
+  que S-/
   lt S-,
   gt S-.
   und S--
@@ -88,7 +89,7 @@
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
   XX   XX   @tld @at  @csh grv  XX   @ast @hat @pip XX   XX   XX
   XX   XX   @bng @{   @}   '    @dqu @obr @cbr @and \    del  XX
-  XX   XX   [    ]    @hsh XX   @pct @lt  @gt  XX   XX   XX
+  XX   XX   [    ]    @hsh XX   @pct @lt  @gt  @que XX   XX
   XX   XX   @stb             @und         XX   XX
 )
 
