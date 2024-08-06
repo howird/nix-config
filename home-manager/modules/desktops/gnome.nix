@@ -8,10 +8,18 @@
 }: {
   config = lib.mkIf (config.myDesktop.gnome && !config.myDesktop.kde) {
     home.packages = with pkgs; [
-      gnome.dconf-editor
-      gnome.gnome-tweaks
+      dconf-editor
+      gnome-tweaks
+
       gnome.networkmanager-openvpn
       gnome.networkmanager-openconnect
+
+      # gnomeExtensions.user-themes
+      # gnomeExtensions.tray-icons-reloaded
+      # gnomeExtensions.vitals
+      # gnomeExtensions.dash-to-panel
+      # # gnomeExtensions.sound-output-device-chooser
+      # gnomeExtensions.space-bar
     ];
 
     dconf.settings = {
@@ -21,6 +29,7 @@
       };
 
       "org/gnome/shell" = {
+        disable-user-extensions = false;
         favorite-apps = [
           "vivaldi-stable.desktop"
           "code.desktop"
@@ -29,6 +38,15 @@
           "discord.desktop"
           "org.gnome.Nautilus.desktop"
         ];
+        # `gnome-extensions list` for a list
+        # enabled-extensions = [
+        #   "user-theme@gnome-shell-extensions.gcampax.github.com"
+        #   "trayIconsReloaded@selfmade.pl"
+        #   "Vitals@CoreCoding.com"
+        #   "dash-to-panel@jderose9.github.com"
+        #   "sound-output-device-chooser@kgshank.net"
+        #   "space-bar@luchrioh"
+        # ];
       };
 
       "org/gnome/shell/app-switcher" = {

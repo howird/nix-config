@@ -15,23 +15,33 @@ lib.mkIf config.myDesktop.gnome {
     excludePackages = [pkgs.xterm];
   };
 
+  programs.dconf.enable = true;
+
   # Disable GNOME default applications
   # https://discourse.nixos.org/t/howto-disable-most-gnome-default-applications-and-what-they-are/13505
-  environment.gnome.excludePackages = with pkgs.gnome; [
-    epiphany # web browser
-    yelp # help viewer
-    geary # email client
-    seahorse # password manager
+  environment.gnome.excludePackages =
+    (with pkgs; [
+      epiphany # web browser
+      geary # email reader
+      seahorse # password manager
+      yelp # Help view
+      gnome-tour
+      gnome-photos
+      gnome-calendar
+      gnome-connections
+    ])
+    ++ (with pkgs.gnome; [
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
 
-    gnome-calculator
-    gnome-calendar
-    gnome-characters
-    gnome-clocks
-    gnome-contacts
-    gnome-weather
-    gnome-maps
-    gnome-music
-    pkgs.gnome-connections
-    pkgs.gnome-tour
-  ];
+      gnome-maps
+      gnome-music
+      gnome-clocks
+      gnome-weather
+      gnome-contacts
+      gnome-characters
+      gnome-initial-setup
+    ]);
 }
