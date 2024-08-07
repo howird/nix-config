@@ -113,11 +113,11 @@
 
         kwin = {
           "Edit Tiles" = [];
-          "Overview" = "Meta+Up";
+          "Overview" = ["Meta+Up" "Meta+K"];
           "Switch One Desktop Down" = [];
           "Switch One Desktop Up" = [];
-          "Switch One Desktop to the Left" = "Meta+H";
-          "Switch One Desktop to the Right" = "Meta+L";
+          "Switch One Desktop to the Left" = ["Meta+Left" "Meta+H"];
+          "Switch One Desktop to the Right" = ["Meta+Right" "Meta+L"];
 
           "Switch Window Up" = [];
           "Switch Window Down" = [];
@@ -140,10 +140,10 @@
           "Window Maximize" = "Meta+F";
           "Window Minimize" = "Meta+Shift+F";
 
-          "Window One Desktop Down" = "Meta+Shift+J";
-          "Window One Desktop Up" = "Meta+Shift+K";
-          "Window One Desktop to the Left" = "Meta+Shift+H";
-          "Window One Desktop to the Right" = "Meta+Shift+L";
+          "Window One Desktop Down" = ["Meta+Shift+Down" "Meta+Shift+J"];
+          "Window One Desktop Up" = ["Meta+Shift+Up" "Meta+Shift+K"];
+          "Window One Desktop to the Left" = ["Meta+Shift+Left" "Meta+Shift+H"];
+          "Window One Desktop to the Right" = ["Meta+Shift+Right" "Meta+Shift+L"];
 
           "Window Quick Tile Bottom" = [];
           "Window Quick Tile Left" = [];

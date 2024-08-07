@@ -22,5 +22,5 @@
     linuxPackages.nvidia_x11
   ];
 
-  virtualisation.docker.enableNvidia = true;
+  hardware.nvidia-container-toolkit.enable = true;
 }
