@@ -11,8 +11,8 @@
       enable = true;
       package =
         if config.myEditor.vscode
-        then pkgs.vscode-fhs
-        else pkgs.vscodium-fhs;
+        then pkgs.vscode
+        else pkgs.vscodium;
 
       userSettings = {
         "git.autofetch" = true;
