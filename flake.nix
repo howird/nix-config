@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware";
     stylix.url = "github:danth/stylix";
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
 
     home-manager = {
       url = "github:nix-community/home-manager";

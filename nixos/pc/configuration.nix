@@ -9,6 +9,7 @@
   imports = [
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.hardware.nixosModules.common-pc-ssd
+    inputs.vscode-server.nixosModules.default
     ./hardware-configuration.nix
     ./modules/nvidia.nix
     ./modules/amd.nix
@@ -32,4 +33,6 @@
   environment.systemPackages = with pkgs; [
     lm_sensors
   ];
+  services.vscode-server.enable = true;
+  services.vscode-server.nodejsPackage = pkgs.nodejs-18_x;
 }
