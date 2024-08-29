@@ -10,6 +10,7 @@
     ./modules/packages.nix
     ./modules/desktops
     ./modules/stylix.nix
+    ./modules/gaming.nix
   ];
 
   myDesktop.kde = true;

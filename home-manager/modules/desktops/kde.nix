@@ -12,7 +12,6 @@
     # then restart
 
     home.packages = with pkgs; [
-      kdePackages.plasma-browser-integration
       kdePackages.networkmanager-qt
       networkmanager-openvpn
       networkmanager-openconnect
@@ -43,7 +42,7 @@
         "browser" = {
           name = "Launch Browser";
           key = "Meta+B";
-          command = "vivaldi";
+          command = "microsoft-edge";
         };
         "obsidian" = {
           name = "Launch Obsidian";
