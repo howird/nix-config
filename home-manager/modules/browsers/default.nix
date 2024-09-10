@@ -24,6 +24,5 @@
     home.packages = lib.mkIf config.myBrowser.edge [
       pkgs.microsoft-edge
     ];
-    
   };
 }
