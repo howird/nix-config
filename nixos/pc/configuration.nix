@@ -32,6 +32,7 @@
   };
   environment.systemPackages = with pkgs; [
     lm_sensors
+    vulkan-tools
   ];
   services.vscode-server.enable = true;
   services.vscode-server.nodejsPackage = pkgs.nodejs-18_x;
