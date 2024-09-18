@@ -13,13 +13,7 @@
       # rm -rf ~/.config/vivaldi/Default/GPUCache ~/.config/vivaldi/Default/Storage/ext/**/GPUCache
       package = with config.myBrowser;
         if vivaldi
-        then pkgs.vivaldi.overrideAttrs rec {
-          version = "6.9.3447.41";
-          src = pkgs.fetchurl {
-            url = "https://downloads.vivaldi.com/stable/vivaldi-stable_${version}-1_amd64.deb";
-            hash = "sha256-Hcd8W8bDlRUT/zPYP+aiJnUmepS38KuK0wRFYB3uW1Y=";
-          };
-        }
+        then pkgs.vivaldi
         else pkgs.chromium;
       commandLineArgs = lib.mkIf (config.myDesktop.kde || config.myDesktop.hyprland) [
         "--enable-features=UseOzonePlatform"

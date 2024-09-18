@@ -23,6 +23,7 @@
 
     discord
     teams-for-linux
+    zoom-us
 
     qbittorrent
     spotify
