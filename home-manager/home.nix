@@ -10,6 +10,7 @@
     ./modules/shells
     ./modules/editors
 
+    ./modules/programming.nix
     ./modules/git.nix
     ./modules/tmux.nix
   ];
@@ -29,6 +30,7 @@
       overlays = [
         outputs.overlays.additions
         outputs.overlays.modifications
+        inputs.rust-overlay.overlays.default
       ];
       config = {allowUnfree = true;};
     };

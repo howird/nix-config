@@ -552,8 +552,29 @@
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "plasma-manager": "plasma-manager",
+        "rust-overlay": "rust-overlay",
         "stylix": "stylix",
         "vscode-server": "vscode-server"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1726626348,
+        "narHash": "sha256-sYV7e1B1yLcxo8/h+/hTwzZYmaju2oObNiy5iRI0C30=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "6fd52ad8bd88f39efb2c999cc971921c2fb9f3a2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "stylix": {
