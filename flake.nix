@@ -68,60 +68,60 @@
     homeManagerModules = import ./modules/home-manager;
 
     # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
+    # Available through 'sudo nixos-rebuild switch --flake .#your-hostname'
     nixosConfigurations = {
-      nixwird-t480 = nixpkgs.lib.nixosSystem {
+      updog = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./nixos/configuration.nix
-          ./nixos/t480/configuration.nix
+          ./nixos/hosts/updog/configuration.nix
         ];
       };
-      nixwird-framework = nixpkgs.lib.nixosSystem {
+      yerm = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./nixos/configuration.nix
-          ./nixos/framework/configuration.nix
+          ./nixos/hosts/yerm/configuration.nix
         ];
       };
-      nixwird-pc = nixpkgs.lib.nixosSystem {
+      bofa = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./nixos/configuration.nix
-          ./nixos/pc/configuration.nix
+          ./nixos/hosts/bofa/configuration.nix
         ];
       };
     };
 
     # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#howird@nixwird-t480'
+    # Available through 'home-manager switch --flake .#howird@yerm'
     homeConfigurations = {
-      "howird@nixwird-t480" = home-manager.lib.homeManagerConfiguration {
+      "howird@updog" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./home-manager/machines/t480.nix
+          ./home-manager/hosts/updog.nix
         ];
       };
-      "howird@nixwird-framework" = home-manager.lib.homeManagerConfiguration {
+      "howird@yerm" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./home-manager/machines/framework.nix
+          ./home-manager/hosts/yerm.nix
         ];
       };
-      "howird@nixwird-pc" = home-manager.lib.homeManagerConfiguration {
+      "howird@bofa" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./home-manager/machines/pc.nix
+          ./home-manager/hosts/bofa.nix
         ];
       };
       "howard@vip" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./home-manager/machines/vip.nix
+          ./home-manager/hosts/vip.nix
         ];
       };
     };

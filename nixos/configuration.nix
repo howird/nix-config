@@ -70,13 +70,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "America/Toronto";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services.printing.enable = true; # Enable CUPS to print documents.
+  services.printing.enable = true;
   services.xserver.wacom.enable = true;
 
   services.xserver.enable = true;

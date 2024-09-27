@@ -11,7 +11,7 @@
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "nixwird-t480";
+  networking.hostName = "updog";
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;

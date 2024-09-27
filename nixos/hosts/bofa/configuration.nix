@@ -21,7 +21,7 @@
     enable32Bit = true;
   };
 
-  networking.hostName = "nixwird-pc";
+  networking.hostName = "bofa";
 
   services.openssh = {
     enable = true;

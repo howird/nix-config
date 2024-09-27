@@ -11,7 +11,7 @@
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "nixwird-framework";
+  networking.hostName = "yerm";
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
