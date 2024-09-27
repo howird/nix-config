@@ -17,6 +17,7 @@
     plugins.fugitive.enable = true;
     plugins.undotree.enable = true;
     plugins.telescope.enable = true;
+    plugins.web-devicons.enable = true;
     plugins.harpoon.enable = true;
 
     plugins.lualine.enable = true;

@@ -11,8 +11,8 @@
     inputs.hardware.nixosModules.common-pc-ssd
     inputs.vscode-server.nixosModules.default
     ./hardware-configuration.nix
-    ./modules/nvidia.nix
-    ./modules/amd.nix
+    ../../modules/graphics/nvidia.nix
+    ../../modules/graphics/amd.nix
   ];
 
   # GPU STUFF

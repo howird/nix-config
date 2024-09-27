@@ -36,10 +36,7 @@
     # Supported systems for your flake packages, shell, etc.
     systems = [
       "aarch64-linux"
-      "i686-linux"
       "x86_64-linux"
-      "aarch64-darwin"
-      "x86_64-darwin"
     ];
 
     # IN PYTHON:
@@ -73,22 +70,22 @@
       updog = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./nixos/configuration.nix
-          ./nixos/hosts/updog/configuration.nix
+          ./nixos
+          ./nixos/hosts/updog
         ];
       };
       yerm = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./nixos/configuration.nix
-          ./nixos/hosts/yerm/configuration.nix
+          ./nixos
+          ./nixos/hosts/yerm
         ];
       };
       bofa = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./nixos/configuration.nix
-          ./nixos/hosts/bofa/configuration.nix
+          ./nixos
+          ./nixos/hosts/bofa
         ];
       };
     };
