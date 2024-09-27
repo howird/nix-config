@@ -7,8 +7,8 @@
   ...
 }: {
   imports = [
-    ./vscode.nix
-    ./nvim/nvim.nix
+    ./vscode
+    ./nvim
   ];
 
   options = {

@@ -8,7 +8,7 @@
 }: {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
-    ./nvim-keymaps.nix
+    ./keymaps.nix
   ];
 
   programs.nixvim = lib.mkIf config.myEditor.nvim {
