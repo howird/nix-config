@@ -15,13 +15,13 @@
     ../../modules/graphics/amd.nix
   ];
 
+  networking.hostName = "bofa";
+
   # GPU STUFF
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
-
-  networking.hostName = "bofa";
 
   services.openssh = {
     enable = true;

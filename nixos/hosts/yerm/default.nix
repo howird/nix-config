@@ -13,6 +13,11 @@
 
   networking.hostName = "yerm";
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 

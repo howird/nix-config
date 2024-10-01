@@ -7,9 +7,10 @@
   ...
 }: {
   imports = [
-    ./kde.nix
-    ./gnome.nix
-    ./hyprland/hyprland.nix
+    ./hyprland
+    ./kde
+    ./gnome
+    ./xfce
   ];
 
   options = {
@@ -17,6 +18,7 @@
       kde = lib.mkEnableOption "kde";
       hyprland = lib.mkEnableOption "hyprland";
       gnome = lib.mkEnableOption "gnome";
+      xfce = lib.mkEnableOption "xfce";
     };
     myWallpaper = lib.mkOption {
       type = lib.types.path;
