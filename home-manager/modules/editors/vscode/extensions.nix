@@ -35,6 +35,7 @@
       tamasfe.even-better-toml
       redhat.vscode-yaml
       ms-python.python
+      ms-python.debugpy
       jnoortheen.nix-ide
       rust-lang.rust-analyzer
       serayuzgur.crates
