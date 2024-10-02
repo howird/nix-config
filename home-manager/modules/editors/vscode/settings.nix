@@ -7,6 +7,9 @@
   ...
 }: {
   programs.vscode.userSettings = {
+    "update.mode" = "none";
+    "extensions.autoUpdate" = true;
+    "extensions.autoCheckUpdates" = true;
     "git.autofetch" = true;
     "editor.fontFamily" = "JetBrainsMono Nerd Font";
     "editor.fontLigatures" = true;

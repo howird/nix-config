@@ -24,11 +24,12 @@
       kdePackages.networkmanager-qt
       networkmanager-openvpn
       networkmanager-openconnect
+      kdePackages.sddm-kcm
 
+      posy-cursors
       commonality-theme
       reactionary-theme
       expose-theme
-      kdePackages.sddm-kcm
     ];
   };
 }

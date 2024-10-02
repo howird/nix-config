@@ -17,6 +17,7 @@
     obs-studio
     kdenlive
 
+    code-cursor
     obsidian
     texliveFull
     zotero

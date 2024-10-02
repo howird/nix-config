@@ -32,7 +32,7 @@
     in {
       # ls /run/current-system/sw/share/color-schemes/
       configFile.kdeglobals.KDE.widgetStyle = "Windows";
-      workspace.cursor.theme = "Afterglow-cursors";
+      workspace.cursor = config.myCursor;
       workspace.theme = config.myDesktop.kdeTheme;
       workspace.colorScheme = builtins.getAttr config.myDesktop.kdeTheme theme2colorscheme;
       workspace.lookAndFeel = builtins.getAttr config.myDesktop.kdeTheme theme2lookandfeel;
@@ -43,15 +43,7 @@
       # workspace.windowDecorations
 
       workspace.wallpaper = config.myWallpaper;
-      kscreenlocker.wallpaper = config.myWallpaper;
-    };
-  };
-
-  options = {
-    myDesktop.kdeTheme = lib.mkOption {
-      type = lib.types.str;
-      default = "reactionary";
-      description = "Theme name. Must be installed in nixos config.";
+      kscreenlocker.appearance.wallpaper = config.myWallpaper;
     };
   };
 }

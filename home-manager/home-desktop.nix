@@ -20,6 +20,7 @@
     # desktops
     myDesktop.kde = true;
     myDesktop.kdeTheme = "reactionary";
+    myCursor.theme = "Posy_Cursor";
 
     # editors
     myEditor.vscode = true;

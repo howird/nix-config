@@ -13,15 +13,32 @@
     ./xfce
   ];
 
-  options = {
+  options = with lib;{
     myDesktop = {
-      kde = lib.mkEnableOption "kde";
-      hyprland = lib.mkEnableOption "hyprland";
-      gnome = lib.mkEnableOption "gnome";
-      xfce = lib.mkEnableOption "xfce";
+      gnome = mkEnableOption "gnome";
+      hyprland = mkEnableOption "hyprland";
+      kde = mkEnableOption "kde";
+      kdeTheme = mkOption {
+        type = types.str;
+        default = "reactionary";
+        description = "Theme name. Must be installed in nixos config.";
+      };
+      xfce = mkEnableOption "xfce";
     };
-    myWallpaper = lib.mkOption {
-      type = lib.types.path;
+    myCursor = {
+      theme = mkOption {
+        type = types.str;
+        default = "Posy_Cursor";
+        description = "Cursor name. Must be installed in nixos config.";
+      };
+      size = mkOption { 
+        type = types.ints.positive;
+        default = 32;
+        description = "Cursor size.";
+      };
+    };
+    myWallpaper = mkOption {
+      type = types.path;
       default = ./wallpapers/pixel-art-rayquaza.png;
       description = "Wallpaper filename.";
     };
