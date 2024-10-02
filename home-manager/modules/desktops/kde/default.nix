@@ -22,7 +22,7 @@
         clickItemTo = "select";
         theme = "expose";
         colorScheme = "Expose";
-        cursor.theme = "Afterglow-cursors"; 
+        cursor.theme = "Afterglow-cursors";
         lookAndFeel = "org.magpie.expose.desktop";
         iconTheme = "Oxygen";
         splashScreen.theme = "SimpleTuxSplash-Plasma6";

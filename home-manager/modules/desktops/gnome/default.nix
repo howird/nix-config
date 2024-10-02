@@ -49,7 +49,7 @@
         # ];
       };
 
-      "org/gnome/shell/app-switcher" = { current-workspace-only = true; };
+      "org/gnome/shell/app-switcher" = {current-workspace-only = true;};
 
       "org/gnome/desktop/background" = {
         "picture-uri" = "file://${config.myWallpaper}";

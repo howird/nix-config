@@ -64,6 +64,10 @@
     # These are usually stuff you would upstream into home-manager
     homeManagerModules = import ./modules/home-manager;
 
+    apps = forAllSystems (system: {
+      rc2nix = inputs.plasma-manager.apps.${system}.rc2nix;
+    });
+
     # NixOS configuration entrypoint
     # Available through 'sudo nixos-rebuild switch --flake .#your-hostname'
     nixosConfigurations = {

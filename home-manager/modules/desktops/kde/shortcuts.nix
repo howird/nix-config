@@ -31,7 +31,6 @@
         };
       };
 
-
       spectacle.shortcuts = {
         captureRectangularRegion = "Meta+Shift+S";
         captureActiveWindow = "Meta+Ctrl+S";

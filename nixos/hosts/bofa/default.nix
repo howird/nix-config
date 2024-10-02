@@ -28,6 +28,7 @@
     settings = {
       PermitRootLogin = "no";
       PasswordAuthentication = false;
+      X11Forwarding = true;
     };
   };
   environment.systemPackages = with pkgs; [

@@ -39,14 +39,14 @@ nixwird-hm
 
 ```bash
 dconf dump / > old-conf.txt # GNOME
-nix run github:pjones/plasma-manager / > old-conf.txt # KDE Plasma
+nix run .#rc2nix > old-conf.txt # KDE Plasma
 ```
 
 - Modify using the settings GUI, then:
 
 ```bash
 dconf dump / > new-conf.txt # GNOME
-nix run github:pjones/plasma-manager / > new-conf.txt # KDE Plasma
+nix run .#rc2nix > new-conf.txt # KDE Plasma
 ```
 
 - Then compare the differences with:
