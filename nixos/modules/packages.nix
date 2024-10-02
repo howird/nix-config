@@ -24,6 +24,7 @@
     yt-dlp
     sshfs
     unrar
+    imagemagick
 
     # apps
     firefox

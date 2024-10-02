@@ -23,7 +23,7 @@
 
     myWallpaper = lib.mkOption {
       type = lib.types.path;
-      default = ../../../home-manager/modules/desktops/wallpapers/fall-forest.jpg;
+      default = ../../../home-manager/modules/desktops/wallpapers/pixel-art-rayquaza.png;
       description = "Wallpaper filename.";
     };
   };

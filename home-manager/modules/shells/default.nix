@@ -28,8 +28,8 @@
 
   config = {
     myShell.aliases = {
-      nixwird = "sudo nixos-rebuild switch --flake /home/${config.myUsername}/.config/nix";
-      nixwird-hm = "home-manager switch --flake /home/${config.myUsername}/.config/nix${config.myShell.hmFlakeArgs}";
+      nixwird = "sudo nixos-rebuild switch --flake /home/${config.myUsername}/nix/config";
+      nixwird-hm = "home-manager switch --flake /home/${config.myUsername}/nix/config${config.myShell.hmFlakeArgs}";
       nixwird-edit = ''${
           if (with config.myEditor; (vscode || vscodium))
           then "code"

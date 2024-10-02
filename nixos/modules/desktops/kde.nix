@@ -16,6 +16,15 @@
 
     # partition-manager, remember to run as root: `sudo partitionmanager`
     programs.partition-manager.enable = true;
-    environment.systemPackages = with pkgs; [exfatprogs];
+
+    environment.systemPackages = with pkgs; [
+      exfatprogs # for partition-manager
+
+      kdePackages.networkmanager-qt
+      networkmanager-openvpn
+      networkmanager-openconnect
+
+      kdePackages.sddm-kcm
+    ];
   };
 }

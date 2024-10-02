@@ -11,9 +11,10 @@
 - Clone this repo:
 
 ```bash
-git clone https://github.com/howird/nix-config.git /home/howird/.config/nix
+mkdir /home/howird/nix
+git clone https://github.com/howird/nix-config.git /home/howird/nix/config
 # or if you have your ssh keys:
-git clone git@github.com:howird/nix-config /home/howird/.config/nix
+git clone git@github.com:howird/nix-config /home/howird/nix/config
 ```
 
 - Setup your system (remember to write the correct hostname):
