@@ -11,6 +11,7 @@
     services.displayManager.sddm = {
       enable = true;
       wayland.enable = true;
+      theme = "reactionary";
     };
     environment.plasma6.excludePackages = [];
 
@@ -24,6 +25,7 @@
       networkmanager-openvpn
       networkmanager-openconnect
 
+      reactionary-theme
       kdePackages.sddm-kcm
     ];
   };

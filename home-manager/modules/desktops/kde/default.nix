@@ -20,16 +20,10 @@
 
       workspace = {
         clickItemTo = "select";
-        theme = "expose";
-        colorScheme = "Expose";
+        theme = "reactionary";
         cursor.theme = "Afterglow-cursors";
-        lookAndFeel = "org.magpie.expose.desktop";
-        iconTheme = "Oxygen";
-        splashScreen.theme = "SimpleTuxSplash-Plasma6";
-        windowDecorations = {
-          library = "org.kde.kwin.aurorae";
-          theme = "__aurorae__svg__expose";
-        };
+        lookAndFeel = "org.magpie.react.desktop";
+        iconTheme = "Reactionary";
         wallpaper = config.myWallpaper;
       };
       configFile.kdeglobals.KDE.widgetStyle = "Windows";
