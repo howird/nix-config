@@ -11,7 +11,6 @@
     networkmanager
     kdePackages.plasma-nm
 
-    kicad
     krita
     blender-hip
     obs-studio
