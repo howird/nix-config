@@ -26,6 +26,7 @@
       networkmanager-openconnect
 
       reactionary-theme
+      expose-theme
       kdePackages.sddm-kcm
     ];
   };
