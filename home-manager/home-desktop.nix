@@ -19,6 +19,7 @@
   config = {
     # desktops
     myDesktop.kde = true;
+    myDesktop.kdeTheme = "reactionary";
 
     # editors
     myEditor.vscode = true;

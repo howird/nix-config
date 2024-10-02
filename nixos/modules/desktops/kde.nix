@@ -25,6 +25,7 @@
       networkmanager-openvpn
       networkmanager-openconnect
 
+      commonality-theme
       reactionary-theme
       expose-theme
       kdePackages.sddm-kcm

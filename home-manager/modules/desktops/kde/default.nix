@@ -9,24 +9,17 @@
   imports = [
     inputs.plasma-manager.homeManagerModules.plasma-manager
     ./shortcuts.nix
+    ./themes.nix
   ];
 
-  # rm -frv ~/.config/plasma* ~/.config/k* ~/.local/share/plasma* ~/.gtkrc-2.0
+  # rm -frv ~/.cache/plasma* ~/.config/plasma* ~/.config/k* ~/.local/share/plasma* ~/.gtkrc-2.0
   # then restart
   config = lib.mkIf config.myDesktop.kde {
     programs.plasma = {
       enable = true;
       overrideConfig = true;
 
-      workspace = {
-        clickItemTo = "select";
-        theme = "reactionary";
-        cursor.theme = "Afterglow-cursors";
-        lookAndFeel = "org.magpie.react.desktop";
-        iconTheme = "Reactionary";
-        wallpaper = config.myWallpaper;
-      };
-      configFile.kdeglobals.KDE.widgetStyle = "Windows";
+      workspace.clickItemTo = "select";
 
       kwin = {
         titlebarButtons.right = ["minimize" "maximize" "close"];

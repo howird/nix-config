@@ -18,9 +18,10 @@ stdenv.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out/share/{plasma/desktoptheme,plasma/look-and-feel,aurorae/themes}
+    mkdir -p $out/share/{plasma/desktoptheme,plasma/look-and-feel,aurorae/themes,color-schemes}
     cp -R desktoptheme/expose/ $out/share/plasma/desktoptheme
-    cp -R look-and-feel/org.magpie.expose.desktop $out/share/plasma/look-and-feel
+    cp Expose.colors $out/share/color-schemes
+    cp -R look-and-feel/org.magpie.expose.desktop/ $out/share/plasma/look-and-feel
     cp -R themes/expose/ $out/share/aurorae/themes
     cp -R sddm/ $out/share
     cp -R wallpapers/ $out/share

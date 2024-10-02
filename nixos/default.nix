@@ -102,7 +102,9 @@
     };
   };
 
-  fonts.packages = with pkgs; [(nerdfonts.override {fonts = ["JetBrainsMono"];})];
+  fonts.packages = with pkgs; [
+    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+  ];
 
   virtualisation.docker.enable = true;
   programs.nix-ld.enable = true;
