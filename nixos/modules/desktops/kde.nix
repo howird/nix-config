@@ -28,6 +28,7 @@
 
       posy-cursors
       commonality-theme
+      chicago95-theme
       reactionary-theme
       expose-theme
     ];

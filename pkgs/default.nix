@@ -4,5 +4,6 @@ pkgs: {
   expose-theme = pkgs.callPackage ./expose {};
   reactionary-theme = pkgs.callPackage ./reactionary {};
   commonality-theme = pkgs.callPackage ./commonality {};
+  chicago95-theme = pkgs.callPackage ./chicago95 {};
   retrosmart-cursors = pkgs.callPackage ./retrosmart-cursors {};
 }

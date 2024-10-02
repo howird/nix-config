@@ -33,7 +33,6 @@ stdenv.mkDerivation rec {
     description = "KDE Plasma 6 Theme. Remembering XP.";
     homepage = "https://store.kde.org/p/2136378";
     license = licenses.gpl3;
-    # maintainers = [ maintainers.ymarkus ];
     platforms = platforms.all;
   };
 }

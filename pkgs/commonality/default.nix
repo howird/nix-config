@@ -15,10 +15,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Xc9cZPB8RcT62b5V7R9ZqyASDXLK8SWbneTjyPkvVHs=";
   };
 
-  # todo(howird): use reactionary plus with variable color schemes
   installPhase = ''
     runHook preInstall
-
 
     mkdir -p $out/share/{plasma/desktoptheme,plasma/look-and-feel,aurorae/themes,color-schemes}
     cp -R desktoptheme/commonality/ $out/share/plasma/desktoptheme
@@ -36,7 +34,6 @@ stdenv.mkDerivation rec {
     description = "KDE Plasma 6 Theme. Commonality brings the style of CDE to the Plasma desktop.";
     homepage = "https://www.pling.com/p/1459520/";
     license = licenses.gpl3;
-    # maintainers = [ maintainers.ymarkus ];
     platforms = platforms.all;
   };
 }

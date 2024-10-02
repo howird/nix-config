@@ -15,7 +15,6 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-27wWlRCBSiDtXvhXDCNdxiRN400pwzCO0S+Cjla/RCg=";
   };
 
-  # todo(howird): use reactionary plus with variable color schemes
   installPhase = ''
     runHook preInstall
 
@@ -35,7 +34,6 @@ stdenv.mkDerivation rec {
     description = "KDE Plasma 6 Theme. Just a bit of fun recreating the look and feel of ReactOS.";
     homepage = "https://store.kde.org/p/2138468";
     license = licenses.gpl3;
-    # maintainers = [ maintainers.ymarkus ];
     platforms = platforms.all;
   };
 }
