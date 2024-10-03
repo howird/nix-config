@@ -6,4 +6,6 @@ pkgs: {
   commonality-theme = pkgs.callPackage ./commonality {};
   chicago95-theme = pkgs.callPackage ./chicago95 {};
   retrosmart-cursors = pkgs.callPackage ./retrosmart-cursors {};
+  kde-compact-pager = pkgs.callPackage ./kde-compact-pager {};
+  kde-fokus = pkgs.callPackage ./kde-fokus {};
 }

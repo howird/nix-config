@@ -27,33 +27,38 @@
 
         virtualDesktops = {
           rows = 1;
-          names = ["Impl - Main" "Learning" "Impl - Side" "Misc"];
+          names = ["[ Main ]" "[ Learning ]" "[ Side ]" " [ Misc ]"];
         };
       };
 
-      # panels = [
-      #   {
-      #     height = 48;
-      #     lengthMode = "fill";
-      #     location = "bottom";
-      #     alignment = "center";
-      #     hiding = "dodgewindows";
-      #     floating = true;
-      #     # search in:
-      #     # plasma-workspace-*/share/plasma/plasmoids
-      #     # kdeplasma-addons-*/share/plasma/plasmoids
-      #     widgets = [
-      #       "org.kde.plasma.kickoff"
-      #       "org.kde.plasma.pager"
-      #       "org.kde.plasma.icontasks"
-      #       "org.kde.plasma.marginsseparator"
-      #       "org.kde.plasma.mediacontroller"
-      #       "org.kde.plasma.systemtray"
-      #       "org.kde.plasma.digitalclock"
-      #     ];
-      #     screen = 0;
-      #   }
-      # ];
+      panels = [
+        {
+          height = 36;
+          lengthMode = "fill";
+          location = "bottom";
+          alignment = "center";
+          hiding = "none";
+          floating = false;
+          # search in:
+          # ls /run/current-system/sw/share/plasma/plasmoids
+          widgets = [
+            "org.kde.plasma.kickoff"
+            "org.kde.plasma.marginsseparator"
+            "com.github.tilorenz.compact_pager"
+            "org.kde.plasma.marginsseparator"
+            "com.dv.fokus"
+            "org.kde.plasma.marginsseparator"
+            "org.kde.plasma.marginsseparator"
+            "org.kde.plasma.taskmanager"
+            "org.kde.plasma.marginsseparator"
+            "org.kde.plasma.mediacontroller"
+            "org.kde.plasma.systemtray"
+            "org.kde.plasma.digitalclock"
+            "org.kde.plasma.showdesktop"
+          ];
+          screen = 0;
+        }
+      ];
 
       configFile.kdeglobals.General = {
         "TerminalApplication" = "alacritty";

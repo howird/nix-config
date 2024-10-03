@@ -32,6 +32,9 @@
       commonality-theme
       reactionary-theme
       expose-theme
+      kde-compact-pager
+      kdePackages.qtmultimedia
+      kde-fokus
     ];
   };
 }
