@@ -13,7 +13,7 @@
     ./xfce
   ];
 
-  options = with lib;{
+  options = with lib; {
     myDesktop = {
       gnome = mkEnableOption "gnome";
       hyprland = mkEnableOption "hyprland";
@@ -31,7 +31,7 @@
         default = "Posy_Cursor";
         description = "Cursor name. Must be installed in nixos config.";
       };
-      size = mkOption { 
+      size = mkOption {
         type = types.ints.positive;
         default = 32;
         description = "Cursor size.";

@@ -23,20 +23,26 @@
       };
       # ls /run/current-system/sw/share/icons/
       theme2icons = {
-        # expose = "Reactionary";
         expose = "Oxygen";
-        # reactionary = "Reactionary";
-        reactionary = "NsCDE";
+        reactionary = "Reactionary";
         commonality = "NsCDE";
       };
     in {
+      kwin.effects = {
+        shakeCursor.enable = true;
+        desktopSwitching.animation = "off";
+        translucency.enable = false;
+        blur.enable = false;
+      };
+
       # ls /run/current-system/sw/share/color-schemes/
       configFile.kdeglobals.KDE.widgetStyle = "Windows";
       workspace.cursor = config.myCursor;
       workspace.theme = config.myDesktop.kdeTheme;
       workspace.colorScheme = builtins.getAttr config.myDesktop.kdeTheme theme2colorscheme;
       workspace.lookAndFeel = builtins.getAttr config.myDesktop.kdeTheme theme2lookandfeel;
-      workspace.iconTheme = builtins.getAttr config.myDesktop.kdeTheme theme2icons;
+      # workspace.iconTheme = builtins.getAttr config.myDesktop.kdeTheme theme2icons;
+      workspace.iconTheme = "NsCDE"; # dont use default icons, i like this one more
 
       # cat ~/.config/kwinrc
       # workspace.splashScreen

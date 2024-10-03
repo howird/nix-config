@@ -25,13 +25,6 @@
         titlebarButtons.right = ["minimize" "maximize" "close"];
         titlebarButtons.left = ["on-all-desktops" "keep-above-windows"];
 
-        effects = {
-          shakeCursor.enable = true;
-          translucency.enable = true;
-          desktopSwitching.animation = "slide";
-          blur.enable = true;
-        };
-
         virtualDesktops = {
           rows = 1;
           names = ["Impl - Main" "Learning" "Impl - Side" "Misc"];

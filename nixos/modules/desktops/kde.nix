@@ -21,6 +21,8 @@
     environment.systemPackages = with pkgs; [
       exfatprogs # for partition-manager
 
+      # kdePackages.kio-gdrive
+
       kdePackages.networkmanager-qt
       networkmanager-openvpn
       networkmanager-openconnect
@@ -28,7 +30,6 @@
 
       posy-cursors
       commonality-theme
-      chicago95-theme
       reactionary-theme
       expose-theme
     ];
