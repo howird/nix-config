@@ -34,7 +34,7 @@
           if (with config.myEditor; (vscode || vscodium))
           then "code"
           else "vim"
-        } ~/.config/nix'';
+        } ~/nix/config'';
 
       tl = "tmux list-sessions";
       ts = "tmux new-session -s";

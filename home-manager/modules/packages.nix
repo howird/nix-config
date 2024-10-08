@@ -20,6 +20,7 @@
     obsidian
     texliveFull
     zotero
+    libreoffice-qt
 
     discord
     teams-for-linux
@@ -27,5 +28,6 @@
 
     qbittorrent
     spotify
+    inputs.pix2tex.packages.x86_64-linux.default
   ];
 }

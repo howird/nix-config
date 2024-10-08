@@ -9,8 +9,8 @@
   imports = [
     ./modules/packages.nix
     ./modules/desktops
-    ./modules/stylix.nix
-    ./modules/gaming.nix
+    # ./modules/stylix.nix # TODO(howird): stylix
+    # ./modules/gaming.nix
   ];
 
   myDesktop.kde = true;
@@ -101,6 +101,8 @@
       shell = pkgs.zsh;
     };
   };
+
+  services.flatpak.enable = true;
 
   fonts.packages = with pkgs; [
     (nerdfonts.override {fonts = ["JetBrainsMono"];})

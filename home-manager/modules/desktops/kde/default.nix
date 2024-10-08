@@ -27,7 +27,7 @@
 
         virtualDesktops = {
           rows = 1;
-          names = ["[ Main ]" "[ Learning ]" "[ Side ]" " [ Misc ]"];
+          names = ["[ Main ]" "[ Learn ]" "[ Side ]" " [ Misc ]"];
         };
       };
 
@@ -68,6 +68,7 @@
 
       configFile.kded5rc."Module-browserintegrationreminder"."autoload" = false;
       configFile.kcminputrc."Libinput/2362/628/PIXA3854:00 093A:0274 Touchpad"."NaturalScroll" = true;
+      configFile.krunnerrc.General.FreeFloating = true;
     };
   };
 }

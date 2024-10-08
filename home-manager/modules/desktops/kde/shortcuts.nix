@@ -9,26 +9,31 @@
   config = lib.mkIf config.myDesktop.kde {
     programs.plasma = {
       hotkeys.commands = {
-        "terminal" = {
-          name = "Launch Terminal";
-          key = "Meta+T";
-          command = "alacritty";
-        };
-        "browser" = {
-          name = "Launch Browser";
-          key = "Meta+B";
-          command = "microsoft-edge";
-        };
-        "obsidian" = {
-          name = "Launch Obsidian";
-          key = "Meta+O";
-          command = "obsidian";
-        };
-        "code" = {
-          name = "Launch Code";
-          key = "Meta+C";
-          command = "code";
-        };
+        # "terminal" = {
+        #   name = "Launch Terminal";
+        #   key = "Meta+T";
+        #   command = "alacritty";
+        # };
+        # "browser" = {
+        #   name = "Launch Browser";
+        #   key = "Meta+B";
+        #   command = "microsoft-edge";
+        # };
+        # "code" = {
+        #   name = "Launch Code";
+        #   key = "Meta+C";
+        #   command = "code";
+        # };
+        # "obsidian" = {
+        #   name = "Launch Obsidian";
+        #   key = "Meta+O";
+        #   command = "obsidian";
+        # };
+        # "rnote" = {
+        #   name = "Launch rnote";
+        #   key = "Meta+R";
+        #   command = "flatpak run com.github.flxzt.rnote";
+        # };
       };
 
       spectacle.shortcuts = {
@@ -42,6 +47,17 @@
       };
 
       shortcuts = {
+        "services/flatpak.desktop"."_launch" = "Meta+N";
+        "services/microsoft-edge.desktop"."_launch" = "Meta+B";
+        "services/obsidian.desktop"."_launch" = "Meta+O";
+        "services/code.desktop"."_launch" = "Meta+C";
+        "services/Alacritty.desktop"."_launch" = "Meta+T";
+        "services/spotify.desktop"."_launch" = "Meta+M";
+        "services/zotero.desktop"."_launch" = "Meta+Z";
+        "services/org.kde.krunner.desktop"."_launch" = ["Search" "Meta+R"];
+        "services/discord.desktop"."_launch" = "Meta+D";
+        "kwin"."Show Desktop" = "none,Meta+D,Peek at Desktop";
+
         "kaccess"."Toggle Screen Reader On and Off" = [];
 
         kwin = {

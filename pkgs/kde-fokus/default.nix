@@ -19,6 +19,13 @@ stdenv.mkDerivation rec {
   #   pkgs.qtmultimedia
   # ];
 
+  postPatch = ''
+    substituteInPlace package/contents/config/main.xml \
+      --replace "/usr/share" "/run/current-system/sw/share"
+    substituteInPlace package/contents/ui/configNotifications.qml \
+      --replace "/usr/share" "/run/current-system/sw/share"
+  '';
+
   installPhase = ''
     runHook preInstall
 
