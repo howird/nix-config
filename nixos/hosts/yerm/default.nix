@@ -32,5 +32,9 @@
   systemd.sleep.extraConfig = "HibernateDelaySec=1h";
 
   services.kanata.enable = true;
-  services.kanata.keyboards.laptop.configFile = ../../../configs/keyboards/kanata/qwerty.kbd;
+  services.kanata.keyboards.laptop.configFile = ../../../configs/keyboards/kanata/framework.kbd;
+  services.kanata.keyboards.foldable.configFile = ../../../configs/keyboards/kanata/protoarc.kbd;
+  services.udev.extraRules = ''
+    SUBSYSTEM=="input", KERNEL=="event*", ENV{LIBINPUT_DEVICE_GROUP}=="5/3554/f605:2c:98:11:3d:41:26", SYMLINK+="input/protoarc-kbd"
+  '';
 }
