@@ -28,6 +28,6 @@
 
     qbittorrent
     spotify
-    inputs.pix2tex.packages.x86_64-linux.default
+    inputs.pix2tex.packages.${system}.default
   ];
 }

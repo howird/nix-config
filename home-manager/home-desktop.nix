@@ -32,5 +32,6 @@
     # browsers
     myBrowser.vivaldi = true;
     myBrowser.edge = true;
+    myBrowser.zen = true;
   };
 }

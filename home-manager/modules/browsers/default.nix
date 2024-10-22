@@ -9,6 +9,8 @@
   imports = [
     ./chromium.nix
     ./firefox.nix
+    ./zen.nix
+    ./edge.nix
   ];
 
   options = {
@@ -16,13 +18,8 @@
       vivaldi = lib.mkEnableOption "vivaldi";
       chromium = lib.mkEnableOption "chromium";
       edge = lib.mkEnableOption "edge";
-      floorp = lib.mkEnableOption "floorp";
+      zen = lib.mkEnableOption "zen";
+      firefox = lib.mkEnableOption "firefox";
     };
-  };
-
-  config = {
-    home.packages = lib.mkIf config.myBrowser.edge [
-      pkgs.microsoft-edge
-    ];
   };
 }

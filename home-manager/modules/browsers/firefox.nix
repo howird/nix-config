@@ -6,10 +6,10 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.myBrowser.floorp {
+  config = lib.mkIf config.myBrowser.firefox {
     programs.firefox = {
       enable = true;
-      package = pkgs.floorp;
+      package = pkgs.firefox;
     };
   };
 }
