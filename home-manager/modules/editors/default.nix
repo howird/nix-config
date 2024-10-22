@@ -9,6 +9,7 @@
   imports = [
     ./vscode
     ./nvim
+    ./zed
   ];
 
   options = {
@@ -16,6 +17,7 @@
       vscode = lib.mkEnableOption "vscode";
       vscodium = lib.mkEnableOption "vscodium";
       nvim = lib.mkEnableOption "nvim";
+      zed = lib.mkEnableOption "zed";
     };
   };
 }

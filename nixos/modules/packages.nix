@@ -25,6 +25,7 @@
     sshfs
     unrar
     imagemagick
+    aider-chat
 
     # apps
     firefox

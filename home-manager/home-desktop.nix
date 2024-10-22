@@ -24,6 +24,7 @@
 
     # editors
     myEditor.vscode = true;
+    myEditor.zed = true;
 
     # shells
     myShell.zsh = true;
