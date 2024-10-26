@@ -29,6 +29,7 @@
       ms-python.python
       ms-python.debugpy
       ms-toolsai.jupyter
+      ms-toolsai.jupyter-renderers
       njpwerner.autodocstring
 
       # text

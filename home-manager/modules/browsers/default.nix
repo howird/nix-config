@@ -7,7 +7,7 @@
   ...
 }: {
   imports = [
-    ./chromium.nix
+    ./vivaldi.nix
     ./firefox.nix
     ./zen.nix
     ./edge.nix
