@@ -38,10 +38,12 @@
       tomoki1207.pdf
       yzhang.markdown-all-in-one
 
-      # rust
+      # rust & c/c++
+      fill-labs.dependi
       rust-lang.rust-analyzer
       vadimcn.vscode-lldb
-      fill-labs.dependi
+      ms-vscode.cpptools
+      ms-vscode.cmake-tools
 
       # web
       svelte.svelte-vscode
@@ -68,8 +70,8 @@
       {
         name = "claude-dev";
         publisher = "saoudrizwan";
-        version = "2.0.16";
-        sha256 = "sha256-K9KLW1gPurQ80OHtfIq1uaChS/ZWbZSQ+Y+zFCRdJbs=";
+        version = "2.1.1";
+        sha256 = "sha256-4Pr/iG5w4oUJW8SsTiEjWd8ZNkRTJAltg7FjVoE2P24=";
       }
     ];
 }

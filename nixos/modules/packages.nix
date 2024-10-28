@@ -26,6 +26,7 @@
     unrar
     imagemagick
     aider-chat
+    xorg.xhost
 
     # apps
     firefox
