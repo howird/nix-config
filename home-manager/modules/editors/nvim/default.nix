@@ -32,12 +32,12 @@
         html.enable = true;
         jsonls.enable = true;
         pyright.enable = true;
-        rust-analyzer = {
+        rust_analyzer = {
           enable = true;
           installCargo = false;
           installRustc = false;
         };
-        lua-ls.enable = true;
+        lua_ls.enable = true;
         yamlls.enable = true;
       };
     };
