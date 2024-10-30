@@ -68,7 +68,19 @@
 
       configFile.kded5rc."Module-browserintegrationreminder"."autoload" = false;
       configFile.kcminputrc."Libinput/2362/628/PIXA3854:00 093A:0274 Touchpad"."NaturalScroll" = true;
-      configFile.krunnerrc.General.FreeFloating = true;
+
+      configFile.krunnerrc = {
+        General.FreeFloating = true;
+        Plugins.baloosearchEnabled = true;
+      };
+
+      configFile.baloofilerc = {
+        "Basic Settings".Indexing-Enabled = false;
+        General = {
+          "exclude folders[$e]" = "$HOME/,/nix/";
+          "folders[$e]" = "$HOME/Desktop/,$HOME/Documents/,$HOME/Downloads/,$HOME/Pictures/,$HOME/Videos/";
+        };
+      };
     };
   };
 }
