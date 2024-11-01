@@ -43,4 +43,12 @@
       description = "Wallpaper filename.";
     };
   };
+
+  config = {  
+    home.packages = lib.mkIf (!config.myDesktop.xfce) (with pkgs; [
+      wl-clipboard-rs
+      slurp
+      grim
+    ]);
+  };
 }

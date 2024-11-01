@@ -16,7 +16,6 @@
     obs-studio
     kdenlive
 
-    code-cursor
     obsidian
     texliveFull
     zotero
@@ -28,6 +27,9 @@
 
     qbittorrent
     spotify
+
     inputs.pix2tex.packages.${system}.default
+    aider-chat
+    fabric-ai
   ];
 }

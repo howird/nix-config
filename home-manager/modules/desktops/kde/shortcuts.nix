@@ -55,7 +55,7 @@
         "services/spotify.desktop"."_launch" = "Meta+M";
         "services/zotero.desktop"."_launch" = "Meta+Z";
         "services/org.kde.krunner.desktop"."_launch" = ["Search" "Meta+R"];
-        "services/discord.desktop"."_launch" = "Meta+D";
+        "services/discord.desktop"."_launch" = "Meta+I";
         "kwin"."Show Desktop" = "none,Meta+D,Peek at Desktop";
 
         "kaccess"."Toggle Screen Reader On and Off" = [];

@@ -65,6 +65,7 @@
       # AI
       github.copilot
       github.copilot-chat
+      continue.continue
     ]
     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
