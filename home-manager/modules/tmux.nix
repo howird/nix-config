@@ -10,6 +10,6 @@
     enable = true;
     keyMode = "vi";
     customPaneNavigationAndResize = true;
-    mouse = true;
+    # mouse = true;
   };
 }
