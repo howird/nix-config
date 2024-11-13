@@ -12,7 +12,7 @@
     inputs.vscode-server.nixosModules.default
     ./hardware-configuration.nix
     ../../modules/graphics/nvidia.nix
-    ../../modules/graphics/amd.nix
+    # ../../modules/graphics/amd.nix
   ];
 
   networking.hostName = "bofa";
@@ -36,5 +36,4 @@
     vulkan-tools
   ];
   services.vscode-server.enable = true;
-  services.vscode-server.nodejsPackage = pkgs.nodejs-18_x;
 }

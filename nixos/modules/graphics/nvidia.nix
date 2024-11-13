@@ -21,9 +21,8 @@
   environment.systemPackages = with pkgs; [
     cudatoolkit
     linuxPackages.nvidia_x11
-    # linuxPackages.nvidia_x11_vulkan_beta_open
+    # linuxPackages.nvidia_x11_vulkan_beta
   ];
 
   hardware.nvidia-container-toolkit.enable = true;
-  virtualisation.docker.enableNvidia = true;
 }
