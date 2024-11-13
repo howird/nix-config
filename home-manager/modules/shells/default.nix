@@ -52,25 +52,12 @@
     };
 
     programs.direnv = {
-      enable = true;
-      nix-direnv.enable = true;
       enableZshIntegration = config.myShell.zsh;
       enableFishIntegration = config.myShell.fish;
     };
     programs.fzf = {
-      enable = true;
       enableZshIntegration = config.myShell.zsh;
       enableFishIntegration = config.myShell.fish;
     };
-
-    home.packages = with pkgs; [
-      zoxide
-      eza
-      ripgrep
-      bat
-      fd
-      gitui
-      ncspot
-    ];
   };
 }

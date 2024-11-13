@@ -11,6 +11,10 @@
     networkmanager
     kdePackages.plasma-nm
 
+    linvstmanager
+    reaper
+    audacity
+
     krita
     blender-hip
     obs-studio
