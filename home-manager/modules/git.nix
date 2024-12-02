@@ -16,5 +16,8 @@
       co = "checkout";
       s = "status";
     };
+    ignores = [
+      "**/.aider*"
+    ];
   };
 }

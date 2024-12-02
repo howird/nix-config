@@ -29,6 +29,7 @@
     teams-for-linux
     zoom-us
 
+    # intentional watching, not streaming!
     qbittorrent
     spotify
 

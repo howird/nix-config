@@ -23,6 +23,8 @@
     ];
     config = {
       allowUnfree = true;
+      # rocmSupport = true;
+      # cudaSupport = true;
     };
   };
 
@@ -100,7 +102,7 @@
     howird = {
       isNormalUser = true;
       description = "Howard Nguyen-Huu";
-      extraGroups = ["networkmanager" "wheel" "docker" "audio"];
+      extraGroups = ["networkmanager" "wheel" "docker" "audio" "video" "render"];
       shell = pkgs.zsh;
     };
   };

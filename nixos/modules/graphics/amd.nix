@@ -17,6 +17,7 @@
     amdvlk
   ];
   environment.systemPackages = with pkgs; [
+    rocmPackages.rocminfo
     amdgpu_top
   ];
 }

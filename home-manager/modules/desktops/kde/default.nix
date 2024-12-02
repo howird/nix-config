@@ -51,7 +51,6 @@
             "org.kde.plasma.marginsseparator"
             "org.kde.plasma.taskmanager"
             "org.kde.plasma.marginsseparator"
-            "org.kde.plasma.mediacontroller"
             "org.kde.plasma.systemtray"
             "org.kde.plasma.digitalclock"
             "org.kde.plasma.showdesktop"

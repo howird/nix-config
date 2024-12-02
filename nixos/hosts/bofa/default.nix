@@ -12,7 +12,8 @@
     inputs.vscode-server.nixosModules.default
     ./hardware-configuration.nix
     ../../modules/graphics/nvidia.nix
-    # ../../modules/graphics/amd.nix
+    ../../modules/graphics/amd.nix
+    ../../modules/llms.nix
   ];
 
   networking.hostName = "bofa";
@@ -33,6 +34,7 @@
   };
   environment.systemPackages = with pkgs; [
     lm_sensors
+    vulkan-loader
     vulkan-tools
   ];
   services.vscode-server.enable = true;
