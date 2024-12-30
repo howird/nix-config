@@ -96,9 +96,9 @@
 )
 
 (deflayer functions
-  XX   XX   f10  f11  f12  XX   XX   XX   XX   XX   XX   XX   XX
+  XX   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
   XX   XX   f7   f8   f9   XX   XX   XX   mute XX   XX   XX   XX
-  XX   XX   f4   f5   f6   XX   prev vold volu next XX   XX
+  XX   XX   lalt lmet lctl XX   prev vold volu next XX   XX
   XX   f1   f2   f3   XX   XX   XX   brdn brup XX   XX   XX
   XX   XX   XX               XX      pp   XX   XX
 )
