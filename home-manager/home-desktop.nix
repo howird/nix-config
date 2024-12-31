@@ -18,9 +18,10 @@
 
   config = {
     # desktops
-    myDesktop.kde = true;
-    myDesktop.kdeTheme = "reactionary";
-    myCursor.theme = "Posy_Cursor";
+    # myDesktop.kde = true;
+    myDesktop.hyprland = true;
+    # myDesktop.kdeTheme = "reactionary";
+    # myCursor.theme = "Posy_Cursor";
 
     # editors
     myEditor.vscode = true;

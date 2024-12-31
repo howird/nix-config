@@ -18,7 +18,6 @@
       extensions = ["rust-src" "rust-analyzer"];
     })
     nix-index
-    unityhub
     devenv
   ];
 

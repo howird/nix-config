@@ -34,6 +34,19 @@
       url = "github:ch4og/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # hyprland = {
+    #   type = "git";
+    #   url = "https://github.com/hyprwm/Hyprland";
+    #   submodules = true;
+    # };
+    hypr-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprpicker = {
+      url = "github:hyprwm/hyprpicker";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -109,28 +122,40 @@
     homeConfigurations = {
       "howird@updog" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {
+          host = "updog";
+          inherit inputs outputs;
+        };
         modules = [
           ./home-manager/hosts/updog.nix
         ];
       };
       "howird@yerm" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {
+          host = "yerm";
+          inherit inputs outputs;
+        };
         modules = [
           ./home-manager/hosts/yerm.nix
         ];
       };
       "howird@bofa" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {
+          host = "bofa";
+          inherit inputs outputs;
+        };
         modules = [
           ./home-manager/hosts/bofa.nix
         ];
       };
       "howard@vip" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {
+          host = "vip";
+          inherit inputs outputs;
+        };
         modules = [
           ./home-manager/hosts/vip.nix
         ];

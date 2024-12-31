@@ -16,7 +16,7 @@
     audacity
 
     krita
-    blender-hip
+    # blender-hip
     obs-studio
     kdenlive
 
@@ -33,7 +33,7 @@
     qbittorrent
     spotify
 
-    inputs.pix2tex.packages.${system}.default
+    # inputs.pix2tex.packages.${system}.default
     aider-chat
     fabric-ai
   ];

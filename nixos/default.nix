@@ -13,7 +13,8 @@
     # ./modules/gaming.nix
   ];
 
-  myDesktop.kde = true;
+  # myDesktop.kde = true;
+  myDesktop.hyprland = true;
 
   nixpkgs = {
     # You can add overlays here
@@ -98,6 +99,8 @@
     jack.enable = true;
   };
 
+  services.libinput.enable = true;
+
   users.users = {
     howird = {
       isNormalUser = true;
@@ -109,9 +112,12 @@
 
   services.flatpak.enable = true;
 
-  fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+  fonts.packages = with pkgs.nerd-fonts; [
+    jetbrains-mono
   ];
+  # fonts.packages = with pkgs; [
+  #   (nerdfonts.override {fonts = ["JetBrainsMono"];})
+  # ];
 
   virtualisation.docker.enable = true;
   programs.nix-ld.enable = true;
