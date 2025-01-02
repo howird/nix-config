@@ -56,3 +56,27 @@ code --diff old-conf.txt new-conf.txt
 ```
 
 - Then update `gnome.nix` or `kde.nix` accordingly in `./home-manager/modules/desktops`
+
+## troubleshooting
+
+
+## troubleshooting
+
+- first try running with args:
+
+```bash
+nixwird --refresh --repair
+```
+
+- if nix store is broken:
+
+```bash
+sudo nix-collect-garbage -d
+nix-store --verify --check-contents --repair
+```
+
+- if any derivations cannot be fixed with above command, try:
+
+```bash
+sudo nix-store --delete --ignore-liveness /nix/store/<derivation location>.drv
+```

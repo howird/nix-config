@@ -19,6 +19,7 @@
     })
     nix-index
     devenv
+    nixd
   ];
 
   services.lorri.enable = true;

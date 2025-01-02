@@ -36,11 +36,15 @@
         };
       };
 
-      general = {
-        "$mainMod" = "SUPER";
-        "$term" = "alacritty";
-        "$browser" = "microsoft-edge";
+    "$mainMod" = "SUPER";
+    "$shftMod" = "SUPER SHIFT";
+    "$floatCenter" = "[float; center; size 1111 700]";
 
+    "$term" = "alacritty";
+    "$browser" = "microsoft-edge";
+    "$fileManager" = "nautilus";
+
+      general = {
         layout = "dwindle";
         gaps_in = 5;
         gaps_out = 10;
@@ -139,51 +143,45 @@
       };
 
       bind = [
-        # show keybinds list
-        "$mainMod, F1, exec, show-keybinds"
-
-        # keybindings
-        "$mainMod, T, exec, $term"
-        "ALT, Return, exec, [float; center; size 950 650] $term"
-        "$mainMod SHIFT, Return, exec, [fullscreen] $term"
-        "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] $browser'"
         "$mainMod, Q, killactive,"
         "$mainMod, F, fullscreen, 0"
-        "$mainMod SHIFT, F, fullscreen, 1"
+        "$shftMod, F, fullscreen, 1"
         "$mainMod, Space, exec, toggle_float"
         "$mainMod, R, exec, rofi -show drun || pkill rofi"
-        "$mainMod SHIFT, D, exec, webcord --enable-features=UseOzonePlatform --ozone-platform=wayland"
-        "$mainMod SHIFT, S, exec, hyprctl dispatch exec '[workspace 5 silent] SoundWireServer'"
+
+        # applications
+        "$mainMod, T, exec, $term"
+        "$shftMod, T, exec, $floatCenter $term"
+        "$mainMod, B, exec, $browser"
+        "$mainMod, E, exec, $fileManager"
+        "$shftMod, E, exec, $floatCenter $fileManager"
+        "$mainMod, O, exec, obsidian"
+        "$mainMod, Z, exec, zoterro"
+
+        # lock
         "$mainMod, Escape, exec, swaylock"
         "ALT, Escape, exec, hyprlock"
-        "$mainMod SHIFT, Escape, exec, power-menu"
-        "$mainMod, P, pseudo,"
-        "$mainMod, X, togglesplit,"
-        "$mainMod, T, exec, toggle_oppacity"
-        "$mainMod CTRL, E, exec, nemo"
-        "$mainMod, E, exec, hyprctl dispatch exec '[float; center; size 1111 700] nemo'"
-        "$mainMod SHIFT, E, exec, hyprctl dispatch exec '[float; center; size 1111 700] $term yazi'"
-        "$mainMod SHIFT, B, exec, toggle_waybar"
-        "$mainMod, C ,exec, hyprpicker -a"
-        "$mainMod, W, exec, wallpaper-picker"
-        "$mainMod SHIFT, W,exec, hyprctl dispatch exec '[float; center; size 925 615] waypaper'"
+
+        "$mainMod, C, exec, hyprpicker -a"
+        "$shftMod, W, exec, hyprctl dispatch exec '$floatCenter waypaper'"
         "$mainMod, N, exec, swaync-client -t -sw"
-        # "$mainMod SHIFT, W, exec, vm-start"
 
         # screenshot
         ",Print, exec, screenshot --copy"
-        "$mainMod SHIFT, S, exec, screenshot --save"
+        "$shftMod, S, exec, screenshot --save"
         "$mainMod ALT, S, exec, screenshot --swappy"
 
-        # switch focus
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
-        "$mainMod, h, movefocus, l"
-        "$mainMod, j, movefocus, d"
-        "$mainMod, k, movefocus, u"
-        "$mainMod, l, movefocus, r"
+        # switch windows
+        "ALT, left, movefocus, l"
+        "ALT, right, movefocus, r"
+        "ALT, up, movefocus, u"
+        "ALT, down, movefocus, d"
+        "ALT, h, movefocus, l"
+        "ALT, l, movefocus, r"
+        "ALT, k, movefocus, u"
+        "ALT, j, movefocus, d"
+        "ALT, TAB, cyclenext, prev"
+        "ALT SHIFT, TAB, cyclenext, next"
 
         # switch workspace
         "$mainMod, 1, workspace, 1"
@@ -197,28 +195,37 @@
         "$mainMod, 9, workspace, 9"
         "$mainMod, 0, workspace, 10"
 
-        # same as above, but switch to the workspace
-        "$mainMod SHIFT, 1, movetoworkspacesilent, 1" # movetoworkspacesilent
-        "$mainMod SHIFT, 2, movetoworkspacesilent, 2"
-        "$mainMod SHIFT, 3, movetoworkspacesilent, 3"
-        "$mainMod SHIFT, 4, movetoworkspacesilent, 4"
-        "$mainMod SHIFT, 5, movetoworkspacesilent, 5"
-        "$mainMod SHIFT, 6, movetoworkspacesilent, 6"
-        "$mainMod SHIFT, 7, movetoworkspacesilent, 7"
-        "$mainMod SHIFT, 8, movetoworkspacesilent, 8"
-        "$mainMod SHIFT, 9, movetoworkspacesilent, 9"
-        "$mainMod SHIFT, 0, movetoworkspacesilent, 10"
-        "$mainMod CTRL, c, movetoworkspace, empty"
+        "$mainMod, left, workspace, -1"
+        "$mainMod, right, workspace, +1"
+        "$mainMod, h, workspace, -1"
+        "$mainMod, l, workspace, +1"
+
+        # Move active window to a workspace with mainMod + SHIFT + [0-9]
+        "$shftMod, 1, movetoworkspace, 1"
+        "$shftMod, 2, movetoworkspace, 2"
+        "$shftMod, 3, movetoworkspace, 3"
+        "$shftMod, 4, movetoworkspace, 4"
+        "$shftMod, 5, movetoworkspace, 5"
+        "$shftMod, 6, movetoworkspace, 6"
+        "$shftMod, 7, movetoworkspace, 7"
+        "$shftMod, 8, movetoworkspace, 8"
+        "$shftMod, 9, movetoworkspace, 9"
+        "$shftMod, 0, movetoworkspace, 10"
+
+        "$shftMod, left, movetoworkspace, -1"
+        "$shftMod, right, movetoworkspace, +1"
+        "$shftMod, h, movetoworkspace, -1"
+        "$shftMod, l, movetoworkspace, +1"
 
         # window control
-        "$mainMod SHIFT, left, movewindow, l"
-        "$mainMod SHIFT, right, movewindow, r"
-        "$mainMod SHIFT, up, movewindow, u"
-        "$mainMod SHIFT, down, movewindow, d"
-        "$mainMod SHIFT, h, movewindow, l"
-        "$mainMod SHIFT, j, movewindow, d"
-        "$mainMod SHIFT, k, movewindow, u"
-        "$mainMod SHIFT, l, movewindow, r"
+        "ALT SHIFT, left, movewindow, l"
+        "ALT SHIFT, right, movewindow, r"
+        "ALT SHIFT, up, movewindow, u"
+        "ALT SHIFT, down, movewindow, d"
+        "ALT SHIFT, h, movewindow, l"
+        "ALT SHIFT, j, movewindow, d"
+        "ALT SHIFT, k, movewindow, u"
+        "ALT SHIFT, l, movewindow, r"
 
         "$mainMod CTRL, left, resizeactive, -80 0"
         "$mainMod CTRL, right, resizeactive, 80 0"
@@ -371,6 +378,11 @@
         "w[tg1], gapsout:0, gapsin:0"
         "f[1], gapsout:0, gapsin:0"
       ];
+
+      gestures = {
+        workspace_swipe = true;
+        workspace_swipe_distance = 50;
+      };
     };
 
     extraConfig = "

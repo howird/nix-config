@@ -15,6 +15,7 @@
     reaper
     audacity
 
+    rnote
     krita
     # blender-hip
     obs-studio

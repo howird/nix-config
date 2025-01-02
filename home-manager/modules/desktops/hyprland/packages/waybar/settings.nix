@@ -21,7 +21,7 @@ let
 in
 {
   programs.waybar.settings.mainBar = with custom; {
-    position = "bottom";
+    position = "top";
     layer = "top";
     height = 28;
     margin-top = 0;
@@ -37,7 +37,7 @@ in
     modules-right = [
       "cpu"
       "memory"
-      "disk" 
+      "disk"
       "pulseaudio"
       "network"
       "battery"
@@ -49,10 +49,10 @@ in
           today = "<span color='#98971A'><b>{}</b></span>";
         };
       };
-      format = "  {:%H:%M}";
+      format = "  {:%I:%M %p}";
       tooltip = "true";
       tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-      format-alt = "  {:%d/%m}";
+      format-alt = "  {:%b %d}";
     };
     "hyprland/workspaces" = {
       active-only = false;
@@ -140,10 +140,7 @@ in
     };
     "custom/launcher" = {
       format = "";
-      on-click = "random-wallpaper";
-      on-click-right = "rofi -show drun";
-      tooltip = "true";
-      tooltip-format = "Random Wallpaper";
+      on-click = "rofi -show drun";
     };
     "custom/notification" = {
       tooltip = false;

@@ -1,4 +1,4 @@
-{ pkgs, host ? "laptop", ... }:
+{ pkgs, host ? "laptop", config, ... }:
 let
   text = "rgb(251, 241, 199)";
 in
@@ -8,7 +8,7 @@ in
     # BACKGROUND
     background {
       monitor =
-      path = ${../wallpapers/fall-forest.png}
+      path = ${config.myWallpaper}
       blur_passes = 2
       contrast = 0.8916
       brightness = 0.8172

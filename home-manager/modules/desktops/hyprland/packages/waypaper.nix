@@ -1,13 +1,13 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   home.packages = (with pkgs; [ waypaper ]);
 
   xdg.configFile."waypaper/config.ini".text = ''
     [Settings]
     language = en
-    folder = ~/Pictures/wallpapers/others
+    folder = ${../../wallpapers}
     monitors = All
-    wallpaper = ~/Pictures/wallpapers/others/nixos.png
+    wallpaper = ${config.myWallpaper}
     backend = swww
     fill = fill
     sort = name

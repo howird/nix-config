@@ -39,7 +39,7 @@
     };
     myWallpaper = mkOption {
       type = types.path;
-      default = ./wallpapers/pixel-art-rayquaza.png;
+      default = ./wallpapers/fall-forest.png;
       description = "Wallpaper filename.";
     };
   };

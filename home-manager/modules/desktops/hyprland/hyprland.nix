@@ -11,6 +11,8 @@
     wf-recorder
     glib
     wayland
+
+    nautilus
   ];
   systemd.user.targets.hyprland-session.Unit.Wants = [
     "xdg-desktop-autostart.target"
