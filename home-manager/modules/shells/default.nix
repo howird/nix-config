@@ -42,6 +42,7 @@
       tks = "tmux kill-session -t";
 
       campus-ssh-toggle = "bash ${./scripts/campus-ssh-toggle.sh}";
+      uw-vpn = "sudo openconnect -v cn-vpn.uwaterloo.ca";
 
       ls = "exa";
       ll = "exa -l";

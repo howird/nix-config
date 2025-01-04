@@ -11,6 +11,8 @@
     ./kde
     ./gnome
     ./xfce
+
+    ./gtk.nix
   ];
 
   options = with lib; {

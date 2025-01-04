@@ -9,7 +9,7 @@
   imports = [
     ./modules/packages.nix
     ./modules/desktops
-    # ./modules/stylix.nix # TODO(howird): stylix
+    ./modules/stylix.nix # TODO(howird): stylix
     # ./modules/gaming.nix
   ];
 

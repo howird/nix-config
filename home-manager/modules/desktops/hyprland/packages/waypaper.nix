@@ -1,6 +1,9 @@
-{ pkgs, config, ... }:
 {
-  home.packages = (with pkgs; [ waypaper ]);
+  pkgs,
+  config,
+  ...
+}: {
+  home.packages = with pkgs; [waypaper];
 
   xdg.configFile."waypaper/config.ini".text = ''
     [Settings]

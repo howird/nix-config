@@ -24,6 +24,7 @@
       oderwat.indent-rainbow
       gruntfuggly.todo-tree
       usernamehw.errorlens
+      naumovs.color-highlight
 
       # python
       ms-python.python

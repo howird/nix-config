@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   wayland.windowManager.hyprland = {
     settings = {
       # autostart
@@ -14,7 +13,6 @@
         "wl-paste --watch cliphist store &"
         "waybar &"
         "swaync &"
-        "hyprctl setcursor Bibata-Modern-Ice 24 &"
         "swww-daemon &"
 
         "hyprlock"
@@ -28,6 +26,7 @@
         kb_layout = "us";
         numlock_by_default = true;
         follow_mouse = 0;
+	accel_profile = "flat";
         float_switch_override_focus = 0;
         mouse_refocus = 0;
         sensitivity = 0;
@@ -36,13 +35,14 @@
         };
       };
 
-    "$mainMod" = "SUPER";
-    "$shftMod" = "SUPER SHIFT";
-    "$floatCenter" = "[float; center; size 1111 700]";
+      # variables
+      "$mainMod" = "SUPER";
+      "$shftMod" = "SUPER SHIFT";
+      "$floatCenter" = "[float; center; size 1111 700]";
 
-    "$term" = "alacritty";
-    "$browser" = "microsoft-edge";
-    "$fileManager" = "nautilus";
+      "$term" = "alacritty";
+      "$browser" = "microsoft-edge";
+      "$fileManager" = "nautilus";
 
       general = {
         layout = "dwindle";
@@ -157,6 +157,7 @@
         "$shftMod, E, exec, $floatCenter $fileManager"
         "$mainMod, O, exec, obsidian"
         "$mainMod, Z, exec, zoterro"
+        "$mainMod, M, exec, spotify"
 
         # lock
         "$mainMod, Escape, exec, swaylock"
@@ -313,14 +314,12 @@
         "pin, title:^(Picture-in-Picture)$"
         "opacity 1.0 override 1.0 override, title:^(.*imv.*)$"
         "opacity 1.0 override 1.0 override, title:^(.*mpv.*)$"
-        "opacity 1.0 override 1.0 override, class:(Aseprite)"
         "opacity 1.0 override 1.0 override, class:(Unity)"
         "opacity 1.0 override 1.0 override, class:(zen)"
         "opacity 1.0 override 1.0 override, class:(evince)"
         "workspace 1, class:^(zen)$"
         "workspace 3, class:^(evince)$"
         "workspace 4, class:^(Gimp-2.10)$"
-        "workspace 4, class:^(Aseprite)$"
         "workspace 5, class:^(Audacious)$"
         "workspace 5, class:^(Spotify)$"
         "workspace 8, class:^(com.obsproject.Studio)$"

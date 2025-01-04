@@ -19,9 +19,17 @@
     plugins.telescope.enable = true;
     plugins.web-devicons.enable = true;
     plugins.harpoon.enable = true;
+    plugins.commentary.enable = true;
+    plugins.nvim-surround.enable = true;
+
+    plugins.dap.enable = true;
+    plugins.jupytext.enable = true;
 
     plugins.lualine.enable = true;
-    colorschemes.onedark.enable = true;
+    plugins.colorizer.enable = true;
+
+    colorschemes.base16.enable = true;
+    # colorschemes.base16.colorscheme = stylix.colors;
 
     plugins.lsp = {
       enable = true;

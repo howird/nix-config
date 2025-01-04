@@ -62,7 +62,18 @@ code --diff old-conf.txt new-conf.txt
 
 ## troubleshooting
 
-- first try running with args:
+### main
+
+- first try:
+
+```bash
+nix build nixpkgs#<pkg name>
+eza --tree result/ --level 3
+```
+
+### cache/store related
+
+  - first try running with args:
 
 ```bash
 nixwird --refresh --repair
