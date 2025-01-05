@@ -4,22 +4,22 @@
   lib,
   config,
   pkgs,
+  host,
   ...
 }: {
   imports = [
-    ./modules/packages.nix
-    ./modules/desktops
-    # ./modules/stylix.nix # TODO(howird): stylix
-    # ./modules/gaming.nix
+    ./packages.nix
+    ./desktops
+    ./stylix.nix
+    # ./gaming.nix
   ];
-
-  myDesktop.kde = true;
 
   nixpkgs = {
     # You can add overlays here
     overlays = [
       outputs.overlays.additions
       outputs.overlays.modifications
+      inputs.rust-overlay.overlays.default
     ];
     config = {
       allowUnfree = true;
@@ -74,6 +74,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.hostName = "${host}";
 
   time.timeZone = "America/Toronto";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -88,7 +89,7 @@
   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -97,6 +98,8 @@
     pulse.enable = true;
     jack.enable = true;
   };
+
+  services.libinput.enable = true;
 
   users.users = {
     howird = {
@@ -108,10 +111,6 @@
   };
 
   services.flatpak.enable = true;
-
-  fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["JetBrainsMono"];})
-  ];
 
   virtualisation.docker.enable = true;
   programs.nix-ld.enable = true;
