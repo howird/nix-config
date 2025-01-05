@@ -35,15 +35,6 @@
         };
       };
 
-      # variables
-      "$mainMod" = "SUPER";
-      "$shftMod" = "SUPER SHIFT";
-      "$floatCenter" = "[float; center; size 1111 700]";
-
-      "$term" = "alacritty";
-      "$browser" = "microsoft-edge";
-      "$fileManager" = "nautilus";
-
       general = {
         layout = "dwindle";
         gaps_in = 5;
@@ -140,6 +131,16 @@
         ];
       };
 
+      # variables
+      "$mainMod" = "SUPER";
+      "$shftMod" = "SUPER SHIFT";
+      "$floatCenter" = "[float; center; size 1111 700]";
+
+      "$term" = "alacritty";
+      "$browser" = "zen";
+      "$fileManager" = "nautilus";
+      "$codeEditor" = "zed";
+
       bind = [
         "$mainMod, Q, killactive,"
         "$mainMod, F, fullscreen, 0"
@@ -152,23 +153,25 @@
         "$shftMod, T, exec, $floatCenter $term"
         "$mainMod, B, exec, $browser"
         "$mainMod, E, exec, $fileManager"
+        "$mainMod, C, exec, $codeEditor"
         "$shftMod, E, exec, $floatCenter $fileManager"
         "$mainMod, O, exec, obsidian"
         "$mainMod, Z, exec, zoterro"
         "$mainMod, M, exec, spotify"
+        "$mainMod, I, exec, discord"
 
         # lock
         "$mainMod, Escape, exec, swaylock"
-        "ALT, Escape, exec, hyprlock"
+        "$mainMod, Escape, exit"
 
-        "$mainMod, C, exec, hyprpicker -a"
         "$shftMod, W, exec, hyprctl dispatch exec '$floatCenter waypaper'"
         "$mainMod, N, exec, swaync-client -t -sw"
 
         # screenshot
-        ",Print, exec, screenshot --copy"
-        "$shftMod, S, exec, screenshot --save"
-        "$mainMod ALT, S, exec, screenshot --swappy"
+        "$mainMod ALT, S, exec, hyprshot -m output"
+        "$shftMod ALT, S, exec, hyprshot -m region"
+        "$mainMod, S, exec, hyprshot -m output --clipboard-only"
+        "$shftMod, S, exec, hyprshot -m region --clipboard-only"
 
         # switch windows
         "ALT, left, movefocus, l"
@@ -245,11 +248,11 @@
         "$mainMod ALT, l, moveactive, 80 0"
 
         # media and volume controls
-        # ",XF86AudioMute,exec, pamixer -t"
-        ",XF86AudioPlay,exec, playerctl play-pause"
-        ",XF86AudioNext,exec, playerctl next"
-        ",XF86AudioPrev,exec, playerctl previous"
-        ",XF86AudioStop,exec, playerctl stop"
+        # ",XF86AudioMute, exec, pamixer -t"
+        ",XF86AudioPlay, exec, playerctl play-pause"
+        ",XF86AudioNext, exec, playerctl next"
+        ",XF86AudioPrev, exec, playerctl previous"
+        ",XF86AudioStop, exec, playerctl stop"
 
         "$mainMod, mouse_down, workspace, e-1"
         "$mainMod, mouse_up, workspace, e+1"

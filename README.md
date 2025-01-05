@@ -21,6 +21,7 @@ git clone git@github.com:howird/nix-config /home/howird/nix/config
 
 ```bash
 sudo nixos-rebuild switch --flake .#<hostname>
+# or
 home-manager switch --flake .#howird@<hostname>
 ```
 
@@ -28,7 +29,6 @@ home-manager switch --flake .#howird@<hostname>
 
 ```bash
 nixwird
-nixwird-hm
 ```
 
 ## Configuring
@@ -56,9 +56,6 @@ code --diff old-conf.txt new-conf.txt
 ```
 
 - Then update `gnome.nix` or `kde.nix` accordingly in `./home-manager/desktops`
-
-## troubleshooting
-
 
 ## troubleshooting
 
@@ -91,3 +88,4 @@ nix-store --verify --check-contents --repair
 ```bash
 sudo nix-store --delete --ignore-liveness /nix/store/<derivation location>.drv
 ```
+

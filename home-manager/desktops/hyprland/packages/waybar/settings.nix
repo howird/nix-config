@@ -1,5 +1,4 @@
-{config, ...}:
-{
+{config, ...}: {
   programs.waybar.settings.mainBar = with config.lib.stylix.colors; {
     position = "top";
     layer = "top";
