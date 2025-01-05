@@ -130,8 +130,8 @@
           inherit inputs outputs;
         };
         modules = [
+          ./hosts/vip/home.nix
           ./home-manager/non-nixos.nix
-          ./home-manager/hosts/vip.nix
         ];
       };
     };
