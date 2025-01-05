@@ -62,7 +62,7 @@
       configFile.kdeglobals.General = {
         "TerminalApplication" = "alacritty";
         "TerminalService" = "Alacritty.desktop";
-        "fixed" = "JetBrainsMonoNL Nerd Font Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
+        "fixed" = "${config.stylix.fonts.monospace.name},10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
       };
 
       configFile.kded5rc."Module-browserintegrationreminder"."autoload" = false;

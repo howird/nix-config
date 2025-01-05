@@ -7,7 +7,7 @@
   ...
 }: {
   imports = [
-    ../home.nix
+    ../../home-manager
   ];
 
   config = let

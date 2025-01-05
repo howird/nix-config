@@ -7,21 +7,20 @@
   ...
 }: {
   imports = [
-    ./modules/desktops
-    ./modules/editors
-    ./modules/shells
-    ./modules/browsers
+    ./desktops
+    ./editors
+    ./shells
+    ./browsers
 
-    ./modules/alacritty.nix
-    ./modules/packages.nix
+    ./alacritty.nix
+    ./packages.nix
   ];
 
   config = {
+    myShell.aliases.nixwird = "sudo nixos-rebuild switch --flake /home/${config.myUsername}/nix/config";
+
     # desktops
-    # myDesktop.kde = true;
     myDesktop.hyprland = true;
-    # myDesktop.kdeTheme = "reactionary";
-    # myCursor.theme = "Posy_Cursor";
 
     # editors
     myEditor.vscode = true;

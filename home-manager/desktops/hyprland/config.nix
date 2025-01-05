@@ -26,7 +26,7 @@
         kb_layout = "us";
         numlock_by_default = true;
         follow_mouse = 0;
-	accel_profile = "flat";
+        accel_profile = "flat";
         float_switch_override_focus = 0;
         mouse_refocus = 0;
         sensitivity = 0;
@@ -49,8 +49,6 @@
         gaps_in = 5;
         gaps_out = 10;
         border_size = 2;
-        "col.active_border" = "rgb(A89984)";
-        "col.inactive_border" = "0x00000000";
         border_part_of_window = false;
         no_border_on_floating = false;
       };
@@ -108,7 +106,7 @@
           offset = "0 2";
           range = 20;
           render_power = 3;
-          color = "rgba(00000055)";
+          # color = "rgba(00000055)";
         };
       };
 

@@ -11,8 +11,6 @@
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "updog";
-
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 

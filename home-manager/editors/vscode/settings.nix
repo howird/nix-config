@@ -11,7 +11,6 @@
     "extensions.autoUpdate" = true;
     "extensions.autoCheckUpdates" = true;
     "git.autofetch" = true;
-    "editor.fontFamily" = "JetBrainsMono Nerd Font";
     "editor.fontLigatures" = true;
     "editor.lineNumbers" = "relative";
     "vim.smartRelativeLine" = true;
@@ -25,7 +24,6 @@
 
     "vim.leader" = "<space>";
     "vim.incSearch" = true;
-    "vim.useSystemClipboard" = true;
     "vim.useCtrlKeys" = true;
     "vim.normalModeKeyBindings" = [
       {

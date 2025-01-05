@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [rofi-wayland];
 
   xdg.configFile."rofi/theme.rasi".text = ''
@@ -20,10 +24,10 @@
       modi: "run,drun,window";
       lines: 5;
       cycle: false;
-      font: "JetBrainsMono NF Bold 15";
+      font: "${config.stylix.fonts.monospace.name} Bold 15";
       show-icons: true;
       icon-theme: "Papirus-dark";
-      terminal: "kitty";
+      terminal: "alacritty";
       drun-display-format: "{icon} {name}";
       location: 0;
       disable-history: true;

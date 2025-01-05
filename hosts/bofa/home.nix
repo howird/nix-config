@@ -7,8 +7,8 @@
   ...
 }: {
   imports = [
-    ../home.nix
-    ../home-desktop.nix
+    ../../home-manager/home.nix
+    ../../home-manager/nixos-only.nix
   ];
 
   config = {

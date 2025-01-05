@@ -4,19 +4,19 @@
   lib,
   config,
   pkgs,
+  host,
   ...
 }: {
   imports = [
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.hardware.nixosModules.common-pc-ssd
     inputs.vscode-server.nixosModules.default
-    ./hardware-configuration.nix
-    ../../modules/graphics/nvidia.nix
-    ../../modules/graphics/amd.nix
-    ../../modules/llms.nix
-  ];
 
-  networking.hostName = "bofa";
+    ./hardware-configuration.nix
+    ../../graphics/nvidia.nix
+    ../../graphics/amd.nix
+    ../../llms.nix
+  ];
 
   # GPU STUFF
   hardware.graphics = {

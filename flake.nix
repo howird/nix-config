@@ -65,12 +65,18 @@
       "aarch64-linux"
       "x86_64-linux"
     ];
+    nixosHosts = [
+      "yerm"
+      "updog"
+      "bofa"
+    ];
 
     # IN PYTHON:
     # def genAttrs(systems):
     #   return lambda fn: { system: fn(system) for system in systems }
     # forAllSystems = genAttrs(systems)
     forAllSystems = nixpkgs.lib.genAttrs systems;
+    forAllHosts = nixpkgs.lib.genAttrs nixosHosts;
   in {
     # Your custom packages
     # Accessible through 'nix build', 'nix shell', etc
@@ -92,68 +98,31 @@
     homeManagerModules = import ./modules/home-manager;
 
     apps = forAllSystems (system: {
-      rc2nix = inputs.plasma-manager.apps.${system}.rc2nix;
+      plasma-rc2nix = inputs.plasma-manager.apps.${system}.rc2nix;
     });
 
     # NixOS configuration entrypoint
     # Available through 'sudo nixos-rebuild switch --flake .#your-hostname'
-    nixosConfigurations = {
-      updog = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+    nixosConfigurations = forAllHosts (host:
+      nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs host;};
         modules = [
           ./nixos
-          ./nixos/hosts/updog
+          ./hosts/${host}
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.howird = import ./hosts/${host}/home.nix;
+            home-manager.extraSpecialArgs = {inherit inputs outputs host;};
+          }
         ];
-      };
-      yerm = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./nixos
-          ./nixos/hosts/yerm
-        ];
-      };
-      bofa = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./nixos
-          ./nixos/hosts/bofa
-        ];
-      };
-    };
+      });
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager switch --flake .#howird@yerm'
     homeConfigurations = {
-      "howird@updog" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {
-          host = "updog";
-          inherit inputs outputs;
-        };
-        modules = [
-          ./home-manager/hosts/updog.nix
-        ];
-      };
-      "howird@yerm" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {
-          host = "yerm";
-          inherit inputs outputs;
-        };
-        modules = [
-          ./home-manager/hosts/yerm.nix
-        ];
-      };
-      "howird@bofa" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {
-          host = "bofa";
-          inherit inputs outputs;
-        };
-        modules = [
-          ./home-manager/hosts/bofa.nix
-        ];
-      };
       "howard@vip" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {
@@ -161,6 +130,7 @@
           inherit inputs outputs;
         };
         modules = [
+          ./home-manager/non-nixos.nix
           ./home-manager/hosts/vip.nix
         ];
       };

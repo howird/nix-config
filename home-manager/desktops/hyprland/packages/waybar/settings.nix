@@ -1,6 +1,6 @@
-{...}: let
+{config, ...}: let
   custom = {
-    font = "JetBrainsMono NF";
+    font = config.stylix.fonts.monospace.name;
     font_size = "18px";
     font_weight = "bold";
     text_color = "#FBF1C7";
@@ -82,19 +82,19 @@ in {
       format = "<span foreground='${green}'> </span> {usage}%";
       format-alt = "<span foreground='${green}'> </span> {avg_frequency} GHz";
       interval = 2;
-      on-click-right = "hyprctl dispatch exec '[float; center; size 950 650] kitty --override font_size=14 --title float_kitty btop'";
+      on-click-right = "hyprctl dispatch exec '[float; center; size 950 650] alacritty --override font_size=14 --title float_alacritty btop'";
     };
     memory = {
       format = "<span foreground='${cyan}'>󰟜 </span>{}%";
       format-alt = "<span foreground='${cyan}'>󰟜 </span>{used} GiB"; # 
       interval = 2;
-      on-click-right = "hyprctl dispatch exec '[float; center; size 950 650] kitty --override font_size=14 --title float_kitty btop'";
+      on-click-right = "hyprctl dispatch exec '[float; center; size 950 650] alacritty --override font_size=14 --title float_alacritty btop'";
     };
     disk = {
       # path = "/";
       format = "<span foreground='${orange}'>󰋊 </span>{percentage_used}%";
       interval = 60;
-      on-click-right = "hyprctl dispatch exec '[float; center; size 950 650] kitty --override font_size=14 --title float_kitty btop'";
+      on-click-right = "hyprctl dispatch exec '[float; center; size 950 650] alacritty --override font_size=14 --title float_alacritty btop'";
     };
     network = {
       format-wifi = "<span foreground='${magenta}'> </span> {signalStrength}%";

@@ -7,7 +7,7 @@
   ...
 }: {
   imports = [
-    ../home.nix
-    ../home-desktop.nix
+    ../../home-manager
+    ../../home-manager/nixos-only.nix
   ];
 }

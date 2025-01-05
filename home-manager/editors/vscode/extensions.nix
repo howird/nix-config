@@ -60,7 +60,7 @@
 
       # misc tools
       github.vscode-github-actions
-      streetsidesoftware.code-spell-checker
+      # streetsidesoftware.code-spell-checker
       wmaurer.change-case
 
       # AI

@@ -7,12 +7,12 @@
   ...
 }: {
   imports = [
-    ./modules/shells
-    ./modules/editors
+    ./shells
+    ./editors
 
-    ./modules/programming.nix
-    ./modules/git.nix
-    ./modules/tmux.nix
+    ./programming.nix
+    ./git.nix
+    ./tmux.nix
   ];
 
   config = {
@@ -24,15 +24,6 @@
       username = config.myUsername;
       homeDirectory = "/home/${config.myUsername}";
       sessionPath = ["$HOME/.local/bin"];
-    };
-
-    nixpkgs = {
-      overlays = [
-        outputs.overlays.additions
-        outputs.overlays.modifications
-        inputs.rust-overlay.overlays.default
-      ];
-      config = {allowUnfree = true;};
     };
 
     # Nicely reload system units when changing configs

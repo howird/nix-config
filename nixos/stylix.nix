@@ -12,7 +12,7 @@
 
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
 
     image = config.myWallpaper;
     polarity = "dark";
@@ -33,8 +33,10 @@
       };
 
       monospace = {
-        package = pkgs.maple-mono-NF;
-        name = "Maple Mono Normal-NF";
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono NF";
+        # package = pkgs.maple-mono-NF;
+        # name = "Maple Mono NF";
       };
 
       emoji = {

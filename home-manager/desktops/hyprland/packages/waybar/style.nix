@@ -1,6 +1,6 @@
-{...}: let
+{config, ...}: let
   custom = {
-    font = "JetBrainsMono NF";
+    font = "${config.stylix.fonts.monospace.name}";
     font_size = "18px";
     font_weight = "bold";
     text_color = "#FBF1C7";

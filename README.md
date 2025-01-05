@@ -55,7 +55,7 @@ nix run .#rc2nix > new-conf.txt # KDE Plasma
 code --diff old-conf.txt new-conf.txt
 ```
 
-- Then update `gnome.nix` or `kde.nix` accordingly in `./home-manager/modules/desktops`
+- Then update `gnome.nix` or `kde.nix` accordingly in `./home-manager/desktops`
 
 ## troubleshooting
 
