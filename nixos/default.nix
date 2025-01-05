@@ -10,12 +10,9 @@
   imports = [
     ./packages.nix
     ./desktops
-    ./stylix.nix # TODO(howird): stylix
+    ./stylix.nix
     # ./gaming.nix
   ];
-
-  # myDesktop.kde = true;
-  myDesktop.hyprland = true;
 
   nixpkgs = {
     # You can add overlays here
@@ -114,10 +111,6 @@
   };
 
   services.flatpak.enable = true;
-
-  fonts.packages = with pkgs.nerd-fonts; [
-    jetbrains-mono
-  ];
 
   virtualisation.docker.enable = true;
   programs.nix-ld.enable = true;

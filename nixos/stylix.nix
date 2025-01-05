@@ -12,7 +12,7 @@
 
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
 
     image = config.myWallpaper;
     polarity = "dark";
@@ -20,38 +20,41 @@
 
     cursor.package = pkgs.bibata-cursors;
     cursor.name = "Bibata-Original-Ice";
+  };
 
-    fonts = {
-      serif = {
-        package = pkgs.aleo-fonts;
-        name = "Aleo";
-      };
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    maple-mono-NF
+    aleo-fonts
+  ];
 
-      sansSerif = {
-        package = pkgs.noto-fonts-cjk-sans;
-        name = "Noto Sans CJK JP";
-      };
+  stylix.fonts = rec {
+    serif = {
+      package = pkgs.aleo-fonts;
+      name = "Aleo";
+    };
 
-      monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrainsMono NF";
-        # package = pkgs.maple-mono-NF;
-        # name = "Maple Mono NF";
-      };
+    sansSerif = serif;
 
-      emoji = {
-        package = pkgs.noto-fonts-emoji;
-        name = "Noto Color Emoji";
-      };
+    monospace = {
+      # package = pkgs.nerd-fonts.jetbrains-mono;
+      # name = "JetBrainsMono NF";
+      package = pkgs.maple-mono-NF;
+      name = "Maple Mono NF";
+    };
 
-      sizes = let
-        fontSize = 12;
-      in {
-        applications = fontSize;
-        desktop = fontSize;
-        popups = fontSize;
-        terminal = fontSize;
-      };
+    emoji = {
+      package = pkgs.noto-fonts-emoji;
+      name = "Noto Color Emoji";
+    };
+
+    sizes = let
+      fontSize = 12;
+    in {
+      applications = fontSize;
+      desktop = fontSize;
+      popups = fontSize;
+      terminal = fontSize;
     };
   };
 }

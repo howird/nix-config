@@ -29,7 +29,6 @@
     plugins.colorizer.enable = true;
 
     colorschemes.base16.enable = true;
-    # colorschemes.base16.colorscheme = stylix.colors;
 
     plugins.lsp = {
       enable = true;

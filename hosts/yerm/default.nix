@@ -11,6 +11,8 @@
     ./hardware-configuration.nix
   ];
 
+  myDesktop.hyprland = true;
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;

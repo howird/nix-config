@@ -18,6 +18,8 @@
     ../../llms.nix
   ];
 
+  myDesktop.hyprland = true;
+
   # GPU STUFF
   hardware.graphics = {
     enable = true;

@@ -1,20 +1,14 @@
 {config, ...}: let
   custom = {
-    font = "${config.stylix.fonts.monospace.name}";
-    font_size = "18px";
+    font = ''"${config.stylix.fonts.serif.name}"'';
     font_weight = "bold";
-    text_color = "#FBF1C7";
-    background_0 = "#1D2021";
-    background_1 = "#282828";
-    border_color = "#928374";
-    red = "#CC241D";
-    green = "#98971A";
-    yellow = "#FABD2F";
-    blue = "#458588";
-    magenta = "#B16286";
-    cyan = "#689D6A";
-    orange = "#D65D0E";
-    orange_bright = "#FE8019";
+    font_size = "18px";
+
+    text_color = "#${config.lib.stylix.colors.base05}";
+    background_0 = "#${config.lib.stylix.colors.base00}";
+    background_1 = "#${config.lib.stylix.colors.base01}";
+    border_color = "#${config.lib.stylix.colors.base03}";
+
     opacity = "1";
     indicator_height = "2px";
   };
@@ -32,8 +26,8 @@ in {
     }
 
     window#waybar {
-      background: #282828;
-      border-top: 1px solid #928374;
+      background: ${background_0};
+      border-top: 1px solid ${border_color};
     }
 
     tooltip {
@@ -49,7 +43,7 @@ in {
       padding-left: 15px;
     }
     #workspaces button {
-      color: ${yellow};
+      color: #${config.lib.stylix.colors.yellow};
       padding-left:  5px;
       padding-right: 5px;
       margin-right: 10px;
@@ -58,7 +52,7 @@ in {
       color: ${text_color};
     }
     #workspaces button.active {
-      color: ${orange_bright};
+      color: #${config.lib.stylix.colors.bright-orange};
     }
 
     #clock {
