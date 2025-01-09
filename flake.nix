@@ -114,6 +114,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            # home-manager.backupFileExtension = "old";
             home-manager.users.howird = import ./hosts/${host}/home.nix;
             home-manager.extraSpecialArgs = {inherit inputs outputs host;};
           }

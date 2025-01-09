@@ -50,6 +50,7 @@
       svelte.svelte-vscode
       bradlc.vscode-tailwindcss
       dbaeumer.vscode-eslint
+      ms-vscode.live-server
 
       # misc langs
       tamasfe.even-better-toml
@@ -74,6 +75,12 @@
         publisher = "saoudrizwan";
         version = "2.1.4";
         sha256 = "sha256-zNcGoVN+h/AEDwKKyISEobuWr0hQUf7xk7e+qsE1ly4=";
+      }
+      {
+        name = "p5-vscode";
+        publisher = "samplavigne";
+        version = "1.2.16";
+        sha256 = "sha256-W/9k+r9ddSCBBj1V0b1Bd8I5oTCmzkAD10CUa2iLE70=";
       }
     ];
 }

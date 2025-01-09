@@ -9,17 +9,18 @@
 
         "nm-applet &"
         "poweralertd &"
-        "wl-clip-persist --clipboard both &"
-        "wl-paste --watch cliphist store &"
+        # "wl-clip-persist --clipboard both &"
+        # "wl-paste --watch cliphist store &"
+        "clipse -listen"
         "waybar &"
         "swaync &"
         "swww-daemon &"
 
-        "hyprlock"
-
         ## App auto start
-        # "[workspace 1 silent] $browser"
-        # "[workspace 2 silent] $term"
+        "[workspace 1 silent] $browser"
+        "[workspace 2 silent] $term"
+        "[workspace 3 silent] zotero"
+        "[workspace 4 silent] obsidian"
       ];
 
       input = {
@@ -134,7 +135,7 @@
       # variables
       "$mainMod" = "SUPER";
       "$shftMod" = "SUPER SHIFT";
-      "$floatCenter" = "[float; center; size 1111 700]";
+      "$floatCenter" = "[float; center; size 900 600]";
 
       "$term" = "alacritty";
       "$browser" = "zen";
@@ -143,6 +144,9 @@
 
       bind = [
         "$mainMod, Q, killactive,"
+        "$shftMod, Q, exec, hyprlock"
+        "$shftMod ALT, Q, exit"
+
         "$mainMod, F, fullscreen, 0"
         "$shftMod, F, fullscreen, 1"
         "$mainMod, Space, exec, toggle_float"
@@ -159,13 +163,16 @@
         "$mainMod, Z, exec, zoterro"
         "$mainMod, M, exec, spotify"
         "$mainMod, I, exec, discord"
-
-        # lock
-        "$mainMod, Escape, exec, swaylock"
-        "$mainMod, Escape, exit"
+        "$mainMod, I, exec, discord"
+        "$mainMod, Escape, exec, [workspace 8] $term --title nixconf -e 'nvim' ~/nix/config"
+        "$shftMod, Escape, exec, [workspace 8; float; center; size 1200 600] $term --title htop -e 'htop'"
 
         "$shftMod, W, exec, hyprctl dispatch exec '$floatCenter waypaper'"
         "$mainMod, N, exec, swaync-client -t -sw"
+
+        # clipboard manager
+        # "$mainMod, V, exec, cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy"
+        "$mainMod, V, exec, $floatCenter $term --title clipse -e 'clipse'"
 
         # screenshot
         "$mainMod ALT, S, exec, hyprshot -m output"
@@ -256,9 +263,6 @@
 
         "$mainMod, mouse_down, workspace, e-1"
         "$mainMod, mouse_up, workspace, e+1"
-
-        # clipboard manager
-        "$mainMod, V, exec, cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy"
       ];
 
       # # binds active in lockscreen
@@ -319,19 +323,16 @@
         "opacity 1.0 override 1.0 override, class:(zen)"
         "opacity 1.0 override 1.0 override, class:(evince)"
         "workspace 1, class:^(zen)$"
+        "workspace 2, class:^(code)$"
         "workspace 3, class:^(evince)$"
-        "workspace 4, class:^(Gimp-2.10)$"
-        "workspace 5, class:^(Audacious)$"
-        "workspace 5, class:^(Spotify)$"
-        "workspace 8, class:^(com.obsproject.Studio)$"
-        "workspace 10, class:^(discord)$"
-        "workspace 10, class:^(WebCord)$"
+        "workspace 3, class:^(zotero)$"
+        "workspace 4, class:^(obsidian)$"
+        "workspace 5, class:^(teams-for-linux)$"
+        "workspace 5, class:^(discord)$"
+        "workspace 7, class:^(Spotify)$"
         "idleinhibit focus, class:^(mpv)$"
         "idleinhibit fullscreen, class:^(firefox)$"
         "float,class:^(waypaper)$"
-        "float,class:^(zenity)$"
-        "center,class:^(zenity)$"
-        "size 850 500,class:^(zenity)$"
         "float,class:^(org.gnome.FileRoller)$"
         "center,class:^(org.gnome.FileRoller)$"
         "size 850 500,class:^(org.gnome.FileRoller)$"

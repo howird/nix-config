@@ -1,99 +1,89 @@
 {
-  lib,
-  inputs,
-  ...
-}: {
   programs.starship = {
-    enable = false;
-
-    enableBashIntegration = true;
-    enableZshIntegration = true;
-    enableNushellIntegration = true;
+    enable = true;
 
     settings = {
-      format = lib.concatStrings [
-        "[](color_orange)"
-        "$os"
-        "[](bg:color_yellow fg:color_orange)"
-        "$directory"
-        "[](fg:color_yellow bg:color_aqua)"
-        "$git_branch"
-        "$git_status"
-        "[](fg:color_aqua bg:color_blue)"
-        "$nix_shell"
-        "[](fg:color_blue bg:color_bg3)"
-        "$cmd_duration"
-        "[](fg:color_bg3) "
-      ];
-
-      palette = "gruvbox_dark";
-      palettes.gruvbox_dark = {
-        color_fg0 = "#fbf1c7";
-        color_bg1 = "#3c3836";
-        color_bg3 = "#665c54";
-        color_blue = "#458588";
-        color_aqua = "#689d6a";
-        color_green = "#98971a";
-        color_orange = "#d65d0e";
-        color_purple = "#b16286";
-        color_red = "#cc241d";
-        color_yellow = "#d79921";
-      };
-
-      os = {
-        disabled = false;
-        style = "bg:color_orange bold fg:color_fg0";
-        symbols = {
-          NixOS = " ";
-        };
-      };
+      add_newline = false;
 
       directory = {
-        style = "bold fg:color_fg0 bg:color_yellow";
-        format = "[ $path ]($style)";
-        truncation_length = 3;
+        style = "purple";
+        read_only = " ro";
       };
 
       git_branch = {
-        symbol = "";
-        style = "bg:color_aqua";
-        format = "[[ $symbol $branch ](bold fg:color_fg0 bg:color_aqua)]($style)";
-      };
-
-      git_status = {
-        style = "bg:color_aqua bold fg:color_fg0";
-        format = "[$all_status$ahead_behind]($style)";
-      };
-
-      nix_shell = {
-        format = "[ via nix $name ]($style)";
-        style = "bg:color_blue bold fg:color_fg0";
-      };
-
-      time = {
-        disabled = false;
-        time_format = "%R";
-        style = "bg:color_bg1";
-        format = "[[   $time ](fg:color_fg0 bg:color_bg1)]($style)";
-      };
-
-      cmd_duration = {
-        format = "[ 󰔛 $duration ]($style)";
-        disabled = false;
-        style = "bg:color_bg3 fg:color_fg0";
-        show_notifications = false;
-        min_time_to_notify = 60000;
-      };
-
-      line_break = {
-        disabled = false;
+        style = "yellow";
+        symbol = "";
       };
 
       character = {
-        disabled = false;
-        success_symbol = "[  ](bold fg:color_green)";
-        error_symbol = "[  ](bold fg:color_red)";
+        success_symbol = "[>](red)[>](green)[>](blue)";
+        error_symbol = "[>](cyan)[>](purple)[>](yellow)";
+        vicmd_symbol = "[<](bold green)";
       };
+
+      line_break.disabled = true;
+
+      nodejs = {
+        format = "with [$symbol($version )]($style)";
+        symbol = "node ";
+        version_format = "\${major}";
+        disabled = true;
+      };
+
+      git_commit.tag_symbol = " tag ";
+
+      git_status = {
+        ahead = ">";
+        behind = "<";
+        diverged = "<>";
+        renamed = "r";
+        deleted = "x";
+      };
+
+      aws.symbol = "aws ";
+      cobol.symbol = "cobol ";
+      conda.symbol = "conda ";
+      crystal.symbol = "cr ";
+      cmake.symbol = "cmake ";
+      dart.symbol = "dart ";
+      deno.symbol = "deno ";
+      dotnet.symbol = ".NET ";
+      docker_context.symbol = "docker ";
+      elixir.symbol = "exs ";
+      elm.symbol = "elm ";
+      golang.symbol = "go ";
+      hg_branch.symbol = "hg ";
+      java.symbol = "java ";
+      julia.symbol = "jl ";
+      kotlin.symbol = "kt ";
+      memory_usage.symbol = "memory ";
+      nim.symbol = "nim ";
+
+      nix_shell = {
+        format = "❄️ ";
+        symbol = "nix ";
+      };
+
+      ocaml.symbol = "ml ";
+      package.symbol = "pkg ";
+      perl.symbol = "pl ";
+      php.symbol = "php ";
+      purescript.symbol = "purs ";
+      python.symbol = "python ";
+      ruby.symbol = "ruby ";
+
+      rust = {
+        symbol = "rust ";
+        disabled = true;
+      };
+
+      bun = {
+        symbol = "bun ";
+        disabled = true;
+      };
+
+      scala.symbol = "scala ";
+      swift.symbol = "swift ";
     };
   };
 }

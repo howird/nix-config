@@ -5,10 +5,9 @@
 }: {
   home.packages = with pkgs; [
     swww
-    hyprpicker
     hyprshot
-    wl-clip-persist
-    cliphist
+    clipse
+    wl-clipboard-rs
     wf-recorder
     glib
     wayland

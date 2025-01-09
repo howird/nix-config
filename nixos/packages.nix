@@ -13,7 +13,6 @@
     # utilities
     busybox
     fastfetch
-    htop
     lsof
     pciutils
     cachix
@@ -31,9 +30,9 @@
     firefox
     chromium
     vlc
-    amberol
-    gimp
-    xournalpp
+    rhythmbox
+    mpv
+    zathura
   ];
 
   programs = {

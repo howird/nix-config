@@ -7,15 +7,12 @@
   ...
 }:
 lib.mkIf config.myDesktop.hyprland {
-  services.xserver.displayManager.lightdm.enable = true;
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "howird";
-  };
-  services.displayManager.defaultSession = "hyprland";
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.wayland = true;
 
-  # # run directly from tty without display manager
+  # run directly from tty without display manager
   # services.displayManager.enable = lib.mkForce false;
+  # services.xserver.displayManager.lightdm.enable = false;
 
   programs.hyprland = {
     enable = true;

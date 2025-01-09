@@ -35,7 +35,7 @@ in {
       text = cmd[update:1000] echo "$(date +"%k:%M")"
       color = rgba(235, 219, 178, .9)
       font_size = 115
-      font_family = ${config.stylix.fonts.monospace.name} Bold
+      font_family = ${config.stylix.fonts.serif.name} Bold
       shadow_passes = 3
       position = 0, ${
       if (host == "yerm")
@@ -52,7 +52,7 @@ in {
       text = cmd[update:1000] echo "- $(date +"%A, %B %d") -"
       color = rgba(235, 219, 178, .9)
       font_size = 18
-      font_family = ${config.stylix.fonts.monospace.name}
+      font_family = ${config.stylix.fonts.serif.name}
       shadow_passes = 3
       position = 0, ${
       if (host == "yerm")
@@ -89,7 +89,7 @@ in {
       text =   $USER
       color = rgba(235, 219, 178, 1)
       font_size = 15
-      font_family = ${config.stylix.fonts.monospace.name}
+      font_family = ${config.stylix.fonts.serif.name}
       position = 0, ${
       if (host == "yerm")
       then "131"
@@ -113,7 +113,7 @@ in {
       color = rgba(235, 219, 178, .9)
       font_color = rgba(235, 219, 178, .9)
       font_size = 14
-      font_family = ${config.stylix.fonts.monospace.name}
+      font_family = ${config.stylix.fonts.serif.name}
       fade_on_empty = false
       placeholder_text = <i><span foreground="##fbf1c7">Enter Password</span></i>
       hide_input = false
