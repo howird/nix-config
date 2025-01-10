@@ -4,6 +4,7 @@
   lib,
   config,
   pkgs,
+  host,
   ...
 }: {
   imports = [
@@ -64,6 +65,12 @@
         "TerminalService" = "Alacritty.desktop";
         "fixed" = "${config.stylix.fonts.monospace.name},10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
       };
+
+    powerdevil.AC = lib.mkIf (host == "bofa") {
+      autoSuspend.action = "nothing";
+      turnOffDisplay.idleTimeout = 600;
+      turnOffDisplay.idleTimeoutWhenLocked = "whenLockedAndUnlocked";
+    };
 
       configFile.kded5rc."Module-browserintegrationreminder"."autoload" = false;
       configFile.kcminputrc."Libinput/2362/628/PIXA3854:00 093A:0274 Touchpad"."NaturalScroll" = true;

@@ -1,4 +1,4 @@
-{...}: {
+{lib, host,...}: {
   wayland.windowManager.hyprland = {
     settings = {
       # autostart
@@ -6,10 +6,6 @@
         "systemctl --user import-environment &"
         "hash dbus-update-activation-environment 2>/dev/null &"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &"
-
-        "blueman-applet &"
-        "nm-applet &"
-        "poweralertd &"
 
         # "wl-clip-persist --clipboard both &"
         # "wl-paste --type text --watch cliphist store &"
@@ -20,7 +16,6 @@
         "waybar &"
         "swaync &"
 	"swayidle -w timeout 600 'hyprlock' before-sleep 'hyprlock' &"
-	# "swayidle -w timeout 1200 'systemctl hibernate' &"
 	# "gnome-keyring-daemon --start --components=secrets &"
 
         ## App auto start
@@ -28,7 +23,13 @@
         "[workspace 2 silent] $term"
         "[workspace 3 silent] zotero"
         "[workspace 4 silent] obsidian"
-      ];
+      ] ++ (if host == "bofa" then [
+        "nm-applet &"
+        "poweralertd &"
+        "blueman-applet &"
+      ] else [
+        "swayidle -w timeout 1200 'systemctl hibernate' &"
+      ]);
 
       input = {
         kb_layout = "us";
@@ -341,9 +342,9 @@
         "idleinhibit fullscreen, class:^(firefox)$"
         "float,class:^(waypaper)$"
         "float,class:^(org.gnome.FileRoller)$"
-        "float,class:^(Zotero)$,title:^(Progress)$"
-        "float,class:^(nm-applet)$"
-        "float,class:^(blueman)$"
+        "float,workspace 3,size 20% 20%,move 10% 10%,focus:0,class:^(Zotero)$,title:^(Progress)$"
+        "float,class:^(nm-.*)$"
+        "float,class:^(.*blueman.*)$"
         "center,class:^(org.gnome.FileRoller)$"
         "size 850 500,class:^(org.gnome.FileRoller)$"
         "size 850 500,title:^(File Upload)$"
