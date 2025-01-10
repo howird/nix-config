@@ -19,7 +19,6 @@
       # rocmSupport = true;
       # cudaSupport = true;
       permittedInsecurePackages = [
-        "libtiff-4.0.3-opentoonz"
       ];
     };
   };

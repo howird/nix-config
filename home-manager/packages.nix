@@ -16,7 +16,6 @@
 
     rnote
     krita
-    opentoonz
     obs-studio
     kdenlive
 
