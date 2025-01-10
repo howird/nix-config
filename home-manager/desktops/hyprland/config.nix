@@ -1,35 +1,45 @@
-{lib, host,...}: {
+{
+  lib,
+  host,
+  ...
+}: {
   wayland.windowManager.hyprland = {
     settings = {
       # autostart
-      exec-once = [
-        "systemctl --user import-environment &"
-        "hash dbus-update-activation-environment 2>/dev/null &"
-        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &"
+      exec-once =
+        [
+          "systemctl --user import-environment &"
+          "hash dbus-update-activation-environment 2>/dev/null &"
+          "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &"
 
-        # "wl-clip-persist --clipboard both &"
-        # "wl-paste --type text --watch cliphist store &"
-        # "wl-paste --type image --watch cliphist store &"
-        "clipse -listen"
+          # "wl-clip-persist --clipboard both &"
+          # "wl-paste --type text --watch cliphist store &"
+          # "wl-paste --type image --watch cliphist store &"
+          "clipse -listen"
 
-        "swww-daemon &"
-        "waybar &"
-        "swaync &"
-	"swayidle -w timeout 600 'hyprlock' before-sleep 'hyprlock' &"
-	# "gnome-keyring-daemon --start --components=secrets &"
+          "swww-daemon &"
+          "waybar &"
+          "swaync &"
+          "swayidle -w timeout 600 'hyprlock' before-sleep 'hyprlock' &"
+          # "gnome-keyring-daemon --start --components=secrets &"
 
-        ## App auto start
-        "[workspace 1 silent] $browser"
-        "[workspace 2 silent] $term"
-        "[workspace 3 silent] zotero"
-        "[workspace 4 silent] obsidian"
-      ] ++ (if host == "bofa" then [
-        "nm-applet &"
-        "poweralertd &"
-        "blueman-applet &"
-      ] else [
-        "swayidle -w timeout 1200 'systemctl hibernate' &"
-      ]);
+          ## App auto start
+          "[workspace 1 silent] $browser"
+          "[workspace 2 silent] $term"
+          "[workspace 3 silent] zotero"
+          "[workspace 4 silent] obsidian"
+        ]
+        ++ (
+          if host == "bofa"
+          then [
+            "nm-applet &"
+            "poweralertd &"
+            "blueman-applet &"
+          ]
+          else [
+            "swayidle -w timeout 1200 'systemctl hibernate' &"
+          ]
+        );
 
       input = {
         kb_layout = "us";
@@ -172,8 +182,8 @@
         "$mainMod, M, exec, spotify"
         "$mainMod, I, exec, discord"
         "$mainMod, I, exec, discord"
-        "$mainMod, Escape, exec, [workspace 8] $term --title nixconf -e 'nvim' ~/nix/config"
-        "$shftMod, Escape, exec, [workspace 8; float; center; size 1200 600] $term --title htop -e 'htop'"
+        "$mainMod, Escape, exec, [workspace 6] $term --title nixconf -e 'nvim' ~/nix/config" # TODO(howird): pwd broken
+        "$shftMod, Escape, exec, [workspace 6; float; center; size 1200 600] $term --title htop -e 'htop'"
 
         "$shftMod, W, exec, hyprctl dispatch exec '$floatCenter waypaper'"
         "$mainMod, N, exec, swaync-client -t -sw"

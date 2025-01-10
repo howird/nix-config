@@ -19,5 +19,9 @@
     ignores = [
       "**/.aider*"
     ];
+    extraConfig = {
+      core.editor = "nvim";
+      pull.ff = "only";
+    };
   };
 }
