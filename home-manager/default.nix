@@ -12,7 +12,6 @@
 
     ./programming.nix
     ./git.nix
-    ./tmux.nix
     ./htop.nix
     ./gpg.nix
     ./mpv.nix

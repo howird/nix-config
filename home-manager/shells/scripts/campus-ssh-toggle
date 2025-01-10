@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # I use this script to comment/comment out the first two lines of my `~/.ssh/config`.
 # These lines configure some of my ssh hosts to use a jumphost, which is not needed
 # when I am on campus.

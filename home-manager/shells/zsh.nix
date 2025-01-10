@@ -17,6 +17,7 @@ lib.mkIf config.myShell.zsh {
 
     initExtra = ''
       eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
+      source ${./scripts/auto_tmux.sh}
     '';
 
     history = {

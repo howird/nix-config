@@ -24,10 +24,10 @@
           # "gnome-keyring-daemon --start --components=secrets &"
 
           ## App auto start
-          "[workspace 1 silent] $browser"
-          "[workspace 2 silent] $term"
-          "[workspace 3 silent] zotero"
-          "[workspace 4 silent] obsidian"
+          "[workspace 1 silent] zotero"
+          "[workspace 2 silent] obsidian"
+          "[workspace 3 silent] $term"
+          "[workspace 4 silent] $browser"
         ]
         ++ (
           if host == "bofa"
@@ -175,22 +175,18 @@
         "$shftMod, T, exec, $floatCenter $term"
         "$mainMod, B, exec, $browser"
         "$mainMod, E, exec, $fileManager"
-        "$mainMod, C, exec, $codeEditor"
         "$shftMod, E, exec, $floatCenter $fileManager"
-        "$mainMod, O, exec, obsidian"
-        "$mainMod, Z, exec, zoterro"
         "$mainMod, M, exec, spotify"
         "$mainMod, I, exec, discord"
-        "$mainMod, I, exec, discord"
-        "$mainMod, Escape, exec, [workspace 6] $term --title nixconf -e 'nvim' ~/nix/config" # TODO(howird): pwd broken
+        "$mainMod, Escape, exec, [workspace 6] $term --working-directory ~/nix/config --title nixconf -e 'tat'"
         "$shftMod, Escape, exec, [workspace 6; float; center; size 1200 600] $term --title htop -e 'htop'"
 
         "$shftMod, W, exec, hyprctl dispatch exec '$floatCenter waypaper'"
         "$mainMod, N, exec, swaync-client -t -sw"
 
         # clipboard manager
-        "$mainMod, V, exec, cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy"
-        # "$mainMod, V, exec, $floatCenter $term --title clipse -e 'clipse'"
+        # "$shftMod, V, exec, cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy"
+        "$shftMod, V, exec, $floatCenter $term --title clipse -e 'clipse'"
 
         # screenshot
         "$mainMod ALT, S, exec, hyprshot -m output"
@@ -211,6 +207,11 @@
         "ALT SHIFT, TAB, cyclenext, next"
 
         # switch workspace
+        "$mainMod, z, workspace, 1"
+        "$mainMod, x, workspace, 2"
+        "$mainMod, c, workspace, 3"
+        "$mainMod, v, workspace, 4"
+
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
         "$mainMod, 3, workspace, 3"
@@ -228,6 +229,11 @@
         "$mainMod, l, workspace, +1"
 
         # Move active window to a workspace with mainMod + SHIFT + [0-9]
+        "$shftMod, z, movetoworkspace, 1"
+        "$shftMod, x, movetoworkspace, 2"
+        "$shftMod, c, movetoworkspace, 3"
+        "$shftMod, v, movetoworkspace, 4"
+
         "$shftMod, 1, movetoworkspace, 1"
         "$shftMod, 2, movetoworkspace, 2"
         "$shftMod, 3, movetoworkspace, 3"
@@ -352,7 +358,7 @@
         "idleinhibit fullscreen, class:^(firefox)$"
         "float,class:^(waypaper)$"
         "float,class:^(org.gnome.FileRoller)$"
-        "float,workspace 3,size 20% 20%,move 10% 10%,focus:0,class:^(Zotero)$,title:^(Progress)$"
+        "float,workspace 3,size 20% 20%,move 10% 10%,class:^(.*otero.*)$,title:^(.*Progress.*)$"
         "float,class:^(nm-.*)$"
         "float,class:^(.*blueman.*)$"
         "center,class:^(org.gnome.FileRoller)$"
@@ -399,6 +405,10 @@
         "w[t1], gapsout:0, gapsin:0"
         "w[tg1], gapsout:0, gapsin:0"
         "f[1], gapsout:0, gapsin:0"
+	"1,on-created-empty:zotero"
+	"3,on-created-empty:obsidian"
+	"2,on-created-empty:$term"
+	"4,on-created-empty:$browser"
       ];
 
       gestures = {
