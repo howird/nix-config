@@ -7,14 +7,21 @@
         "hash dbus-update-activation-environment 2>/dev/null &"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &"
 
+        "blueman-applet &"
         "nm-applet &"
         "poweralertd &"
+
         # "wl-clip-persist --clipboard both &"
-        # "wl-paste --watch cliphist store &"
+        # "wl-paste --type text --watch cliphist store &"
+        # "wl-paste --type image --watch cliphist store &"
         "clipse -listen"
+
+        "swww-daemon &"
         "waybar &"
         "swaync &"
-        "swww-daemon &"
+	"swayidle -w timeout 600 'hyprlock' before-sleep 'hyprlock' &"
+	# "swayidle -w timeout 1200 'systemctl hibernate' &"
+	# "gnome-keyring-daemon --start --components=secrets &"
 
         ## App auto start
         "[workspace 1 silent] $browser"
@@ -171,8 +178,8 @@
         "$mainMod, N, exec, swaync-client -t -sw"
 
         # clipboard manager
-        # "$mainMod, V, exec, cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy"
-        "$mainMod, V, exec, $floatCenter $term --title clipse -e 'clipse'"
+        "$mainMod, V, exec, cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy"
+        # "$mainMod, V, exec, $floatCenter $term --title clipse -e 'clipse'"
 
         # screenshot
         "$mainMod ALT, S, exec, hyprshot -m output"
@@ -334,6 +341,9 @@
         "idleinhibit fullscreen, class:^(firefox)$"
         "float,class:^(waypaper)$"
         "float,class:^(org.gnome.FileRoller)$"
+        "float,class:^(Zotero)$,title:^(Progress)$"
+        "float,class:^(nm-applet)$"
+        "float,class:^(blueman)$"
         "center,class:^(org.gnome.FileRoller)$"
         "size 850 500,class:^(org.gnome.FileRoller)$"
         "size 850 500,title:^(File Upload)$"
