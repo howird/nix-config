@@ -13,9 +13,9 @@
     inputs.vscode-server.nixosModules.default
 
     ./hardware-configuration.nix
-    ../nixos/graphics/nvidia.nix
-    ../nixos/graphics/amd.nix
-    ../nixos/llms.nix
+    ../../nixos/graphics/nvidia.nix
+    ../../nixos/graphics/amd.nix
+    ../../nixos/llms.nix
   ];
 
   myDesktop.hyprland = true;
