@@ -31,12 +31,11 @@
         ]
         ++ (
           if host == "bofa"
-          then [
+          then []
+          else [
             "nm-applet &"
             "poweralertd &"
             "blueman-applet &"
-          ]
-          else [
             "swayidle -w timeout 1200 'systemctl hibernate' &"
           ]
         );
@@ -402,10 +401,10 @@
         "w[t1], gapsout:0, gapsin:0"
         "w[tg1], gapsout:0, gapsin:0"
         "f[1], gapsout:0, gapsin:0"
-	"1,on-created-empty:zotero"
-	"2,on-created-empty:obsidian"
-	"3,on-created-empty:$term"
-	"4,on-created-empty:$browser"
+        "1,on-created-empty:zotero"
+        "2,on-created-empty:obsidian"
+        "3,on-created-empty:$term"
+        "4,on-created-empty:$browser"
       ];
 
       gestures = {

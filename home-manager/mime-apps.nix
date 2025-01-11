@@ -12,6 +12,7 @@
       "text/html" = "zen.desktop";
       "x-scheme-handler/http" = "zen.desktop";
       "x-scheme-handler/https" = "zen.desktop";
+      "x-scheme-handler/magnet" = "org.qbittorrent.qBittorrent.desktop";
     };
   };
 }

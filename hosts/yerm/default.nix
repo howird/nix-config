@@ -12,6 +12,7 @@
   ];
 
   myDesktop.hyprland = true;
+  services.syncthing.enable = true;
 
   hardware.graphics = {
     enable = true;

@@ -13,6 +13,7 @@
     ./stylix.nix
     ./boot.nix
     ./nixpkgs.nix
+    ./syncthing.nix
   ];
 
   networking.networkmanager.enable = true;

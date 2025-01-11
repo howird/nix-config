@@ -64,11 +64,11 @@
         "actions": [
           {
             "label": "󰹑  Whole screen",
-            "command": "grimblast --notify --cursor --freeze copy output"
+            "command": "hyprshot -m output --clipboard-only"
           },
           {
             "label": "󰩭  Window / Region",
-            "command": "grimblast --notify --cursor --freeze copy area"
+            "command": "hyprshot -m region --clipboard-only"
           }
         ]
       },
@@ -100,7 +100,7 @@
         "actions": [
           {
             "label": "  Lock",
-            "command": "swaylock"
+            "command": "hyprlock"
           },
           {
             "label": "  Reboot",

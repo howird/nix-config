@@ -23,6 +23,7 @@
 
       # kdePackages.kio-gdrive
 
+      kdePackages.plasma-nm
       kdePackages.networkmanager-qt
       networkmanager-openvpn
       networkmanager-openconnect

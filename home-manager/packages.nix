@@ -9,7 +9,6 @@
   home.packages = with pkgs; [
     openconnect_openssl
     networkmanager
-    kdePackages.plasma-nm
 
     reaper
     audacity
@@ -23,6 +22,7 @@
     texliveFull
     zotero
     libreoffice-qt
+    scrcpy
 
     discord
     teams-for-linux
