@@ -68,14 +68,9 @@
       github.copilot
       github.copilot-chat
       continue.continue
+      saoudrizwan.claude-dev
     ]
     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-      {
-        name = "claude-dev";
-        publisher = "saoudrizwan";
-        version = "2.1.4";
-        sha256 = "sha256-zNcGoVN+h/AEDwKKyISEobuWr0hQUf7xk7e+qsE1ly4=";
-      }
       {
         name = "p5-vscode";
         publisher = "samplavigne";
