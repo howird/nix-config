@@ -10,7 +10,7 @@
   imports = [
     ./desktops
     ./packages.nix
-    ./stylix.nix
+    ./style.nix
     ./boot.nix
     ./nixpkgs.nix
     ./syncthing.nix

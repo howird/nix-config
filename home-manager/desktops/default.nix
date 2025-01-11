@@ -37,11 +37,6 @@
         description = "Cursor size.";
       };
     };
-    myWallpaper = mkOption {
-      type = types.path;
-      default = ./wallpapers/fall-forest.png;
-      description = "Wallpaper filename.";
-    };
   };
 
   config = {
