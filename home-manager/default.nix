@@ -13,13 +13,13 @@
     ./programming.nix
     ./git.nix
     ./htop.nix
-    ./gpg.nix
-    ./mpv.nix
     ./mime-apps.nix
   ];
 
   config = {
     myShell.zsh = true;
+
+    myEditor.vscode = true;
     myEditor.nvim = true;
 
     programs.home-manager.enable = true;

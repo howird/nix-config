@@ -12,6 +12,8 @@
     ./shells
     ./browsers
 
+    ./gpg.nix
+    ./mpv.nix
     ./alacritty.nix
     ./packages.nix
   ];
@@ -23,11 +25,7 @@
     myDesktop.hyprland = true;
 
     # editors
-    myEditor.vscode = true;
     myEditor.zed = true;
-
-    # shells
-    myShell.zsh = true;
 
     # browsers
     myBrowser.edge = true;

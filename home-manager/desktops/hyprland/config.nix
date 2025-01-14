@@ -202,8 +202,18 @@
         "ALT, l, movefocus, r"
         "ALT, k, movefocus, u"
         "ALT, j, movefocus, d"
-        "ALT, TAB, cyclenext, prev"
-        "ALT SHIFT, TAB, cyclenext, next"
+
+        # window/group control
+        "ALT, d, togglegroup"
+        "ALT, TAB, changegroupactive"
+        "ALT SHIFT, left, movewindoworgroup, l"
+        "ALT SHIFT, right, movewindoworgroup, r"
+        "ALT SHIFT, up, movewindoworgroup, u"
+        "ALT SHIFT, down, movewindoworgroup, d"
+        "ALT SHIFT, h, movewindoworgroup, l"
+        "ALT SHIFT, j, movewindoworgroup, d"
+        "ALT SHIFT, k, movewindoworgroup, u"
+        "ALT SHIFT, l, movewindoworgroup, r"
 
         # switch workspace
         "$mainMod, z, workspace, 1"
@@ -248,16 +258,6 @@
         "$shftMod, right, movetoworkspace, +1"
         "$shftMod, h, movetoworkspace, -1"
         "$shftMod, l, movetoworkspace, +1"
-
-        # window control
-        "ALT SHIFT, left, movewindow, l"
-        "ALT SHIFT, right, movewindow, r"
-        "ALT SHIFT, up, movewindow, u"
-        "ALT SHIFT, down, movewindow, d"
-        "ALT SHIFT, h, movewindow, l"
-        "ALT SHIFT, j, movewindow, d"
-        "ALT SHIFT, k, movewindow, u"
-        "ALT SHIFT, l, movewindow, r"
 
         "$mainMod CTRL, left, resizeactive, -80 0"
         "$mainMod CTRL, right, resizeactive, 80 0"
