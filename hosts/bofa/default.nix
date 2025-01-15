@@ -18,6 +18,7 @@
     ../../nixos/llms.nix
   ];
 
+  services.syncthing.enable = true;
   myDesktop.hyprland = true;
 
   # GPU STUFF
