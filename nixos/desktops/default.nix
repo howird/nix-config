@@ -20,11 +20,5 @@
       gnome = lib.mkEnableOption "gnome";
       xfce = lib.mkEnableOption "xfce";
     };
-
-    myWallpaper = lib.mkOption {
-      type = lib.types.path;
-      default = ../../home-manager/desktops/wallpapers/fall-forest.png;
-      description = "Wallpaper filename.";
-    };
   };
 }

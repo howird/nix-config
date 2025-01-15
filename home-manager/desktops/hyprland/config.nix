@@ -16,8 +16,8 @@
           # "wl-paste --type text --watch cliphist store &"
           # "wl-paste --type image --watch cliphist store &"
           "clipse -listen"
+	  "hyprpaper"
 
-          "swww-daemon &"
           "waybar &"
           "swaync &"
           "swayidle -w timeout 600 'hyprlock' before-sleep 'hyprlock' &"
@@ -180,7 +180,6 @@
         "$mainMod, Escape, exec, [workspace 6] $term --working-directory ~/nix/config --title nixconf -e 'tat'"
         "$shftMod, Escape, exec, [workspace 6; float; center; size 1200 600] $term --title htop -e 'htop'"
 
-        "$shftMod, W, exec, hyprctl dispatch exec '$floatCenter waypaper'"
         "$mainMod, N, exec, swaync-client -t -sw"
 
         # clipboard manager
@@ -323,7 +322,6 @@
         "size 1200 725,mpv"
         "float,audacious"
         "pin,rofi"
-        "pin,waypaper"
         "tile, neovide"
         "idleinhibit focus,mpv"
         "float,udiskie"
@@ -353,7 +351,6 @@
         "workspace 8, class:^(zen.*)$,title:^(.*Private Browsing.*)$"
         "idleinhibit focus, class:^(mpv)$"
         "idleinhibit fullscreen, class:^(firefox)$"
-        "float,class:^(waypaper)$"
         "float,class:^(org.gnome.FileRoller)$"
         "float,workspace 3,size 500 300,move 50 50,class:^(.*otero.*)$,title:^(.*Progress.*)$"
         "float,class:^(nm-.*)$"

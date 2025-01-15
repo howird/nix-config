@@ -4,8 +4,8 @@
   ...
 }: {
   home.packages = with pkgs; [
-    swww
     hyprshot
+    hyprpaper
     clipse
     # cliphist
     # wl-clip-persist
