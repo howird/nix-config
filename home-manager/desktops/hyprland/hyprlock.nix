@@ -36,11 +36,7 @@ in {
       font_size = 115
       font_family = ${config.stylix.fonts.serif.name} Bold
       shadow_passes = 3
-      position = 0, ${
-      if (host == "yerm")
-      then "-25"
-      else "-150"
-    }
+      position = 0, -150
       halign = center
       valign = top
     }
@@ -53,11 +49,7 @@ in {
       font_size = 18
       font_family = ${config.stylix.fonts.serif.name}
       shadow_passes = 3
-      position = 0, ${
-      if (host == "yerm")
-      then "-225"
-      else "-350"
-    }
+      position = 0, -350
       halign = center
       valign = top
     }
@@ -73,11 +65,7 @@ in {
       border_color = rgba(255, 255, 255, 0)
       rotate = 0
 
-      position = 0, ${
-      if (host == "yerm")
-      then "120"
-      else "270"
-    }
+      position = 0, 270
       halign = center
       valign = bottom
     }
@@ -89,11 +77,7 @@ in {
       color = rgba(235, 219, 178, 1)
       font_size = 15
       font_family = ${config.stylix.fonts.serif.name}
-      position = 0, ${
-      if (host == "yerm")
-      then "131"
-      else "281"
-    }
+      position = 0, 281
       halign = center
       valign = bottom
     }
@@ -116,11 +100,7 @@ in {
       fade_on_empty = false
       placeholder_text = <i><span foreground="##fbf1c7">Enter Password</span></i>
       hide_input = false
-      position = 0, ${
-      if (host == "yerm")
-      then "50"
-      else "200"
-    }
+      position = 0, 200
       halign = center
       valign = bottom
     }

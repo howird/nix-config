@@ -26,6 +26,7 @@
 
     discord
     teams-for-linux
+    slack
     zoom-us
 
     # intentional watching, not streaming!
