@@ -1,8 +1,10 @@
 {
+  config,
   inputs,
   pkgs,
+  lib,
   ...
-}: {
+}: lib.mkIf config.myDesktop.hyprland {
   home.packages = with pkgs; [
     hyprshot
     hyprpaper

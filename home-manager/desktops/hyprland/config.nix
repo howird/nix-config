@@ -20,7 +20,7 @@
 
           "waybar &"
           "swaync &"
-          "swayidle -w timeout 600 'hyprlock' before-sleep 'hyprlock' &"
+          "swayidle -w timeout 600 'hyprlock' &"
           # "gnome-keyring-daemon --start --components=secrets &"
 
           ## App auto start
@@ -36,6 +36,7 @@
             "nm-applet &"
             "poweralertd &"
             "blueman-applet &"
+            "swayidle -w before-sleep 'hyprlock' &"
             "swayidle -w timeout 1200 'systemctl hibernate' &"
           ]
         );
@@ -353,6 +354,7 @@
         "idleinhibit fullscreen, class:^(firefox)$"
         "float,class:^(org.gnome.FileRoller)$"
         "float,workspace 3,size 500 300,move 50 50,class:^(.*otero.*)$,title:^(.*Progress.*)$"
+        "float,class:^(.*otero.*)$,title:^(Zotero Settings)$"
         "float,class:^(nm-.*)$"
         "float,class:^(.*blueman.*)$"
         "center,class:^(org.gnome.FileRoller)$"
