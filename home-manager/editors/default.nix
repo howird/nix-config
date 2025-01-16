@@ -10,6 +10,7 @@
     ./vscode
     ./nvim
     ./zed
+    ./helix
   ];
 
   options = {
@@ -18,6 +19,7 @@
       vscodium = lib.mkEnableOption "vscodium";
       nvim = lib.mkEnableOption "nvim";
       zed = lib.mkEnableOption "zed";
+      helix = lib.mkEnableOption "helix";
     };
   };
 }

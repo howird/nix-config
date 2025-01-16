@@ -22,6 +22,7 @@
 
     myEditor.vscode = true;
     myEditor.nvim = true;
+    myEditor.helix = true;
 
     programs.home-manager.enable = true;
     home = {
