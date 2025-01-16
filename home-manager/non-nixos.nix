@@ -5,11 +5,6 @@
   pkgs,
   ...
 }: {
-  imports = [
-    inputs.stylix.homeManagerModules.stylix
-    ./stylix.nix
-  ];
-
   nixpkgs = {
     overlays = [
       outputs.overlays.additions

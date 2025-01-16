@@ -7,6 +7,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    fzf
     zoxide
     eza
     ripgrep

@@ -1,4 +1,9 @@
-{...}: {
+{
+  config,
+  lib,
+  ...
+}:
+lib.mkIf config.desktop.hyprland {
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     __GL_GSYNC_ALLOWED = "0";

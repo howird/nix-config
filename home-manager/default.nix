@@ -9,11 +9,12 @@
   imports = [
     ./shells
     ./editors
+    ./browsers
 
+    ./packages.nix
     ./programming.nix
     ./git.nix
     ./htop.nix
-    ./mime-apps.nix
   ];
 
   config = {

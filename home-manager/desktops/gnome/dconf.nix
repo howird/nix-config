@@ -7,6 +7,33 @@
   ...
 }: {
   dconf.settings = {
+    "org/gnome/mutter" = {
+      dynamic-workspaces = true;
+      experimental-features = ["scale-monitor-framebuffer"];
+    };
+
+    "org/gnome/shell" = {
+      disable-user-extensions = false;
+      favorite-apps = [
+        "vivaldi-stable.desktop"
+        "code.desktop"
+        "Alacritty.desktop"
+        "obsidian.desktop"
+        "discord.desktop"
+        "org.gnome.Nautilus.desktop"
+      ];
+      # `gnome-extensions list` for a list
+      # enabled-extensions = [
+      #   "user-theme@gnome-shell-extensions.gcampax.github.com"
+      #   "trayIconsReloaded@selfmade.pl"
+      #   "Vitals@CoreCoding.com"
+      #   "dash-to-panel@jderose9.github.com"
+      #   "sound-output-device-chooser@kgshank.net"
+      #   "space-bar@luchrioh"
+      # ];
+    };
+
+    "org/gnome/shell/app-switcher" = {current-workspace-only = true;};
     "org/gnome/desktop/wm/keybindings" = {
       switch-to-workspace-1 = ["<Super><Alt>1"];
       switch-to-workspace-2 = ["<Super><Alt>2"];

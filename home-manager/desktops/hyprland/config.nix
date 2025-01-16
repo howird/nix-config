@@ -16,7 +16,7 @@
           # "wl-paste --type text --watch cliphist store &"
           # "wl-paste --type image --watch cliphist store &"
           "clipse -listen"
-	  "hyprpaper"
+          "hyprpaper"
 
           "waybar &"
           "swaync &"

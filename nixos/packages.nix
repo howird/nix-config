@@ -17,7 +17,6 @@
     pciutils
     cachix
     wget
-    fzf
     python3
     ffmpeg-headless
     yt-dlp

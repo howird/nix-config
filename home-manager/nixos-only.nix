@@ -8,14 +8,12 @@
 }: {
   imports = [
     ./desktops
-    ./editors
-    ./shells
-    ./browsers
 
     ./gpg.nix
     ./mpv.nix
     ./alacritty.nix
     ./packages.nix
+    ./mime-apps.nix
   ];
 
   config = {
