@@ -1,6 +1,6 @@
 {config, ...}: {
   programs.waybar.settings.mainBar = with config.lib.stylix.colors; {
-    position = "top";
+    position = "bottom";
     layer = "top";
     height = 28;
     margin-top = 0;

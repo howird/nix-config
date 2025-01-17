@@ -5,13 +5,14 @@
   config,
   pkgs,
   ...
-}: {
+}:
+lib.mkIf config.myDesktop.gnome {
   home.packages = with pkgs; [
     dconf-editor
     gnome-tweaks
 
-    gnome.networkmanager-openvpn
-    gnome.networkmanager-openconnect
+    networkmanager-openvpn
+    networkmanager-openconnect
 
     # gnomeExtensions.user-themes
     # gnomeExtensions.tray-icons-reloaded
