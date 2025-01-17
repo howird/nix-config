@@ -348,6 +348,7 @@
         "workspace 1, class:^(zotero)$"
         "workspace 5, class:^(teams-for-linux)$"
         "workspace 5, class:^(discord)$"
+        "workspace 5, class:^(Slack)$"
         "workspace 8, class:^(Spotify)$"
         "workspace 8, class:^(zen.*)$,title:^(.*Private Browsing.*)$"
         "idleinhibit focus, class:^(mpv)$"
