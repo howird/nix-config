@@ -8,26 +8,28 @@
 }: {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
+    ./debug.nix
     ./keymaps.nix
   ];
 
-  programs.nixvim = lib.mkIf config.myEditor.nvim {
-    enable = true;
+  programs.nixvim = {
+    enable = config.myEditor.nvim;
+
     plugins.oil.enable = true;
     plugins.treesitter.enable = true;
-    plugins.fugitive.enable = true;
     plugins.undotree.enable = true;
+    plugins.fugitive.enable = true;
     plugins.telescope.enable = true;
-    plugins.web-devicons.enable = true;
     plugins.harpoon.enable = true;
+
+    plugins.web-devicons.enable = true;
     plugins.commentary.enable = true;
     plugins.nvim-surround.enable = true;
     plugins.guess-indent.enable = true;
 
+    colorschemes.base16.enable = true;
     plugins.lualine.enable = true;
     plugins.colorizer.enable = true;
-
-    colorschemes.base16.enable = true;
 
     plugins.lsp = {
       enable = true;
@@ -47,16 +49,6 @@
         yamlls.enable = true;
       };
     };
-
-    plugins.dap.enable = true;
-    plugins.dap-lldb.enable = true;
-    plugins.jupytext.enable = true;
-    extraPlugins = with pkgs.vimPlugins; [
-      {
-        plugin = nvim-dap-python;
-        config = ''lua require("dap-python").setup("python3")'';
-      }
-    ];
 
     vimAlias = true;
 
