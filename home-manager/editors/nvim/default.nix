@@ -21,9 +21,7 @@
     plugins.harpoon.enable = true;
     plugins.commentary.enable = true;
     plugins.nvim-surround.enable = true;
-
-    plugins.dap.enable = true;
-    plugins.jupytext.enable = true;
+    plugins.guess-indent.enable = true;
 
     plugins.lualine.enable = true;
     plugins.colorizer.enable = true;
@@ -48,6 +46,16 @@
         yamlls.enable = true;
       };
     };
+
+    plugins.dap.enable = true;
+    plugins.dap-lldb.enable = true;
+    plugins.jupytext.enable = true;
+    extraPlugins = with pkgs.vimPlugins; [
+      {
+        plugin = nvim-dap-python;
+        config = ''require("dap-python").setup("python3")'';
+      }
+    ];
 
     vimAlias = true;
 

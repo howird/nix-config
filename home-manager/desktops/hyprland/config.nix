@@ -156,9 +156,9 @@
       "$floatCenter" = "[float; center; size 900 600]";
 
       "$term" = "alacritty";
-      "$browser" = "zen";
+      "$browser" = "microsoft-edge";
       "$fileManager" = "nautilus";
-      "$codeEditor" = "zed";
+      "$codeEditor" = "code";
 
       bind = [
         "$mainMod, Q, killactive,"
