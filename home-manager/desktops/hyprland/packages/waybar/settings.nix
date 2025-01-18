@@ -46,9 +46,10 @@
         "5" = "[ coms ]";
         "6" = "[ conf ]";
         "7" = "[ art ]";
-        "8" = "VIII";
-        "9" = "IX";
-        "10" = "X";
+        "8" = "VII";
+        "9" = "VIII";
+        "10" = "IX";
+        "11" = "X";
         sort-by-number = true;
       };
       persistent-workspaces = {

@@ -13,6 +13,7 @@
 
   programs.nixvim = lib.mkIf config.myEditor.nvim {
     enable = true;
+    plugins.oil.enable = true;
     plugins.treesitter.enable = true;
     plugins.fugitive.enable = true;
     plugins.undotree.enable = true;
@@ -53,7 +54,7 @@
     extraPlugins = with pkgs.vimPlugins; [
       {
         plugin = nvim-dap-python;
-        config = ''require("dap-python").setup("python3")'';
+        config = ''lua require("dap-python").setup("python3")'';
       }
     ];
 

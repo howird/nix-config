@@ -13,7 +13,7 @@
       {
         mode = "n";
         key = "<leader>pv";
-        action.__raw = "vim.cmd.Ex";
+        action = "<cmd>Oil<CR>";
       }
 
       # move blocks of text in visual mode with shift + J/K
@@ -169,13 +169,13 @@
       }
       {
         mode = "n";
-        key = "<leader>pb";
-        action.__raw = "require('telescope.builtin').buffers";
+        key = "<leader>pF";
+        action.__raw = "require('telescope.builtin').git_files";
       }
       {
         mode = "n";
-        key = "<C-p>";
-        action.__raw = "require('telescope.builtin').git_files";
+        key = "<leader>pb";
+        action.__raw = "require('telescope.builtin').buffers";
       }
       {
         mode = "n";
