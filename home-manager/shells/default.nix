@@ -52,7 +52,6 @@
     };
 
     home.packages = with pkgs; [
-      (writeShellScriptBin "tat" (builtins.readFile ./scripts/tat))
       (writeShellScriptBin "campus-ssh-toggle" (builtins.readFile ./scripts/campus-ssh-toggle))
     ];
 
