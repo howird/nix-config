@@ -13,17 +13,52 @@
     plugins.dap.extensions.dap-python.enable = true;
     plugins.dap.extensions.dap-python.adapterPythonPath = "python3";
     plugins.dap-lldb.enable = true;
-    
+
     keymaps = [
       {
         mode = "n";
-        key = "<leader>ds";
-        action = "<cmd>lua require('dap').continue()<CR>";
+        key = "<leader>dc";
+        action = ":DapContinue<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>b";
+        action = "<cmd>DapToggleBreakpoint<CR>";
       }
       {
         mode = "n";
         key = "<leader>db";
-        action = "<cmd>DapToggleBreakpoint<CR>";
+        action = "<cmd>lua require('dap').run_to_cursor()<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>dh";
+        action = "<cmd>lua require('dap').step_back()<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>dj";
+        action = ":DapStepInto<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>dk";
+        action = ":DapStepOut<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>dl";
+        action = ":DapStepOver<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>dr";
+        action = ":DapToggleRepl<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>du";
+        action = "<cmd>lua require('dapui').toggle()<CR>";
       }
     ];
   };

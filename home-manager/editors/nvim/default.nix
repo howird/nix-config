@@ -9,19 +9,33 @@
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./debug.nix
-    ./keymaps.nix
+    ./base-keymaps.nix
+    ./ext-keymaps.nix
   ];
 
   programs.nixvim = {
     enable = config.myEditor.nvim;
 
-    plugins.oil.enable = true;
     plugins.treesitter.enable = true;
-    plugins.undotree.enable = true;
-    plugins.fugitive.enable = true;
-    plugins.telescope.enable = true;
-    plugins.harpoon.enable = true;
+    plugins.lsp = {
+      enable = true;
+      servers = {
+        bashls.enable = true;
+        clangd.enable = true;
+        cssls.enable = true;
+        dockerls.enable = true;
+        html.enable = true;
+        jsonls.enable = true;
+        lua_ls.enable = true;
+        nixd.enable = true;
+        pyright.enable = true;
+        svelte.enable = true;
+        yamlls.enable = true;
+      };
+    };
+    plugins.rustaceanvim.enable = true;
 
+    plugins.render-markdown.enable = true;
     plugins.web-devicons.enable = true;
     plugins.commentary.enable = true;
     plugins.nvim-surround.enable = true;
@@ -30,25 +44,6 @@
     colorschemes.base16.enable = true;
     plugins.lualine.enable = true;
     plugins.colorizer.enable = true;
-
-    plugins.lsp = {
-      enable = true;
-      servers = {
-        bashls.enable = true;
-        clangd.enable = true;
-        dockerls.enable = true;
-        html.enable = true;
-        jsonls.enable = true;
-        pyright.enable = true;
-        rust_analyzer = {
-          enable = true;
-          installCargo = false;
-          installRustc = false;
-        };
-        lua_ls.enable = true;
-        yamlls.enable = true;
-      };
-    };
 
     vimAlias = true;
 
