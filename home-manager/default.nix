@@ -10,6 +10,7 @@
     ./shells
     ./editors
     ./browsers
+    ./tmux
 
     ./packages.nix
     ./programming.nix

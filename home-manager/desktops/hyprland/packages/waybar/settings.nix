@@ -8,17 +8,16 @@
     margin-left = 0;
     margin-right = 0;
     modules-left = [
-      "custom/launcher"
       "hyprland/workspaces"
-      "tray"
+      "custom/uair"
     ];
     modules-center = ["clock"];
     modules-right = [
+      "tray"
       "cpu"
       "memory"
       "disk"
       "pulseaudio"
-      "network"
       "battery"
       "custom/notification"
     ];
@@ -39,13 +38,13 @@
       format = "{icon}";
       on-click = "activate";
       format-icons = {
-        "1" = "[ learn ]";
-        "2" = "[ note ]";
-        "3" = "[ code ]";
-        "4" = "[ browse ]";
-        "5" = "[ coms ]";
-        "6" = "[ conf ]";
-        "7" = "[ art ]";
+        "1" = "";
+        "2" = "󱞁";
+        "3" = "";
+        "4" = "";
+        "5" = "";
+        "6" = "";
+        "7" = "";
         "8" = "VII";
         "9" = "VIII";
         "10" = "IX";
@@ -57,7 +56,6 @@
         "2" = [];
         "3" = [];
         "4" = [];
-        "5" = [];
       };
     };
     cpu = {
@@ -141,6 +139,25 @@
       on-click = "swaync-client -t -sw";
       on-click-right = "swaync-client -d -sw";
       escape = true;
+    };
+    "custom/uair" = {
+      format = "[ {icon} {} ]";
+      format-icons = [
+        ""
+        ""
+        ""
+        ""
+        ""
+        ""
+      ];
+      tooltip = false;
+      return-type = "json";
+      interval = 1;
+      on-click = "uairctl toggle";
+      on-click-middle = "uairctl prev";
+      on-click-right = "uairctl next";
+      exec-if = "which uairctl";
+      exec = ''uairctl fetch '{\"text\":\"{name} {time} {percent}%\",\"class\":\"{state}\",\"percentage\":{percent}}' '';
     };
   };
 }

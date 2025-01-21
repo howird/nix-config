@@ -10,7 +10,6 @@
   imports = [
     ./fish.nix
     ./zsh.nix
-    ./tmux.nix
   ];
 
   options = {
