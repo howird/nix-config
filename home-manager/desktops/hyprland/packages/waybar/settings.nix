@@ -8,10 +8,13 @@
     margin-left = 0;
     margin-right = 0;
     modules-left = [
+      "custom/launcher"
       "hyprland/workspaces"
-      "custom/uair"
     ];
-    modules-center = ["clock"];
+    modules-center = [
+      "custom/uair"
+      "clock"
+    ];
     modules-right = [
       "tray"
       "cpu"
@@ -141,7 +144,7 @@
       escape = true;
     };
     "custom/uair" = {
-      format = "[ {icon} {} ]";
+      format = "{} {icon}";
       format-icons = [
         ""
         ""
@@ -157,7 +160,7 @@
       on-click-middle = "uairctl prev";
       on-click-right = "uairctl next";
       exec-if = "which uairctl";
-      exec = ''uairctl fetch '{\"text\":\"{name} {time} {percent}%\",\"class\":\"{state}\",\"percentage\":{percent}}' '';
+      exec = ''uairctl fetch '{\"text\":\"{name} {time}\",\"class\":\"{state}\",\"percentage\":{percent}}' '';
     };
   };
 }

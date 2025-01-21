@@ -1,5 +1,9 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [uair];
+  home.packages = with pkgs; [
+    uair
+    figlet
+    (writeShellScriptBin "uairtozero" "uairctl listen -o cli | stdbuf -oL awk '/00:00/ {print; exit} {print}' | figlet")
+  ];
   xdg.configFile."uair/uair.toml".source = ./uair.toml;
 
   systemd.user.services = {

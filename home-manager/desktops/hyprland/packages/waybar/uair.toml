@@ -7,14 +7,14 @@ resumed_state_text = "resumed"
 
 [[sessions]]
 id = "work"
-name = "work"
+name = "!WORK!"
 duration = "25m"
 time_format = "%M:%S"
-command = "notify-send 'Work Done!'"
+command = "alacritty --class uairctl --title rest -e uairtozero"
 
 [[sessions]]
 id = "rest"
-name = "rest"
+name = "~rest~"
 duration = "5m"
 time_format = "%M:%S"
 command = "notify-send 'Rest Done!'"

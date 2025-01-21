@@ -24,12 +24,13 @@
     unrar
     imagemagick
     xorg.xhost
-    xournalpp
 
     # apps
     firefox
     chromium
     vlc
+    xournalpp
+    evince
     rhythmbox
     mpv
     zathura

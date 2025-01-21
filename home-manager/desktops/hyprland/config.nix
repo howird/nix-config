@@ -339,22 +339,28 @@
         "float, title:^(Picture-in-Picture)$"
         "opacity 1.0 override 1.0 override, title:^(Picture-in-Picture)$"
         "pin, title:^(Picture-in-Picture)$"
+
         "opacity 1.0 override 1.0 override, title:^(.*imv.*)$"
         "opacity 1.0 override 1.0 override, title:^(.*mpv.*)$"
         "opacity 1.0 override 1.0 override, class:(Unity)"
         "opacity 1.0 override 1.0 override, class:(zen)"
         "opacity 1.0 override 1.0 override, class:(evince)"
+
         "workspace 1, class:^(evince)$"
         "workspace 1, class:^(zotero)$"
+        "float,workspace 1,size 500 300,move 50 50,class:^(.*otero.*)$,title:^(.*Progress.*)$"
+        "pin,class:^(uairctl)$,title:^(rest)$"
+
         "workspace 5, class:^(teams-for-linux)$"
         "workspace 5, class:^(discord)$"
         "workspace 5, class:^(Slack)$"
+
         "workspace 8, class:^(Spotify)$"
         "workspace 8, class:^(zen.*)$,title:^(.*Private Browsing.*)$"
+
         "idleinhibit focus, class:^(mpv)$"
         "idleinhibit fullscreen, class:^(firefox)$"
         "float,class:^(org.gnome.FileRoller)$"
-        "float,workspace 3,size 500 300,move 50 50,class:^(.*otero.*)$,title:^(.*Progress.*)$"
         "float,class:^(.*otero.*)$,title:^(Zotero Settings)$"
         "float,class:^(nm-.*)$"
         "float,class:^(.*blueman.*)$"
