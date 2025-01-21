@@ -9,9 +9,9 @@
       "image/jpeg" = "pqiv.desktop";
       "image/gif" = "pqiv.desktop";
       "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
-      "text/html" = "zen.desktop";
-      "x-scheme-handler/http" = "zen.desktop";
-      "x-scheme-handler/https" = "zen.desktop";
+      "text/html" = "microsoft-edge.desktop";
+      "x-scheme-handler/http" = "microsoft-edge.desktop";
+      "x-scheme-handler/https" = "microsoft-edge.desktop";
       "x-scheme-handler/magnet" = "org.qbittorrent.qBittorrent.desktop";
     };
   };
