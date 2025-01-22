@@ -1,9 +1,6 @@
 {
-  inputs,
-  outputs,
   lib,
   config,
-  pkgs,
   ...
 }: {
   config = lib.mkIf config.myEditor.nvim {
@@ -18,8 +15,8 @@
       plugins.oil.settings.keymaps = {
         "g?" = "actions.show_help";
         "<CR>" = "actions.select";
-        "<C-s>" = "actions.select_vsplit";
-        "<C-h>" = "actions.select_split";
+        "<leader>%" = "actions.select_vsplit";
+        "<leader>\"" = "actions.select_split";
         "<C-t>" = "actions.select_tab";
         "=" = "actions.preview";
         "<C-c>" = "actions.close";
