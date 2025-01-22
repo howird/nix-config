@@ -17,6 +17,10 @@
     enable = config.myEditor.nvim;
 
     plugins.treesitter.enable = true;
+    plugins.treesitter-textobjects.enable = true;
+    plugins.treesitter-refactor.enable = true;
+    plugins.treesitter-context.enable = true;
+
     plugins.lsp = {
       enable = true;
       servers = {
@@ -39,6 +43,7 @@
     plugins.web-devicons.enable = true;
     plugins.commentary.enable = true;
     plugins.nvim-surround.enable = true;
+    plugins.visual-multi.enable = true;
     plugins.guess-indent.enable = true;
 
     colorschemes.base16.enable = true;

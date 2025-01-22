@@ -349,7 +349,6 @@
         "workspace 1, class:^(evince)$"
         "workspace 1, class:^(zotero)$"
         "float,workspace 1,size 500 300,move 50 50,class:^(.*otero.*)$,title:^(.*Progress.*)$"
-        "pin,class:^(uairctl)$,title:^(rest)$"
 
         "workspace 5, class:^(teams-for-linux)$"
         "workspace 5, class:^(discord)$"

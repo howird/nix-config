@@ -10,7 +10,7 @@ id = "work"
 name = "!WORK!"
 duration = "25m"
 time_format = "%M:%S"
-command = "alacritty --class uairctl --title rest -e uairtozero"
+command = "hyprctl dispatch exec '[pinned; float; center; size 250 150] alacritty --class uairctl --title rest -e uairtozero'"
 
 [[sessions]]
 id = "rest"
