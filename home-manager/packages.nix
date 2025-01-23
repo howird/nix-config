@@ -1,12 +1,9 @@
 {
-  inputs,
-  outputs,
-  lib,
-  config,
   pkgs,
   ...
 }: {
   home.packages = with pkgs; [
+    scrcpy
     openconnect_openssl
     networkmanager
 
@@ -21,8 +18,7 @@
     obsidian
     texliveFull
     zotero
-    libreoffice-qt
-    scrcpy
+    zathura # pdf keyboard-based
 
     discord
     teams-for-linux

@@ -1,8 +1,4 @@
 {
-  inputs,
-  outputs,
-  lib,
-  config,
   pkgs,
   ...
 }: {
@@ -29,11 +25,11 @@
     firefox
     chromium
     vlc
-    xournalpp
-    evince
-    rhythmbox
-    mpv
-    zathura
+    libreoffice
+    evince # pdf
+    xournalpp # pdf+markup
+    foliate # ebooks
+    rhythmbox # music
   ];
 
   programs = {

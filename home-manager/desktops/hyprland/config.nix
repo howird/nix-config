@@ -336,9 +336,10 @@
 
       # windowrulev2
       windowrulev2 = [
-        "float, title:^(Picture-in-Picture)$"
-        "opacity 1.0 override 1.0 override, title:^(Picture-in-Picture)$"
-        "pin, title:^(Picture-in-Picture)$"
+        "float, title:^(.*Picture-in-Picture.*)$"
+        "float, class:^(xdg-desktop-portal-.*)$"
+        "opacity 1.0 override 1.0 override, title:^(.*Picture-in-Picture.*)$"
+        "pin, title:^(.*Picture-in-Picture.*)$"
 
         "opacity 1.0 override 1.0 override, title:^(.*imv.*)$"
         "opacity 1.0 override 1.0 override, title:^(.*mpv.*)$"
@@ -348,7 +349,7 @@
 
         "workspace 1, class:^(evince)$"
         "workspace 1, class:^(zotero)$"
-        "float,workspace 1,size 500 300,move 50 50,class:^(.*otero.*)$,title:^(.*Progress.*)$"
+        "float, workspace 1, class:^(.*otero.*)$, title:^(.*Progress.*)$"
 
         "workspace 5, class:^(teams-for-linux)$"
         "workspace 5, class:^(discord)$"
@@ -359,12 +360,14 @@
 
         "idleinhibit focus, class:^(mpv)$"
         "idleinhibit fullscreen, class:^(firefox)$"
+
+        "center,class:^(org.gnome.FileRoller)$"
         "float,class:^(org.gnome.FileRoller)$"
+        "size 850 500,class:^(org.gnome.FileRoller)$"
+
         "float,class:^(.*otero.*)$,title:^(Zotero Settings)$"
         "float,class:^(nm-.*)$"
         "float,class:^(.*blueman.*)$"
-        "center,class:^(org.gnome.FileRoller)$"
-        "size 850 500,class:^(org.gnome.FileRoller)$"
         "size 850 500,title:^(File Upload)$"
         "float,class:^(pavucontrol)$"
         "float,class:^(SoundWireServer)$"

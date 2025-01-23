@@ -10,12 +10,13 @@ id = "work"
 name = "!WORK!"
 duration = "25m"
 time_format = "%M:%S"
-command = "hyprctl dispatch exec '[pinned; float; center; size 250 150] alacritty --class uairctl --title rest -e uairtozero'"
+command = "notify-send 'Work Done!' & hyprctl dispatch exec '[pin; float; nofocus; center; size 500 150] alacritty --class uairctl --title rest -e uairtozero'"
 
 [[sessions]]
 id = "rest"
 name = "~rest~"
 duration = "5m"
 time_format = "%M:%S"
+autostart = true
 command = "notify-send 'Rest Done!'"
 

@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   pkgs,
   lib,
   ...
@@ -17,6 +16,7 @@ lib.mkIf config.myDesktop.hyprland {
     swayidle
     glib
     wayland
+    libnotify
 
     nautilus
     blueman
