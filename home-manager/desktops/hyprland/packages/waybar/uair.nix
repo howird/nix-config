@@ -2,7 +2,7 @@
   home.packages = with pkgs; [
     uair
     figlet
-    (writeShellScriptBin "uairtozero" ''uairctl listen -o cli | stdbuf -oL awk '/^(00:00|25:00)$/ {print; exit} {print "REST " $0}' | figlet'')
+    (writeShellScriptBin "uairfiglet" "uairctl listen | figlet")
   ];
   xdg.configFile."uair/uair.toml".source = ./uair.toml;
 

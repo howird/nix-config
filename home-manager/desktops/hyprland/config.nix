@@ -55,12 +55,13 @@
       };
 
       general = {
-        layout = "dwindle";
+        layout = "master";
         gaps_in = 5;
         gaps_out = 10;
         border_size = 2;
         border_part_of_window = false;
         no_border_on_floating = false;
+        resize_on_border = true;
       };
 
       misc = {
@@ -86,8 +87,8 @@
       };
 
       master = {
-        new_status = "master";
-        special_scale_factor = 1;
+        mfact = 0.6;
+        inherit_fullscreen = true;
         # no_gaps_when_only = false;
       };
 
@@ -165,8 +166,8 @@
         "$shftMod, Q, exec, hyprlock"
         "$shftMod ALT, Q, exit"
 
-        "$mainMod, F, fullscreen, 0"
-        "$shftMod, F, fullscreen, 1"
+        "$mainMod, F, fullscreen, 1"
+        "$shftMod, F, fullscreen, 0"
         "$mainMod, Space, exec, toggle_float"
         "$mainMod, R, exec, rofi -show drun || pkill rofi"
 
@@ -205,7 +206,7 @@
 
         # window/group control
         "ALT, d, togglegroup"
-        "ALT, TAB, changegroupactive"
+        "ALT, TAB, cyclenext"
         "ALT SHIFT, left, movewindoworgroup, l"
         "ALT SHIFT, right, movewindoworgroup, r"
         "ALT SHIFT, up, movewindoworgroup, u"

@@ -1,7 +1,7 @@
 loop_on_end = true
 
 [defaults]
-format = "{time}\n"
+format = "{name} {time}\n"
 paused_state_text = "paused"
 resumed_state_text = "resumed"
 
@@ -10,7 +10,7 @@ id = "work"
 name = "!WORK!"
 duration = "25m"
 time_format = "%M:%S"
-command = "notify-send 'Work Done!' & hyprctl dispatch exec '[pin; float; nofocus; center; size 500 150] alacritty --class uairctl --title rest -e uairtozero'"
+command = "notify-send 'Work Done!' & hyprctl dispatch exec '[pin; float; nofocus; center; size 550 150] alacritty --title uairfiglet -e uairfiglet'"
 
 [[sessions]]
 id = "rest"
@@ -18,5 +18,5 @@ name = "~rest~"
 duration = "5m"
 time_format = "%M:%S"
 autostart = true
-command = "notify-send 'Rest Done!'"
+command = "notify-send 'Rest Done!' & hyprctl dispatch closewindow 'title:uairfiglet'"
 
