@@ -20,7 +20,7 @@
       unbind t
       bind t send-keys "tat" "C-m"
       unbind r
-      bind r split-window -v "tmux list-sessions | sed -E 's/:.*$//' | grep -v \"^$(tmux display-message -p '#S')\$\" | fzf --reverse | xargs tmux switch-client -t"
+      bind r split-window -v "tsel | xargs tmux switch-client -t"
 
       set-window-option -g mode-keys vi
       bind-key -T copy-mode-vi v send-keys -X begin-selection
@@ -51,5 +51,6 @@
 
   home.packages = with pkgs; [
     (writeShellScriptBin "tat" (builtins.readFile ./tat))
+    (writeShellScriptBin "tsel" ''tmux list-sessions | sed -E 's/:.*$//' | fzf --reverse'')
   ];
 }

@@ -164,6 +164,7 @@
       "$codeEditor" = "code";
       "$discordClient" = "vesktop";
       "$taskMgr" = "ticktick";
+      "$nixConf" = "alacritty --title nixconf -e tat ~/nix/config";
       "$electronArgs" = "--enable-features=UseOzonePlatform --ozone-platform=wayland";
 
       bind = [
@@ -425,7 +426,7 @@
         "2, on-created-empty:obsidian"
         "3, on-created-empty:$term"
         "4, on-created-empty:$browser"
-        "6, on-created-empty:$term --working-directory ~/nix/config --title nixconf -e 'tat'"
+        "6, on-created-empty:$nixConf"
         "special:taskws, on-created-empty:$taskMgr $electronArgs"
       ];
     };
