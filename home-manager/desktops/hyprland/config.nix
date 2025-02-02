@@ -1,8 +1,4 @@
-{
-  lib,
-  host,
-  ...
-}: {
+{host, ...}: {
   wayland.windowManager.hyprland = {
     settings = {
       # autostart
@@ -28,6 +24,7 @@
           "[workspace 2 silent] obsidian"
           "[workspace 3 silent] $term"
           "[workspace 4 silent] $browser"
+          "[workspace special:taskws silent] $taskMgr $electronArgs"
         ]
         ++ (
           if host == "bofa"
@@ -44,14 +41,19 @@
       input = {
         kb_layout = "us";
         numlock_by_default = true;
-        follow_mouse = 0;
+        follow_mouse = 2;
         accel_profile = "flat";
         float_switch_override_focus = 0;
-        mouse_refocus = 0;
         sensitivity = 0;
         touchpad = {
           natural_scroll = true;
+          scroll_factor = 0.25;
         };
+      };
+
+      gestures = {
+        workspace_swipe = true;
+        workspace_swipe_distance = 50;
       };
 
       general = {
@@ -160,6 +162,9 @@
       "$browser" = "microsoft-edge";
       "$fileManager" = "nautilus";
       "$codeEditor" = "code";
+      "$discordClient" = "vesktop";
+      "$taskMgr" = "ticktick";
+      "$electronArgs" = "--enable-features=UseOzonePlatform --ozone-platform=wayland";
 
       bind = [
         "$mainMod, Q, killactive,"
@@ -177,9 +182,8 @@
         "$mainMod, B, exec, $browser"
         "$mainMod, E, exec, $fileManager"
         "$shftMod, E, exec, $floatCenter $fileManager"
-        "$mainMod, M, exec, spotify"
-        "$mainMod, I, exec, discord"
-        "$mainMod, Escape, exec, [workspace 6] $term --working-directory ~/nix/config --title nixconf -e 'tat'"
+        "$mainMod, M, exec, spotify $electronArgs"
+        "$mainMod, I, exec, $discordClient $electronArgs"
         "$shftMod, Escape, exec, [workspace 6; float; center; size 1200 600] $term --title htop -e 'htop'"
 
         "$mainMod, N, exec, swaync-client -t -sw"
@@ -217,10 +221,12 @@
         "ALT SHIFT, l, movewindoworgroup, r"
 
         # switch workspace
+        "$mainMod, a, togglespecialworkspace, taskws"
         "$mainMod, z, workspace, 1"
         "$mainMod, x, workspace, 2"
         "$mainMod, c, workspace, 3"
         "$mainMod, v, workspace, 4"
+        "$mainMod, Escape, workspace, 6"
 
         "$mainMod, 0, workspace, 1"
         "$mainMod, 1, workspace, 2"
@@ -333,6 +339,7 @@
         "move 0 0,title:^(Firefox — Sharing Indicator)$"
         "size 700 450,title:^(Volume Control)$"
         "move 40 55%,title:^(Volume Control)$"
+        "float, title:Bitwarden"
       ];
 
       # windowrulev2
@@ -348,49 +355,57 @@
         "opacity 1.0 override 1.0 override, class:(zen)"
         "opacity 1.0 override 1.0 override, class:(evince)"
 
-        "workspace 1, class:^(evince)$"
-        "workspace 1, class:^(zotero)$"
-        "float, workspace 1, class:^(.*otero.*)$, title:^(.*Progress.*)$"
+        "workspace 1, class:evince"
+        "workspace 1, class:Zotero"
 
-        "workspace 5, class:^(teams-for-linux)$"
-        "workspace 5, class:^(discord)$"
-        "workspace 5, class:^(Slack)$"
+        "float, class:Zotero, title:^(.*Progress.*)$"
+        "opacity 0.5, class:Zotero, title:^(.*Progress.*)$"
+        "float, class:Zotero, title:^(Zotero Settings)$"
+        "float, class:Zotero, title:^(Plugins Manager.*)$"
 
-        "workspace 8, class:^(Spotify)$"
-        "workspace 8, class:^(zen.*)$,title:^(.*Private Browsing.*)$"
+        "workspace 5, class:teams-for-linux"
+        "workspace 5, class:discord"
+        "workspace 5, class:vesktop"
+        "workspace 5, class:Slack"
+        "workspace 8, class:Spotify"
+        "workspace special:taskws, class:$taskMgr"
 
-        "idleinhibit focus, class:^(mpv)$"
-        "idleinhibit fullscreen, class:^(firefox)$"
+        "float, class:^(zen.*)$, title:^(.*Private Browsing.*)$"
+        "float, class:microsoft-edge, title:^(.*\\[InPrivate\\].*)$"
 
-        "center,class:^(org.gnome.FileRoller)$"
-        "float,class:^(org.gnome.FileRoller)$"
-        "size 850 500,class:^(org.gnome.FileRoller)$"
+        "idleinhibit focus, class:mpv"
+        "idleinhibit focus, class:vlc"
+        "idleinhibit fullscreen, class:microsoft-edge"
 
-        "float,class:^(.*otero.*)$,title:^(Zotero Settings)$"
+        "center, class:^(org.gnome.FileRoller)$"
+        "float, class:^(org.gnome.FileRoller)$"
+        "size 850 500, class:^(org.gnome.FileRoller)$"
+
+        "size 850 500, title:^(.*File Upload.*)$"
+
         "float,class:^(nm-.*)$"
         "float,class:^(.*blueman.*)$"
-        "size 850 500,title:^(File Upload)$"
-        "float,class:^(pavucontrol)$"
-        "float,class:^(SoundWireServer)$"
-        "float,class:^(.sameboy-wrapped)$"
-        "float,class:^(file_progress)$"
-        "float,class:^(confirm)$"
-        "float,class:^(dialog)$"
-        "float,class:^(download)$"
-        "float,class:^(notification)$"
-        "float,class:^(error)$"
-        "float,class:^(confirmreset)$"
-        "float,title:^(Open File)$"
-        "float,title:^(File Upload)$"
-        "float,title:^(branchdialog)$"
-        "float,title:^(Confirm to replace files)$"
-        "float,title:^(File Operation Progress)$"
+        "float,class:^(.*pavucontrol.*)$"
+        "float,class:^(.*SoundWireServer.*)$"
+        "float,class:^(.*.sameboy-wrapped.*)$"
+        "float,class:^(.*file_progress.*)$"
+        "float,class:^(.*confirm.*)$"
+        "float,class:^(.*dialog.*)$"
+        "float,class:^(.*download.*)$"
+        "float,class:^(.*notification.*)$"
+        "float,class:^(.*error.*)$"
+        "float,class:^(.*confirmreset.*)$"
+        "float,title:^(.*Open File.*)$"
+        "float,title:^(.*File Upload.*)$"
+        "float,title:^(.*branchdialog.*)$"
+        "float,title:^(.*Confirm to replace files.*)$"
+        "float,title:^(.*File Operation Progress.*)$"
 
-        "opacity 0.0 override,class:^(xwaylandvideobridge)$"
-        "noanim,class:^(xwaylandvideobridge)$"
-        "noinitialfocus,class:^(xwaylandvideobridge)$"
-        "maxsize 1 1,class:^(xwaylandvideobridge)$"
-        "noblur,class:^(xwaylandvideobridge)$"
+        "opacity 0.0 override, class:xwaylandvideobridge"
+        "noanim, class:xwaylandvideobridge"
+        "noinitialfocus, class:xwaylandvideobridge"
+        "maxsize 1 1, class:xwaylandvideobridge"
+        "noblur, class:xwaylandvideobridge"
 
         # No gaps when only
         "bordersize 0, floating:0, onworkspace:w[t1]"
@@ -399,11 +414,6 @@
         "rounding 0, floating:0, onworkspace:w[tg1]"
         "bordersize 0, floating:0, onworkspace:f[1]"
         "rounding 0, floating:0, onworkspace:f[1]"
-
-        # Remove context menu transparency in chromium based apps
-        "opaque,class:^()$,title:^()$"
-        "noshadow,class:^()$,title:^()$"
-        "noblur,class:^()$,title:^()$"
       ];
 
       # No gaps when only
@@ -411,16 +421,13 @@
         "w[t1], gapsout:0, gapsin:0"
         "w[tg1], gapsout:0, gapsin:0"
         "f[1], gapsout:0, gapsin:0"
-        "1,on-created-empty:zotero"
-        "2,on-created-empty:obsidian"
-        "3,on-created-empty:$term"
-        "4,on-created-empty:$browser"
+        "1, on-created-empty:zotero"
+        "2, on-created-empty:obsidian"
+        "3, on-created-empty:$term"
+        "4, on-created-empty:$browser"
+        "6, on-created-empty:$term --working-directory ~/nix/config --title nixconf -e 'tat'"
+        "special:taskws, on-created-empty:$taskMgr $electronArgs"
       ];
-
-      gestures = {
-        workspace_swipe = true;
-        workspace_swipe_distance = 50;
-      };
     };
 
     extraConfig = "

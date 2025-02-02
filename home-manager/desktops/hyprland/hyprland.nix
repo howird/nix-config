@@ -17,6 +17,7 @@ lib.mkIf config.myDesktop.hyprland {
     glib
     wayland
     libnotify
+    file-roller
 
     nautilus
     blueman
@@ -26,6 +27,7 @@ lib.mkIf config.myDesktop.hyprland {
   systemd.user.targets.hyprland-session.Unit.Wants = [
     "xdg-desktop-autostart.target"
   ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland = {

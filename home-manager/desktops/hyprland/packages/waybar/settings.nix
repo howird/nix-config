@@ -12,7 +12,7 @@
       "hyprland/workspaces"
     ];
     modules-center = [
-      "custom/uair"
+      # "custom/uair"
       "clock"
     ];
     modules-right = [
@@ -40,6 +40,7 @@
       disable-scroll = true;
       format = "{icon}";
       on-click = "activate";
+      shows-special = true;
       format-icons = {
         "1" = "";
         "2" = "󱞁";

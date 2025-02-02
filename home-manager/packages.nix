@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     scrcpy
     openconnect_openssl
@@ -15,12 +12,14 @@
     obs-studio
     kdenlive
 
+    ticktick
     obsidian
     texliveFull
     zotero
     zathura # pdf keyboard-based
 
     discord
+    vesktop
     teams-for-linux
     slack
     zoom-us
