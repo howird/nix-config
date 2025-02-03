@@ -19,7 +19,7 @@
         "code.desktop"
         "Alacritty.desktop"
         "obsidian.desktop"
-        "discord.desktop"
+        "vesktop.desktop"
         "org.gnome.Nautilus.desktop"
       ];
       # `gnome-extensions list` for a list

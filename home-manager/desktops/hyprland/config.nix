@@ -22,9 +22,9 @@
           ## App auto start
           "[workspace 1 silent] zotero"
           "[workspace 2 silent] obsidian"
-          "[workspace 3 silent] $term"
           "[workspace 4 silent] $browser"
           "[workspace special:taskws silent] $taskMgr $electronArgs"
+          "[workspace special:termws silent] $term"
         ]
         ++ (
           if host == "bofa"
@@ -178,20 +178,19 @@
         "$mainMod, R, exec, rofi -show drun || pkill rofi"
 
         # applications
-        "$mainMod, T, exec, $term"
-        "$shftMod, T, exec, $floatCenter $term"
+        "$shftMod, T, exec, $term"
         "$mainMod, B, exec, $browser"
         "$mainMod, E, exec, $fileManager"
         "$shftMod, E, exec, $floatCenter $fileManager"
         "$mainMod, M, exec, spotify $electronArgs"
         "$mainMod, I, exec, $discordClient $electronArgs"
-        "$shftMod, Escape, exec, [workspace 6; float; center; size 1200 600] $term --title htop -e 'htop'"
+        "$shftMod, Escape, exec, [workspace 5; float; center; size 1200 600] $term --title htop -e 'htop'"
 
         "$mainMod, N, exec, swaync-client -t -sw"
 
         # clipboard manager
         # "$shftMod, V, exec, cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy"
-        "$shftMod, V, exec, $floatCenter $term --title clipse -e 'clipse'"
+        "$mainMod, V, exec, $floatCenter $term --title clipse -e clipse"
 
         # screenshot
         "$mainMod ALT, S, exec, hyprshot -m output"
@@ -223,11 +222,11 @@
 
         # switch workspace
         "$mainMod, a, togglespecialworkspace, taskws"
+        "$mainMod, t, togglespecialworkspace, termws"
         "$mainMod, z, workspace, 1"
         "$mainMod, x, workspace, 2"
         "$mainMod, c, workspace, 3"
-        "$mainMod, v, workspace, 4"
-        "$mainMod, Escape, workspace, 6"
+        "$mainMod, Escape, workspace, 5"
 
         "$mainMod, 0, workspace, 1"
         "$mainMod, 1, workspace, 2"
@@ -246,11 +245,6 @@
         "$mainMod, l, workspace, +1"
 
         # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        "$shftMod, z, movetoworkspace, 1"
-        "$shftMod, x, movetoworkspace, 2"
-        "$shftMod, c, movetoworkspace, 3"
-        "$shftMod, v, movetoworkspace, 4"
-
         "$shftMod, 0, movetoworkspace, 1"
         "$shftMod, 1, movetoworkspace, 2"
         "$shftMod, 2, movetoworkspace, 3"
@@ -355,21 +349,19 @@
         "opacity 1.0 override 1.0 override, class:(Unity)"
         "opacity 1.0 override 1.0 override, class:(zen)"
         "opacity 1.0 override 1.0 override, class:(evince)"
-
         "workspace 1, class:evince"
         "workspace 1, class:Zotero"
+        "workspace 4, class:teams-for-linux"
+        "workspace 4, class:vesktop"
+        "workspace 4, class:Slack"
+        "workspace 7, class:Spotify"
+        "workspace special:taskws, class:$taskMgr"
+        "workspace special:termws, class:$term"
 
         "float, class:Zotero, title:^(.*Progress.*)$"
         "opacity 0.5, class:Zotero, title:^(.*Progress.*)$"
         "float, class:Zotero, title:^(Zotero Settings)$"
         "float, class:Zotero, title:^(Plugins Manager.*)$"
-
-        "workspace 5, class:teams-for-linux"
-        "workspace 5, class:discord"
-        "workspace 5, class:vesktop"
-        "workspace 5, class:Slack"
-        "workspace 8, class:Spotify"
-        "workspace special:taskws, class:$taskMgr"
 
         "float, class:^(zen.*)$, title:^(.*Private Browsing.*)$"
         "float, class:microsoft-edge, title:^(.*\\[InPrivate\\].*)$"
@@ -424,10 +416,10 @@
         "f[1], gapsout:0, gapsin:0"
         "1, on-created-empty:zotero"
         "2, on-created-empty:obsidian"
-        "3, on-created-empty:$term"
-        "4, on-created-empty:$browser"
-        "6, on-created-empty:$nixConf"
+        "3, on-created-empty:$browser"
+        "5, on-created-empty:$nixConf"
         "special:taskws, on-created-empty:$taskMgr $electronArgs"
+        "special:termws, on-created-empty:$term"
       ];
     };
 

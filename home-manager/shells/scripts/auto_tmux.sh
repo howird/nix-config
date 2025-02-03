@@ -6,28 +6,29 @@ tat_selector() {
     local existing_sessions
     local selected_option
 
-    existing_sessions=$(tmux list-sessions 2>/dev/null | sed -E 's/:.*$//')
-    current_dir="$PWD"
-    options="cwd ($current_dir)\nnone"
+    existing_sessions=$(tmux list-sessions 2>/dev/null)
+    options="cwd ($PWD)\nnone"
 
     if [[ -n "$existing_sessions" ]]; then
       options="$options\n$existing_sessions"
     fi
 
-    selected_option=$(echo -e "$options" | fzf --reverse --prompt="select tmux session:")
+    selected_option=$(echo -e "$options" | fzf --reverse --prompt="select tmux session: ")
 
     case "$selected_option" in
-      "cwd ($current_dir)")
+      "cwd ($PWD)")
         tat
         ;;
-      "no")
-        echo "Skipping tmux attachment."
+      "none")
+        echo "not attaching to tmux."
         ;;
       *)
-        if [[ -n "$selected_option" ]]; then
-          tmux attach-session -t "$selected_option"
+        selected_session=$(echo "$selected_option" | sed -E 's/:.*$//')
+
+        if [[ -n "$selected_session" ]]; then
+          tmux attach-session -t "$selected_session"
         else
-          echo "No session selected. Exiting."
+          echo "no valid selection. not attaching to tmux."
         fi
         ;;
     esac
