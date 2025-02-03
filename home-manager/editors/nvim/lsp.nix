@@ -35,5 +35,9 @@
     plugins.treesitter-textobjects.enable = true;
     plugins.treesitter-refactor.enable = true;
     plugins.treesitter-context.enable = true;
+
+    plugins.cmp.enable = true;
+    plugins.cmp-nvim-lsp.enable = true;
+    plugins.cmp-treesitter.enable = true;
   };
 }

@@ -1,12 +1,12 @@
 {
   programs.nixvim = {
     plugins.dap.enable = true;
-    plugins.dap.extensions.dap-ui.enable = true;
-    plugins.dap.extensions.dap-virtual-text.enable = true;
-    plugins.dap.extensions.dap-python.enable = true;
-    plugins.dap.extensions.dap-python.adapterPythonPath = "python3";
+    plugins.dap-ui.enable = true;
+    plugins.dap-virtual-text.enable = true;
+    plugins.dap-python.enable = true;
+    plugins.dap-python.adapterPythonPath = "python3";
     plugins.dap-lldb.enable = true;
-    # plugins.cmp-dap.enable = true;
+    plugins.cmp-dap.enable = true;
 
     keymaps = [
       {
