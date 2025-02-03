@@ -32,7 +32,6 @@ tat_selector() {
         fi
         ;;
     esac
-    tmux source ~/.config/tmux/tmux.conf
   fi
 }
 

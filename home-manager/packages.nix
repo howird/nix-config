@@ -1,4 +1,8 @@
-{pkgs, config, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [
     scrcpy
     openconnect_openssl
@@ -14,13 +18,10 @@
 
     ticktick
     (obsidian.override {
-      commandLineArgs =
-        if (config.myDesktop.kde || config.myDesktop.hyprland)
-        then [
-          "--enable-features=UseOzonePlatform"
-          "--ozone-platform=wayland"
-        ]
-        else [];
+      commandLineArgs = [
+        "--enable-features=UseOzonePlatform"
+        "--ozone-platform=wayland"
+      ];
     })
     texliveFull
     zotero

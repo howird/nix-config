@@ -1,11 +1,4 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.vscode.userSettings = {
     "update.mode" = "none";
     "extensions.autoUpdate" = true;

@@ -22,7 +22,7 @@
           ## App auto start
           "[workspace 1 silent] zotero"
           "[workspace 2 silent] obsidian"
-          "[workspace 4 silent] $browser"
+          "[workspace 3 silent] $browser"
           "[workspace special:taskws silent] $taskMgr $electronArgs"
           "[workspace special:termws silent] $term"
         ]
