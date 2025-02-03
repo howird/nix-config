@@ -1,6 +1,4 @@
 {
-  inputs,
-  outputs,
   lib,
   config,
   pkgs,
@@ -9,7 +7,7 @@
   options = with lib; {
     myWallpaper = mkOption {
       type = types.path;
-      default = ./desktops/wallpapers/fall-forest.png;
+      default = ./desktops/wallpapers/mountains.png;
       description = "Wallpaper filename.";
     };
   };
@@ -17,7 +15,7 @@
   config = {
     stylix = {
       enable = true;
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
       image = config.myWallpaper;
       polarity = "dark";

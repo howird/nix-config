@@ -40,13 +40,13 @@
       disable-scroll = true;
       format = "{icon}";
       on-click = "activate";
-      shows-special = true;
+      show-special = true;
       format-icons = {
         "1" = "";
         "2" = "󱞁";
         "3" = "";
         "4" = "";
-        "5" = "";
+        "5" = "";
         "6" = "";
         "7" = "VII";
         "8" = "VIII";
@@ -54,6 +54,7 @@
         "10" = "X";
         "termws" = "";
         "taskws" = "";
+        "confws" = "";
         sort-by-number = true;
       };
       persistent-workspaces = {

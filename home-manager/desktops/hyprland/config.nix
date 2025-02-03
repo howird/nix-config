@@ -164,7 +164,7 @@
       "$codeEditor" = "code";
       "$discordClient" = "vesktop";
       "$taskMgr" = "ticktick";
-      "$nixConf" = "alacritty --title nixconf -e tat ~/nix/config";
+      "$nixConf" = "alacritty --class nixconf -e tat ~/nix/config";
       "$electronArgs" = "--enable-features=UseOzonePlatform --ozone-platform=wayland";
 
       bind = [
@@ -184,7 +184,7 @@
         "$shftMod, E, exec, $floatCenter $fileManager"
         "$mainMod, M, exec, spotify $electronArgs"
         "$mainMod, I, exec, $discordClient $electronArgs"
-        "$shftMod, Escape, exec, [workspace 5; float; center; size 1200 600] $term --title htop -e 'htop'"
+        "$shftMod, Escape, exec, [workspace special:confws; float; center; size 1200 600] $term --class htop -e 'htop'"
 
         "$mainMod, N, exec, swaync-client -t -sw"
 
@@ -223,10 +223,10 @@
         # switch workspace
         "$mainMod, a, togglespecialworkspace, taskws"
         "$mainMod, t, togglespecialworkspace, termws"
+        "$mainMod, Escape, togglespecialworkspace, confws"
         "$mainMod, z, workspace, 1"
         "$mainMod, x, workspace, 2"
         "$mainMod, c, workspace, 3"
-        "$mainMod, Escape, workspace, 5"
 
         "$mainMod, 0, workspace, 1"
         "$mainMod, 1, workspace, 2"
@@ -354,9 +354,10 @@
         "workspace 4, class:teams-for-linux"
         "workspace 4, class:vesktop"
         "workspace 4, class:Slack"
-        "workspace 7, class:Spotify"
+        "workspace 6, class:Spotify"
         "workspace special:taskws, class:$taskMgr"
         "workspace special:termws, class:$term"
+        "workspace special:confws, class:nixconf"
 
         "float, class:Zotero, title:^(.*Progress.*)$"
         "opacity 0.5, class:Zotero, title:^(.*Progress.*)$"
@@ -417,9 +418,9 @@
         "1, on-created-empty:zotero"
         "2, on-created-empty:obsidian"
         "3, on-created-empty:$browser"
-        "5, on-created-empty:$nixConf"
         "special:taskws, on-created-empty:$taskMgr $electronArgs"
         "special:termws, on-created-empty:$term"
+        "special:confws, on-created-empty:$nixConf"
       ];
     };
 

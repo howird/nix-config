@@ -17,6 +17,7 @@
     unrar
     imagemagick
     xorg.xhost
+    yazi
 
     # apps
     firefox
@@ -27,6 +28,7 @@
     xournalpp # pdf+markup
     foliate # ebooks
     rhythmbox # music
+    loupe # image viewer
   ];
 
   programs = {
