@@ -7,15 +7,15 @@
 
   xdg.configFile."rofi/theme.rasi".text = ''
     * {
-      bg-col: #1D2021;
-      bg-col-light: #282828;
-      border-col: #A89984;
-      selected-col: #3C3836;
-      green: #98971A;
-      fg-col: #FBF1C7;
-      fg-col2: #EBDBB2;
-      grey: #BDAE93;
-      highlight: @green;
+      bg-col: #${config.lib.stylix.colors.base00};
+      bg-col-light: #${config.lib.stylix.colors.base01};
+      border-col: #${config.lib.stylix.colors.base07};
+      selected-col: #${config.lib.stylix.colors.base0C};
+      green: #${config.lib.stylix.colors.base0B};
+      fg-col: #${config.lib.stylix.colors.base05};
+      fg-col2: #${config.lib.stylix.colors.base06};
+      grey: #${config.lib.stylix.colors.base04};
+      highlight: #${config.lib.stylix.colors.base07};
     }
   '';
 

@@ -1,8 +1,4 @@
 {
-  inputs,
-  outputs,
-  lib,
-  config,
   pkgs,
   host,
   ...
@@ -14,6 +10,8 @@
     ./boot.nix
     ./nixpkgs.nix
     ./syncthing.nix
+    ./emulators.nix
+    ./inputs.nix
   ];
 
   networking.networkmanager.enable = true;
@@ -23,7 +21,6 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   services.printing.enable = true;
-  services.xserver.wacom.enable = true;
 
   services.xserver.enable = true;
   services.xserver.xkb = {
@@ -41,8 +38,6 @@
     pulse.enable = true;
     jack.enable = true;
   };
-
-  services.libinput.enable = true;
 
   users.users = {
     howird = {

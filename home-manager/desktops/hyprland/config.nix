@@ -174,7 +174,7 @@
 
         "$mainMod, F, fullscreen, 1"
         "$shftMod, F, fullscreen, 0"
-        "$mainMod, Space, exec, toggle_float"
+        "$mainMod, Space, togglefloating"
         "$mainMod, R, exec, rofi -show drun || pkill rofi"
 
         # applications
@@ -355,6 +355,7 @@
         "workspace 4, class:vesktop"
         "workspace 4, class:Slack"
         "workspace 6, class:Spotify"
+        "workspace 6, class:org.qbittorrent.qBittorrent"
         "workspace special:taskws, class:$taskMgr"
         "workspace special:termws, class:$term"
         "workspace special:confws, class:nixconf"
@@ -363,11 +364,13 @@
         "opacity 0.5, class:Zotero, title:^(.*Progress.*)$"
         "float, class:Zotero, title:^(Zotero Settings)$"
         "float, class:Zotero, title:^(Plugins Manager.*)$"
+        "float, class:org.qbittorrent.qBittorrent, title:^(?!qBittorrent).+$" # not working
 
         "float, class:^(zen.*)$, title:^(.*Private Browsing.*)$"
         "float, class:microsoft-edge, title:^(.*\\[InPrivate\\].*)$"
 
         "idleinhibit focus, class:mpv"
+        "idleinhibit focus, class:dev.suyu_emu.suyu"
         "idleinhibit focus, class:vlc"
         "idleinhibit fullscreen, class:microsoft-edge"
 
