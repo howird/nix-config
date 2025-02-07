@@ -26,6 +26,16 @@
       }
       {
         mode = "n";
+        key = "<leader>do";
+        action = "<cmd>lua require('dap').up()<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>di";
+        action = "<cmd>lua require('dap').down()<CR>";
+      }
+      {
+        mode = "n";
         key = "<leader>dh";
         action = "<cmd>lua require('dap').step_back()<CR>";
       }
