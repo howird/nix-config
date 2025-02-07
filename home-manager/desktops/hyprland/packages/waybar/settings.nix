@@ -45,9 +45,9 @@
         "1" = "";
         "2" = "󱞁";
         "3" = "";
-        "4" = "";
-        "5" = "";
-        "6" = "";
+        "4" = "";
+        "5" = "";
+        "6" = "vi";
         "7" = "vii";
         "8" = "viii";
         "9" = "ix";
@@ -55,6 +55,7 @@
         "termws" = "";
         "taskws" = "";
         "confws" = "";
+        "commws" = "";
         sort-by-number = true;
       };
       persistent-workspaces = {

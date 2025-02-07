@@ -1,6 +1,11 @@
-{host, ...}: {
+{
+  lib,
+  host,
+  ...
+}: {
   wayland.windowManager.hyprland = {
     settings = {
+      env = lib.mapAttrsToList (name: value: "${name},${value}") (import ./variables.nix);
       # autostart
       exec-once =
         [
@@ -23,7 +28,7 @@
           "[workspace 1 silent] zotero"
           "[workspace 2 silent] obsidian"
           "[workspace 3 silent] $browser"
-          "[workspace special:taskws silent] $taskMgr $electronArgs"
+          "[workspace special:taskws silent] $taskMgr"
           "[workspace special:termws silent] $term"
         ]
         ++ (
@@ -165,7 +170,6 @@
       "$discordClient" = "vesktop";
       "$taskMgr" = "ticktick";
       "$nixConf" = "alacritty --class nixconf -e tat ~/nix/config";
-      "$electronArgs" = "--enable-features=UseOzonePlatform --ozone-platform=wayland";
 
       bind = [
         "$mainMod, Q, killactive,"
@@ -182,8 +186,7 @@
         "$mainMod, B, exec, $browser"
         "$mainMod, E, exec, $fileManager"
         "$shftMod, E, exec, $floatCenter $fileManager"
-        "$mainMod, M, exec, spotify $electronArgs"
-        "$mainMod, I, exec, $discordClient $electronArgs"
+        "$mainMod, M, exec, spotify"
         "$shftMod, Escape, exec, [workspace special:confws; float; center; size 1200 600] $term --class htop -e 'htop'"
 
         "$mainMod, N, exec, swaync-client -t -sw"
@@ -223,6 +226,7 @@
         # switch workspace
         "$mainMod, a, togglespecialworkspace, taskws"
         "$mainMod, t, togglespecialworkspace, termws"
+        "$mainMod, i, togglespecialworkspace, commws"
         "$mainMod, Escape, togglespecialworkspace, confws"
         "$mainMod, z, workspace, 1"
         "$mainMod, x, workspace, 2"
@@ -241,8 +245,8 @@
 
         "$mainMod, left, workspace, -1"
         "$mainMod, right, workspace, +1"
-        "$mainMod, h, workspace, -1"
-        "$mainMod, l, workspace, +1"
+        "$mainMod, h, workspace, e-1"
+        "$mainMod, l, workspace, e+1"
 
         # Move active window to a workspace with mainMod + SHIFT + [0-9]
         "$shftMod, 0, movetoworkspace, 1"
@@ -321,7 +325,6 @@
         "size 1200 725,imv"
         "float,mpv"
         "center,mpv"
-        "tile,Aseprite"
         "size 1200 725,mpv"
         "float,audacious"
         "pin,rofi"
@@ -344,18 +347,33 @@
         "opacity 1.0 override 1.0 override, title:^(.*Picture-in-Picture.*)$"
         "pin, title:^(.*Picture-in-Picture.*)$"
 
-        "opacity 1.0 override 1.0 override, title:^(.*imv.*)$"
-        "opacity 1.0 override 1.0 override, title:^(.*mpv.*)$"
-        "opacity 1.0 override 1.0 override, class:(Unity)"
-        "opacity 1.0 override 1.0 override, class:(zen)"
-        "opacity 1.0 override 1.0 override, class:(evince)"
+        "opacity 1.0 override 1.0 override, class:mpv"
+        "opacity 1.0 override 1.0 override, class:zen"
+        "opacity 1.0 override 1.0 override, class:evince"
+
+        # workspace  (1)
         "workspace 1, class:evince"
         "workspace 1, class:Zotero"
-        "workspace 4, class:teams-for-linux"
-        "workspace 4, class:vesktop"
-        "workspace 4, class:Slack"
-        "workspace 6, class:Spotify"
-        "workspace 6, class:org.qbittorrent.qBittorrent"
+
+        # workspace 󱞁 (2)
+        "workspace 2, class:obsidian"
+
+        # workspace  (4)
+        "workspace 4, class:mpv"
+        "workspace 4, class:vlc"
+        "workspace 4, class:spotify"
+        "workspace 4, class:rhythmbox"
+
+        # workspace  (5)
+        "workspace 5, class:krita"
+
+        # rest workspace
+        "workspace 7, class:^(.*qBittorrent.*)$"
+
+        # special workspaces
+        "workspace special:commws, class:teams-for-linux"
+        "workspace special:commws, class:$discordClient"
+        "workspace special:commws, class:Slack"
         "workspace special:taskws, class:$taskMgr"
         "workspace special:termws, class:$term"
         "workspace special:confws, class:nixconf"
@@ -364,19 +382,20 @@
         "opacity 0.5, class:Zotero, title:^(.*Progress.*)$"
         "float, class:Zotero, title:^(Zotero Settings)$"
         "float, class:Zotero, title:^(Plugins Manager.*)$"
-        "float, class:org.qbittorrent.qBittorrent, title:^(?!qBittorrent).+$" # not working
+        "float, class:^(.*qBittorrent.*)$, title:^(?!qBittorrent).+$" # not working
 
         "float, class:^(zen.*)$, title:^(.*Private Browsing.*)$"
         "float, class:microsoft-edge, title:^(.*\\[InPrivate\\].*)$"
 
         "idleinhibit focus, class:mpv"
-        "idleinhibit focus, class:dev.suyu_emu.suyu"
+        "idleinhibit focus, class:^(.*suyu.*)$"
         "idleinhibit focus, class:vlc"
         "idleinhibit fullscreen, class:microsoft-edge"
 
         "center, class:^(org.gnome.FileRoller)$"
         "float, class:^(org.gnome.FileRoller)$"
         "size 850 500, class:^(org.gnome.FileRoller)$"
+        "float, class:^(.*sedge.*)$, initialTitle:^(.*itwarden.*)$" # not working
 
         "size 850 500, title:^(.*File Upload.*)$"
 
@@ -421,9 +440,10 @@
         "1, on-created-empty:zotero"
         "2, on-created-empty:obsidian"
         "3, on-created-empty:$browser"
-        "special:taskws, on-created-empty:$taskMgr $electronArgs"
+        "special:taskws, on-created-empty:$taskMgr"
         "special:termws, on-created-empty:$term"
         "special:confws, on-created-empty:$nixConf"
+        "special:commws, on-created-empty:$discordClient"
       ];
     };
 

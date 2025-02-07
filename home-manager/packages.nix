@@ -17,12 +17,7 @@
     kdenlive
 
     ticktick
-    (obsidian.override {
-      commandLineArgs = [
-        "--enable-features=UseOzonePlatform"
-        "--ozone-platform=wayland"
-      ];
-    })
+    obsidian
     texliveFull
     zotero
     zathura # pdf keyboard-based
