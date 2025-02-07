@@ -1,7 +1,5 @@
-_not_inside_tmux() { [[ -z "$TMUX" ]] }
-
 tat_selector() {
-  if _not_inside_tmux; then
+  if [[ -z "$TMUX" && $TERM_PROGRAM != "vscode" && $TERM_PROGRAM != "zed" ]]; then
     local options
     local existing_sessions
     local selected_option

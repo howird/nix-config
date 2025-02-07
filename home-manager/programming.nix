@@ -13,7 +13,7 @@
     ripgrep
     bat
     fd
-    gitui
+    lazygit
     ncspot
     (rust-bin.stable.latest.default.override {
       extensions = ["rust-src" "rust-analyzer"];
