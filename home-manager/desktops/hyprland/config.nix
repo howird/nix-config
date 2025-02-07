@@ -29,7 +29,7 @@
           "[workspace 2 silent] obsidian"
           "[workspace 3 silent] $browser"
           "[workspace special:taskws silent] $taskMgr"
-          "[workspace special:termws silent] $term"
+          "[workspace special:codews silent] $term"
         ]
         ++ (
           if host == "bofa"
@@ -225,7 +225,7 @@
 
         # switch workspace
         "$mainMod, a, togglespecialworkspace, taskws"
-        "$mainMod, t, togglespecialworkspace, termws"
+        "$mainMod, t, togglespecialworkspace, codews"
         "$mainMod, i, togglespecialworkspace, commws"
         "$mainMod, Escape, togglespecialworkspace, confws"
         "$mainMod, z, workspace, 1"
@@ -374,8 +374,12 @@
         "workspace special:commws, class:teams-for-linux"
         "workspace special:commws, class:$discordClient"
         "workspace special:commws, class:Slack"
+
+        "workspace special:codews, class:$term"
+        "workspace special:codews, class:code"
+        "workspace special:codews, class:^(.*zed.*)$"
+
         "workspace special:taskws, class:$taskMgr"
-        "workspace special:termws, class:$term"
         "workspace special:confws, class:nixconf"
 
         "float, class:Zotero, title:^(.*Progress.*)$"
@@ -441,7 +445,7 @@
         "2, on-created-empty:obsidian"
         "3, on-created-empty:$browser"
         "special:taskws, on-created-empty:$taskMgr"
-        "special:termws, on-created-empty:$term"
+        "special:codews, on-created-empty:$term"
         "special:confws, on-created-empty:$nixConf"
         "special:commws, on-created-empty:$discordClient"
       ];
