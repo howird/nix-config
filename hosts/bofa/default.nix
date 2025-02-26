@@ -14,7 +14,7 @@
 
     ./hardware-configuration.nix
     ../../nixos/graphics/nvidia.nix
-    ../../nixos/graphics/amd.nix
+    # ../../nixos/graphics/amd.nix
     ../../nixos/llms.nix
   ];
 
