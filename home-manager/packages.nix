@@ -17,10 +17,12 @@
     kdenlive
 
     ticktick
+    gnome-text-editor
     obsidian
     texliveFull
     zotero
     zathura # pdf keyboard-based
+    parsec-bin
 
     vesktop
     teams-for-linux

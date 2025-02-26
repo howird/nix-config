@@ -4,7 +4,7 @@
   ];
 
   systemd.user.services = {
-    uair = {
+    batsignal = {
       Unit = {
         Description = "Batsignal: battery warning notifications";
       };
