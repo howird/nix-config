@@ -17,18 +17,17 @@
           # "wl-paste --type text --watch cliphist store &"
           # "wl-paste --type image --watch cliphist store &"
           "clipse -listen"
+          "hypridle"
           "hyprpaper"
 
           "waybar &"
           "swaync &"
-          "swayidle -w timeout 600 'hyprlock' &"
           # "gnome-keyring-daemon --start --components=secrets &"
 
           ## App auto start
-          "[workspace 1 silent] zotero"
-          "[workspace 2 silent] obsidian"
-          "[workspace 3 silent] $browser"
-          "[workspace special:taskws silent] $taskMgr"
+          "[workspace 1 silent] obsidian"
+          "[workspace 2 silent] $browser"
+          "[workspace special:readws silent] zotero"
           "[workspace special:codews silent] $term"
         ]
         ++ (
@@ -38,8 +37,6 @@
             "nm-applet &"
             "poweralertd &"
             "blueman-applet &"
-            "swayidle -w before-sleep 'hyprlock' &"
-            "swayidle -w timeout 1200 'systemctl hibernate' &"
           ]
         );
 
@@ -179,10 +176,10 @@
         "$mainMod, F, fullscreen, 1"
         "$shftMod, F, fullscreen, 0"
         "$mainMod, Space, togglefloating"
-        "$mainMod, R, exec, rofi -show drun || pkill rofi"
+        "$mainMod, Return, exec, rofi -show drun || pkill rofi"
 
         # applications
-        "$shftMod, T, exec, $term"
+        "$shftMod, T, exec, $floatCenter $term"
         "$mainMod, B, exec, $browser"
         "$mainMod, E, exec, $fileManager"
         "$shftMod, E, exec, $floatCenter $fileManager"
@@ -202,6 +199,7 @@
         "$shftMod, S, exec, hyprshot -m region --clipboard-only"
 
         # switch windows
+        "ALT, TAB, cyclenext"
         "ALT, left, movefocus, l"
         "ALT, right, movefocus, r"
         "ALT, up, movefocus, u"
@@ -213,7 +211,6 @@
 
         # window/group control
         "ALT, d, togglegroup"
-        "ALT, TAB, cyclenext"
         "ALT SHIFT, left, movewindoworgroup, l"
         "ALT SHIFT, right, movewindoworgroup, r"
         "ALT SHIFT, up, movewindoworgroup, u"
@@ -227,38 +224,34 @@
         "$mainMod, a, togglespecialworkspace, taskws"
         "$mainMod, t, togglespecialworkspace, codews"
         "$mainMod, i, togglespecialworkspace, commws"
+        "$mainMod, r, togglespecialworkspace, readws"
         "$mainMod, Escape, togglespecialworkspace, confws"
-        "$mainMod, z, workspace, 1"
-        "$mainMod, x, workspace, 2"
-        "$mainMod, c, workspace, 3"
 
-        "$mainMod, 0, workspace, 1"
-        "$mainMod, 1, workspace, 2"
-        "$mainMod, 2, workspace, 3"
-        "$mainMod, 3, workspace, 4"
-        "$mainMod, 4, workspace, 5"
-        "$mainMod, 5, workspace, 6"
-        "$mainMod, 6, workspace, 7"
-        "$mainMod, 7, workspace, 8"
-        "$mainMod, 8, workspace, 9"
-        "$mainMod, 9, workspace, 10"
+        "$mainMod, 1, workspace, 1"
+        "$mainMod, 2, workspace, 2"
+        "$mainMod, 3, workspace, 3"
+        "$mainMod, 4, workspace, 4"
+        "$mainMod, 5, workspace, 5"
+        "$mainMod, 6, workspace, 6"
+        "$mainMod, 7, workspace, 7"
+        "$mainMod, 8, workspace, 8"
+        "$mainMod, 9, workspace, 9"
 
         "$mainMod, left, workspace, -1"
         "$mainMod, right, workspace, +1"
-        "$mainMod, h, workspace, e-1"
-        "$mainMod, l, workspace, e+1"
+        "$mainMod, h, workspace, -1"
+        "$mainMod, l, workspace, +1"
 
         # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        "$shftMod, 0, movetoworkspace, 1"
-        "$shftMod, 1, movetoworkspace, 2"
-        "$shftMod, 2, movetoworkspace, 3"
-        "$shftMod, 3, movetoworkspace, 4"
-        "$shftMod, 4, movetoworkspace, 5"
-        "$shftMod, 5, movetoworkspace, 6"
-        "$shftMod, 6, movetoworkspace, 7"
-        "$shftMod, 7, movetoworkspace, 8"
-        "$shftMod, 8, movetoworkspace, 9"
-        "$shftMod, 9, movetoworkspace, 10"
+        "$shftMod, 1, movetoworkspace, 1"
+        "$shftMod, 2, movetoworkspace, 2"
+        "$shftMod, 3, movetoworkspace, 3"
+        "$shftMod, 4, movetoworkspace, 4"
+        "$shftMod, 5, movetoworkspace, 5"
+        "$shftMod, 6, movetoworkspace, 6"
+        "$shftMod, 7, movetoworkspace, 7"
+        "$shftMod, 8, movetoworkspace, 8"
+        "$shftMod, 9, movetoworkspace, 9"
 
         "$shftMod, left, movetoworkspace, -1"
         "$shftMod, right, movetoworkspace, +1"
@@ -351,24 +344,20 @@
         "opacity 1.0 override 1.0 override, class:zen"
         "opacity 1.0 override 1.0 override, class:evince"
 
-        # workspace  (1)
-        "workspace 1, class:evince"
-        "workspace 1, class:Zotero"
+        # workspace 󱞁 (1)
+        "workspace 1, class:obsidian"
 
-        # workspace 󱞁 (2)
-        "workspace 2, class:obsidian"
+        # workspace  (3)
+        "workspace 3, class:mpv"
+        "workspace 3, class:vlc"
+        "workspace 3, class:spotify"
+        "workspace 3, class:rhythmbox"
 
-        # workspace  (4)
-        "workspace 4, class:mpv"
-        "workspace 4, class:vlc"
-        "workspace 4, class:spotify"
-        "workspace 4, class:rhythmbox"
-
-        # workspace  (5)
-        "workspace 5, class:krita"
+        # workspace  (4)
+        "workspace 4, class:krita"
 
         # rest workspace
-        "workspace 7, class:^(.*qBittorrent.*)$"
+        "workspace 6, class:^(.*qBittorrent.*)$"
 
         # special workspaces
         "workspace special:commws, class:teams-for-linux"
@@ -382,14 +371,17 @@
         "workspace special:taskws, class:$taskMgr"
         "workspace special:confws, class:nixconf"
 
+        "workspace special:readws, class:evince"
+        "workspace special:readws, class:Zotero"
+
         "float, class:Zotero, title:^(.*Progress.*)$"
         "opacity 0.5, class:Zotero, title:^(.*Progress.*)$"
         "float, class:Zotero, title:^(Zotero Settings)$"
         "float, class:Zotero, title:^(Plugins Manager.*)$"
         "float, class:^(.*qBittorrent.*)$, title:^(?!qBittorrent).+$" # not working
 
-        "float, class:^(zen.*)$, title:^(.*Private Browsing.*)$"
-        "float, class:microsoft-edge, title:^(.*\\[InPrivate\\].*)$"
+        "maximize, class:^(zen.*)$, title:^(.*Private Browsing.*)$"
+        "maximize, class:microsoft-edge, title:^(.*\\[InPrivate\\].*)$"
 
         "idleinhibit focus, class:mpv"
         "idleinhibit focus, class:^(.*suyu.*)$"
@@ -441,10 +433,10 @@
         "w[t1], gapsout:0, gapsin:0"
         "w[tg1], gapsout:0, gapsin:0"
         "f[1], gapsout:0, gapsin:0"
-        "1, on-created-empty:zotero"
-        "2, on-created-empty:obsidian"
-        "3, on-created-empty:$browser"
+        "1, on-created-empty:obsidian"
+        "2, on-created-empty:$browser"
         "special:taskws, on-created-empty:$taskMgr"
+        "special:readws, on-created-empty:zotero"
         "special:codews, on-created-empty:$term"
         "special:confws, on-created-empty:$nixConf"
         "special:commws, on-created-empty:$discordClient"

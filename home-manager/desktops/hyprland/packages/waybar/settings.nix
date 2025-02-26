@@ -12,7 +12,7 @@
       "hyprland/workspaces"
     ];
     modules-center = [
-      # "custom/uair"
+      "custom/uair"
       "clock"
     ];
     modules-right = [
@@ -42,11 +42,11 @@
       on-click = "activate";
       show-special = true;
       format-icons = {
-        "1" = "";
-        "2" = "󱞁";
-        "3" = "";
-        "4" = "";
-        "5" = "";
+        "1" = "󱞁";
+        "2" = "";
+        "3" = "";
+        "4" = "";
+        "5" = "v";
         "6" = "vi";
         "7" = "vii";
         "8" = "viii";
@@ -55,15 +55,13 @@
         "codews" = "";
         "taskws" = "";
         "confws" = "";
+        "readws" = "";
         "commws" = "";
         sort-by-number = true;
       };
       persistent-workspaces = {
         "1" = [];
         "2" = [];
-        "3" = [];
-        "codews" = [];
-        "taskws" = [];
       };
     };
     cpu = {

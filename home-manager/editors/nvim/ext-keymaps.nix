@@ -47,31 +47,31 @@
         {
           mode = "n";
           key = "<leader>gs";
-          action.__raw = "vim.cmd.Git";
+          action = "<cmd>Git<CR>";
         }
 
         # undotree
         {
           mode = "n";
           key = "<leader>u";
-          action.__raw = "vim.cmd.UndotreeToggle";
+          action = "<cmd>UndotreeToggle<CR>";
         }
 
         # telescope
         {
           mode = "n";
           key = "<C-p>";
-          action.__raw = "require('telescope.builtin').git_files";
+          action = "<cmd>Telescope git_files<CR>";
         }
         {
           mode = "n";
           key = "<leader>pf";
-          action.__raw = "require('telescope.builtin').find_files";
+          action = "<cmd>Telescope find_files<CR>";
         }
         {
           mode = "n";
           key = "<leader>pb";
-          action.__raw = "require('telescope.builtin').buffers";
+          action = "<cmd>Telescope buffers<CR>";
         }
         {
           mode = "n";
@@ -85,7 +85,7 @@
         {
           mode = "n";
           key = "<leader>vh";
-          action.__raw = "require('telescope.builtin').help_tags";
+          action = "<cmd>Telescope help_tags<CR>";
         }
 
         # harpoon

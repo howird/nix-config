@@ -13,7 +13,6 @@ lib.mkIf config.myDesktop.hyprland {
     # wl-clip-persist
     wl-clipboard-rs
     wf-recorder
-    swayidle
     glib
     wayland
     libnotify
