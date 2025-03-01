@@ -21,6 +21,8 @@
     nix-index
     devenv
     nixd
+    pixi
+    uv
   ];
 
   services.lorri.enable = true;
