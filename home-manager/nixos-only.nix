@@ -1,11 +1,4 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{config, ...}: {
   imports = [
     ./desktops
 
@@ -27,6 +20,6 @@
 
     # browsers
     myBrowser.edge = true;
-    myBrowser.zen = true;
+    myBrowser.vivaldi = true;
   };
 }

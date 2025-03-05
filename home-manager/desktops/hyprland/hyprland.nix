@@ -21,6 +21,7 @@ lib.mkIf config.myDesktop.hyprland {
     nautilus
     blueman
     networkmanagerapplet
+    pavucontrol
   ];
 
   systemd.user.targets.hyprland-session.Unit.Wants = [

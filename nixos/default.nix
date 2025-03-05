@@ -12,6 +12,7 @@
     ./syncthing.nix
     ./emulators.nix
     ./inputs.nix
+    ./mobile.nix
   ];
 
   networking.networkmanager.enable = true;

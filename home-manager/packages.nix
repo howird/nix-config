@@ -1,10 +1,5 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
-    scrcpy
     openconnect_openssl
     networkmanager
 
@@ -22,7 +17,6 @@
     texliveFull
     zotero
     zathura # pdf keyboard-based
-    parsec-bin
 
     vesktop
     teams-for-linux

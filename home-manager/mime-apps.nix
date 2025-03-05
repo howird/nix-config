@@ -7,7 +7,7 @@
       video = "vlc.desktop";
       image = "org.gnome.Loupe.desktop";
       document = "org.gnome.Evince.desktop";
-      browser = "microsoft-edge.desktop";
+      browser = "vivaldi-stable.desktop";
     in {
       "text/markdown" = code;
       "text/plain" = code;

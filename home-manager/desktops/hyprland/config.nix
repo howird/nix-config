@@ -161,7 +161,7 @@
       "$floatCenter" = "[float; center; size 900 600]";
 
       "$term" = "alacritty";
-      "$browser" = "microsoft-edge";
+      "$browser" = "vivaldi";
       "$fileManager" = "nautilus";
       "$codeEditor" = "code";
       "$discordClient" = "vesktop";
@@ -225,6 +225,7 @@
         "$mainMod, t, togglespecialworkspace, codews"
         "$mainMod, i, togglespecialworkspace, commws"
         "$mainMod, r, togglespecialworkspace, readws"
+        "$shftMod, r, movetoworkspace, special:readws"
         "$mainMod, Escape, togglespecialworkspace, confws"
 
         "$mainMod, 1, workspace, 1"
@@ -371,7 +372,6 @@
         "workspace special:taskws, class:$taskMgr"
         "workspace special:confws, class:nixconf"
 
-        "workspace special:readws, class:evince"
         "workspace special:readws, class:Zotero"
 
         "float, class:Zotero, title:^(.*Progress.*)$"
@@ -381,17 +381,19 @@
         "float, class:^(.*qBittorrent.*)$, title:^(?!qBittorrent).+$" # not working
 
         "maximize, class:^(zen.*)$, title:^(.*Private Browsing.*)$"
-        "maximize, class:microsoft-edge, title:^(.*\\[InPrivate\\].*)$"
+        "maximize, class:^(vivaldi.*)$, title:^(Private Window.*)$"
+
+        "float, class:^(vivaldi.*)$, title:^(Bitwarden.*)$"
 
         "idleinhibit focus, class:mpv"
         "idleinhibit focus, class:^(.*suyu.*)$"
         "idleinhibit focus, class:vlc"
-        "idleinhibit fullscreen, class:microsoft-edge"
+        "idleinhibit focus, class:spotify"
+        "idleinhibit fullscreen, fullscreen:0"
 
         "center, class:^(org.gnome.FileRoller)$"
         "float, class:^(org.gnome.FileRoller)$"
         "size 850 500, class:^(org.gnome.FileRoller)$"
-        "float, class:^(.*sedge.*)$, initialTitle:^(.*itwarden.*)$" # not working
 
         "size 850 500, title:^(.*File Upload.*)$"
 

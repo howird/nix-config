@@ -16,6 +16,15 @@
       };
     };
 
+    keymaps = [
+      # show full diagnostic msg when it is cut off
+      {
+        mode = "n";
+        key = "<leader>e";
+        action = "<cmd>lua vim.diagnostic.open_float()<CR>";
+      }
+    ];
+
     plugins.lsp.servers = {
       bashls.enable = true;
       clangd.enable = true;

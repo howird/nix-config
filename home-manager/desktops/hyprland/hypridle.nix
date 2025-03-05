@@ -1,4 +1,8 @@
-{host, ...}: {
+{
+  host,
+  lib,
+  ...
+}: {
   services.hypridle.enable = true;
   services.hypridle.settings = {
     general = {
@@ -31,9 +35,7 @@
         }
       ]
       ++ (
-        if host == "bofa"
-        then []
-        else [
+        lib.lists.optionals (host == "bofa") [
           {
             # suspend
             timeout = 1200;
