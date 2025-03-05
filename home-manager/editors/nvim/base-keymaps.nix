@@ -136,6 +136,25 @@
         action = "<cmd>!chmod +x %<CR>";
         options = {silent = true;};
       }
+      # diagnostics
+      {
+        mode = "n";
+        key = "<leader>te";
+        action = "<cmd>lua vim.diagnostic.open_float()<CR>";
+        options = {silent = true;};
+      }
+      {
+        mode = "n";
+        key = "<leader>t<S-n>";
+        action = "<cmd>lua vim.diagnostic.goto_prev()<CR>";
+        options = {silent = true;};
+      }
+      {
+        mode = "n";
+        key = "<leader>tn";
+        action = "<cmd>lua vim.diagnostic.goto_next()<CR>";
+        options = {silent = true;};
+      }
     ];
   };
 }

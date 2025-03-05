@@ -5,6 +5,7 @@
 }: {
   wayland.windowManager.hyprland = {
     settings = {
+      ecosystem.no_update_news = true;
       env = lib.mapAttrsToList (name: value: "${name},${value}") (import ./variables.nix);
       # autostart
       exec-once =

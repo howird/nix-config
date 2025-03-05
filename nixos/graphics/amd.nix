@@ -1,11 +1,10 @@
 {
-  inputs,
-  outputs,
   lib,
   config,
   pkgs,
   ...
-}: {
+}:
+lib.mkIf config.myGraphics.amd {
   boot.initrd.kernelModules = ["amdgpu"];
   boot.kernelModules = ["kvm-amd"];
 
