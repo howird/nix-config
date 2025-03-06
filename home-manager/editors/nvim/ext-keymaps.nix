@@ -12,6 +12,7 @@
       plugins.harpoon.enable = true;
 
       plugins.oil.settings.use_default_keymaps = false;
+      plugins.oil.settings.view_options.show_hidden = true;
       plugins.oil.settings.keymaps = {
         "g?" = "actions.show_help";
         "<CR>" = "actions.select";

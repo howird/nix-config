@@ -431,6 +431,12 @@
         "rounding 0, floating:0, onworkspace:f[1]"
       ];
 
+      # so hyprshot does not have border https://github.com/Gustash/Hyprshot/issues/60#issuecomment-2576391751
+      layerrule = [
+        "noanim, hyprpicker"
+        "noanim, selection"
+      ];
+
       # No gaps when only
       workspace = [
         "w[t1], gapsout:0, gapsin:0"
