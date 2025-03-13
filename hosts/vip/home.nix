@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   imports = [
     ../../home-manager
   ];
@@ -17,7 +14,7 @@
       elif [ -f $HOME_NIX_SH ]; then
         source $HOME_NIX_SH
       else
-        echo "ERROR: nix.sh not sourced!" 
+        echo "ERROR: nix.sh not sourced!"
       fi
 
       source $HOME_PROFILE/hm-session-vars.sh

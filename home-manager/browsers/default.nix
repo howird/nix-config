@@ -25,7 +25,14 @@
         optionals config.myBrowser.edge [(pkgs.microsoft-edge.override {inherit commandLineArgs;})]
       )
       ++ (
-        optionals config.myBrowser.vivaldi [(pkgs.vivaldi.override {inherit commandLineArgs;})]
+        optionals config.myBrowser.vivaldi [
+          (pkgs.vivaldi.override {
+            inherit commandLineArgs;
+            proprietaryCodecs = true;
+            enableWidevine = true;
+            pulseSupport = true;
+          })
+        ]
       )
       ++ (
         optionals config.myBrowser.chromium [(pkgs.chromium.override {inherit commandLineArgs;})]
