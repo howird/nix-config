@@ -24,6 +24,7 @@
     chromium
     vlc
     libreoffice
+    gnome-text-editor
     evince # pdf
     xournalpp # pdf+markup
     foliate # ebooks

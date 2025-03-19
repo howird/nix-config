@@ -387,6 +387,7 @@
         "float, class:^(vivaldi.*)$, title:^(Bitwarden.*)$"
 
         "idleinhibit focus, class:mpv"
+        "idleinhibit focus, class:firefox, title:Library"
         "idleinhibit focus, class:^(.*suyu.*)$"
         "idleinhibit focus, class:vlc"
         "idleinhibit focus, class:spotify"

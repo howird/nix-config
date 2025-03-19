@@ -12,7 +12,6 @@
     kdenlive
 
     ticktick
-    gnome-text-editor
     obsidian
     texliveFull
     zotero

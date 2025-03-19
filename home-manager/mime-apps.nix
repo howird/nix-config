@@ -3,14 +3,16 @@
     enable = true;
 
     defaultApplications = let
-      code = "nvim.desktop";
+      code = "dev.zed.Zed.desktop";
+      text = "org.gnome.TextEditor.desktop";
       video = "vlc.desktop";
       image = "org.gnome.Loupe.desktop";
       document = "org.gnome.Evince.desktop";
       browser = "vivaldi-stable.desktop";
     in {
+      "text/plain" = text;
+      "application/pdf" = document;
       "text/markdown" = code;
-      "text/plain" = code;
 
       "video/mp4" = video;
       "video/webm" = video;
@@ -20,8 +22,6 @@
       "image/jpeg" = image;
       "image/gif" = image;
       "image/svg+xml" = image;
-
-      "application/pdf" = document;
 
       "text/html" = browser;
       "x-scheme-handler/http" = browser;
