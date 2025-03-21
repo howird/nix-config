@@ -161,7 +161,7 @@
       "$shftMod" = "SUPER SHIFT";
       "$floatCenter" = "[float; center; size 900 600]";
 
-      "$term" = "alacritty";
+      "$term" = "ghostty";
       "$browser" = "vivaldi";
       "$fileManager" = "nautilus";
       "$codeEditor" = "code";
@@ -330,8 +330,6 @@
         "float,title:^(Volume Control)$"
         "float,title:^(Firefox — Sharing Indicator)$"
         "move 0 0,title:^(Firefox — Sharing Indicator)$"
-        "size 700 450,title:^(Volume Control)$"
-        "move 40 55%,title:^(Volume Control)$"
         "float, title:Bitwarden"
       ];
 
@@ -402,6 +400,7 @@
         "float,class:^(nm-.*)$"
         "float,class:^(.*blueman.*)$"
         "float,class:^(.*pavucontrol.*)$"
+        "size 850 450,class:^(.*pavucontrol.*)"
         "float,class:^(.*SoundWireServer.*)$"
         "float,class:^(.*.sameboy-wrapped.*)$"
         "float,class:^(.*file_progress.*)$"

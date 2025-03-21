@@ -13,6 +13,7 @@
     ./programming.nix
     ./git.nix
     ./htop.nix
+    ./ghostty.nix
   ];
 
   config = {

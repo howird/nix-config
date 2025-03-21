@@ -3,13 +3,16 @@
     openconnect_openssl
     networkmanager
 
+    yazi
+    timg
+
     reaper
     audacity
 
     rnote
     krita
     obs-studio
-    kdenlive
+    kdePackages.kdenlive
 
     ticktick
     obsidian

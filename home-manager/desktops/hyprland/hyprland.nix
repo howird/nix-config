@@ -18,7 +18,6 @@ lib.mkIf config.myDesktop.hyprland {
     libnotify
     file-roller
 
-    nautilus
     blueman
     networkmanagerapplet
     pavucontrol

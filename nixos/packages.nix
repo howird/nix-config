@@ -24,6 +24,7 @@
     chromium
     vlc
     libreoffice
+    nautilus # file explorer
     gnome-text-editor
     evince # pdf
     xournalpp # pdf+markup
@@ -31,6 +32,8 @@
     rhythmbox # music
     loupe # image viewer
   ];
+
+  services.gvfs.enable = true;
 
   programs = {
     git.enable = true;

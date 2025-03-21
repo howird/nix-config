@@ -1,12 +1,5 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
-  programs.vscode.extensions = with pkgs.vscode-extensions;
+{pkgs, ...}: {
+  programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions;
     [
       # essentials
       ms-vscode-remote.remote-containers

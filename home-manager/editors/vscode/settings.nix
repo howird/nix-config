@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  programs.vscode.userSettings = {
+  programs.vscode.profiles.default.userSettings = {
     "update.mode" = "none";
     "extensions.autoUpdate" = true;
     "extensions.autoCheckUpdates" = true;

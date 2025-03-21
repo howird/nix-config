@@ -14,7 +14,7 @@
       fullscreen = true;
 
       sub-auto = "fuzzy";
-      sub-font = config.stylix.fonts.serif.name;
+      sub-font = lib.mkForce config.stylix.fonts.serif.name;
       sub-blur = 10;
 
       screenshot-format = "png";

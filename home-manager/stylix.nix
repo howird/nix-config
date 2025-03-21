@@ -23,6 +23,8 @@
 
       cursor.package = pkgs.bibata-cursors;
       cursor.name = "Bibata-Original-Ice";
+      cursor.size = 24;
+      # targets.vscode.profileNames = ["default"];
     };
 
     stylix.fonts = rec {
