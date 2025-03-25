@@ -35,14 +35,12 @@
         }
       ]
       ++ (
-        lib.lists.optionals (host == "bofa") [
-          {
-            # suspend
-            timeout = 1200;
-            on-timeout = "systemctl suspend";
-            on-resume = "notify-send 'Welcome back to your desktop!'";
-          }
-        ]
+        lib.optional (host != "bofa") {
+          # suspend
+          timeout = 1200;
+          on-timeout = "systemctl suspend";
+          on-resume = "notify-send 'Welcome back to your desktop!'";
+        }
       );
   };
 }

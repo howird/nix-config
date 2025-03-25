@@ -20,18 +20,20 @@
   config = let
     commandLineArgs = ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];
   in {
-    home.packages = lib.lists.optionals config.myBrowser.vivaldi [
-        # 
+    home.packages =
+      lib.lists.optionals config.myBrowser.vivaldi [
+        #
         (pkgs.vivaldi.override {
-            inherit commandLineArgs;
-            proprietaryCodecs = true;
-            enableWidevine = true;
-            pulseSupport = true;
+          inherit commandLineArgs;
+          proprietaryCodecs = true;
+          enableWidevine = true;
+          pulseSupport = true;
         })
         pkgs.libsForQt5.qtwayland # for some reason this is needed?
-      ] ++ lib.optional config.myBrowser.edge (pkgs.microsoft-edge.override {inherit commandLineArgs;})
-        ++ lib.optional config.myBrowser.chromium (pkgs.chromium.override {inherit commandLineArgs;})
-        ++ lib.optional config.myBrowser.zen (inputs.zen-browser.packages."${pkgs.system}".default);
+      ]
+      ++ lib.optional config.myBrowser.edge (pkgs.microsoft-edge.override {inherit commandLineArgs;})
+      ++ lib.optional config.myBrowser.chromium (pkgs.chromium.override {inherit commandLineArgs;})
+      ++ lib.optional config.myBrowser.zen (inputs.zen-browser.packages."${pkgs.system}".default);
 
     programs.firefox.enable = config.myBrowser.firefox;
   };

@@ -21,5 +21,6 @@
     # browsers
     myBrowser.edge = true;
     myBrowser.vivaldi = true;
+    myBrowser.zen = true;
   };
 }
