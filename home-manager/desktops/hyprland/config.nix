@@ -162,7 +162,7 @@
       "$floatCenter" = "[float; center; size 900 600]";
 
       "$term" = "ghostty";
-      "$browser" = "vivaldi";
+      "$browser" = "zen";
       "$fileManager" = "nautilus";
       "$codeEditor" = "code";
       "$discordClient" = "vesktop";

@@ -1,8 +1,5 @@
 {
   inputs,
-  outputs,
-  lib,
-  config,
   pkgs,
   ...
 }: {
@@ -13,7 +10,7 @@
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
-    maple-mono-NF
+    maple-mono.NF
     aleo-fonts
   ];
 }

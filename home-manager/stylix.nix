@@ -38,7 +38,7 @@
       monospace = {
         # package = pkgs.nerd-fonts.jetbrains-mono;
         # name = "JetBrainsMono NF";
-        package = pkgs.maple-mono-NF;
+        package = pkgs.maple-mono.NF;
         name = "Maple Mono NF";
       };
 
