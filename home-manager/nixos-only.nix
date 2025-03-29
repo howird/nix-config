@@ -6,7 +6,7 @@
     ./mpv.nix
     ./alacritty.nix
     ./packages.nix
-    ./mime-apps.nix
+    ./apps.nix
   ];
 
   config = {
@@ -20,5 +20,6 @@
 
     # browsers
     myBrowser.zen = true;
+    myBrowser.vivaldi = true;
   };
 }

@@ -64,7 +64,6 @@
         gaps_in = 5;
         gaps_out = 10;
         border_size = 2;
-        border_part_of_window = false;
         no_border_on_floating = false;
         resize_on_border = true;
       };
@@ -310,31 +309,19 @@
         "$mainMod, mouse:273, resizewindow"
       ];
 
-      # windowrule
-      windowrule = [
-        "float,Viewnior"
-        "center,Viewnior"
-        "size 1200 800,Viewnior"
-        "float,imv"
-        "center,imv"
-        "size 1200 725,imv"
-        "float,mpv"
-        "center,mpv"
-        "size 1200 725,mpv"
-        "float,audacious"
-        "pin,rofi"
-        "tile, neovide"
-        "idleinhibit focus,mpv"
-        "float,udiskie"
-        "float,title:^(Transmission)$"
-        "float,title:^(Volume Control)$"
-        "float,title:^(Firefox — Sharing Indicator)$"
-        "move 0 0,title:^(Firefox — Sharing Indicator)$"
-        "float, title:Bitwarden"
-      ];
-
       # windowrulev2
       windowrulev2 = [
+        "float, class:mpv"
+        "center, class:mpv"
+        "size 1200 725, class:mpv"
+        "pin, class:rofi"
+        "idleinhibit focus, class:mpv"
+        "float, title:^(.*Transmission.*)$"
+        "float, title:^(.*Volume Control.*)$"
+        "float,title:^(.*Sharing Indicator.*)$"
+        "float,class:zen, title:^(Extension:.*)$"
+        "move 0 0,title:^(.*Firefox — Sharing Indicator.*)$"
+
         "float, title:^(.*Picture-in-Picture.*)$"
         "float, class:^(xdg-desktop-portal-.*)$"
         "opacity 1.0 override 1.0 override, title:^(.*Picture-in-Picture.*)$"
