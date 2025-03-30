@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+#!/bin/bash
+# This script retrieves GPU tasks using nvidia-smi, finds process details (user,
+# running time, CPU%, state) using ps, and prints a table with PID, User, GPU Bus ID,
+# VRAM (MiB), Running Time, CPU%, and a human-readable process State.
+
+# Check if nvidia-smi is available
+if ! command -v nvidia-smi &> /dev/null; then
+    echo "Error: nvidia-smi is not installed or not in PATH." >&2
+    exit 1
+fi
+
+# Retrieve GPU tasks including PID, used VRAM (MiB), and GPU Bus ID
+# Output format: "PID, used_memory, gpu_bus_id"
+# Using try-except block equivalent for command failure
+gpu_tasks=$(nvidia-smi --query-compute-apps=pid,used_gpu_memory,gpu_bus_id --format=csv,noheader,nounits 2>/dev/null)
+if [ $? -ne 0 ]; then
+    echo "Error: nvidia-smi command failed. Is the driver loaded? Are there GPUs?" >&2
+    # Attempt to get more detailed error if possible
+    nvidia-smi > /dev/null 2>&1
+    if [ $? -ne 0 ]; then
+         echo "       nvidia-smi cannot connect to the NVIDIA driver. Might need restart or reinstall." >&2
+    fi
+    exit 1
+fi
+
+# Check if any tasks were found
+if [ -z "$gpu_tasks" ]; then
+    echo "No active GPU compute tasks found."
+    exit 0
+fi
+
+# Print header for the table - changed GPU_ID to BUS_ID and adjusted spacing
+printf "%-10s %-15s %-18s %-10s %-12s %-7s %-15s\n" "PID" "USER" "BUS_ID" "VRAM(MiB)" "UPTIME" "CPU%" "STATE"
+echo "------------------------------------------------------------------------------------------" # Adjusted separator length
+
+# --- Function to map state codes to human-readable strings ---
+get_human_readable_state() {
+    local state_code="$1"
+    local base_state="${state_code:0:1}" # Get the primary state character
+
+    case "$base_state" in
+        R) echo "Running" ;;
+        S) echo "Sleeping" ;;
+        D) echo "Disk Sleep" ;;
+        Z) echo "Zombie" ;;
+        T) echo "Stopped/Traced" ;;
+        I) echo "Idle (Kernel)" ;;
+        *) echo "$state_code" ;; # Fallback to raw code if unknown
+    esac
+}
+
+# Iterate over each line (each task) returned by nvidia-smi
+while IFS=',' read -r pid used_memory gpu_bus_id; do
+    # Remove any extra whitespace from nvidia-smi output
+    pid=$(echo "$pid" | xargs)
+    used_memory=$(echo "$used_memory" | xargs)
+    gpu_bus_id=$(echo "$gpu_bus_id" | xargs) # Now reading gpu_bus_id
+
+    # Initialize variables for ps output
+    user="N/A"
+    etime="N/A"
+    pcpu="0.0"
+    state_code="N/A"
+    human_state="N/A"
+    formatted_cpu="N/A"
+
+    # Check if PID is valid before querying ps
+    if ! [[ "$pid" =~ ^[0-9]+$ ]]; then
+        user="Invalid PID"
+        printf "%-10s %-15s %-18s %-10s %-12s %-7s %-15s\n" \
+            "$pid" "$user" "$gpu_bus_id" "$used_memory" "$etime" "$formatted_cpu" "$human_state"
+        continue # Skip to the next line
+    fi
+
+    # Get process details using ps: User, Elapsed Time, CPU %, State Code
+    ps_output=$(ps -p "$pid" -o user=,etime=,pcpu=,state= --no-headers 2>/dev/null)
+
+    if [ -n "$ps_output" ]; then
+        # Parse the output
+        read -r user etime pcpu state_code <<< "$(echo "$ps_output" | awk '{$1=$1; print $1, $2, $3, $4}')"
+
+        # Trim potential whitespace
+        user=$(echo "$user" | xargs)
+        etime=$(echo "$etime" | xargs)
+        pcpu=$(echo "$pcpu" | xargs)
+        state_code=$(echo "$state_code" | xargs)
+
+        # Get human-readable state from the code
+        human_state=$(get_human_readable_state "$state_code")
+
+        # Format CPU percentage
+        formatted_cpu=$(printf "%.1f" "$pcpu")
+
+    else
+        # ps command failed, process likely terminated.
+        user="(ended)"
+    fi
+
+    # Print the details including GPU Bus ID and human-readable state
+    # Adjusted spacing for BUS_ID column
+    printf "%-10s %-15s %-18s %-10s %-12s %-7s %-15s\n" \
+        "$pid" \
+        "$user" \
+        "$gpu_bus_id" \
+        "$used_memory" \
+        "$etime" \
+        "$formatted_cpu" \
+        "$human_state"
+
+done <<< "$gpu_tasks"
