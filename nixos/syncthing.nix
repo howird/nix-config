@@ -24,6 +24,12 @@
           path = "/home/howird/docs/papers";
           ignorePerms = true;
         };
+        Notes = {
+          inherit devices;
+          id = "h3cfv-d6qmg";
+          path = "/home/howird/docs/notes";
+          ignorePerms = true;
+        };
         Books = {
           inherit devices;
           id = "aaqo7-hfgmf";
