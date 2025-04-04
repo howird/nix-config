@@ -20,8 +20,23 @@
       # show full diagnostic msg when it is cut off
       {
         mode = "n";
-        key = "<leader>e";
+        key = "<leader>ls";
         action = "<cmd>lua vim.diagnostic.open_float()<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>lk";
+        action = "<cmd>lua vim.diagnostic.goto_prev()<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>lj";
+        action = "<cmd>lua vim.diagnostic.goto_next()<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>lr";
+        action = "<cmd>LspRestart<CR>";
       }
     ];
 

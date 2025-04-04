@@ -165,7 +165,7 @@
       "$fileManager" = "nautilus";
       "$codeEditor" = "code";
       "$discordClient" = "vesktop";
-      "$taskMgr" = "ticktick";
+      # "$taskMgr" = "ticktick";
       "$nixConf" = "alacritty --class nixconf -e tat ~/nix/config";
 
       bind = [
@@ -221,7 +221,7 @@
         "ALT SHIFT, l, movewindoworgroup, r"
 
         # switch workspace
-        "$mainMod, a, togglespecialworkspace, taskws"
+        # "$mainMod, a, togglespecialworkspace, taskws"
         "$mainMod, t, togglespecialworkspace, codews"
         "$mainMod, i, togglespecialworkspace, commws"
         "$mainMod, r, togglespecialworkspace, readws"
@@ -355,7 +355,7 @@
         "workspace special:codews, class:code"
         "workspace special:codews, class:^(.*zed.*)$"
 
-        "workspace special:taskws, class:$taskMgr"
+        # "workspace special:taskws, class:$taskMgr"
         "workspace special:confws, class:nixconf"
 
         "workspace special:readws, class:Zotero"
@@ -366,10 +366,7 @@
         "float, class:Zotero, title:^(Plugins Manager.*)$"
         "float, class:^(.*qBittorrent.*)$, title:^(?!qBittorrent).+$" # not working
 
-        "maximize, class:^(zen.*)$, title:^(.*Private Browsing.*)$"
-        "maximize, class:^(vivaldi.*)$, title:^(Private Window.*)$"
-
-        "float, class:^(vivaldi.*)$, title:^(Bitwarden.*)$"
+        "maximize, class:^(zen)$, title:^(.*Zen Browser Private Browsing)$"
 
         "idleinhibit focus, class:mpv"
         "idleinhibit focus, class:firefox, title:Library"
@@ -431,7 +428,7 @@
         "f[1], gapsout:0, gapsin:0"
         "1, on-created-empty:obsidian"
         "2, on-created-empty:$browser"
-        "special:taskws, on-created-empty:$taskMgr"
+        # "special:taskws, on-created-empty:$taskMgr"
         "special:readws, on-created-empty:zotero"
         "special:codews, on-created-empty:$term"
         "special:confws, on-created-empty:$nixConf"
