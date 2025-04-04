@@ -14,7 +14,6 @@
     obs-studio
     kdePackages.kdenlive
 
-    ticktick
     obsidian
     texliveFull
     zotero

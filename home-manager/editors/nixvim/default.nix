@@ -25,7 +25,7 @@
     plugins.lualine.enable = true;
     plugins.colorizer.enable = true;
 
-    vimAlias = true;
+    # vimAlias = true;
 
     opts = {
       number = true;

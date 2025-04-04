@@ -10,4 +10,10 @@
 
     scrcpy
   ];
+
+  programs.weylus = {
+    enable = true;
+    users = ["howird"];
+    openFirewall = true;
+  };
 }
