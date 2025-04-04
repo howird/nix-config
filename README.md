@@ -1,6 +1,8 @@
 # nix-config
 
-## first time
+### Initial System Setup
+
+#### NixOS Machines:
 
 - Make the follwing changes the default nixos config with `sudoedit /etc/nixos/configuration.nix`
     - Add `nix.settings.experimental-features = "nix-command flakes";`
@@ -17,45 +19,33 @@ git clone https://github.com/howird/nix-config.git /home/howird/nix/config
 git clone git@github.com:howird/nix-config /home/howird/nix/config
 ```
 
-- Setup your system (remember to write the correct hostname):
+- Apply this config
 
 ```bash
 sudo nixos-rebuild switch --flake .#<hostname>
-# or
-home-manager switch --flake .#howird@<hostname>
 ```
 
-## next times
+#### non-NixOS Machines:
+
+- Install nix [here](https://nixos.org/download/)
+- Install standalone home-manager, with [these commands](https://nix-community.github.io/home-manager/index.xhtml#sec-install-standalone)
+- Enable experimental features
+
+```bash
+echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
+```
+
+- Apply this config
+
+```bash
+home-manager switch --flake .#howard@vip
+```
+
+## Next Times
 
 ```bash
 nixwird
 ```
-
-## Configuring
-
-### GNOME and KDE Plasma
-
-- We configure most of our settings declaratively using home-manager, so to update our desktop settings, we first cache our current settings with:
-
-```bash
-dconf dump / > old-conf.txt # GNOME
-nix run .#rc2nix > old-conf.txt # KDE Plasma
-```
-
-- Modify using the settings GUI, then:
-
-```bash
-dconf dump / > new-conf.txt # GNOME
-nix run .#rc2nix > new-conf.txt # KDE Plasma
-```
-
-- Then compare the differences with:
-
-```bash
-code --diff old-conf.txt new-conf.txt
-```
-
-- Then update `gnome.nix` or `kde.nix` accordingly in `./home-manager/desktops`
 
 ## troubleshooting
 
@@ -70,7 +60,7 @@ eza --tree result/ --level 3
 
 ### cache/store related
 
-  - first try running with args:
+- first try running with args:
 
 ```bash
 nixwird --refresh --repair
