@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   programs.nvf.settings.vim = {
     utility.oil-nvim.enable = true;
     utility.oil-nvim.setupOpts = {

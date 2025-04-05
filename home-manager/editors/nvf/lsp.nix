@@ -12,15 +12,17 @@
 
       python.enable = true;
       python.lsp.server = "pyright";
-      nix.enable = true;
-      nix.lsp.server = "nixd";
+      python.format.type = "ruff";
+
       rust.enable = true;
+      nix.enable = true;
       clang.enable = true;
       html.enable = true;
       # dart.enable = true;
       # go.enable = true;
       # lua.enable = true;
       # ts.enable = true;
+
       markdown.enable = true;
       markdown.extensions.render-markdown-nvim.enable = true;
     };
