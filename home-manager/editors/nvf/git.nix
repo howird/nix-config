@@ -3,6 +3,7 @@
     git.enable = true;
     git.gitsigns.enable = true;
     git.gitsigns.codeActions.enable = false;
+
     git.vim-fugitive.enable = true;
     keymaps = [
       {
@@ -13,5 +14,15 @@
         desc = "open fugitive";
       }
     ];
+
+    git.git-conflict.enable = true;
+    git.git-conflict.mappings = {
+      both = "<leader>cb";
+      nextConflict = "[x";
+      none = "<leader>c0";
+      ours = "<leader>co";
+      prevConflict = "]x";
+      theirs = "<leader>ct";
+    };
   };
 }
