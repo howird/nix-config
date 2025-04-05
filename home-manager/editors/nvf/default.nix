@@ -37,10 +37,11 @@
 
       theme = {
         enable = true;
-        name = "base16";
+        name = "catppuccin";
+        style = "mocha";
         transparent = true;
       };
-      statusline.lualine.theme = "base16";
+      statusline.lualine.theme = "catppuccin";
 
       visuals = {
         nvim-web-devicons.enable = true;
