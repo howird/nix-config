@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  lib,
   ...
 }: {
   imports = [
@@ -37,11 +38,11 @@
 
       theme = {
         enable = true;
-        name = "catppuccin";
+        name = lib.mkForce "catppuccin";
         style = "mocha";
-        transparent = true;
+        transparent = lib.mkForce true;
       };
-      statusline.lualine.theme = "catppuccin";
+      statusline.lualine.theme = lib.mkForce "catppuccin";
 
       visuals = {
         nvim-web-devicons.enable = true;

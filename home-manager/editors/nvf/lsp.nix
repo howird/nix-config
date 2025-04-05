@@ -11,7 +11,9 @@
       enableExtraDiagnostics = true;
 
       python.enable = true;
+      python.lsp.server = "pyright";
       nix.enable = true;
+      nix.lsp.server = "nixd";
       rust.enable = true;
       clang.enable = true;
       html.enable = true;
@@ -52,7 +54,7 @@
       goToType = "<leader>gt";
       hover = "<leader>h";
 
-      openDiagnosticFloat = "<leader>le";
+      openDiagnosticFloat = "<leader>e";
       nextDiagnostic = "<leader>j";
       previousDiagnostic = "<leader>k";
 
