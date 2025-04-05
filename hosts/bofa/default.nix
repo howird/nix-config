@@ -15,16 +15,15 @@
 
   services.syncthing.enable = true;
   services.glances.enable = true;
-  services.ollama.enable = true;
-  services.open-webui.enable = true;
+  services.ollama.enable = false;
+  services.open-webui.enable = false;
 
   myDesktop.hyprland = true;
 
   # GPU STUFF
   myGraphics.amd = false;
   myGraphics.nvidia = true;
-  # myGraphics.nvidiaVulkan = true;
-  # boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_6; # TODO: for nvidia vulkan
+  myGraphics.nvidiaVulkan = true;
 
   hardware.graphics = {
     enable = true;
