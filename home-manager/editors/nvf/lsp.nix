@@ -74,7 +74,7 @@
 
     keymaps = [
       {
-        key = "<leader>lr";
+        key = "<leader>lR";
         mode = "n";
         action = ":LspRestart<CR>";
         silent = true;
