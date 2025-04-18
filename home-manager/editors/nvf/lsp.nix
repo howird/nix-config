@@ -11,11 +11,25 @@
       enableExtraDiagnostics = true;
 
       python.enable = true;
+      python.lsp.enable = true;
       python.lsp.server = "pyright";
+      python.format.enable = true;
       python.format.type = "ruff";
+      python.dap.enable = true;
+      python.dap.debugger = "debugpy";
+      python.treesitter.enable = true;
+
+      nix.enable = true;
+      nix.lsp.enable = true;
+      nix.format.enable = true;
+      nix.treesitter.enable = true;
 
       rust.enable = true;
-      nix.enable = true;
+      rust.lsp.enable = true;
+      rust.format.enable = true;
+      rust.dap.enable = true;
+      rust.treesitter.enable = true;
+
       clang.enable = true;
       html.enable = true;
       # dart.enable = true;
