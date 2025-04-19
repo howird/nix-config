@@ -18,12 +18,8 @@
       url = "github:nix-community/nixos-vscode-server";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nvf = {
-      url = "github:notashelf/nvf";
+      url = "github:howird/nvf/howird/python-dap-rename";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rust-overlay = {
