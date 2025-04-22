@@ -60,6 +60,10 @@
         noice.enable = true;
       };
 
+      notes = {
+        todo-comments.enable = true;
+      };
+
       utility = {
         multicursors.enable = true;
         diffview-nvim.enable = true;

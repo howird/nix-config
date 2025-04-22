@@ -82,28 +82,6 @@
       desc = "removes capital Q";
     }
 
-    # quickfix navigation
-    {
-      mode = "n";
-      key = "<C-k>";
-      action = "<cmd>cnext<CR>zz";
-    }
-    {
-      mode = "n";
-      key = "<C-j>";
-      action = "<cmd>cprev<CR>zz";
-    }
-    {
-      mode = "n";
-      key = "<leader>k";
-      action = "<cmd>lnext<CR>zz";
-    }
-    {
-      key = "<leader>j";
-      mode = "n";
-      action = "<cmd>lprev<CR>zz";
-    }
-
     {
       mode = "n";
       key = "<leader>s";

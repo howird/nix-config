@@ -25,6 +25,7 @@
     vlc
     libreoffice
     nautilus # file explorer
+    gnome-disk-utility
     gnome-text-editor
     evince # pdf
     xournalpp # pdf+markup

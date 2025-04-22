@@ -25,6 +25,12 @@
           path = "/home/howird/docs/papers";
           ignorePerms = true;
         };
+        Supernotes = {
+          inherit devices;
+          id = "vhkwt-suv6b";
+          path = "/home/howird/docs/supernote";
+          ignorePerms = true;
+        };
         Notes = {
           inherit devices;
           id = "h3cfv-d6qmg";

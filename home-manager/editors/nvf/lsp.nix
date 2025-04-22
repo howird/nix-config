@@ -46,7 +46,7 @@
       friendly-snippets.enable = true;
       mappings = {
         close = "<C-n>";
-        complete = "<C-l";
+        complete = "<C-l>";
         confirm = "<CR>";
         next = "<Tab>";
         previous = "<S-Tab>";

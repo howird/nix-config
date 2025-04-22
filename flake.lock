@@ -864,16 +864,15 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1745020364,
-        "narHash": "sha256-vMyYFFLX0GmCiBO7dOlYUjnt03a10AAE+mQK7eCEkng=",
-        "owner": "howird",
+        "lastModified": 1745219503,
+        "narHash": "sha256-oE7nEQBfLTwXqs0U5/fpsMVsfccD6NL1TlBE1z9S+Nc=",
+        "owner": "NotAShelf",
         "repo": "nvf",
-        "rev": "a6a7bd37f314d2bff8212a452ae22bd6698c44e3",
+        "rev": "4045c458dc3e3eaabbb94518a857651cff341542",
         "type": "github"
       },
       "original": {
-        "owner": "howird",
-        "ref": "howird/python-dap-rename",
+        "owner": "NotAShelf",
         "repo": "nvf",
         "type": "github"
       }
