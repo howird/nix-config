@@ -8,11 +8,6 @@
         diagnostics = "<leader>fld";
         findFiles = "<leader>ff";
         findProjects = "<leader>fp";
-        gitBranches = "<leader>fvb";
-        gitBufferCommits = "<leader>fvcb";
-        gitCommits = "<leader>fvcw";
-        gitStash = "<leader>fvx";
-        gitStatus = "<leader>fvs";
         helpTags = "<leader>fh";
         liveGrep = "<leader>fg";
         lspDefinitions = "<leader>flD";
