@@ -3,19 +3,15 @@
     telescope = {
       enable = true;
       mappings = {
+        liveGrep = "<leader>ff";
+        findFiles = "<leader>fp";
+        findProjects = "<leader>fw";
+
         open = "<leader>ft";
         buffers = "<leader>fb";
         diagnostics = "<leader>fld";
-        findFiles = "<leader>ff";
-        findProjects = "<leader>fp";
         helpTags = "<leader>fh";
-        liveGrep = "<leader>fg";
-        lspDefinitions = "<leader>flD";
-        lspDocumentSymbols = "<leader>flsb";
-        lspImplementations = "<leader>fli";
-        lspReferences = "<leader>flr";
-        lspTypeDefinitions = "<leader>flt";
-        lspWorkspaceSymbols = "<leader>flsw";
+
         resume = "<leader>fr";
         treesitter = "<leader>fs";
       };

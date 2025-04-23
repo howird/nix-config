@@ -10,6 +10,7 @@
     ./debug.nix
     ./git.nix
     ./harpoon.nix
+    ./languages.nix
     ./lsp.nix
     ./oil.nix
     ./telescope.nix

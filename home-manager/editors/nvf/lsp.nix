@@ -3,44 +3,6 @@
     lsp.enable = true;
     lsp.formatOnSave = true;
 
-    languages = {
-      enableLSP = true;
-      enableDAP = true;
-      enableFormat = true;
-      enableTreesitter = true;
-      enableExtraDiagnostics = true;
-
-      python.enable = true;
-      python.lsp.enable = true;
-      python.lsp.server = "pyright";
-      python.format.enable = true;
-      python.format.type = "ruff";
-      python.dap.enable = true;
-      python.dap.debugger = "debugpy";
-      python.treesitter.enable = true;
-
-      nix.enable = true;
-      nix.lsp.enable = true;
-      nix.format.enable = true;
-      nix.treesitter.enable = true;
-
-      rust.enable = true;
-      rust.lsp.enable = true;
-      rust.format.enable = true;
-      rust.dap.enable = true;
-      rust.treesitter.enable = true;
-
-      clang.enable = true;
-      html.enable = true;
-      # dart.enable = true;
-      # go.enable = true;
-      # lua.enable = true;
-      # ts.enable = true;
-
-      markdown.enable = true;
-      markdown.extensions.render-markdown-nvim.enable = true;
-    };
-
     autocomplete.blink-cmp = {
       enable = true;
       friendly-snippets.enable = true;
@@ -57,6 +19,15 @@
         ripgrep.enable = true;
         spell.enable = true;
       };
+    };
+
+    telescope.mappings = {
+      lspDefinitions = "<leader>flD";
+      lspDocumentSymbols = "<leader>flsb";
+      lspImplementations = "<leader>fli";
+      lspReferences = "<leader>flr";
+      lspTypeDefinitions = "<leader>flt";
+      lspWorkspaceSymbols = "<leader>flsw";
     };
 
     lsp.mappings = {
