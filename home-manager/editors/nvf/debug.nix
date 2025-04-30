@@ -25,7 +25,7 @@
         stepBack = "<leader>dh";
         stepOver = "<leader>dl";
         stepInto = "<leader>dj";
-        stepOut = "<leader>dj";
+        stepOut = "<leader>dk";
       };
     };
   };

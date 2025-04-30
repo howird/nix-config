@@ -66,6 +66,7 @@
       };
 
       utility = {
+        sleuth.enable = true;
         multicursors.enable = true;
         diffview-nvim.enable = true;
         images.image-nvim.enable = false;
