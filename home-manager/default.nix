@@ -14,6 +14,7 @@
     ./git.nix
     ./htop.nix
     ./ghostty.nix
+    ./rclone.nix
   ];
 
   config = {

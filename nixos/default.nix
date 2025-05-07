@@ -13,6 +13,7 @@
     ./emulators.nix
     ./inputs.nix
     ./mobile.nix
+    ./files.nix
   ];
 
   networking.networkmanager.enable = true;

@@ -166,7 +166,7 @@
       "$codeEditor" = "code";
       "$discordClient" = "vesktop";
       # "$taskMgr" = "ticktick";
-      "$nixConf" = "alacritty --class nixconf -e tat ~/nix/config";
+      "$nixConf" = "$term -e tat ~/nix/config";
 
       bind = [
         "$mainMod, Q, killactive,"

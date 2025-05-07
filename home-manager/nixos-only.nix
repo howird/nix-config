@@ -4,7 +4,6 @@
 
     ./gpg.nix
     ./mpv.nix
-    ./alacritty.nix
     ./packages.nix
     ./apps.nix
   ];

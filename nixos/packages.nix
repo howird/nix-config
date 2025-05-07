@@ -13,18 +13,15 @@
     python3
     ffmpeg-headless
     yt-dlp
-    sshfs
     unrar
     imagemagick
     xorg.xhost
-    yazi
 
     # apps
     firefox
     chromium
     vlc
     libreoffice
-    nautilus # file explorer
     gnome-disk-utility
     gnome-text-editor
     evince # pdf
@@ -33,8 +30,6 @@
     rhythmbox # music
     loupe # image viewer
   ];
-
-  services.gvfs.enable = true;
 
   programs = {
     git.enable = true;

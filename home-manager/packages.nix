@@ -3,16 +3,11 @@
     openconnect_openssl
     networkmanager
 
-    yazi
-    timg
-
     reaper
     audacity
 
-    rnote
     krita
     obs-studio
-    kdePackages.kdenlive
 
     obsidian
     texliveFull
@@ -31,5 +26,6 @@
     # inputs.pix2tex.packages.${system}.default
     aider-chat
     fabric-ai
+    code-cursor
   ];
 }
