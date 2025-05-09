@@ -12,7 +12,6 @@
         "<C-t>" = "actions.select_tab";
         "=" = "actions.preview";
         "<C-c>" = "actions.close";
-        "<C-l>" = "actions.refresh";
         "-" = "actions.parent";
         "_" = "actions.open_cwd";
         "`" = "actions.cd";

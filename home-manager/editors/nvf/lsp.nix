@@ -8,12 +8,12 @@
       friendly-snippets.enable = true;
       mappings = {
         close = "<C-n>";
-        complete = "<C-l>";
+        complete = "<C-m>";
         confirm = "<CR>";
         next = "<Tab>";
         previous = "<S-Tab>";
-        scrollDocsUp = "<C-d>";
-        scrollDocsDown = "<C-f>";
+        scrollDocsUp = null;
+        scrollDocsDown = null;
       };
       sourcePlugins = {
         ripgrep.enable = true;

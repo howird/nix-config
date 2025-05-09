@@ -22,6 +22,7 @@
     # intentional watching, not streaming!
     qbittorrent
     spotify
+    ncspot
 
     # inputs.pix2tex.packages.${system}.default
     aider-chat

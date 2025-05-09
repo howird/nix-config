@@ -7,7 +7,7 @@
   options = with lib; {
     myWallpaper = mkOption {
       type = types.path;
-      default = ./desktops/wallpapers/mountains.png;
+      default = ./desktops/wallpapers/pokemon-concierge.jpg;
       description = "Wallpaper filename.";
     };
   };

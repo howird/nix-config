@@ -38,10 +38,11 @@
       ta = "tmux attach-session -t";
       tks = "tmux kill-session -t";
 
-      ls = "exa";
-      ll = "exa -l";
-      la = "exa -la";
-      tree = "exa --tree";
+      ls = "eza";
+      ll = "eza -l";
+      la = "eza -la";
+      tree = "eza --tree";
+
       cat = "bat";
 
       code = lib.mkIf config.myEditor.vscodium "codium";

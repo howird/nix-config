@@ -1,15 +1,31 @@
 {...}: {
-  programs.nvf.settings.vim.navigation.harpoon = {
-    enable = true;
-    mappings = {
-      file1 = "<C-h>";
-      file2 = "<C-j>";
-      file3 = "<C-k>";
-      file4 = "<C-l>";
-      listMarks = "<C-e>";
-      markFile = "<leader>a";
+  programs.nvf.settings.vim = {
+    navigation.harpoon = {
+      enable = true;
+      mappings = {
+        listMarks = "<C-e>";
+        markFile = "<leader>a";
+        file1 = "<C-a>";
+        file2 = "<C-s>";
+        file3 = "<C-d>";
+        file4 = "<C-f>";
+      };
     };
-    # setupOpts.defaults.save_on_toggle = true;
-    # setupOpts.defaults.sync_on_ui_close = true;
+    keymaps = [
+      {
+        key = "<C-k>";
+        mode = "n";
+        action = "function() require('harpoon'):list():prev() end";
+        lua = true;
+        desc = "Harpoon prev";
+      }
+      {
+        key = "<C-j>";
+        mode = "n";
+        action = "function() require('harpoon'):list():next() end";
+        lua = true;
+        desc = "Harpoon next";
+      }
+    ];
   };
 }

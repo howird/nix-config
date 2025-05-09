@@ -1,11 +1,4 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     fzf
     zoxide
@@ -14,11 +7,10 @@
     bat
     fd
     lazygit
-    ncspot
     (rust-bin.stable.latest.default.override {
       extensions = ["rust-src" "rust-analyzer"];
     })
-    nix-index
+
     devenv
     nixd
     pixi
