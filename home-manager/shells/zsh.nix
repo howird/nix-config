@@ -15,7 +15,7 @@ lib.mkIf config.myShell.zsh {
     historySubstringSearch.enable = true;
     shellAliases = config.myShell.aliases;
 
-    initContent = ''
+    initContent = lib.mkBefore ''
       eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
       source ${./scripts/auto_tmux.sh}
     '';
