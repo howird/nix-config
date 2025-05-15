@@ -39,6 +39,12 @@
       set -g @nova-rows 0
       set -g @nova-segments-0-left "mode"
       set -g @nova-segments-0-right "whoami"
+
+      # conflicts with neovim harpoon
+      unbind-key -T root C-h
+      unbind-key -T root C-j
+      unbind-key -T root C-k
+      unbind-key -T root C-l
     '';
 
     plugins = with pkgs.tmuxPlugins; [

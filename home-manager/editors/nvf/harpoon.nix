@@ -5,22 +5,22 @@
       mappings = {
         listMarks = "<C-e>";
         markFile = "<leader>a";
-        file1 = "<C-a>";
-        file2 = "<C-s>";
-        file3 = "<C-d>";
-        file4 = "<C-f>";
+        file1 = "<C-h>";
+        file2 = "<C-j>";
+        file3 = "<C-k>";
+        file4 = "<C-l>";
       };
     };
     keymaps = [
       {
-        key = "<C-k>";
+        key = "<C-S-k>";
         mode = "n";
         action = "function() require('harpoon'):list():prev() end";
         lua = true;
         desc = "Harpoon prev";
       }
       {
-        key = "<C-j>";
+        key = "<C-S-j>";
         mode = "n";
         action = "function() require('harpoon'):list():next() end";
         lua = true;

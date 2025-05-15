@@ -22,13 +22,13 @@
     }
 
     {
-      key = "H";
+      key = "<C-u>";
       mode = ["n" "v"];
       action = "<C-u>zz";
       desc = "keeps text centered when H";
     }
     {
-      key = "L";
+      key = "<C-d>";
       mode = ["n" "v"];
       action = "<C-d>zz";
       desc = "keeps text centered when L";
