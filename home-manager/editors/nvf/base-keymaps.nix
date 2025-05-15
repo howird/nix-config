@@ -23,21 +23,15 @@
 
     {
       key = "H";
-      mode = "n";
-      action = "Hzz";
+      mode = ["n" "v"];
+      action = "<C-u>zz";
       desc = "keeps text centered when H";
     }
     {
       key = "L";
-      mode = "n";
-      action = "Lzz";
+      mode = ["n" "v"];
+      action = "<C-d>zz";
       desc = "keeps text centered when L";
-    }
-    {
-      key = "<C-u>";
-      mode = "n";
-      action = "<nop>";
-      desc = "remove ctrl+u";
     }
 
     {

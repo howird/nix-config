@@ -22,12 +22,12 @@
     };
 
     telescope.mappings = {
-      lspDefinitions = "<leader>flD";
-      lspDocumentSymbols = "<leader>flsb";
-      lspImplementations = "<leader>fli";
-      lspReferences = "<leader>flr";
-      lspTypeDefinitions = "<leader>flt";
-      lspWorkspaceSymbols = "<leader>flsw";
+      lspDefinitions = "<leader>lD";
+      lspDocumentSymbols = "<leader>ls";
+      lspImplementations = "<leader>li";
+      lspReferences = "<leader>lr";
+      lspTypeDefinitions = "<leader>lt";
+      lspWorkspaceSymbols = "<leader>lws";
     };
 
     lsp.mappings = {
@@ -39,17 +39,17 @@
       goToDeclaration = "<leader>gD";
       goToDefinition = "<leader>gd";
       goToType = "<leader>gt";
-      hover = "<leader>h";
 
+      hover = "<leader>lh";
       openDiagnosticFloat = "<leader>e";
       nextDiagnostic = "<leader>j";
       previousDiagnostic = "<leader>k";
 
-      listDocumentSymbols = "<leader>lS";
-      listImplementations = "<leader>li";
-      listReferences = "<leader>lr";
+      listDocumentSymbols = null;
+      listImplementations = null;
+      listReferences = null;
       listWorkspaceFolders = "<leader>lwl";
-      listWorkspaceSymbols = "<leader>lws";
+      listWorkspaceSymbols = null;
 
       removeWorkspaceFolder = "<leader>lwr";
       renameSymbol = "<leader>ln";
