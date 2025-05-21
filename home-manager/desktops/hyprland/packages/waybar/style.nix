@@ -1,13 +1,15 @@
 {config, ...}: let
   custom = {
-    font = ''"${config.stylix.fonts.serif.name}"'';
+    font = config.stylix.fonts.serif.name;
     font_weight = "bold";
     font_size = "18px";
 
-    text_color = "#${config.lib.stylix.colors.base05}";
-    background_0 = "#${config.lib.stylix.colors.base00}";
-    background_1 = "#${config.lib.stylix.colors.base01}";
-    border_color = "#${config.lib.stylix.colors.base03}";
+    text = "#${config.lib.stylix.colors.base05}";
+    base = "#${config.lib.stylix.colors.base00}";
+    mantle = "#${config.lib.stylix.colors.base01}";
+    surface1 = "#${config.lib.stylix.colors.base03}";
+    peach = "#${config.lib.stylix.colors.base09}";
+    yellow = "#${config.lib.stylix.colors.base0A}";
 
     opacity = "1";
     indicator_height = "2px";
@@ -19,53 +21,53 @@ in {
       border-radius: 0px;
       padding: 0;
       margin: 0;
-      font-family: ${font};
+      font-family: "${font}";
       font-weight: ${font_weight};
       opacity: ${opacity};
       font-size: ${font_size};
     }
 
     window#waybar {
-      background: ${background_0};
-      border-top: 1px solid ${border_color};
+      background: ${base};
+      border-top: 1px solid ${surface1};
     }
 
     tooltip {
-      background: ${background_1};
-      border: 1px solid ${border_color};
+      background: ${mantle};
+      border: 1px solid ${surface1};
     }
     tooltip label {
       margin: 5px;
-      color: ${text_color};
+      color: ${text};
     }
 
     #workspaces {
       padding-left: 15px;
     }
     #workspaces button {
-      color: #${config.lib.stylix.colors.yellow};
+      color: #${yellow};
       padding-left:  5px;
       padding-right: 5px;
       margin-right: 10px;
     }
     #workspaces button.empty {
-      color: ${text_color};
+      color: ${text};
     }
     #workspaces button.active {
-      color: #${config.lib.stylix.colors.bright-orange};
+      color: #${peach};
     }
 
     #clock {
-      color: ${text_color};
+      color: ${text};
     }
 
     #tray {
       margin-left: 10px;
-      color: ${text_color};
+      color: ${text};
     }
     #tray menu {
-      background: ${background_1};
-      border: 1px solid ${border_color};
+      background: ${mantle};
+      border: 1px solid ${surface1};
       padding: 8px;
     }
     #tray menuitem {
@@ -76,7 +78,7 @@ in {
       padding-left: 5px;
       padding-right: 5px;
       margin-right: 10px;
-      color: ${text_color};
+      color: ${text};
     }
 
     #pulseaudio {
@@ -91,7 +93,7 @@ in {
 
     #custom-launcher {
       font-size: 20px;
-      color: ${text_color};
+      color: ${text};
       font-weight: bold;
       margin-left: 15px;
       padding-right: 10px;
