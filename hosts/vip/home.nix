@@ -1,8 +1,4 @@
 {config, ...}: {
-  imports = [
-    ../../home-manager
-  ];
-
   config = let
     initExtra = ''
       HOME_PROFILE="/home/${config.myUsername}/.nix-profile/etc/profile.d"

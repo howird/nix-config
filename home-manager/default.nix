@@ -9,12 +9,13 @@
     ./browsers
     ./tmux
 
+    ./apps.nix
     ./packages.nix
     ./programming.nix
     ./git.nix
     ./htop.nix
-    ./ghostty.nix
     ./rclone.nix
+    ./ghostty.nix
   ];
 
   config = {
@@ -23,6 +24,8 @@
     myEditor.vscode = true;
     myEditor.nvim = true;
     myEditor.helix = true;
+
+    myBrowser.zen = true;
 
     programs.home-manager.enable = true;
     home = {

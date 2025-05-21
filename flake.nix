@@ -50,12 +50,23 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs-unstable.follows = "nixpkgs";
+    };
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    nixgl,
+    rust-overlay,
+    stylix,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -124,13 +135,24 @@
     # Available through 'home-manager switch --flake .#howird@yerm'
     homeConfigurations = {
       "howard@vip" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          overlays = [
+            self.overlays.additions
+            self.overlays.modifications
+            rust-overlay.overlays.default
+            nixgl.overlay
+          ];
+          config = {allowUnfree = true;};
+        };
         extraSpecialArgs = {
           host = "vip";
           inherit inputs outputs;
         };
         modules = [
+          stylix.homeModules.stylix
           ./hosts/vip/home.nix
+          ./home-manager
           ./home-manager/non-nixos.nix
         ];
       };
