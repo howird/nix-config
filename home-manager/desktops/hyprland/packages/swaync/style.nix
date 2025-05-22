@@ -148,7 +148,7 @@
       /* background: transparent; */
       background: @mantle;
       /* background: @theme_bg_color; */
-      border: 2px solid #A89984;
+      border: 2px solid ${surface2};
       border-radius: 0px;
       box-shadow: 0px 0px 2px black;
   }
@@ -439,14 +439,14 @@
   }
 
   .widget-mpris-title {
-      color: #eeeeee;
+      color: ${text};
       font-weight: bold;
       font-size: 1.25rem;
       text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
   }
 
   .widget-mpris-subtitle {
-      color: #eeeeee;
+      color: ${text};
       font-size: 1rem;
       text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
   }

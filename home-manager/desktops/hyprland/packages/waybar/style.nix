@@ -8,8 +8,8 @@
     base = "#${config.lib.stylix.colors.base00}";
     mantle = "#${config.lib.stylix.colors.base01}";
     surface1 = "#${config.lib.stylix.colors.base03}";
-    peach = "#${config.lib.stylix.colors.base09}";
-    yellow = "#${config.lib.stylix.colors.base0A}";
+    green = "#${config.lib.stylix.colors.base0B}";
+    teal = "#${config.lib.stylix.colors.base0C}";
 
     opacity = "1";
     indicator_height = "2px";
@@ -45,7 +45,7 @@ in {
       padding-left: 15px;
     }
     #workspaces button {
-      color: #${yellow};
+      color: ${teal};
       padding-left:  5px;
       padding-right: 5px;
       margin-right: 10px;
@@ -54,7 +54,7 @@ in {
       color: ${text};
     }
     #workspaces button.active {
-      color: #${peach};
+      color: ${green};
     }
 
     #clock {
