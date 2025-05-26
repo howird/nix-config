@@ -9,9 +9,9 @@
     ./browsers
     ./tmux
 
-    ./apps.nix
     ./packages.nix
     ./programming.nix
+    ./default-apps.nix
     ./git.nix
     ./htop.nix
     ./rclone.nix

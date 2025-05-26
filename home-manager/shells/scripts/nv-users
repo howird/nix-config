@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-#!/bin/bash
 # This script retrieves GPU tasks using nvidia-smi, finds process details (user,
 # running time, CPU%, state) using ps, and prints a table with PID, User, GPU Bus ID,
 # VRAM (MiB), Running Time, CPU%, and a human-readable process State.

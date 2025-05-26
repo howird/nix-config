@@ -1,0 +1,277 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+format = """
+[╭](fg:current_line)\
+$status\
+$directory\
+$git_branch\
+$git_status """
+
+right_format = """
+$all
+$cmd_duration\
+$time\
+$os\
+$username\
+$hostname\
+$character\
+"""
+
+palette = 'catppuccin_mocha'
+
+[palettes.catppuccin_mocha]
+foreground = '#D9E0EE'
+background = '#1E1E2E'
+current_line = '#2E2E3E'
+primary = '#313244'
+box = '#2E2E3E'
+blue = '#8AADF4'
+cyan = '#76E3F6'
+green = '#A6E3A1'
+orange = '#F9AF74'
+pink = '#F5BDE6'
+purple = '#CBA6F7'
+red = '#F38BA8'
+yellow = '#F9E2AF'
+status = "#e23140"
+
+[os]
+format = '[─](fg:current_line)[](fg:red)[$symbol](fg:primary bg:red)[](fg:red bg:box)'
+disabled = false
+
+[username]
+format = '[ $user](fg:foreground bg:box)'
+show_always = true
+
+[hostname]
+format = '[@$hostname$symbol](fg:foreground bg:box)[](fg:box) '
+ssh_symbol = "  "
+ssh_only = false
+
+[status]
+format = "[─](fg:current_line)[](fg:status)[](fg:primary bg:status)[](fg:status bg:box)[ $status](fg:foreground bg:box)[](fg:box)"
+pipestatus = true
+pipestatus_separator = "-"
+pipestatus_segment_format = "$status"
+pipestatus_format = "[─](fg:current_line)[](fg:status)[](fg:primary bg:status)[](fg:status bg:box)[ $pipestatus](fg:foreground bg:box)[](fg:box)"
+disabled = false
+
+[directory]
+format = '[─](fg:current_line)[](fg:pink)[󰷏 ](fg:primary bg:pink)[](fg:pink bg:box)[ $read_only$truncation_symbol$path](fg:foreground bg:box)[](fg:box)'
+home_symbol = " ~/"
+truncation_symbol = ' '
+truncation_length = 2
+read_only = '󱧵 '
+read_only_style = ''
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+[git_branch]
+symbol = " "
+format = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[](fg:green bg:box)[ $branch](fg:foreground bg:box)'
+
+[git_commit]
+tag_symbol = '  '
+
+[git_status]
+format = '[$all_status](fg:green bg:box)[](fg:box)'
+conflicted = ' ='
+up_to_date = ''
+untracked = ' ?${count}'
+stashed = ' ${count}'
+modified = ' !${count}'
+staged = ' +'
+renamed = ' »'
+deleted = ' ✘'
+ahead = ' ⇡${count}'
+diverged = ' ⇕⇡${ahead_count}⇣${behind_count}'
+behind = ' ⇣${count}'
+
+[[battery.display]]
+threshold = 25
+style = 'bold yellow'
+
+[[battery.display]]
+threshold = 10
+style = 'bold red'
+
+[fill]
+symbol = '─'
+style = 'fg:current_line'
+
+[cmd_duration]
+min_time = 500
+format = '[─](fg:current_line)[](fg:orange)[ ](fg:primary bg:orange)[](fg:orange bg:box)[ $duration](fg:foreground bg:box)[](fg:box)'
+
+[line_break]
+disabled = true
+
+[time]
+format = '[─](fg:current_line)[](fg:purple)[󰦖 ](fg:primary bg:purple)[](fg:purple bg:box)[ $time](fg:foreground bg:box)[](fg:box)'
+time_format = '%I:%M %p'
+disabled = true
+
+[character]
+format = """
+[╰─$symbol](fg:current_line) """
+success_symbol = '[](fg:bold white)'
+error_symbol = '[×](fg:bold red)'
+
+[profiles]
+transient = """$character"""
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[bun]
+symbol = " "
+format = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[](fg:green bg:box)[ $version](fg:foreground bg:box)[](fg:box)'
+
+[c]
+symbol = " "
+format = '[─](fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[](fg:blue bg:box)[ $version](fg:foreground bg:box)[](fg:box)'
+
+[cpp]
+symbol = " "
+
+[cmake]
+symbol = " "
+
+[conda]
+symbol = " "
+disabled = true
+
+[crystal]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[deno]
+symbol = " "
+format = '[─](fg:current_line)[](fg:purple)[$symbol](fg:primary bg:purple)[](fg:purple bg:box)[ $version](fg:foreground bg:box)[](fg:box)'
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fennel]
+symbol = " "
+
+[fossil_branch]
+symbol = " "
+
+[gcloud]
+symbol = "  "
+
+[golang]
+symbol = " "
+format = '[─](fg:current_line)[](fg:red)[$symbol](fg:primary bg:red)[](fg:red bg:box)[ $version](fg:foreground bg:box)[](fg:box)'
+
+[guix_shell]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[haxe]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[meson]
+symbol = "󰔷 "
+
+[nim]
+symbol = "󰆥 "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+format = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[](fg:green bg:box)[ $version](fg:foreground bg:box)[](fg:box)'
+
+[ocaml]
+symbol = " "
+
+[os.symbols]
+Linux = " "
+Macos = " "
+NixOS = " "
+Ubuntu = " "
+Windows = "󰍲 "
+Unknown = " "
+
+[package]
+symbol = "󰏗 "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[pijul_channel]
+symbol = " "
+
+[pixi]
+symbol = "󰏗 "
+
+[python]
+symbol = " "
+format = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[](fg:green bg:box)[ (${version} )(\($virtualenv\) )](fg:foreground bg:box)[](fg:box)'
+
+[rlang]
+symbol = "󰟔 "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = "󱘗 "
+format = '[─](fg:current_line)[](fg:yellow)[$symbol](fg:primary bg:yellow)[](fg:yellow bg:box)[ $version](fg:foreground bg:box)[](fg:box)'
+
+[scala]
+symbol = " "
+
+[swift]
+symbol = " "
+
+[zig]
+symbol = " "
+format = '[─](fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[](fg:blue bg:box)[ $version](fg:foreground bg:box)[](fg:box)'
+
+[gradle]
+symbol = " "

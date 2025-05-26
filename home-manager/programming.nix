@@ -13,8 +13,8 @@
 
     devenv
     nixd
-    pixi
     uv
+    textpieces
   ];
 
   services.lorri.enable = true;

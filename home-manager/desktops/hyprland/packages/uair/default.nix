@@ -1,8 +1,9 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     uair
+    yad
     figlet
-    (writeShellScriptBin "uairfiglet" "uairctl listen | figlet")
+    (writeShellScriptBin "uairfiglet" ''uair | yad --progress --no-buttons --css="* { font-size: 80px; }"'')
   ];
   xdg.configFile."uair/uair.toml".source = ./uair.toml;
 

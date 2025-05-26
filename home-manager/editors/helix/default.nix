@@ -1,14 +1,11 @@
 {
-  inputs,
-  outputs,
   lib,
   config,
   pkgs,
   ...
 }: {
-  config = {
-    programs.helix = {
-      enable = true;
-    };
+  programs.helix = {
+    enable = config.myEditor.helix;
   };
+  home.packages = lib.optional config.myEditor.evil-helix pkgs.evil-helix;
 }

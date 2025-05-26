@@ -5,17 +5,17 @@
 }: {
   home.packages = with pkgs; [rofi-wayland];
 
-  xdg.configFile."rofi/theme.rasi".text = ''
+  xdg.configFile."rofi/theme.rasi".text = with config.lib.stylix.colors.withHashtag; ''
     * {
-      bg-col: #${config.lib.stylix.colors.base00};
-      bg-col-light: #${config.lib.stylix.colors.base01};
-      border-col: #${config.lib.stylix.colors.base07};
-      selected-col: #${config.lib.stylix.colors.base0C};
-      green: #${config.lib.stylix.colors.base0B};
-      fg-col: #${config.lib.stylix.colors.base05};
-      fg-col2: #${config.lib.stylix.colors.base06};
-      grey: #${config.lib.stylix.colors.base04};
-      highlight: #${config.lib.stylix.colors.base07};
+      bg-col: ${base00};
+      bg-col-light: ${base01};
+      border-col: ${base07};
+      selected-col: ${base0C};
+      green: ${base0B};
+      fg-col: ${base05};
+      fg-col2: ${base06};
+      grey: ${base04};
+      highlight: ${base07};
     }
   '';
 

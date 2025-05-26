@@ -1,21 +1,18 @@
-{config, ...}: let
-  custom = {
+{config, ...}: {
+  programs.waybar.style = let
     font = config.stylix.fonts.serif.name;
     font_weight = "bold";
     font_size = "18px";
-
-    text = "#${config.lib.stylix.colors.base05}";
-    base = "#${config.lib.stylix.colors.base00}";
-    mantle = "#${config.lib.stylix.colors.base01}";
-    surface1 = "#${config.lib.stylix.colors.base03}";
-    green = "#${config.lib.stylix.colors.base0B}";
-    teal = "#${config.lib.stylix.colors.base0C}";
-
     opacity = "1";
-    indicator_height = "2px";
-  };
-in {
-  programs.waybar.style = with custom; ''
+
+    colors = config.lib.stylix.colors.withHashtag;
+    text = colors.base05;
+    base = colors.base00;
+    mantle = colors.base01;
+    surface1 = colors.base03;
+    green = colors.base0B;
+    lavender = colors.base07;
+  in ''
     * {
       border: none;
       border-radius: 0px;
@@ -45,7 +42,7 @@ in {
       padding-left: 15px;
     }
     #workspaces button {
-      color: ${teal};
+      color: ${lavender};
       padding-left:  5px;
       padding-right: 5px;
       margin-right: 10px;

@@ -4,8 +4,6 @@
 
     ./gpg.nix
     ./mpv.nix
-    ./packages.nix
-    ./apps.nix
   ];
 
   config = {

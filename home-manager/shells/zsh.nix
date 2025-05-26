@@ -1,6 +1,4 @@
 {
-  inputs,
-  outputs,
   lib,
   config,
   pkgs,
@@ -26,16 +24,6 @@ lib.mkIf config.myShell.zsh {
     };
 
     plugins = [
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-      {
-        name = "powerlevel10k-config";
-        src = ./scripts;
-        file = ".p10k.zsh";
-      }
       {
         name = "zsh-vi-mode";
         src = pkgs.zsh-vi-mode;

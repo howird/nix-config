@@ -7,6 +7,7 @@
   imports = [
     ./fish.nix
     ./zsh.nix
+    ./starship
   ];
 
   options = {

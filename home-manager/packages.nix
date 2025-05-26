@@ -5,24 +5,27 @@
 
     reaper
     audacity
-
-    krita
     obs-studio
+    video-trimmer
+    krita
 
     obsidian
+    errands
     texliveFull
     zotero
-    zathura # pdf keyboard-based
+    gaphor
 
     vesktop
     teams-for-linux
     slack
     zoom-us
+    warp
 
     # intentional watching, not streaming!
     qbittorrent
     spotify
     ncspot
+    fretboard
 
     # inputs.pix2tex.packages.${system}.default
     aider-chat

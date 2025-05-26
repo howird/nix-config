@@ -1,13 +1,23 @@
 {
   pkgs,
-  host ? "laptop",
   config,
   ...
-}: let
-  text = "rgb(251, 241, 199)";
-in {
+}: {
   home.packages = [pkgs.hyprlock];
-  xdg.configFile."hypr/hyprlock.conf".text = ''
+  xdg.configFile."hypr/hyprlock.conf".text = let
+    mkRgba = {
+      c,
+      a ? "1.0",
+    }: let
+      r = config.lib.stylix.colors."${c}-rgb-r";
+      g = config.lib.stylix.colors."${c}-rgb-g";
+      b = config.lib.stylix.colors."${c}-rgb-b";
+    in "rgba(${r}, ${g}, ${b}, ${a})";
+
+    base = "base00";
+    text = "base05";
+    surface2 = "base04";
+  in ''
     # BACKGROUND
     background {
       monitor =
@@ -33,7 +43,10 @@ in {
     label {
       monitor =
       text = cmd[update:1000] echo "$(date +"%I:%M %p")"
-      color = rgba(235, 219, 178, .9)
+      color = ${mkRgba {
+      c = text;
+      a = "0.9";
+    }}
       font_size = 115
       font_family = ${config.stylix.fonts.serif.name} Bold
       shadow_passes = 3
@@ -46,7 +59,10 @@ in {
     label {
       monitor =
       text = cmd[update:1000] echo "- $(date +"%A, %B %d") -"
-      color = rgba(235, 219, 178, .9)
+      color = ${mkRgba {
+      c = text;
+      a = "0.9";
+    }}
       font_size = 18
       font_family = ${config.stylix.fonts.serif.name}
       shadow_passes = 3
@@ -60,10 +76,13 @@ in {
     shape {
       monitor =
       size = 300, 50
-      color = rgba(102, 92, 84, .33)
+      color = ${mkRgba {
+      c = base;
+      a = "0.33";
+    }}
       rounding = 15
       border_size = 0
-      border_color = rgba(255, 255, 255, 0)
+      border_color = rgba(255, 255, 255, 0.0)
       rotate = 0
 
       position = 0, 270
@@ -75,7 +94,7 @@ in {
     label {
       monitor =
       text =   $USER
-      color = rgba(235, 219, 178, 1)
+      color = ${mkRgba {c = text;}}
       font_size = 15
       font_family = ${config.stylix.fonts.serif.name}
       position = 0, 281
@@ -92,14 +111,26 @@ in {
       dots_size = 0.25 # Scale of input-field height, 0.2 - 0.8
       dots_spacing = 0.4 # Scale of dots' absolute size, 0.0 - 1.0
       dots_center = true
-      outer_color = rgba(102, 92, 84, .33)
-      inner_color = rgba(102, 92, 84, .33)
-      color = rgba(235, 219, 178, .9)
-      font_color = rgba(235, 219, 178, .9)
+      outer_color = ${mkRgba {
+      c = surface2;
+      a = "0.2";
+    }}
+      inner_color = ${mkRgba {
+      c = surface2;
+      a = "0.2";
+    }}
+      color = ${mkRgba {
+      c = base;
+      a = "0.9";
+    }}
+      font_color = ${mkRgba {
+      c = text;
+      a = "0.9";
+    }}
       font_size = 14
       font_family = ${config.stylix.fonts.serif.name}
       fade_on_empty = false
-      placeholder_text = <i><span foreground="##fbf1c7">Enter Password</span></i>
+      placeholder_text = <i><span foreground="#${config.lib.stylix.colors.withHashtag.base00}">Enter Password</span></i>
       hide_input = false
       position = 0, 200
       halign = center
