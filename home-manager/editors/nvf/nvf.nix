@@ -31,11 +31,11 @@
 
     theme = {
       enable = true;
-      # name = lib.mkForce "catppuccin";
-      style = "mocha";
+      name = lib.mkForce "catppuccin";
+      style = lib.mkForce "mocha";
       transparent = lib.mkForce true;
     };
-    # statusline.lualine.theme = lib.mkForce "catppuccin";
+    statusline.lualine.theme = lib.mkDefault "catppuccin";
 
     visuals = {
       nvim-web-devicons.enable = true;
