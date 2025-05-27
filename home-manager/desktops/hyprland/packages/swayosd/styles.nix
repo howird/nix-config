@@ -4,7 +4,6 @@
     text = colors.base05;
     base = colors.base00;
     surface2 = colors.base04;
-    green = colors.base0B;
   in ''
     window {
         padding: 0px 10px;
@@ -42,7 +41,7 @@
         min-height: inherit;
         border-radius: inherit;
         border: none;
-        background: ${green};
+        background: ${text};
     }
   '';
 }

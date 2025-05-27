@@ -1,12 +1,4 @@
 {
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  host,
-  ...
-}: {
   # Bootloader
   boot.loader.systemd-boot = {
     enable = true;

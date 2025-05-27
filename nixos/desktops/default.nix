@@ -1,11 +1,4 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{lib, ...}: {
   imports = [
     ./hyprland.nix
     ./kde.nix

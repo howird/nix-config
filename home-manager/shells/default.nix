@@ -50,7 +50,6 @@
     };
 
     home.packages = with pkgs; [
-      (writeShellScriptBin "campus-ssh-toggle" (builtins.readFile ./scripts/campus-ssh-toggle))
       (writeShellScriptBin "nv-users" (builtins.readFile ./scripts/nv-users))
     ];
 
