@@ -72,8 +72,8 @@
       stashed = "  $count";
       modified = "  $count";
       staged = "  $count";
-      renamed = "  ";
-      deleted = " ✘";
+      renamed = "  $count";
+      deleted = " ✘ $count";
       ahead = "  $count";
       diverged = " 󰹹⇡$ahead_count⇣$behind_count";
       behind = "  $count";

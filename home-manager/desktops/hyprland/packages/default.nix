@@ -2,8 +2,8 @@
   imports = [
     ./swaync
     ./swayosd
-    ./uair
     ./waybar
+    ./hyprshot
     ./rofi.nix
     ./batsignal.nix
   ];

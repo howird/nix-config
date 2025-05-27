@@ -8,12 +8,12 @@
     margin-left = 0;
     margin-right = 0;
     modules-left = [
-      "custom/launcher"
-      "hyprland/workspaces"
+      "custom/notification"
+      "clock"
     ];
     modules-center = [
-      "custom/uair"
-      "clock"
+      "custom/launcher"
+      "hyprland/workspaces"
     ];
     modules-right = [
       "tray"
@@ -22,7 +22,6 @@
       "disk"
       "pulseaudio"
       "battery"
-      "custom/notification"
     ];
     clock = {
       calendar = {
@@ -130,14 +129,14 @@
       tooltip = false;
       format = "{icon} ";
       format-icons = {
-        notification = "<span foreground='red'><sup></sup></span>  <span foreground='#${red}'></span>";
-        none = "  <span foreground='#${red}'></span>";
-        dnd-notification = "<span foreground='red'><sup></sup></span>  <span foreground='#${red}'></span>";
-        dnd-none = "  <span foreground='#${red}'></span>";
-        inhibited-notification = "<span foreground='red'><sup></sup></span>  <span foreground='#${red}'></span>";
+        notification = "<span foreground='#${red}'></span> <span foreground='red'><sup></sup></span> ";
+        none = "<span foreground='#${red}'></span>  ";
+        dnd-notification = "<span foreground='#${red}'></span> <span foreground='red'><sup></sup></span> ";
+        dnd-none = "  <span foreground='#${red}'></span> ";
+        inhibited-notification = "<span foreground='#${red}'></span> <span foreground='red'><sup></sup></span> ";
         inhibited-none = "  <span foreground='#${red}'></span>";
-        dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>  <span foreground='#${red}'></span>";
-        dnd-inhibited-none = "  <span foreground='#${red}'></span>";
+        dnd-inhibited-notification = "<span foreground='#${red}'></span> <span foreground='red'><sup></sup></span> ";
+        dnd-inhibited-none = "<span foreground='#${red}'></span>   ";
       };
       return-type = "json";
       exec-if = "which swaync-client";

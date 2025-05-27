@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  imports = [
+    ./uair
+  ];
+
   home.packages = with pkgs; [
     openconnect_openssl
     networkmanager
@@ -11,6 +15,7 @@
 
     obsidian
     errands
+    gnome-solanum
     texliveFull
     zotero
     gaphor
