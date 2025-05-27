@@ -11,7 +11,7 @@
       autostart = ${autostart}
     '';
     work-session = n: (session-fmt "work${n}" "!work ${n}!" "25" "false" "uairzen ': 🧠 work ${n} done, rest time 🌅'");
-    rest-session = n: (session-fmt "rest${n}" "~rest ${n}~" "5" "true" "notify-send 'pomo: 🌅 rest ${n} done! work time 🧠'");
+    rest-session = n: (session-fmt "rest${n}" "~rest ${n}~" "5" "true" "notify-send '🍅: 🌅 rest ${n} done! work time 🧠'");
   in
     ''
       loop_on_end = true
@@ -22,7 +22,7 @@
       resumed_state_text = "resumed"
     ''
     + (session-fmt "pre-med" "~pre meditation~" "3" "true" "uairzen ': 🌅 time to start your 🧘'")
-    + (session-fmt "med" "~meditation~" "15" "true" "notify-send 'pomo: 🧘 done, are you ready to start?'")
+    + (session-fmt "med" "~meditation~" "15" "true" "notify-send '🍅: 🧘 done, are you ready to start?'")
     + (work-session "1")
     + (rest-session "1")
     + (work-session "2")
