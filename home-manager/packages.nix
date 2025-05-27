@@ -1,8 +1,4 @@
 {pkgs, ...}: {
-  imports = [
-    ./uair
-  ];
-
   home.packages = with pkgs; [
     openconnect_openssl
     networkmanager
@@ -11,13 +7,10 @@
     audacity
     obs-studio
     video-trimmer
+    eyedropper
     krita
 
-    obsidian
     errands
-    gnome-solanum
-    texliveFull
-    zotero
     gaphor
 
     vesktop

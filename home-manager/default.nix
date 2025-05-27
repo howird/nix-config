@@ -4,18 +4,20 @@
   ...
 }: {
   imports = [
-    ./shells
-    ./editors
     ./browsers
+    ./editors
+    ./shells
     ./tmux
+    ./uair
 
-    ./packages.nix
-    ./programming.nix
     ./default-apps.nix
+    ./ghostty.nix
     ./git.nix
     ./htop.nix
+    ./packages.nix
+    ./programming.nix
     ./rclone.nix
-    ./ghostty.nix
+    ./typesetting.nix
   ];
 
   config = {

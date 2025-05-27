@@ -1,11 +1,4 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{config, ...}: {
   programs.git = {
     enable = true;
     lfs.enable = true;

@@ -316,6 +316,7 @@
         "pin, class:rofi"
 
         "float, class:mpv"
+        "float, class:com.github.finefindus.eyedropper"
         "center, class:mpv"
         "size 1200 725, class:mpv"
         "idleinhibit focus, class:mpv"

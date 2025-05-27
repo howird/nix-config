@@ -7,6 +7,8 @@
     bat
     fd
     lazygit
+    dust
+    dua
     (rust-bin.stable.latest.default.override {
       extensions = ["rust-src" "rust-analyzer"];
     })

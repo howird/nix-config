@@ -25,6 +25,12 @@
     clang.lsp.enable = true;
     clang.treesitter.enable = true;
 
+    typst.enable = true;
+    typst.lsp.enable = true;
+    typst.format.enable = true;
+    typst.treesitter.enable = true;
+    typst.extensions.typst-preview-nvim.enable = true;
+
     html.enable = true;
     dart.enable = true;
     go.enable = true;

@@ -3,8 +3,8 @@
     languages = {
       enableDAP = true;
       python.dap.enable = true;
-      python.dap.debugger = "debugpy";
       rust.dap.enable = true;
+      clang.dap.enable = true;
     };
     debugger = {
       nvim-dap.enable = true;
