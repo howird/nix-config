@@ -30,6 +30,8 @@
           "[workspace 2 silent] $browser"
           "[workspace special:readws silent] zotero"
           "[workspace special:codews silent] $term"
+
+          "start-day &"
         ]
         ++ (
           if host == "bofa"
@@ -311,11 +313,13 @@
 
       # windowrulev2
       windowrulev2 = [
+        "pin, class:rofi"
+
         "float, class:mpv"
         "center, class:mpv"
         "size 1200 725, class:mpv"
-        "pin, class:rofi"
         "idleinhibit focus, class:mpv"
+
         "float, title:^(.*Transmission.*)$"
         "float, title:^(.*Volume Control.*)$"
         "float,title:^(.*Sharing Indicator.*)$"

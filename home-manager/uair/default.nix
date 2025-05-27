@@ -1,11 +1,13 @@
 {pkgs, ...}: {
+  imports = [
+    ./uair.nix
+    ./hypruair.nix
+  ];
+
   home.packages = with pkgs; [
     uair
-    yad
-    figlet
-    (writeShellScriptBin "uairfiglet" ''uair | yad --progress --no-buttons --css="* { font-size: 80px; }"'')
+    zenity
   ];
-  xdg.configFile."uair/uair.toml".source = ./uair.toml;
 
   systemd.user.services = {
     uair = {

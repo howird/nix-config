@@ -9,10 +9,11 @@
     margin-right = 0;
     modules-left = [
       "custom/notification"
+      "custom/launcher"
       "clock"
     ];
     modules-center = [
-      "custom/launcher"
+      "custom/uair"
       "hyprland/workspaces"
     ];
     modules-right = [
@@ -144,25 +145,6 @@
       on-click = "swaync-client -t -sw";
       on-click-right = "swaync-client -d -sw";
       escape = true;
-    };
-    "custom/uair" = {
-      format = "{} {icon}";
-      format-icons = [
-        ""
-        ""
-        ""
-        ""
-        ""
-        ""
-      ];
-      tooltip = false;
-      return-type = "json";
-      interval = 1;
-      on-click = "uairctl toggle";
-      on-click-middle = "uairctl prev";
-      on-click-right = "uairctl next";
-      exec-if = "which uairctl";
-      exec = ''uairctl fetch '{\"text\":\"{name} {time}\",\"class\":\"{state}\",\"percentage\":{percent}}' '';
     };
   };
 }
