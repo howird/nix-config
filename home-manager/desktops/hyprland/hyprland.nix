@@ -8,14 +8,11 @@ lib.mkIf config.myDesktop.hyprland {
   home.packages = with pkgs; [
     hyprpaper
     clipse
-    # cliphist
-    # wl-clip-persist
     wl-clipboard-rs
     wf-recorder
     glib
     wayland
     libnotify
-    file-roller
 
     blueman
     networkmanagerapplet
@@ -32,5 +29,6 @@ lib.mkIf config.myDesktop.hyprland {
       enable = true;
     };
     systemd.enable = true;
+    systemd.variables = ["--all"];
   };
 }

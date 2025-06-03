@@ -5,18 +5,15 @@
 }: {
   home.packages = [pkgs.hyprlock];
   xdg.configFile."hypr/hyprlock.conf".text = let
-    mkRgba = {
-      c,
-      a ? "1.0",
-    }: let
+    mkRgba = c: a: let
       r = config.lib.stylix.colors."${c}-rgb-r";
       g = config.lib.stylix.colors."${c}-rgb-g";
       b = config.lib.stylix.colors."${c}-rgb-b";
     in "rgba(${r}, ${g}, ${b}, ${a})";
 
-    base = "base00";
-    text = "base05";
-    surface2 = "base04";
+    text = mkRgba "base05";
+    base = mkRgba "base00";
+    surface2 = mkRgba "base04";
   in ''
     # BACKGROUND
     background {
@@ -43,10 +40,7 @@
     label {
       monitor =
       text = cmd[update:1000] echo "$(date +"%I:%M %p")"
-      color = ${mkRgba {
-      c = text;
-      a = "0.9";
-    }}
+      color = ${text "0.9"}
       font_size = 115
       font_family = ${config.stylix.fonts.serif.name} Bold
       shadow_passes = 3
@@ -59,10 +53,7 @@
     label {
       monitor =
       text = cmd[update:1000] echo "- $(date +"%A, %B %d") -"
-      color = ${mkRgba {
-      c = text;
-      a = "0.9";
-    }}
+      color = ${text "0.9"}
       font_size = 18
       font_family = ${config.stylix.fonts.serif.name}
       shadow_passes = 3
@@ -76,10 +67,7 @@
     shape {
       monitor =
       size = 300, 50
-      color = ${mkRgba {
-      c = base;
-      a = "0.33";
-    }}
+      color = ${base "0.33"}
       rounding = 15
       border_size = 0
       border_color = rgba(255, 255, 255, 0.0)
@@ -94,7 +82,7 @@
     label {
       monitor =
       text =   $USER
-      color = ${mkRgba {c = text;}}
+      color = ${text "1.0"}
       font_size = 15
       font_family = ${config.stylix.fonts.serif.name}
       position = 0, 281
@@ -111,22 +99,10 @@
       dots_size = 0.25 # Scale of input-field height, 0.2 - 0.8
       dots_spacing = 0.4 # Scale of dots' absolute size, 0.0 - 1.0
       dots_center = true
-      outer_color = ${mkRgba {
-      c = surface2;
-      a = "0.2";
-    }}
-      inner_color = ${mkRgba {
-      c = surface2;
-      a = "0.2";
-    }}
-      color = ${mkRgba {
-      c = base;
-      a = "0.9";
-    }}
-      font_color = ${mkRgba {
-      c = text;
-      a = "0.9";
-    }}
+      outer_color = ${surface2 "0.2"}
+      inner_color = ${surface2 "0.2"}
+      color = ${base "0.9"}
+      font_color = ${text "0.9"}
       font_size = 14
       font_family = ${config.stylix.fonts.serif.name}
       fade_on_empty = false

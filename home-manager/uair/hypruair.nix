@@ -31,16 +31,17 @@
 
   home.packages = with pkgs; [
     (writeShellScriptBin "uairzen" ''
+      uairctl resume
       uairctl listen | zenity \
         --progress \
         --title="🍅$1" \
         --percentage=0 \
         --auto-close \
-        --no-cancel
+        --no-cancel &> /dev/null
     '')
     (writeShellScriptBin "start-day" ''
-      uairctl jump pre-med && \
-        (uairzen ': start your day off right by setting intentions 🌅 and aligning with them 🧘' &> /dev/null &)
+      uairctl jump med-prep
+      uairzen ': start your day off right by setting intentions 🌅 and aligning with them 🧘' &
     '')
   ];
 }

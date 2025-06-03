@@ -28,7 +28,6 @@ lib.mkIf config.myDesktop.xfce {
     drawing
     evince
     font-manager
-    file-roller
     gnome-disk-utility
     pavucontrol
     qalculate-gtk

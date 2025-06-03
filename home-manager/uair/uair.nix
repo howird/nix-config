@@ -21,7 +21,7 @@
       paused_state_text = "paused"
       resumed_state_text = "resumed"
     ''
-    + (session-fmt "pre-med" "~pre meditation~" "3" "true" "uairzen ': 🌅 time to start your 🧘'")
+    + (session-fmt "med-prep" "~meditation prep~" "3" "true" "uairzen ': 🌅 time to start your 🧘'")
     + (session-fmt "med" "~meditation~" "15" "true" "notify-send '🍅: 🧘 done, are you ready to start?'")
     + (work-session "1")
     + (rest-session "1")
