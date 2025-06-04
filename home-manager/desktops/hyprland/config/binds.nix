@@ -19,7 +19,7 @@
 
       # clipboard manager
       # "$shftMod, V, exec, cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy"
-      "$mainMod, V, exec, $floatCenter $term --title clipse -e clipse"
+      # "$mainMod, V, exec, $floatCenter $term -e clipse"
 
       # screenshot
       "$mainMod ALT, S, exec, hyprshot -m output"

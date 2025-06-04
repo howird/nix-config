@@ -1,10 +1,12 @@
 {...}: {
   imports = [
+    ./hyprshot
     ./swaync
     ./swayosd
     ./waybar
-    ./hyprshot
-    ./rofi.nix
+    ./uair
+
     ./batsignal.nix
+    ./rofi.nix
   ];
 }

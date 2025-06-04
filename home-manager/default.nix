@@ -8,7 +8,6 @@
     ./editors
     ./shells
     ./tmux
-    ./uair
 
     ./default-apps.nix
     ./ghostty.nix

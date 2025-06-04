@@ -7,9 +7,7 @@
 lib.mkIf config.myDesktop.hyprland {
   home.packages = with pkgs; [
     hyprpaper
-    clipse
     wl-clipboard-rs
-    wf-recorder
     glib
     wayland
     libnotify

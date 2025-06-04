@@ -4,9 +4,10 @@
 
 #### NixOS Machines:
 
-- Make the follwing changes the default nixos config with `sudoedit /etc/nixos/configuration.nix`
-    - Add `nix.settings.experimental-features = "nix-command flakes";`
-    - Add `git` to `environment.systemPackages`
+- Make the follwing changes the default nixos config with
+  `sudoedit /etc/nixos/configuration.nix`
+  - Add `nix.settings.experimental-features = "nix-command flakes";`
+  - Add `git` to `environment.systemPackages`
 
 - Apply the updates: `sudo nixos-rebuild switch`
 
@@ -28,7 +29,8 @@ sudo nixos-rebuild switch --flake .#<hostname>
 #### non-NixOS Machines:
 
 - Install nix [here](https://nixos.org/download/)
-- Install standalone home-manager, with [these commands](https://nix-community.github.io/home-manager/index.xhtml#sec-install-standalone)
+- Install standalone home-manager, with
+  [these commands](https://nix-community.github.io/home-manager/index.xhtml#sec-install-standalone)
 - Enable experimental features
 
 ```bash
@@ -79,3 +81,9 @@ nix-store --verify --check-contents --repair
 sudo nix-store --delete --ignore-liveness /nix/store/<derivation location>.drv
 ```
 
+## Credits
+
+- [FrostPhoenix](https://github.com/Frost-Phoenix/nixos-config) initial hyprland
+  setup and ricing
+- [Donovan Glover](https://github.com/donovanglover/nix-config) most other
+  hyprland related stuff

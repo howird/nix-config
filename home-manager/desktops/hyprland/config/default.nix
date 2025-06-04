@@ -15,6 +15,9 @@
       env = lib.mapAttrsToList (name: value: "${name},${value}") (import ../variables.nix);
       exec-once =
         [
+          # "wl-clip-persist --clipboard both &"
+          # "wl-paste --watch cliphist store &"
+
           "hypridle"
           "hyprpaper"
 

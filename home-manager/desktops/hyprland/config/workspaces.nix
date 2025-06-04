@@ -10,9 +10,8 @@
     bind = [
       "$shftMod, T, exec, $term"
       "$mainMod, B, exec, $browser"
-      "$shftMod, E, exec, $floatCenter $fileManager"
       "$mainMod, M, exec, spotify"
-      "$shftMod, Escape, exec, [workspace special:confws; float; center; size 1200 600] $term --class htop -e 'htop'"
+      "$shftMod, Escape, exec, [workspace special:confws; float; center; size 1200 600] $term -e 'htop'"
 
       # "$mainMod, a, togglespecialworkspace, taskws"
       "$mainMod, t, togglespecialworkspace, codews"

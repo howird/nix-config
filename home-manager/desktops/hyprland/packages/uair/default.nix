@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./uair.nix
     ./hypruair.nix
@@ -16,6 +20,9 @@
       ExecStart = "${pkgs.uair}/bin/uair -q";
       Restart = "always";
     };
-    Install.WantedBy = ["default.target"];
+    Install.WantedBy =
+      if config.myDesktop.hyprland
+      then ["hyprland-session.target"]
+      else ["default.target"];
   };
 }
