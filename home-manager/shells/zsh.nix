@@ -20,7 +20,7 @@ lib.mkIf config.myShell.zsh {
         if config.programs.zellij.enable
         then ''
           if [[ -z "$TMUX" && -z "$ZELLIJ" && $TERM_PROGRAM != "vscode" && $TERM_PROGRAM != "zed" ]]; then
-            zls
+            zesh cn $(zesh l | fzf)
           fi
         ''
         else ''

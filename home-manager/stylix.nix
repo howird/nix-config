@@ -17,12 +17,20 @@
       in "${catppuccin-wallpapers}/misc/lonely-fish.png";
       description = "Wallpaper filename.";
     };
+    myTheme = mkOption {
+      type = types.str;
+      default = "catppuccin-mocha";
+      description = "Theme name, must be in base16Schemes";
+    };
   };
 
   config = {
+    myTheme = "everforest-dark-hard";
+    myWallpaper = ./desktops/wallpapers/pokemon-concierge.jpg;
+
     stylix = {
       enable = true;
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.myTheme}.yaml";
 
       image = config.myWallpaper;
       polarity = "dark";

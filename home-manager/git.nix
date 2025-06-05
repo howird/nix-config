@@ -17,4 +17,9 @@
       pull.ff = "only";
     };
   };
+
+  programs.lazygit = {
+    enable = true;
+    # settings = {};
+  };
 }

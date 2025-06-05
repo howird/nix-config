@@ -261,7 +261,6 @@
     }
 
     default_mode "locked"
-    mouse_mode false
     pane_frames false
     mirror_session true
     copy_command "wl-copy"

@@ -30,11 +30,6 @@
 
   config = {
     myShell.aliases = {
-      nixwird-edit = ''${
-          if (with config.myEditor; (vscode || vscodium))
-          then "code"
-          else "vim"
-        } ~/nix/config'';
       uw-vpn = "sudo openconnect -v cn-vpn.uwaterloo.ca";
 
       tl = "tmux list-sessions";
@@ -42,9 +37,6 @@
       ta = "tmux attach-session -t";
       tks = "tmux kill-session -t";
 
-      ls = "eza";
-      ll = "eza -l";
-      la = "eza -la";
       tree = "eza --tree";
 
       cat = "bat";
