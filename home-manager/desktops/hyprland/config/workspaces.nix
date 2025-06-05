@@ -5,7 +5,7 @@
     "$fileManager" = "nautilus";
     "$codeEditor" = "code";
     "$discordClient" = "vesktop";
-    "$nixConf" = "$term -e tat ~/nix/config";
+    "$nixConf" = "$term -e zesh cn nix/config";
 
     bind = [
       "$shftMod, T, exec, $term"

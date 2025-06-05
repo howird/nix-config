@@ -61,7 +61,7 @@
       {
         key = "<leader>lR";
         mode = "n";
-        action = ":LspRestart<CR>";
+        action = "<cmd>LspRestart<CR>";
         silent = true;
         desc = "restart lsp";
       }

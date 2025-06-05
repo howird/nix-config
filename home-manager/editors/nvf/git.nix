@@ -44,14 +44,14 @@
       {
         key = "<leader>gs";
         mode = ["n"];
-        action = ":Git<CR>";
+        action = "<cmd>Git<CR>";
         silent = true;
         desc = "open fugitive";
       }
       {
         key = "<leader>gv";
         mode = ["n"];
-        action = ":Gvdiff<CR>";
+        action = "<cmd>Gvdiff<CR>";
         silent = true;
         desc = "Fugitive vertical split";
       }

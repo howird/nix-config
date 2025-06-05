@@ -5,9 +5,12 @@
   ...
 }: {
   imports = [
+    ./starship
+    ./tmux
+    ./zellij
+
     ./fish.nix
     ./zsh.nix
-    ./starship
   ];
 
   options = {

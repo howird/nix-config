@@ -13,10 +13,20 @@ lib.mkIf config.myShell.zsh {
     historySubstringSearch.enable = true;
     shellAliases = config.myShell.aliases;
 
-    initContent = lib.mkBefore ''
-      eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
-      source ${./scripts/auto_tmux.sh}
-    '';
+    initContent = lib.mkBefore (''
+        eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
+      ''
+      + (
+        if config.programs.zellij.enable
+        then ''
+          if [[ -z "$TMUX" && -z "$ZELLIJ" && $TERM_PROGRAM != "vscode" && $TERM_PROGRAM != "zed" ]]; then
+            zls
+          fi
+        ''
+        else ''
+          source ${./scripts/auto_tmux.sh}
+        ''
+      ));
 
     history = {
       size = 10000;

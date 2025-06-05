@@ -1,5 +1,7 @@
+#!/usr/bin/env bash
+
 tat_selector() {
-  if [[ -z "$TMUX" && $TERM_PROGRAM != "vscode" && $TERM_PROGRAM != "zed" ]]; then
+  if [[ -z "$TMUX" && -z "$ZELLIJ" && $TERM_PROGRAM != "vscode" && $TERM_PROGRAM != "zed" ]]; then
     local options
     local existing_sessions
     local selected_option

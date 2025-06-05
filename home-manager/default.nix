@@ -7,7 +7,6 @@
     ./browsers
     ./editors
     ./shells
-    ./tmux
 
     ./default-apps.nix
     ./ghostty.nix

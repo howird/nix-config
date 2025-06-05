@@ -9,4 +9,5 @@ pkgs: {
   kde-compact-pager = pkgs.callPackage ./kde-compact-pager {};
   kde-fokus = pkgs.callPackage ./kde-fokus {};
   tahoma2d = pkgs.callPackage ./tahoma2d {};
+  zesh = pkgs.callPackage ./zesh {};
 }

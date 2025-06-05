@@ -13,17 +13,21 @@
     };
     keymaps = [
       {
+        key = "<C-;>";
+        mode = "n";
+        action = "<cmd>lua require('harpoon'):list():select(5)<CR>";
+        desc = "Go to marked file 5 [Harpoon]";
+      }
+      {
         key = "<C-S-k>";
         mode = "n";
-        action = "function() require('harpoon'):list():prev() end";
-        lua = true;
+        action = "<cmd>lua require('harpoon'):list():prev()<CR>";
         desc = "Harpoon prev";
       }
       {
         key = "<C-S-j>";
         mode = "n";
-        action = "function() require('harpoon'):list():next() end";
-        lua = true;
+        action = "<cmd>lua require('harpoon'):list():next()<CR>";
         desc = "Harpoon next";
       }
     ];
