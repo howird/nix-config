@@ -14,7 +14,6 @@
     gaphor
 
     vesktop
-    teams-for-linux
     slack
     zoom-us
     warp

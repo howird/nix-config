@@ -64,8 +64,6 @@
 
       "$mainMod, left, workspace, -1"
       "$mainMod, right, workspace, +1"
-      "$mainMod, h, workspace, -1"
-      "$mainMod, l, workspace, +1"
 
       # Move active window to a workspace with mainMod + SHIFT + [0-9]
       "$shftMod, 1, movetoworkspace, 1"
@@ -80,8 +78,6 @@
 
       "$shftMod, left, movetoworkspace, -1"
       "$shftMod, right, movetoworkspace, +1"
-      "$shftMod, h, movetoworkspace, -1"
-      "$shftMod, l, movetoworkspace, +1"
 
       "$mainMod CTRL, left, resizeactive, -80 0"
       "$mainMod CTRL, right, resizeactive, 80 0"

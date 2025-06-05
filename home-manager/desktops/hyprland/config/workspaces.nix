@@ -3,67 +3,67 @@
     "$term" = "ghostty";
     "$termCls" = "com.mitchellh.$term";
     "$browser" = "zen";
-    "$fileManager" = "nautilus";
+    "$fileExplorer" = "nautilus";
     "$codeEditor" = "code";
     "$discordClient" = "vesktop";
     "$termExec" = "$term -e";
 
-    "$writws" = "1";
-    "$surfws" = "2";
+    "$notews" = "1";
+    "$readws" = "2";
     "$creaws" = "3";
-    "$readws" = "4";
-    "$confws" = "5";
-    "$watcws" = "8";
-    "$filews" = "9";
-    "$commws" = "10";
+
+    "$watcws" = "10";
+    "$filews" = "11";
+    "$commws" = "12";
 
     bind = [
-      # "$mainMod, a, workspace $taskws"
-      "$mainMod, o, workspace, $writws"
-      "$mainMod, b, workspace, $surfws"
-      "$mainMod, t, workspace, $creaws"
-      "$mainMod, e, workspace, $filews"
-      "$mainMod, i, workspace, $commws"
-      "$mainMod, r, workspace, $readws"
-      "$shftMod, r, movetoworkspace, $readws"
+      # "$mainMod, H, workspace $taskws"
+      "$mainMod, J, workspace, $notews"
+      "$shftMod, J, movetoworkspace, $notews"
+      "$mainMod, K, workspace, $readws"
+      "$shftMod, K, movetoworkspace, $readws"
+      "$mainMod, L, workspace, $creaws"
+      "$shftMod, L, movetoworkspace, $creaws"
+      "$mainMod, semicolon, workspace, $watcws"
 
-      "$shftMod, T, exec, $term"
-      "$shftMod, B, exec, $browser"
+      "$mainMod, E, workspace, $filews"
+      "$mainMod, I, workspace, $commws"
+
+      "$mainMod, T, exec, $term"
+      "$mainMod, B, exec, $browser"
       "$mainMod, M, exec, spotify"
     ];
 
     # windowrulev2
     windowrulev2 = [
       # note (1)
-      "workspace $writws, class:obsidian"
+      "workspace $notews, class:obsidian"
 
-      # browse (2)
-      "group, workspace:$surfws, class:$browser"
-
-      # create workspace (3)
-      "workspace $creaws, class:$termCls"
-      "group, workspace:$creaws, class:$termCls"
-      "workspace $creaws, class:krita"
-      "workspace $creaws, class:code"
-      "workspace $creaws, class:dev.zed.Zed"
-
-      # read workspace (4)
-      "group, workspace:$readws, class:Zotero"
+      # read (2)
+      "group, workspace:$readws, title:Zotero"
       "workspace $readws, class:Zotero"
       "workspace $readws, class:evince"
       "workspace $readws, class:com.github.johnfactotum.Foliate"
 
-      # watch workspace (5)
+      # create workspace (3)
+      "group, workspace:$creaws, class:$termCls"
+      "workspace $creaws, class:$termCls"
+      "workspace $creaws, class:krita"
+      "workspace $creaws, class:code"
+      "workspace $creaws, class:dev.zed.Zed"
+
+      # watch workspace (8)
       "workspace $watcws, class:mpv"
       "workspace $watcws, class:vlc"
+      "workspace $watcws, class:org.gnome.Loupe"
       "workspace $watcws, class:spotify"
       "workspace $watcws, class:rhythmbox"
 
       # rest workspace
       "workspace 6, class:^(.*qBittorrent.*)$"
 
-      # special workspaces
-      "workspace $commws, class:teams-for-linux"
+      # comms workspace (12)
+      "group, workspace:$commws, class:$discordClient"
       "workspace $commws, class:$discordClient"
       "workspace $commws, class:Slack"
 
@@ -72,27 +72,29 @@
 
     # No gaps when only
     workspace = [
-      "$writws, on-created-empty:obsidian"
-      "$surfws, on-created-empty:$browser"
-      "$creaws, on-created-empty:$term"
-      "$readws, on-created-empty:zotero"
-      "$commws, on-created-empty:$discordClient"
-      "$filews, on-created-empty:$fileManager"
-      # "$confws, on-created-empty:$termExec zesh cn nix/config"
       # "$taskws, on-created-empty:$taskMgr"
+      "$notews, on-created-empty:obsidian"
+      "$readws, on-created-empty:zotero"
+      "$creaws, on-created-empty:$term"
+      "$commws, on-created-empty:$discordClient"
+      "$filews, on-created-empty:$fileExplorer"
     ];
   };
   programs.waybar.settings.mainBar."hyprland/workspaces".format-icons = {
-    "1" = "󰧑";
-    "2" = "󱝆";
-    "3" = "󰽉";
-    "4" = "";
-    "5" = "V";
-    "6" = "VI";
-    "7" = "VII";
-    "8" = "";
-    "9" = "";
-    "10" = "";
     # "taskws" = "";
+    "1" = "󰧑";
+    "2" = "";
+    "3" = "󰽉";
+
+    "4" = "iv";
+    "5" = "v";
+    "6" = "vi";
+    "7" = "vii";
+    "8" = "viii";
+    "9" = "ix";
+
+    "10" = "";
+    "11" = "";
+    "12" = "";
   };
 }

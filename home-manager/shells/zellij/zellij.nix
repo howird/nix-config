@@ -21,11 +21,20 @@
 
             bind "x" { CloseFocus; SwitchToMode "locked"; }
             bind "v" { NextSwapLayout; SwitchToMode "locked"; }
-            bind "f" { ToggleFloatingPanes; SwitchToMode "locked"; }
+            bind "f" { ToggleFocusFullscreen; SwitchToMode "locked"; }
+            bind "space" { ToggleFloatingPanes; SwitchToMode "locked"; }
 
             bind "c" { NewTab; SwitchToMode "locked"; }
             bind "n" { NewPane; SwitchToMode "locked"; }
+
             bind "d" { Detach; }
+            bind "o" {
+                LaunchOrFocusPlugin "session-manager" {
+                    floating true
+                    move_to_focused_tab true
+                }
+                SwitchToMode "locked"
+            }
         }
         pane {
             bind "left" { MoveFocus "left"; }
@@ -141,38 +150,6 @@
             bind "o" { SearchToggleOption "WholeWord"; }
             bind "p" { Search "up"; }
             bind "w" { SearchToggleOption "Wrap"; }
-        }
-        session {
-            bind "a" {
-                LaunchOrFocusPlugin "zellij:about" {
-                    floating true
-                    move_to_focused_tab true
-                }
-                SwitchToMode "locked"
-            }
-            bind "c" {
-                LaunchOrFocusPlugin "configuration" {
-                    floating true
-                    move_to_focused_tab true
-                }
-                SwitchToMode "locked"
-            }
-            bind "d" { Detach; }
-            bind "o" { SwitchToMode "normal"; }
-            bind "p" {
-                LaunchOrFocusPlugin "plugin-manager" {
-                    floating true
-                    move_to_focused_tab true
-                }
-                SwitchToMode "locked"
-            }
-            bind "w" {
-                LaunchOrFocusPlugin "session-manager" {
-                    floating true
-                    move_to_focused_tab true
-                }
-                SwitchToMode "locked"
-            }
         }
         shared_except "locked" "renametab" "renamepane" {
             bind "Ctrl space" { SwitchToMode "locked"; }
