@@ -1,89 +1,98 @@
 {
   wayland.windowManager.hyprland.settings = {
     "$term" = "ghostty";
+    "$termCls" = "com.mitchellh.$term";
     "$browser" = "zen";
     "$fileManager" = "nautilus";
     "$codeEditor" = "code";
     "$discordClient" = "vesktop";
-    "$nixConf" = "$term -e zesh cn nix/config";
+    "$termExec" = "$term -e";
+
+    "$writws" = "1";
+    "$surfws" = "2";
+    "$creaws" = "3";
+    "$readws" = "4";
+    "$confws" = "5";
+    "$watcws" = "8";
+    "$filews" = "9";
+    "$commws" = "10";
 
     bind = [
-      "$shftMod, T, exec, $term"
-      "$mainMod, B, exec, $browser"
-      "$mainMod, M, exec, spotify"
-      "$shftMod, Escape, exec, [workspace special:confws; float; center; size 1200 600] $term -e 'htop'"
+      # "$mainMod, a, workspace $taskws"
+      "$mainMod, o, workspace, $writws"
+      "$mainMod, b, workspace, $surfws"
+      "$mainMod, t, workspace, $creaws"
+      "$mainMod, e, workspace, $filews"
+      "$mainMod, i, workspace, $commws"
+      "$mainMod, r, workspace, $readws"
+      "$shftMod, r, movetoworkspace, $readws"
 
-      # "$mainMod, a, togglespecialworkspace, taskws"
-      "$mainMod, t, togglespecialworkspace, codews"
-      "$mainMod, e, togglespecialworkspace, filews"
-      "$mainMod, i, togglespecialworkspace, commws"
-      "$mainMod, Escape, togglespecialworkspace, confws"
-      "$mainMod, r, togglespecialworkspace, readws"
-      "$shftMod, r, movetoworkspace, special:readws"
+      "$shftMod, T, exec, $term"
+      "$shftMod, B, exec, $browser"
+      "$mainMod, M, exec, spotify"
     ];
 
     # windowrulev2
     windowrulev2 = [
-      # workspace 󱞁 (1)
-      "workspace 1, class:obsidian"
+      # note (1)
+      "workspace $writws, class:obsidian"
 
-      # workspace  (3)
-      "workspace 3, class:mpv"
-      "workspace 3, class:vlc"
-      "workspace 3, class:spotify"
-      "workspace 3, class:rhythmbox"
+      # browse (2)
+      "group, workspace:$surfws, class:$browser"
 
-      # workspace  (4)
-      "workspace 4, class:krita"
+      # create workspace (3)
+      "workspace $creaws, class:$termCls"
+      "group, workspace:$creaws, class:$termCls"
+      "workspace $creaws, class:krita"
+      "workspace $creaws, class:code"
+      "workspace $creaws, class:dev.zed.Zed"
+
+      # read workspace (4)
+      "group, workspace:$readws, class:Zotero"
+      "workspace $readws, class:Zotero"
+      "workspace $readws, class:evince"
+      "workspace $readws, class:com.github.johnfactotum.Foliate"
+
+      # watch workspace (5)
+      "workspace $watcws, class:mpv"
+      "workspace $watcws, class:vlc"
+      "workspace $watcws, class:spotify"
+      "workspace $watcws, class:rhythmbox"
 
       # rest workspace
       "workspace 6, class:^(.*qBittorrent.*)$"
 
       # special workspaces
-      "workspace special:commws, class:teams-for-linux"
-      "workspace special:commws, class:$discordClient"
-      "workspace special:commws, class:Slack"
+      "workspace $commws, class:teams-for-linux"
+      "workspace $commws, class:$discordClient"
+      "workspace $commws, class:Slack"
 
-      "workspace special:codews, class:$term"
-      "workspace special:codews, class:code"
-      "workspace special:codews, class:^(.*zed.*)$"
-
-      # "workspace special:taskws, class:$taskMgr"
-      "workspace special:confws, class:nixconf"
-
-      "workspace special:readws, class:Zotero"
+      # "workspace $taskws, class:$taskMgr"
     ];
 
     # No gaps when only
     workspace = [
-      "1, on-created-empty:obsidian"
-      "2, on-created-empty:$browser"
-
-      # "special:taskws, on-created-empty:$taskMgr"
-      "special:readws, on-created-empty:zotero"
-      "special:codews, on-created-empty:$term"
-      "special:confws, on-created-empty:$nixConf"
-      "special:commws, on-created-empty:$discordClient"
-      "special:filews, on-created-empty:$fileManager"
+      "$writws, on-created-empty:obsidian"
+      "$surfws, on-created-empty:$browser"
+      "$creaws, on-created-empty:$term"
+      "$readws, on-created-empty:zotero"
+      "$commws, on-created-empty:$discordClient"
+      "$filews, on-created-empty:$fileManager"
+      # "$confws, on-created-empty:$termExec zesh cn nix/config"
+      # "$taskws, on-created-empty:$taskMgr"
     ];
   };
-
   programs.waybar.settings.mainBar."hyprland/workspaces".format-icons = {
-    "1" = "󱞁";
-    "2" = "";
-    "3" = "";
-    "4" = "";
-    "5" = "v";
-    "6" = "vi";
-    "7" = "vii";
-    "8" = "viii";
-    "9" = "ix";
-    "10" = "x";
-    "codews" = " ";
-    "taskws" = " ";
-    "confws" = " ";
-    "readws" = " ";
-    "commws" = " ";
-    "filews" = " ";
+    "1" = "󰧑";
+    "2" = "󱝆";
+    "3" = "󰽉";
+    "4" = "";
+    "5" = "V";
+    "6" = "VI";
+    "7" = "VII";
+    "8" = "";
+    "9" = "";
+    "10" = "";
+    # "taskws" = "";
   };
 }

@@ -11,7 +11,6 @@
     mantle = colors.base01;
     surface1 = colors.base03;
     green = colors.base0B;
-    lavender = colors.base07;
   in ''
     * {
       border: none;
@@ -26,7 +25,6 @@
 
     window#waybar {
       background: ${base};
-      border-top: 1px solid ${surface1};
     }
 
     tooltip {
@@ -42,7 +40,7 @@
       padding-left: 15px;
     }
     #workspaces button {
-      color: ${lavender};
+      color: ${text};
       padding-left:  5px;
       padding-right: 5px;
       margin-right: 10px;

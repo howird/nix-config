@@ -28,7 +28,10 @@
       "$shftMod, S, exec, hyprshot -m region --clipboard-only"
 
       # switch windows
-      "ALT, TAB, cyclenext"
+      "$mainMod, Escape, togglegroup"
+      "$shftMod, Escape, lockactivegroup, toggle"
+      "ALT, TAB, changegroupactive, b"
+
       "ALT, left, movefocus, l"
       "ALT, right, movefocus, r"
       "ALT, up, movefocus, u"
@@ -39,7 +42,6 @@
       "ALT, j, movefocus, d"
 
       # window/group control
-      "ALT, d, togglegroup"
       "ALT SHIFT, left, movewindoworgroup, l"
       "ALT SHIFT, right, movewindoworgroup, r"
       "ALT SHIFT, up, movewindoworgroup, u"

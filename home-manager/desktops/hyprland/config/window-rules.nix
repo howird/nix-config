@@ -19,6 +19,8 @@
     "opacity 1.0 override 1.0 override, title:^(.*Picture-in-Picture.*)$"
     "pin, title:^(.*Picture-in-Picture.*)$"
 
+    "opacity 0.7 override 0.4 override, class:spotify"
+    "float, class:spotify"
     "opacity 1.0 override 1.0 override, class:mpv"
     "opacity 1.0 override 1.0 override, class:zen"
     "opacity 1.0 override 1.0 override, class:evince"
@@ -41,7 +43,6 @@
     "center, class:^(org.gnome.FileRoller)$"
     "float, class:^(org.gnome.FileRoller)$"
     "size 850 500, class:^(org.gnome.FileRoller)$"
-
     "size 850 500, title:^(.*File Upload.*)$"
 
     "float,class:^(nm-.*)$"

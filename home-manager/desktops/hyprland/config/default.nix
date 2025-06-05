@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   host,
   ...
@@ -168,6 +169,20 @@
         "bordersize 0, floating:0, onworkspace:f[1]"
         "rounding 0, floating:0, onworkspace:f[1]"
       ];
+
+      group.groupbar = let
+        rgb = color: "rgb(${color})";
+        green = rgb config.lib.stylix.colors.base0B;
+        red = rgb config.lib.stylix.colors.base08;
+        grey = rgb config.lib.stylix.colors.base03;
+      in {
+        render_titles = false;
+        keep_upper_gap = false;
+        "col.active" = lib.mkForce green;
+        "col.locked_active" = lib.mkForce red;
+        "col.inactive" = lib.mkForce grey;
+        "col.locked_inactive" = lib.mkForce grey;
+      };
     };
 
     extraConfig = ''

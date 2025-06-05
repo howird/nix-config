@@ -36,7 +36,6 @@
     };
     "hyprland/workspaces" = {
       active-only = false;
-      disable-scroll = true;
       format = "{icon}";
       on-click = "activate";
       show-special = true;
