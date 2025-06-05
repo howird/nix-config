@@ -6,6 +6,7 @@
     ./harpoon.nix
     ./languages.nix
     ./lsp.nix
+    # ./notes.nix
     ./oil.nix
     ./telescope.nix
   ];

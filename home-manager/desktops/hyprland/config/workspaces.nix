@@ -3,31 +3,37 @@
     "$term" = "ghostty";
     "$termCls" = "com.mitchellh.$term";
     "$browser" = "zen";
-    "$fileExplorer" = "nautilus";
+    "$file" = "nautilus";
+    "$fileCls" = "nautilus";
     "$codeEditor" = "code";
     "$discordClient" = "vesktop";
+    "$taskMgr" = "errands";
+    "$taskCls" = "io.github.mrvladus.List";
     "$termExec" = "$term -e";
 
-    "$notews" = "1";
-    "$readws" = "2";
-    "$creaws" = "3";
+    "$taskws" = "1";
+    "$notews" = "2";
+    "$readws" = "3";
+    "$creaws" = "4";
 
-    "$watcws" = "10";
-    "$filews" = "11";
-    "$commws" = "12";
+    "$viewws" = "10";
+    "$commws" = "11";
+    "$filews" = "12";
 
     bind = [
-      # "$mainMod, H, workspace $taskws"
+      "$mainMod, H, workspace, $taskws"
+      "$shftMod, H, movetoworkspace, $taskws"
       "$mainMod, J, workspace, $notews"
       "$shftMod, J, movetoworkspace, $notews"
       "$mainMod, K, workspace, $readws"
       "$shftMod, K, movetoworkspace, $readws"
       "$mainMod, L, workspace, $creaws"
       "$shftMod, L, movetoworkspace, $creaws"
-      "$mainMod, semicolon, workspace, $watcws"
+      "$mainMod, semicolon, workspace, $viewws"
+      "$shftMod, semicolon, movetoworkspace, $viewws"
 
-      "$mainMod, E, workspace, $filews"
       "$mainMod, I, workspace, $commws"
+      "$mainMod, O, workspace, $filews"
 
       "$mainMod, T, exec, $term"
       "$mainMod, B, exec, $browser"
@@ -37,56 +43,76 @@
     # windowrulev2
     windowrulev2 = [
       # note (1)
+      "workspace $taskws, class:$taskCls"
+
+      # note (2)
       "workspace $notews, class:obsidian"
 
-      # read (2)
-      "group, workspace:$readws, title:Zotero"
+      # read (3)
+      "group, workspace:$readws, title:(.*)Zotero"
+      "group lock, workspace:$readws, title:(.*)Zotero"
+
       "workspace $readws, class:Zotero"
       "workspace $readws, class:evince"
       "workspace $readws, class:com.github.johnfactotum.Foliate"
 
-      # create workspace (3)
+      "group invade, workspace:$readws, class:zen"
+      "group invade, workspace:$readws, class:evince"
+      "group invade, workspace:$readws, title:(.*)Zotero"
+      "group invade, workspace:$readws, class:com.github.johnfactotum.Foliate"
+
+      # create workspace (4)
       "group, workspace:$creaws, class:$termCls"
-      "workspace $creaws, class:$termCls"
-      "workspace $creaws, class:krita"
+      "group lock, workspace:$creaws, class:$termCls"
+
       "workspace $creaws, class:code"
+      "workspace $creaws, class:krita"
+      "workspace $creaws, class:cursor"
       "workspace $creaws, class:dev.zed.Zed"
 
-      # watch workspace (8)
-      "workspace $watcws, class:mpv"
-      "workspace $watcws, class:vlc"
-      "workspace $watcws, class:org.gnome.Loupe"
-      "workspace $watcws, class:spotify"
-      "workspace $watcws, class:rhythmbox"
+      "group invade, workspace:$creaws, class:code"
+      "group invade, workspace:$creaws, class:krita"
+      "group invade, workspace:$creaws, class:cursor"
+      "group invade, workspace:$creaws, class:$termCls"
+      "group invade, workspace:$creaws, class:dev.zed.Zed"
 
-      # rest workspace
+      # extra workspaces (5-9)
       "workspace 6, class:^(.*qBittorrent.*)$"
 
-      # comms workspace (12)
+      # view workspace (10)
+      "workspace $viewws, class:mpv"
+      "workspace $viewws, class:vlc"
+      "workspace $viewws, class:org.gnome.Loupe"
+      "workspace $viewws, class:spotify"
+      "workspace $viewws, class:rhythmbox"
+
+      # comms workspace (11)
       "group, workspace:$commws, class:$discordClient"
       "workspace $commws, class:$discordClient"
       "workspace $commws, class:Slack"
+      "workspace $commws, class:zoom"
 
-      # "workspace $taskws, class:$taskMgr"
+      # file workspace (12)
+      "group, workspace:$filews, class:$fileCls"
+      "workspace $filews, class:$fileCls"
     ];
 
     # No gaps when only
     workspace = [
-      # "$taskws, on-created-empty:$taskMgr"
+      "$taskws, on-created-empty:$taskMgr"
       "$notews, on-created-empty:obsidian"
       "$readws, on-created-empty:zotero"
       "$creaws, on-created-empty:$term"
       "$commws, on-created-empty:$discordClient"
-      "$filews, on-created-empty:$fileExplorer"
+      "$filews, on-created-empty:$file"
     ];
   };
   programs.waybar.settings.mainBar."hyprland/workspaces".format-icons = {
-    # "taskws" = "";
-    "1" = "󰧑";
-    "2" = "";
-    "3" = "󰽉";
+    "1" = "";
+    "2" = "󰧑";
+    "3" = "";
+    "4" = "󰽉";
 
-    "4" = "iv";
     "5" = "v";
     "6" = "vi";
     "7" = "vii";
@@ -94,7 +120,7 @@
     "9" = "ix";
 
     "10" = "";
-    "11" = "";
-    "12" = "";
+    "11" = "";
+    "12" = "";
   };
 }

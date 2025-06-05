@@ -178,8 +178,8 @@
       in {
         render_titles = false;
         keep_upper_gap = false;
-        "col.active" = lib.mkForce green;
-        "col.locked_active" = lib.mkForce red;
+        "col.active" = lib.mkForce red;
+        "col.locked_active" = lib.mkForce green;
         "col.inactive" = lib.mkForce grey;
         "col.locked_inactive" = lib.mkForce grey;
       };
