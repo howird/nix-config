@@ -27,6 +27,7 @@
       njpwerner.autodocstring
 
       # text
+      myriad-dreamin.tinymist
       james-yu.latex-workshop
       vitaliymaz.vscode-svg-previewer
       tomoki1207.pdf

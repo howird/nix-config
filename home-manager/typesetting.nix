@@ -8,6 +8,6 @@
 
     typst
     typstyle
-    typst-live
+    tinymist
   ];
 }
