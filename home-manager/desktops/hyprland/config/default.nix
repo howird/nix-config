@@ -170,18 +170,22 @@
         "rounding 0, floating:0, onworkspace:f[1]"
       ];
 
-      group.groupbar = let
-        rgb = color: "rgb(${color})";
-        green = rgb config.lib.stylix.colors.base0B;
-        red = rgb config.lib.stylix.colors.base08;
-        grey = rgb config.lib.stylix.colors.base03;
-      in {
-        render_titles = false;
-        keep_upper_gap = false;
-        "col.active" = lib.mkForce red;
-        "col.locked_active" = lib.mkForce green;
-        "col.inactive" = lib.mkForce grey;
-        "col.locked_inactive" = lib.mkForce grey;
+      group = {
+        group_on_movetoworkspace = true;
+        groupbar = let
+          rgb = color: "rgb(${color})";
+          green = rgb config.lib.stylix.colors.base0B;
+          red = rgb config.lib.stylix.colors.base08;
+          orange = rgb config.lib.stylix.colors.base0A;
+          grey = rgb config.lib.stylix.colors.base03;
+        in {
+          render_titles = false;
+          keep_upper_gap = false;
+          "col.active" = lib.mkForce red;
+          "col.inactive" = lib.mkForce orange;
+          "col.locked_active" = lib.mkForce green;
+          "col.locked_inactive" = lib.mkForce grey;
+        };
       };
     };
 
