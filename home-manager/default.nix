@@ -29,8 +29,8 @@
 
     programs.home-manager.enable = true;
     home = {
-      username = config.myUsername;
-      homeDirectory = "/home/${config.myUsername}";
+      username = lib.mkDefault "howird";
+      homeDirectory = "/home/${config.home.username}";
       sessionPath = ["$HOME/.local/bin"];
     };
 
@@ -42,12 +42,6 @@
   };
 
   options = {
-    myUsername = lib.mkOption {
-      type = lib.types.str;
-      default = "howird";
-      description = "your username";
-    };
-
     myName = lib.mkOption {
       type = lib.types.str;
       default = "Howard Nguyen-Huu";

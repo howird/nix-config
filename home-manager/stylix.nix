@@ -36,9 +36,11 @@
       polarity = "dark";
       opacity.terminal = 0.75;
 
-      cursor.package = pkgs.bibata-cursors;
-      cursor.name = "Bibata-Original-Ice";
-      cursor.size = 24;
+      cursor = {
+        package = pkgs.bibata-cursors;
+        name = "Bibata-Original-Ice";
+        size = 24;
+      };
     };
 
     stylix.fonts = rec {
