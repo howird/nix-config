@@ -4,6 +4,10 @@
       experimental-features = ["scale-monitor-framebuffer"];
       dynamic-workspaces = false;
     };
+    "org/gnome/mutter/keybindings" = {
+      toggle-tiled-left = [];
+      toggle-tiled-right = [];
+    };
     "org/gnome/desktop/wm/preferences".num-workspaces = 10;
     "org/gnome/desktop/interface".enable-hot-corners = true;
 
@@ -38,19 +42,19 @@
 
     "org/gnome/shell/app-switcher" = {current-workspace-only = true;};
     "org/gnome/desktop/wm/keybindings" = {
-      switch-to-workspace-1 = ["<Super>1"];
-      switch-to-workspace-2 = ["<Super>2"];
-      switch-to-workspace-3 = ["<Super>3"];
-      switch-to-workspace-4 = ["<Super>T"];
-      switch-to-workspace-left = ["<Super>H"];
-      switch-to-workspace-right = ["<Super>L"];
+      switch-to-workspace-1 = ["<Super>j"];
+      switch-to-workspace-2 = ["<Super>k"];
+      switch-to-workspace-3 = ["<Super>l"];
+      switch-to-workspace-4 = ["<Super>semicolon"];
+      switch-to-workspace-left = ["<Super>Left"];
+      switch-to-workspace-right = ["<Super>Right"];
 
-      move-to-workspace-1 = ["<Shift><Super>1"];
-      move-to-workspace-2 = ["<Shift><Super>2"];
-      move-to-workspace-3 = ["<Shift><Super>3"];
-      move-to-workspace-4 = ["<Shift><Super>4"];
-      move-to-workspace-left = ["<Shift><Super>H"];
-      move-to-workspace-right = ["<Shift><Super>L"];
+      move-to-workspace-1 = ["<Shift><Super>j"];
+      move-to-workspace-2 = ["<Shift><Super>k"];
+      move-to-workspace-3 = ["<Shift><Super>l"];
+      move-to-workspace-4 = ["<Shift><Super>semicolon"];
+      move-to-workspace-left = ["<Shift><Super>Left"];
+      move-to-workspace-right = ["<Shift><Super>Right"];
       move-to-monitor-left = [];
       move-to-monitor-right = [];
 
@@ -75,23 +79,32 @@
       switch-to-application-3 = [];
       switch-to-application-4 = [];
       toggle-quick-settings = [];
-      toggle-overview = ["<Super>Return"];
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
       ];
       screensaver = ["<Shift><Super>q"];
+      home = ["<Super>o"];
+      search = ["<Super>Return"];
     };
 
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      binding = "<Super>b";
+      command = "zen";
+      name = "browser";
+    };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      binding = "<Shift><Super>t";
+      binding = "<Super>t";
       command = "alacritty";
-      name = "alacritty";
+      name = "terminal";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+      binding = "<Super>i";
+      command = "vesktop";
+      name = "discord";
     };
   };
 }

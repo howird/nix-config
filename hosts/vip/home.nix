@@ -1,7 +1,7 @@
 {config, ...}: {
   config = let
     initExtra = ''
-      HOME_PROFILE="/home/${config.myUsername}/.nix-profile/etc/profile.d"
+      HOME_PROFILE="/home/${config.home.username}/.nix-profile/etc/profile.d"
       ROOT_NIX_SH="/etc/profile.d/nix.sh"
       HOME_NIX_SH="$HOME_PROFILE/nix.sh"
 
@@ -16,11 +16,11 @@
       source $HOME_PROFILE/hm-session-vars.sh
     '';
   in {
-    myUsername = "howard";
+    home.username = "howard";
     myEmail = "howard.nguyen-huu@uwaterloo.ca";
 
     programs.zsh.initExtraFirst = initExtra;
     programs.bash.initExtra = initExtra;
-    myShell.hmFlakeArgs = "#howard@vip";
+    myShell.hmFlakeArgs = "#${config.home.username}@vip";
   };
 }
