@@ -1,14 +1,13 @@
 {
   wayland.windowManager.hyprland.settings = {
     "$term" = "ghostty";
-    "$termCls" = "com.mitchellh.$term";
     "$browser" = "zen";
     "$file" = "nautilus";
     "$fileCls" = "nautilus";
     "$codeEditor" = "code";
     "$discordClient" = "vesktop";
     "$taskMgr" = "errands";
-    "$taskCls" = "io.github.mrvladus.List";
+    "$taskCls" = "io\.github\.mrvladus\.List";
     "$termExec" = "$term -e";
 
     "$taskws" = "1";
@@ -42,55 +41,33 @@
 
     # windowrulev2
     windowrulev2 = [
-      # note (1)
-      "workspace $taskws, class:$taskCls"
+      # task workspace (1)
+      "workspace $taskws, class:^($taskCls)$"
 
-      # note (2)
+      # note workspace (2)
       "workspace $notews, class:obsidian"
 
-      # read (3)
-      "group, workspace:$readws, title:(.*)Zotero"
-      "group lock, workspace:$readws, title:(.*)Zotero"
+      # read workspace (3)
+      "group, workspace:$readws, class:Zotero"
 
-      "workspace $readws, class:Zotero"
-      "workspace $readws, class:evince"
-      "workspace $readws, class:com.github.johnfactotum.Foliate"
-
-      "group invade, workspace:$readws, class:zen"
-      "group invade, workspace:$readws, class:evince"
-      "group invade, workspace:$readws, title:(.*)Zotero"
-      "group invade, workspace:$readws, class:com.github.johnfactotum.Foliate"
+      "workspace $readws, class:^(Zotero|evince|com\.github\.johnfactotum\.Foliate)$"
+      "group barred, workspace:$readws, class:negative:^(Zotero|evince|com\.github\.johnfactotum\.Foliate|zen)$"
 
       # create workspace (4)
-      "group, workspace:$creaws, class:$termCls"
-      "group lock, workspace:$creaws, class:$termCls"
+      "group, workspace:$creaws, class:^(.*tty)$"
 
-      "workspace $creaws, class:code"
-      "workspace $creaws, class:krita"
-      "workspace $creaws, class:cursor"
-      "workspace $creaws, class:dev.zed.Zed"
-
-      "group invade, workspace:$creaws, class:code"
-      "group invade, workspace:$creaws, class:krita"
-      "group invade, workspace:$creaws, class:cursor"
-      "group invade, workspace:$creaws, class:$termCls"
-      "group invade, workspace:$creaws, class:dev.zed.Zed"
+      "workspace $creaws, class:^(code|krita|cursor|dev\.zed\.Zed|chromium-browser)$"
+      "group barred, workspace:$creaws, class:negative:^(code|krita|cursor|dev\.zed\.Zed|chromium-browser)$"
 
       # extra workspaces (5-9)
       "workspace 6, class:^(.*qBittorrent.*)$"
 
       # view workspace (10)
-      "workspace $viewws, class:mpv"
-      "workspace $viewws, class:vlc"
-      "workspace $viewws, class:org.gnome.Loupe"
-      "workspace $viewws, class:spotify"
-      "workspace $viewws, class:rhythmbox"
+      "workspace $viewws, class:^(mpv|vlc|org\.gnome\.Loupe|spotify|rhythmbox)$"
 
       # comms workspace (11)
-      "group, workspace:$commws, class:$discordClient"
-      "workspace $commws, class:$discordClient"
-      "workspace $commws, class:Slack"
-      "workspace $commws, class:zoom"
+      "group, workspace:$commws"
+      "workspace $commws, class:^($discordClient|Slack|zoom)$"
 
       # file workspace (12)
       "group, workspace:$filews, class:$fileCls"

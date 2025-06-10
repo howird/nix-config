@@ -17,6 +17,6 @@
     myEditor.zed = true;
 
     # browsers
-    myBrowser.vivaldi = true;
+    myBrowser.chromium = true;
   };
 }

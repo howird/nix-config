@@ -19,7 +19,6 @@
 
     # apps
     firefox
-    chromium
     vlc
     libreoffice
     gnome-disk-utility
