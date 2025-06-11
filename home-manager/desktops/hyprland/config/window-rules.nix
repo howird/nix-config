@@ -23,7 +23,7 @@
     "float, class:spotify"
     "opacity 1.0 override 1.0 override, class:mpv"
     "opacity 1.0 override 1.0 override, class:zen"
-    "opacity 1.0 override 1.0 override, class:evince"
+    "opacity 1.0 override 1.0 override, class:^(org\.gnome\.Papers)$"
 
     "float, class:Zotero, title:^(.*Progress.*)$"
     "opacity 0.5, class:Zotero, title:^(.*Progress.*)$"

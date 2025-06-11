@@ -50,14 +50,14 @@
       # read workspace (3)
       "group, workspace:$readws, class:Zotero"
 
-      "workspace $readws, class:^(Zotero|evince|com\.github\.johnfactotum\.Foliate)$"
-      "group barred, workspace:$readws, class:negative:^(Zotero|evince|com\.github\.johnfactotum\.Foliate|zen)$"
+      "workspace $readws, class:^(Zotero|org\.gnome\.Papers|com\.github\.johnfactotum\.Foliate)$"
+      "group barred, workspace:$readws, class:negative:^(Zotero|org\.gnome\.Papers|com\.github\.johnfactotum\.Foliate|zen)$"
 
       # create workspace (4)
       "group, workspace:$creaws, class:^(.*tty)$"
 
-      "workspace $creaws, class:^(code|krita|cursor|dev\.zed\.Zed|chromium-browser)$"
-      "group barred, workspace:$creaws, class:negative:^(code|krita|cursor|dev\.zed\.Zed|chromium-browser)$"
+      "workspace $creaws, class:^(code|krita|cursor|dev\.zed\.Zed|chromium-browser|libreoffice-*)$"
+      "group barred, workspace:$creaws, class:negative:^(code|krita|cursor|dev\.zed\.Zed|chromium-browser|libreoffice-*)$"
 
       # extra workspaces (5-9)
       "workspace 6, class:^(.*qBittorrent.*)$"

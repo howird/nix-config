@@ -26,7 +26,7 @@ lib.mkIf config.myDesktop.xfce {
   environment.systemPackages = with pkgs; [
     blueman
     drawing
-    evince
+    papers
     font-manager
     gnome-disk-utility
     pavucontrol

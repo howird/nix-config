@@ -23,8 +23,7 @@
     libreoffice
     gnome-disk-utility
     gnome-text-editor
-    evince # pdf
-    xournalpp # pdf+markup
+    papers # pdf
     foliate # ebooks
     rhythmbox # music
     loupe # image viewer

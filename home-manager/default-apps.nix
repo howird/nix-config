@@ -11,7 +11,7 @@
       };
       document = mkOption {
         type = types.str;
-        default = "org.gnome.Evince.desktop";
+        default = "org.gnome.Papers.desktop";
       };
       image = mkOption {
         type = types.str;
