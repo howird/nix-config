@@ -6,12 +6,12 @@
   ...
 }:
 lib.mkIf config.myDesktop.hyprland {
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.gdm.wayland = true;
+  services.displayManager.gdm.enable = true;
+  services.displayManager.gdm.wayland = true;
 
   # run directly from tty without display manager
   # services.displayManager.enable = lib.mkForce false;
-  # services.xserver.displayManager.lightdm.enable = false;
+  # services.displayManager.lightdm.enable = false;
 
   programs.hyprland = {
     enable = true;

@@ -52,7 +52,7 @@
     };
     ghostty = {
       url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs-unstable.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nixgl = {
       url = "github:nix-community/nixGL";
