@@ -939,11 +939,11 @@
         "systems": "systems_5"
       },
       "locked": {
-        "lastModified": 1749631819,
-        "narHash": "sha256-iy7UuA2I0DaKEUMncTQNFg0bYDX7sa5WCRQTrIWqmEU=",
+        "lastModified": 1747525582,
+        "narHash": "sha256-oEZ6DV4bPcNZIuwW5Kcd+/zT3PMkXse2kX/3jHoomGk=",
         "owner": "NotAShelf",
         "repo": "nvf",
-        "rev": "2a2b5e2790b41eadc42758fd6c4d62b7af64f17c",
+        "rev": "d3a0e7029ac57eef1120225973247851c5b967b5",
         "type": "github"
       },
       "original": {
