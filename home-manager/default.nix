@@ -15,6 +15,7 @@
     ./packages.nix
     ./programming.nix
     ./rclone.nix
+    ./tasks.nix
     ./typesetting.nix
   ];
 

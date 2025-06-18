@@ -1,5 +1,13 @@
 {config, ...}: {
   xdg.configFile."zellij/config.kdl".text = ''
+    default_mode "locked"
+    pane_frames false
+    mirror_session true
+    copy_command "wl-copy"
+    attach_to_session true
+    show_startup_tips false
+    show_release_notes false
+
     keybinds clear-defaults=true {
         locked {
             bind "Ctrl space" { SwitchToMode "normal"; }
@@ -19,13 +27,9 @@
             bind "-" { Resize "Decrease"; SwitchToMode "locked"; }
             bind "=" { Resize "Increase"; SwitchToMode "locked"; }
 
-            bind "x" { CloseFocus; SwitchToMode "locked"; }
             bind "v" { NextSwapLayout; SwitchToMode "locked"; }
-            bind "f" { ToggleFocusFullscreen; SwitchToMode "locked"; }
-            bind "space" { ToggleFloatingPanes; SwitchToMode "locked"; }
 
             bind "c" { NewTab; SwitchToMode "locked"; }
-            bind "n" { NewPane; SwitchToMode "locked"; }
 
             bind "d" { Detach; }
             bind "o" {
@@ -41,23 +45,26 @@
             bind "down" { MoveFocus "down"; }
             bind "up" { MoveFocus "up"; }
             bind "right" { MoveFocus "right"; }
-
-            bind "c" { SwitchToMode "renamepane"; PaneNameInput 0; }
-            bind "d" { NewPane "down"; SwitchToMode "locked"; }
-            bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "locked"; }
-            bind "f" { ToggleFocusFullscreen; SwitchToMode "locked"; }
             bind "h" { MoveFocus "left"; }
-            bind "i" { TogglePanePinned; SwitchToMode "locked"; }
             bind "j" { MoveFocus "down"; }
             bind "k" { MoveFocus "up"; }
             bind "l" { MoveFocus "right"; }
-            bind "n" { NewPane; SwitchToMode "locked"; }
+
+            bind "c" { SwitchToMode "renamepane"; PaneNameInput 0; }
+            bind "d" { NewPane "down"; SwitchToMode "locked"; }
+            bind "i" { TogglePanePinned; SwitchToMode "locked"; }
+
             bind "p" { SwitchToMode "normal"; }
             bind "r" { NewPane "right"; SwitchToMode "locked"; }
             bind "w" { ToggleFloatingPanes; SwitchToMode "locked"; }
-            bind "x" { CloseFocus; SwitchToMode "locked"; }
             bind "z" { TogglePaneFrames; SwitchToMode "locked"; }
             bind "tab" { SwitchFocus; }
+        }
+        shared_among "normal" "pane" {
+            bind "space" { TogglePaneEmbedOrFloating; SwitchToMode "locked"; }
+            bind "f" { ToggleFocusFullscreen; SwitchToMode "locked"; }
+            bind "x" { CloseFocus; SwitchToMode "locked"; }
+            bind "n" { NewPane; SwitchToMode "locked"; }
         }
         tab {
             bind "left" { GoToPreviousTab; SwitchToMode "locked"; }
@@ -230,19 +237,5 @@
             welcome_screen true
         }
     }
-
-    // Plugins to load in the background when a new session starts
-    // eg. "file:/path/to/my-plugin.wasm"
-    // eg. "https://example.com/my-plugin.wasm"
-    load_plugins {
-    }
-
-    default_mode "locked"
-    pane_frames false
-    mirror_session true
-    copy_command "wl-copy"
-    attach_to_session true
-    show_startup_tips false
-    show_release_notes false
   '';
 }

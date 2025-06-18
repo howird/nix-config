@@ -6,8 +6,7 @@
     "$fileCls" = "nautilus";
     "$codeEditor" = "code";
     "$discordClient" = "vesktop";
-    "$taskMgr" = "errands";
-    "$taskCls" = "io\.github\.mrvladus\.List";
+    "$taskMgr" = "taskwarrior-tui";
     "$termExec" = "$term -e";
 
     "$taskws" = "1";
@@ -41,9 +40,6 @@
 
     # windowrulev2
     windowrulev2 = [
-      # task workspace (1)
-      "workspace $taskws, class:^($taskCls)$"
-
       # note workspace (2)
       "workspace $notews, class:obsidian"
 
@@ -76,7 +72,7 @@
 
     # No gaps when only
     workspace = [
-      "$taskws, on-created-empty:$taskMgr"
+      "$taskws, on-created-empty:$termExec $taskMgr"
       "$notews, on-created-empty:obsidian"
       "$readws, on-created-empty:zotero"
       "$creaws, on-created-empty:$term"

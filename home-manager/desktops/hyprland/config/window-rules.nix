@@ -19,7 +19,7 @@
     "opacity 1.0 override 1.0 override, title:^(.*Picture-in-Picture.*)$"
     "pin, title:^(.*Picture-in-Picture.*)$"
 
-    "opacity 0.7 override 0.4 override, class:spotify"
+    "opacity 0.8 override 0.6 override, class:spotify"
     "float, class:spotify"
     "opacity 1.0 override 1.0 override, class:mpv"
     "opacity 1.0 override 1.0 override, class:zen"

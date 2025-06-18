@@ -1,10 +1,5 @@
 {
-  inputs,
-  pkgs,
-  ...
-}: {
   programs.ghostty = {
-    package = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
     enableZshIntegration = true;
     installVimSyntax = true;
     settings = {

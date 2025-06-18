@@ -1,5 +1,4 @@
 {
-  inputs,
   lib,
   config,
   pkgs,
@@ -35,7 +34,7 @@
         pkgs.libsForQt5.qtwayland # for some reason this is needed?
       ]
       ++ lib.optional config.myBrowser.edge (pkgs.microsoft-edge.override {inherit commandLineArgs;})
-      ++ lib.optional config.myBrowser.zen (inputs.zen-browser.packages."${pkgs.system}".default);
+      ++ lib.optional config.myBrowser.zen pkgs.zen-browser;
 
     programs.firefox.enable = config.myBrowser.firefox;
   };

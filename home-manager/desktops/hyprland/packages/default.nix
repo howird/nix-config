@@ -8,5 +8,6 @@
 
     ./batsignal.nix
     ./rofi.nix
+    ./kanshi.nix
   ];
 }

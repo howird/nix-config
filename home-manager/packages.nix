@@ -10,9 +10,6 @@
     eyedropper
     krita
 
-    errands
-    gaphor
-
     vesktop
     slack
     zoom-us

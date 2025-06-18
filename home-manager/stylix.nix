@@ -26,7 +26,7 @@
 
   config = {
     myTheme = "everforest-dark-hard";
-    myWallpaper = ./desktops/wallpapers/pokemon-concierge.jpg;
+    myWallpaper = ./desktops/wallpapers/pokemon-concierge.png;
 
     stylix = {
       enable = true;
