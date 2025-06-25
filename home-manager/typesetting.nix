@@ -9,5 +9,6 @@
     typst
     typstyle
     tinymist
+    hayagriva
   ];
 }

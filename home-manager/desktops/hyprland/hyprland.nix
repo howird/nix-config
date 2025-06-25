@@ -28,5 +28,9 @@ lib.mkIf config.myDesktop.hyprland {
     };
     systemd.enable = true;
     systemd.variables = ["--all"];
+    plugins = with pkgs; [
+      hyprscrolling
+      hyprexpo
+    ];
   };
 }

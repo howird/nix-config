@@ -1,6 +1,6 @@
 {config, ...}: {
   services.batsignal = {
-    enable = config.myDesktop == "hyprland";
+    enable = config.myDesktop.hyprland;
     extraArgs = [
       "-c"
       "5"

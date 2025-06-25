@@ -31,8 +31,6 @@
     "float, class:Zotero, title:^(Plugins Manager.*)$"
     "float, class:^(.*qBittorrent.*)$, title:^(?!qBittorrent).+$" # not working
 
-    "maximize, class:^(zen)$, title:^(.*Zen Browser Private Browsing)$"
-
     "idleinhibit focus, class:mpv"
     "idleinhibit focus, class:firefox, title:Library"
     "idleinhibit focus, class:^(.*suyu.*)$"

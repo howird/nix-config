@@ -44,29 +44,30 @@
       "workspace $notews, class:obsidian"
 
       # read workspace (3)
-      "group, workspace:$readws, class:Zotero"
+      # "group, workspace:$readws, class:Zotero"
 
       "workspace $readws, class:^(Zotero|org\.gnome\.Papers|com\.github\.johnfactotum\.Foliate)$"
-      "group barred, workspace:$readws, class:negative:^(Zotero|org\.gnome\.Papers|com\.github\.johnfactotum\.Foliate|zen)$"
+      # "group barred, workspace:$readws, class:negative:^(Zotero|org\.gnome\.Papers|com\.github\.johnfactotum\.Foliate|zen)$"
 
       # create workspace (4)
-      "group, workspace:$creaws, class:^(.*tty)$"
+      # "group, workspace:$creaws, class:^(.*tty)$"
 
       "workspace $creaws, class:^(code|krita|cursor|dev\.zed\.Zed|chromium-browser|libreoffice-*)$"
-      "group barred, workspace:$creaws, class:negative:^(code|krita|cursor|dev\.zed\.Zed|chromium-browser|libreoffice-*)$"
+      # "group barred, workspace:$creaws, class:negative:^(code|krita|cursor|dev\.zed\.Zed|chromium-browser|libreoffice-*)$"
 
       # extra workspaces (5-9)
       "workspace 6, class:^(.*qBittorrent.*)$"
 
       # view workspace (10)
       "workspace $viewws, class:^(mpv|vlc|org\.gnome\.Loupe|spotify|rhythmbox)$"
+      "workspace $viewws, class:^(zen)$, title:^(.*Zen Browser Private Browsing)$"
 
       # comms workspace (11)
-      "group, workspace:$commws"
+      # "group, workspace:$commws"
       "workspace $commws, class:^($discordClient|Slack|zoom)$"
 
       # file workspace (12)
-      "group, workspace:$filews, class:$fileCls"
+      # "group, workspace:$filews, class:$fileCls"
       "workspace $filews, class:$fileCls"
     ];
 

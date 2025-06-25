@@ -6,7 +6,7 @@
   home.packages = with pkgs; [clipse];
 
   services.clipse = {
-    enable = config.myDesktop == "hyprland";
+    enable = config.myDesktop.hyprland;
     allowDuplicates = false;
     historySize = 150;
     imageDisplay.type = "sixel";
