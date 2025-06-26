@@ -3,7 +3,15 @@
   pkgs,
   ...
 }: {
-  xdg.configFile."zellij/layouts/default.kdl".text = with config.lib.stylix.colors; ''
+  xdg.configFile."zellij/layouts/default.kdl".text = let
+    inherit (config.lib.stylix.colors) base00 base01 base04 base05 base07 base08 base09 base0A base0B base0D base0E base0F;
+    bg-col = base00;
+    sym-col = base01;
+    txt-col = base05;
+    mode-fmt = c: t: "#[fg=#${c}]#[bg=#${c},fg=#${bg-col},bold] ${t}#[fg=#${c}]";
+    box-fmt = c: s: t: "#[fg=#${c}]#[bg=#${c},fg=#${sym-col},bold]${s} #[bg=#${bg-col},fg=#${txt-col},bold] ${t}#[fg=#${bg-col},bold]";
+    tab-fmt = c: t: (box-fmt c "{index}" "{name}{${t}}");
+  in ''
     layout {
         swap_tiled_layout name="vertical" {
             tab max_panes=5 {
@@ -99,9 +107,9 @@
         default_tab_template {
             pane size=1 borderless=true {
                 plugin location="file:${pkgs.zjstatus}/bin/zjstatus.wasm" {
-                    format_left   "{mode}#[bg=#${base00}] {tabs}"
+                    format_left   "{mode} {tabs}"
                     format_center ""
-                    format_right  "#[bg=#${base00},fg=#${base0D}]#[bg=#${base0D},fg=#${base01},bold] #[bg=#${base02},fg=#${base05},bold] {session} #[bg=#${base03},fg=#${base05},bold]"
+                    format_right  "${box-fmt base0D "" "{session}"} "
                     format_space  ""
                     format_hide_on_overlength "true"
                     format_precedence "crl"
@@ -111,33 +119,33 @@
                     border_format   "#[fg=#6C7086]{char}"
                     border_position "top"
 
-                    mode_normal        "#[bg=#${base0B},fg=#${base02},bold] NORMAL#[bg=#${base03},fg=#${base0B}]█"
-                    mode_locked        "#[bg=#${base04},fg=#${base02},bold] LOCKED #[bg=#${base03},fg=#${base04}]█"
-                    mode_resize        "#[bg=#${base08},fg=#${base02},bold] RESIZE#[bg=#${base03},fg=#${base08}]█"
-                    mode_pane          "#[bg=#${base0D},fg=#${base02},bold] PANE#[bg=#${base03},fg=#${base0D}]█"
-                    mode_tab           "#[bg=#${base07},fg=#${base02},bold] TAB#[bg=#${base03},fg=#${base07}]█"
-                    mode_scroll        "#[bg=#${base0A},fg=#${base02},bold] SCROLL#[bg=#${base03},fg=#${base0A}]█"
-                    mode_enter_search  "#[bg=#${base0D},fg=#${base02},bold] ENT-SEARCH#[bg=#${base03},fg=#${base0D}]█"
-                    mode_search        "#[bg=#${base0D},fg=#${base02},bold] SEARCHARCH#[bg=#${base03},fg=#${base0D}]█"
-                    mode_rename_tab    "#[bg=#${base07},fg=#${base02},bold] RENAME-TAB#[bg=#${base03},fg=#${base07}]█"
-                    mode_rename_pane   "#[bg=#${base0D},fg=#${base02},bold] RENAME-PANE#[bg=#${base03},fg=#${base0D}]█"
-                    mode_session       "#[bg=#${base0E},fg=#${base02},bold] SESSION#[bg=#${base03},fg=#${base0E}]█"
-                    mode_move          "#[bg=#${base0F},fg=#${base02},bold] MOVE#[bg=#${base03},fg=#${base0F}]█"
-                    mode_prompt        "#[bg=#${base0D},fg=#${base02},bold] PROMPT#[bg=#${base03},fg=#${base0D}]█"
-                    mode_tmux          "#[bg=#${base09},fg=#${base02},bold] TMUX#[bg=#${base03},fg=#${base09}]█"
+                    mode_normal        " ${mode-fmt base0B " NORMAL "}"
+                    mode_locked        " ${mode-fmt base04 "LOCKED  "}"
+                    mode_resize        " ${mode-fmt base08 " RESIZE "}"
+                    mode_pane          " ${mode-fmt base0D " PANE "}"
+                    mode_tab           " ${mode-fmt base07 " TAB "}"
+                    mode_scroll        " ${mode-fmt base0A " SCROLL "}"
+                    mode_enter_search  " ${mode-fmt base0D "ENT-SRCH"}"
+                    mode_search        " ${mode-fmt base0D " SEARCH "}"
+                    mode_rename_tab    " ${mode-fmt base07 "RENAME-T"}"
+                    mode_rename_pane   " ${mode-fmt base0D "RENAME-P"}"
+                    mode_session       " ${mode-fmt base0E " SESSION "}"
+                    mode_move          " ${mode-fmt base0F "  MOVE  "}"
+                    mode_prompt        " ${mode-fmt base0D " PROMPT "}"
+                    mode_tmux          " ${mode-fmt base09 "  TMUX  "}"
 
                     // formatting for inactive tabs
-                    tab_normal              "#[bg=#${base03},fg=#${base0D}]█#[bg=#${base0D},fg=#${base02},bold]{index} #[bg=#${base02},fg=#${base05},bold] {name}{floating_indicator}#[bg=#${base03},fg=#${base02},bold]█"
-                    tab_normal_fullscreen   "#[bg=#${base03},fg=#${base0D}]█#[bg=#${base0D},fg=#${base02},bold]{index} #[bg=#${base02},fg=#${base05},bold] {name}{fullscreen_indicator}#[bg=#${base03},fg=#${base02},bold]█"
-                    tab_normal_sync         "#[bg=#${base03},fg=#${base0D}]█#[bg=#${base0D},fg=#${base02},bold]{index} #[bg=#${base02},fg=#${base05},bold] {name}{sync_indicator}#[bg=#${base03},fg=#${base02},bold]█"
+                    tab_normal              "${tab-fmt base0D "floating_indicator"}"
+                    tab_normal_fullscreen   "${tab-fmt base0D "fullscreen_indicator"}"
+                    tab_normal_sync         "${tab-fmt base0D "sync_indicator"}"
 
                     // formatting for the current active tab
-                    tab_active              "#[bg=#${base03},fg=#${base09}]█#[bg=#${base09},fg=#${base02},bold]{index} #[bg=#${base02},fg=#${base05},bold] {name}{floating_indicator}#[bg=#${base03},fg=#${base02},bold]█"
-                    tab_active_fullscreen   "#[bg=#${base03},fg=#${base09}]█#[bg=#${base09},fg=#${base02},bold]{index} #[bg=#${base02},fg=#${base05},bold] {name}{fullscreen_indicator}#[bg=#${base03},fg=#${base02},bold]█"
-                    tab_active_sync         "#[bg=#${base03},fg=#${base09}]█#[bg=#${base09},fg=#${base02},bold]{index} #[bg=#${base02},fg=#${base05},bold] {name}{sync_indicator}#[bg=#${base03},fg=#${base02},bold]█"
+                    tab_active              "${tab-fmt base09 "floating_indicator"}"
+                    tab_active_fullscreen   "${tab-fmt base09 "fullscreen_indicator"}"
+                    tab_active_sync         "${tab-fmt base09 "sync_indicator"}"
 
                     // separator between the tabs
-                    tab_separator           "#[bg=#${base00}] "
+                    tab_separator           " "
 
                     // indicators
                     tab_sync_indicator       " "

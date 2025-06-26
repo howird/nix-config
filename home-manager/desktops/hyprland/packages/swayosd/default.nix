@@ -1,9 +1,13 @@
-{config, ...}: {
+# {config, ...}: {
+{pkgs, ...}: {
   imports = [
     ./styles.nix
   ];
 
-  services.swayosd.enable = config.myDesktop.hyprland;
+  # services.swayosd.enable = config.myDesktop.hyprland;
+  home.packages = with pkgs; [
+    swayosd
+  ];
 
   wayland.windowManager.hyprland.settings = {
     exec-once = [

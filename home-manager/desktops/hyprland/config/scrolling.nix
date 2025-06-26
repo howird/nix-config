@@ -17,11 +17,12 @@
       "ALT, left, layoutmsg, focus l"
       "ALT, right, layoutmsg, focus r"
       "ALT, h, layoutmsg, focus l"
+      "ALT, l, layoutmsg, focus r"
+
       "ALT, down, layoutmsg, focus d"
       "ALT, up, layoutmsg, focus u"
       "ALT, j, layoutmsg, focus d"
       "ALT, k, layoutmsg, focus u"
-      "ALT, l, layoutmsg, focus r"
 
       "ALT SHIFT, left, layoutmsg, movewindowto l"
       "ALT SHIFT, right, layoutmsg, movewindowto r"
