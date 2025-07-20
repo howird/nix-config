@@ -8,7 +8,7 @@ in {
   wayland.windowManager.hyprland.settings = {
     misc.disable_hyprland_logo = true;
     general = {
-      "col.active_border" = lib.mkForce "rgb(${red}) rgb(${yellow}) rgb(${green}) rgb(${blue}) 0deg";
+      "col.active_border" = lib.mkForce "rgb(${blue}) rgb(${green}) rgb(${yellow}) rgb(${red}) 0deg";
       gaps_in = 1;
       gaps_out = 1;
       border_size = 5;

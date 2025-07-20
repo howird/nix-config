@@ -10,7 +10,7 @@
     };
 
     bind = [
-      # "ALT, TAB, layoutmsg, focus r"
+      "ALT, TAB, cyclenext, prev hist"
       "$mainMod, Escape, layoutmsg, colresize +conf"
       "$shftMod, Escape, layoutmsg, fit visible"
 
@@ -29,15 +29,20 @@
       "ALT SHIFT, h, layoutmsg, movewindowto l"
       "ALT SHIFT, l, layoutmsg, movewindowto r"
 
-      "ALT SHIFT, down, layoutmsg, move -200"
-      "ALT SHIFT, up, layoutmsg, move +200"
-      "ALT SHIFT, j, layoutmsg, move -200"
-      "ALT SHIFT, k, layoutmsg, move +200"
-
       "ALT CTRL, down, layoutmsg, colresize -200"
       "ALT CTRL, up, layoutmsg, colresize +200"
       "ALT CTRL, j, layoutmsg, colresize -200"
       "ALT CTRL, k, layoutmsg, colresize +200"
+
+      "$mainMod CTRL, down, movecurrentworkspacetomonitor, -1"
+      "$mainMod CTRL, up, movecurrentworkspacetomonitor, +1"
+      "$mainMod CTRL, j, movecurrentworkspacetomonitor, 1"
+      "$mainMod CTRL, k, movecurrentworkspacetomonitor, -1"
+
+      "$mainMod CTRL, left, layoutmsg, move -200"
+      "$mainMod CTRL, right, layoutmsg, move +200"
+      "$mainMod CTRL, left, layoutmsg, move -200"
+      "$mainMod CTRL, right, layoutmsg, move +200"
     ];
   };
 }

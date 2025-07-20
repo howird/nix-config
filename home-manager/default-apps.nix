@@ -37,17 +37,20 @@
       enable = true;
 
       defaultApplications = with config.myApps; {
-        "text/plain" = text;
         "application/pdf" = document;
+        "text/plain" = text;
+
+        "application/x-latex" = code;
         "text/markdown" = code;
+        "text/x-tex" = code;
 
         "video/mp4" = video;
         "video/webm" = video;
         "video/x-matroska" = video;
 
-        "image/png" = image;
-        "image/jpeg" = image;
         "image/gif" = image;
+        "image/jpeg" = image;
+        "image/png" = image;
         "image/svg+xml" = image;
 
         "text/html" = browser;

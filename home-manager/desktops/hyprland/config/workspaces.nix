@@ -41,7 +41,8 @@
     # windowrulev2
     windowrulev2 = [
       # note workspace (2)
-      "workspace $notews, class:obsidian"
+      "workspace $notews, class:^(obsidian|chromium-browser|libreoffice-*)$"
+      # "group barred, workspace:$notews, class:negative:^(obsidian|chromium-browser|libreoffice-*)$"
 
       # read workspace (3)
       # "group, workspace:$readws, class:Zotero"
@@ -52,7 +53,7 @@
       # create workspace (4)
       # "group, workspace:$creaws, class:^(.*tty)$"
 
-      "workspace $creaws, class:^(code|krita|cursor|dev\.zed\.Zed|chromium-browser|libreoffice-*)$"
+      "workspace $creaws, class:^(code|krita|cursor|dev\.zed\.Zed)$"
       # "group barred, workspace:$creaws, class:negative:^(code|krita|cursor|dev\.zed\.Zed|chromium-browser|libreoffice-*)$"
 
       # extra workspaces (5-9)

@@ -3,21 +3,23 @@
     lsp.enable = true;
     lsp.formatOnSave = true;
 
-    autocomplete.blink-cmp = {
-      enable = true;
-      friendly-snippets.enable = true;
-      mappings = {
-        close = "<C-n>";
-        complete = "<C-m>";
-        confirm = "<CR>";
-        next = "<Tab>";
-        previous = "<S-Tab>";
-        scrollDocsUp = null;
-        scrollDocsDown = null;
-      };
-      sourcePlugins = {
-        ripgrep.enable = true;
-        spell.enable = true;
+    autocomplete = {
+      blink-cmp = {
+        enable = true;
+        friendly-snippets.enable = true;
+        mappings = {
+          close = "<C-n>";
+          complete = "<C-m>";
+          confirm = "<CR>";
+          next = "<Tab>";
+          previous = "<S-Tab>";
+          scrollDocsUp = null;
+          scrollDocsDown = null;
+        };
+        sourcePlugins = {
+          ripgrep.enable = true;
+          spell.enable = true;
+        };
       };
     };
 

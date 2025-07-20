@@ -23,6 +23,7 @@
     libreoffice
     gnome-disk-utility
     gnome-text-editor
+    kdePackages.okular # pdf-markup
     papers # pdf
     foliate # ebooks
     rhythmbox # music

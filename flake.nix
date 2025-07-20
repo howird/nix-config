@@ -19,7 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nvf = {
-      url = "github:NotAShelf/nvf";
+      url = "github:NotAShelf/nvf/d3a0e7029ac57eef1120225973247851c5b967b5";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rust-overlay = {
@@ -51,6 +51,10 @@
       url = "github:hyprwm/hyprpicker";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # hyprshell = {
+    #   url = "github:H3rmt/hyprshell/hyprshell-release";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
