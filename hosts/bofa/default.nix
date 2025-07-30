@@ -13,7 +13,8 @@
     ../../nixos/llms.nix
   ];
 
-  services.glances.enable = true;
+  services.syncthing.enable = true;
+  services.glances.enable = false;
   services.ollama.enable = false;
   services.open-webui.enable = false;
 

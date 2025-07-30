@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   config = let
     initExtra = ''
       HOME_PROFILE="/home/${config.home.username}/.nix-profile/etc/profile.d"
@@ -19,7 +23,7 @@
     home.username = "howard";
     myEmail = "howard.nguyen-huu@uwaterloo.ca";
 
-    programs.zsh.initExtraFirst = initExtra;
+    programs.zsh.initContent = lib.mkBefore initExtra;
     programs.bash.initExtra = initExtra;
     myShell.hmFlakeArgs = "#${config.home.username}@vip";
   };
