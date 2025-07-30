@@ -5,6 +5,7 @@
 
     texliveFull
     zotero
+    pandoc
 
     typst
     typstyle

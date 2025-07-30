@@ -43,9 +43,9 @@
 
     directory = {
       format = icon-txt-fmt "brown" "󰷏 " " $read_only$truncation_symbol$path";
-      home_symbol = " ~/";
+      home_symbol = " ";
       truncation_symbol = " ../";
-      truncation_length = 3;
+      truncation_length = 4;
       read_only = "󱧵 ";
       read_only_style = "";
       substitutions = {

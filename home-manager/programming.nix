@@ -13,6 +13,13 @@
     devenv
     nixd
     textpieces
+
+    # inputs.pix2tex.packages.${system}.default
+    aider-chat
+    fabric-ai
+    code-cursor
+    opencode
+    goose-cli
   ];
 
   services.lorri.enable = true;

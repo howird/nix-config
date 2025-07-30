@@ -31,7 +31,6 @@ rustPlatform.buildRustPackage rec {
       --replace '"zoxide"' '"${zoxide}/bin/zoxide"'
   '';
 
-  useFetchCargoVendor = true;
   cargoHash = "sha256-N39JD7qeLzro4+6wSP14uAjH8D7kv6sGuhLomcVw600=";
 
   meta = with lib; {

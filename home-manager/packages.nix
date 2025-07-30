@@ -4,7 +4,7 @@
     networkmanager
 
     reaper
-    audacity
+    # audacity
     obs-studio
     video-trimmer
     eyedropper
@@ -20,10 +20,5 @@
     spotify
     ncspot
     fretboard
-
-    # inputs.pix2tex.packages.${system}.default
-    aider-chat
-    fabric-ai
-    code-cursor
   ];
 }
