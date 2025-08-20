@@ -5,7 +5,10 @@
   ...
 }:
 lib.mkIf config.myShell.zsh {
-  programs.zsh = {
+  programs.zsh = let
+    zesh = "${pkgs.zesh}/bin/zesh";
+    fzf = "${pkgs.fzf}/bin/fzf";
+  in {
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
@@ -13,20 +16,17 @@ lib.mkIf config.myShell.zsh {
     historySubstringSearch.enable = true;
     shellAliases = config.myShell.aliases;
 
-    initContent = lib.mkBefore (''
-        eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
+    initContent = lib.mkBefore (
+      if config.programs.zellij.enable
+      then ''
+        if [[ -z "$TMUX" && -z "$ZELLIJ" && $TERM_PROGRAM != "vscode" && $TERM_PROGRAM != "zed" ]]; then
+          ${zesh} cn $(${zesh} l | ${fzf})
+        fi
       ''
-      + (
-        if config.programs.zellij.enable
-        then ''
-          if [[ -z "$TMUX" && -z "$ZELLIJ" && $TERM_PROGRAM != "vscode" && $TERM_PROGRAM != "zed" ]]; then
-            zesh cn $(zesh l | fzf)
-          fi
-        ''
-        else ''
-          source ${./scripts/auto_tmux.sh}
-        ''
-      ));
+      else ''
+        source ${./scripts/auto_tmux.sh}
+      ''
+    );
 
     history = {
       size = 10000;

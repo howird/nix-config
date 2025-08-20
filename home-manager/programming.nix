@@ -15,7 +15,7 @@
     textpieces
 
     # inputs.pix2tex.packages.${system}.default
-    nodejs-slim_24
+    bun
     aider-chat
     fabric-ai
     code-cursor
@@ -46,5 +46,17 @@
     enable = true;
     enableZshIntegration = config.myShell.zsh;
     enableFishIntegration = config.myShell.fish;
+  };
+  programs.opencode = {
+    enable = true;
+    settings = {
+      mcp = {
+        context7 = {
+          enabled = true;
+          type = "local";
+          command = ["bunx" "@upstash/context7-mcp"];
+        };
+      };
+    };
   };
 }
