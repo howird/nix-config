@@ -3,7 +3,6 @@
     ./desktops
 
     ./gpg.nix
-    ./mpv.nix
   ];
 
   config = {

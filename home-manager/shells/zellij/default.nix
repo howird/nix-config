@@ -11,8 +11,11 @@
     zjstatus
   ];
 
-  myShell.aliases = {
-    zh = "zesh cn .";
-    zls = "zesh cn $(zesh l | fzf)";
+  myShell.aliases = let
+    zesh = "${pkgs.zesh}/bin/zesh";
+    fzf = "${pkgs.fzf}/bin/fzf";
+  in {
+    zh = "${zesh} cn .";
+    zls = "${zesh} cn $(${zesh} l | ${fzf})";
   };
 }

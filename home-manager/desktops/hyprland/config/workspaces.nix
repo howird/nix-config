@@ -3,11 +3,12 @@
     "$term" = "ghostty";
     "$browser" = "zen";
     "$file" = "nautilus";
-    "$fileCls" = "nautilus";
+    "$fileCls" = "^(org\.gnome\.Nautilus)$";
     "$codeEditor" = "code";
     "$discordClient" = "vesktop";
     "$taskMgr" = "taskwarrior-tui";
     "$termExec" = "$term -e";
+    "$termExecBig" = "$term --font-size=18 -e";
 
     "$taskws" = "1";
     "$notews" = "2";
@@ -72,9 +73,8 @@
       "workspace $filews, class:$fileCls"
     ];
 
-    # No gaps when only
     workspace = [
-      "$taskws, on-created-empty:$termExec $taskMgr"
+      "$taskws, on-created-empty:$termExecBig $taskMgr"
       "$notews, on-created-empty:obsidian"
       "$readws, on-created-empty:zotero"
       "$creaws, on-created-empty:$term"

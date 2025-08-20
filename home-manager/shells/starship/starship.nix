@@ -45,7 +45,7 @@
       format = icon-txt-fmt "brown" "󰷏 " " $read_only$truncation_symbol$path";
       home_symbol = " ";
       truncation_symbol = " ../";
-      truncation_length = 4;
+      truncation_length = 5;
       read_only = "󱧵 ";
       read_only_style = "";
       substitutions = {

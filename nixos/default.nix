@@ -45,7 +45,7 @@
     howird = {
       isNormalUser = true;
       description = "Howard Nguyen-Huu";
-      extraGroups = ["networkmanager" "wheel" "docker" "audio" "video" "render"];
+      extraGroups = ["networkmanager" "wheel" "docker" "audio" "video" "render" "kvm" "adbusers"];
       shell = pkgs.zsh;
     };
   };

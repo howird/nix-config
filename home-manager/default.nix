@@ -7,15 +7,14 @@
     ./browsers
     ./editors
     ./shells
+    ./life
+    ./apps
 
-    ./default-apps.nix
     ./ghostty.nix
     ./git.nix
     ./htop.nix
-    ./packages.nix
     ./programming.nix
     ./rclone.nix
-    ./tasks.nix
     ./typesetting.nix
   ];
 

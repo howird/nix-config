@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  imports = [
+    ./default-apps.nix
+  ];
+
   home.packages = with pkgs; [
     openconnect_openssl
     networkmanager

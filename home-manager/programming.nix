@@ -15,6 +15,7 @@
     textpieces
 
     # inputs.pix2tex.packages.${system}.default
+    nodejs-slim_24
     aider-chat
     fabric-ai
     code-cursor

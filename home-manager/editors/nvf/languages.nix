@@ -28,11 +28,17 @@
     typst.enable = true;
     typst.lsp.enable = true;
     typst.format.enable = true;
+    typst.format.type = "typstyle";
     typst.treesitter.enable = true;
     typst.extensions.typst-preview-nvim.enable = true;
 
-    html.enable = true;
     dart.enable = true;
+    dart.lsp.enable = true;
+    dart.treesitter.enable = true;
+    dart.flutter-tools.enable = true;
+    dart.flutter-tools.color.enable = true;
+
+    html.enable = true;
     go.enable = true;
     lua.enable = true;
     ts.enable = true;

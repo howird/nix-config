@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
-  home.packages = with pkgs; [clipse];
-
+{config, ...}: {
   services.clipse = {
     enable = config.myDesktop.hyprland;
     allowDuplicates = false;

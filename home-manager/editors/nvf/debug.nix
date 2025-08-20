@@ -5,6 +5,7 @@
       python.dap.enable = true;
       rust.dap.enable = true;
       clang.dap.enable = true;
+      dart.dap.enable = true;
     };
     debugger = {
       nvim-dap.enable = true;

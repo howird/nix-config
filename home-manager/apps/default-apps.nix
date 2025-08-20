@@ -3,12 +3,12 @@
   config,
   ...
 }: {
+  imports = [
+    ./url-router.nix
+  ];
+
   options = with lib; {
     myApps = {
-      browser = mkOption {
-        type = types.str;
-        default = "zen.desktop";
-      };
       document = mkOption {
         type = types.str;
         default = "org.gnome.Papers.desktop";
@@ -39,6 +39,7 @@
       defaultApplications = with config.myApps; {
         "application/pdf" = document;
         "text/plain" = text;
+        "text/csv" = text;
 
         "application/x-latex" = code;
         "text/markdown" = code;
@@ -52,10 +53,6 @@
         "image/jpeg" = image;
         "image/png" = image;
         "image/svg+xml" = image;
-
-        "text/html" = browser;
-        "x-scheme-handler/http" = browser;
-        "x-scheme-handler/https" = browser;
 
         "x-scheme-handler/magnet" = "org.qbittorrent.qBittorrent.desktop";
       };

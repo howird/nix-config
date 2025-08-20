@@ -11,6 +11,7 @@
     scrcpy
   ];
 
+  programs.adb.enable = true;
   programs.weylus = {
     enable = true;
     users = ["howird"];
