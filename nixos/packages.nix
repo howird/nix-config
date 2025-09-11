@@ -16,6 +16,7 @@
     unrar
     imagemagick
     xorg.xhost
+    ouch
 
     # apps
     firefox

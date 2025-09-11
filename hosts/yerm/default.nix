@@ -5,30 +5,25 @@
   ];
 
   myDesktop.hyprland = true;
-  services.syncthing.enable = true;
 
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+    bluetooth.enable = true;
+    bluetooth.powerOnBoot = true;
   };
 
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-
-  services.logind = {
-    lidSwitch = "suspend-then-hibernate";
-    extraConfig = ''
-      HandlePowerKey=suspend-then-hibernate
-      IdleAction=suspend-then-hibernate
-      IdleActionSec=2m
-    '';
+  services = {
+    syncthing.enable = true;
+    kanata = {
+      enable = true;
+      keyboards.laptop.configFile = ../../configs/keyboards/kanata/framework.kbd;
+      # keyboards.foldable.configFile = ../../configs/keyboards/kanata/protoarc.kbd;
+    };
+    # udev.extraRules = ''
+    #   SUBSYSTEM=="input", KERNEL=="event*", ENV{LIBINPUT_DEVICE_GROUP}=="5/3554/f605:2c:98:11:3d:41:26", SYMLINK+="input/protoarc-kbd"
+    # '';
   };
-  systemd.sleep.extraConfig = "HibernateDelaySec=1h";
-
-  services.kanata.enable = true;
-  services.kanata.keyboards.laptop.configFile = ../../configs/keyboards/kanata/framework.kbd;
-  # services.kanata.keyboards.foldable.configFile = ../../configs/keyboards/kanata/protoarc.kbd;
-  # services.udev.extraRules = ''
-  #   SUBSYSTEM=="input", KERNEL=="event*", ENV{LIBINPUT_DEVICE_GROUP}=="5/3554/f605:2c:98:11:3d:41:26", SYMLINK+="input/protoarc-kbd"
-  # '';
 }

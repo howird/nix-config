@@ -13,7 +13,6 @@
       nvim = lib.mkEnableOption "nvim";
       zed = lib.mkEnableOption "zed";
       helix = lib.mkEnableOption "helix";
-      evil-helix = lib.mkEnableOption "evil-helix";
     };
   };
 }

@@ -21,6 +21,7 @@
     code-cursor
     opencode
     goose-cli
+    jetbrains.clion
   ];
 
   services.lorri.enable = true;

@@ -19,6 +19,9 @@ lib.mkIf config.myShell.zsh {
     initContent = lib.mkBefore (
       if config.programs.zellij.enable
       then ''
+        precmd() {
+          echo -n -e "\033]0;TEXT\007"
+        }
         if [[ -z "$TMUX" && -z "$ZELLIJ" && $TERM_PROGRAM != "vscode" && $TERM_PROGRAM != "zed" ]]; then
           ${zesh} cn $(${zesh} l | ${fzf})
         fi

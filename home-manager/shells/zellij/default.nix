@@ -8,7 +8,6 @@
 
   home.packages = with pkgs; [
     zesh
-    zjstatus
   ];
 
   myShell.aliases = {

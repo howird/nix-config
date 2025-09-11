@@ -12,6 +12,11 @@
   stylix.targets.gnome.enable = true;
   stylix.targets.gtk.enable = true;
 
+  programs.nh = {
+    enable = true;
+    flake = "/home/${config.home.username}/nix/config";
+  };
+
   # home.packages = with pkgs.nixgl; [
   #   auto.nixGLDefault
   #   nixGLNvidia
