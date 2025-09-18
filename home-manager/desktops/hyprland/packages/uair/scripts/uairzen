@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+uairctl resume
+uairctl listen | zenity \
+  --progress \
+  --title="🍅$1" \
+  --percentage=0 \
+  --auto-close \
+  --no-cancel &> /dev/null

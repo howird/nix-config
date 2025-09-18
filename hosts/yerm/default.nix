@@ -17,6 +17,7 @@
 
   services = {
     syncthing.enable = true;
+    upower.enable = true;
     kanata = {
       enable = true;
       keyboards.laptop.configFile = ../../configs/keyboards/kanata/framework.kbd;

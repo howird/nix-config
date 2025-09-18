@@ -42,7 +42,7 @@
     # windowrulev2
     windowrulev2 = [
       # note workspace (2)
-      "workspace $notews, class:^(obsidian|chromium-browser|libreoffice-*)$"
+      "workspace $notews, class:^(obsidian|chromium-browser|libreoffice-.*)$"
       # "group barred, workspace:$notews, class:negative:^(obsidian|chromium-browser|libreoffice-*)$"
 
       # read workspace (3)
@@ -54,14 +54,14 @@
       # create workspace (4)
       # "group, workspace:$creaws, class:^(.*tty)$"
 
-      "workspace $creaws, class:^(code|krita|cursor|dev\.zed\.Zed)$"
+      "workspace $creaws, class:^(code|krita|cursor|dev\.zed\.Zed|jetbrains-.*)$"
       # "group barred, workspace:$creaws, class:negative:^(code|krita|cursor|dev\.zed\.Zed|chromium-browser|libreoffice-*)$"
 
       # extra workspaces (5-9)
       "workspace 6, class:^(.*qBittorrent.*)$"
 
       # view workspace (10)
-      "workspace $viewws, class:^(mpv|vlc|org\.gnome\.Loupe|spotify|rhythmbox)$"
+      "workspace $viewws, class:^(mpv|vlc|com\.github\.rafostar\.Clapper|org\.gnome\.Loupe|spotify|rhythmbox)$"
       "workspace $viewws, class:^(zen)$, title:^(.*Zen Browser Private Browsing)$"
 
       # comms workspace (11)

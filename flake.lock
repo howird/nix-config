@@ -1397,15 +1397,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1745398614,
-        "narHash": "sha256-92gngguoeDcl1gxgkUtTcZIpmMCBuC+0xxA1YWTB6No=",
-        "owner": "Cian-H",
+        "lastModified": 1757304371,
+        "narHash": "sha256-EZ3Vwgh5xgXuiPUmr9e1a9dEu3hvEWhRurAKpsAwB2A=",
+        "owner": "youwen5",
         "repo": "zen-browser-flake",
-        "rev": "ae7f7ecbe2dca4c9a500724bc32b6a03b500d791",
+        "rev": "3968348af022fe88468ef8de4f9683076e2e5e4b",
         "type": "github"
       },
       "original": {
-        "owner": "Cian-H",
+        "owner": "youwen5",
         "repo": "zen-browser-flake",
         "type": "github"
       }

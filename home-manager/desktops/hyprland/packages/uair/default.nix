@@ -6,6 +6,7 @@
   imports = [
     ./uair.nix
     ./hypruair.nix
+    ./uairwird.nix
   ];
 
   home.packages = with pkgs; [

@@ -14,6 +14,7 @@
     ./inputs.nix
     ./mobile.nix
     ./files.nix
+    ./vm.nix
   ];
 
   networking.networkmanager.enable = true;

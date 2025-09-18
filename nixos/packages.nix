@@ -21,6 +21,7 @@
     # apps
     firefox
     vlc
+    clapper
     libreoffice
     gnome-disk-utility
     gnome-text-editor
