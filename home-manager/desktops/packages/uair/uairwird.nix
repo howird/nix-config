@@ -1,7 +1,8 @@
 {pkgs, ...}: let
-  uairzen = pkgs.writeShellScriptBin "uairzen" (builtins.readFile ./scripts/uairzen);
-  start-day = pkgs.writeShellScriptBin "start-day" (builtins.readFile ./scripts/start-day);
-  uair-check = pkgs.writeShellScriptBin "uair-check" (builtins.readFile ./scripts/uair-check);
+  inherit (pkgs) writeShellScriptBin;
+  uairzen = writeShellScriptBin "uairzen" (builtins.readFile ./scripts/uairzen);
+  start-day = writeShellScriptBin "start-day" (builtins.readFile ./scripts/start-day);
+  uair-check = writeShellScriptBin "uair-check" (builtins.readFile ./scripts/uair-check);
 in {
   systemd.user.services.uairwird = {
     Unit.Description = "Checks that pomodoros are running";
@@ -20,6 +21,11 @@ in {
       OnUnitActiveSec = "5m";
       Unit = "uairwird.service";
     };
+  };
+
+  myShell.aliases = {
+    uair-check-start = "systemctl --user start uairwird.timer";
+    uair-check-stop = "systemctl --user stop uairwird.timer";
   };
 
   home.packages = [

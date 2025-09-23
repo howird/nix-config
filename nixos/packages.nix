@@ -17,6 +17,7 @@
     imagemagick
     xorg.xhost
     ouch
+    monitor
 
     # apps
     firefox

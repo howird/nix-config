@@ -5,7 +5,8 @@
 }: {
   imports = [
     ./uair.nix
-    ./hypruair.nix
+    ./uair-hypr.nix
+    ./uair-waybar.nix
     ./uairwird.nix
   ];
 

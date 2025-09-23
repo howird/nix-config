@@ -76,7 +76,7 @@
   XX   q    w    e    r    t    y    u    i    o    p    XX   XX
   XX   @a   @s   @d   @f   g    h    @j   @k   @l   @;   bspc
   z    @x   c    v    b    esc  n    m    ,    @.   /    XX
-  XX   @tbs bspc             spc          @rtn XX
+  XX   @tbs bspc             spc          @rtn @tbs
 )
 
 (deflayer numarrows
@@ -84,7 +84,7 @@
   XX   @ast 7    8    9    +    XX   XX   XX   XX   XX   XX   XX
   XX   /    @4   @5   @6   -    left down up   rght XX   del
   0    1    2    3    =    XX   XX   @zo  @zi  XX   XX   XX
-  XX   @tbs del              @und         @rtn XX
+  XX   @tbs del              @und         @rtn @tbs
 )
 
 (deflayer symbols
@@ -92,7 +92,7 @@
   XX   XX   @tld @at  @csh grv  XX   @ast @hat @pip XX   XX   XX
   XX   XX   @bng @{   @}   '    @dqu @obr @cbr @and \    del
   XX   XX   [    ]    @hsh XX   @pct @lt  @gt  @que XX   XX
-  XX   @stb del              @und         XX   XX
+  XX   @stb del              @und         XX   @stb
 )
 
 (deflayer functions
