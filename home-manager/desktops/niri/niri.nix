@@ -1,17 +1,13 @@
 {pkgs, ...}: {
-  # home.packages = with pkgs; [
-  #   hyprpaper
-  #   wl-clipboard-rs
-  #   glib
-  #   wayland
-  #   libnotify
-  #
-  #   blueman
-  #   networkmanagerapplet
-  #   pavucontrol
-  # ];
+  home.packages = with pkgs; [
+    # hyprpaper
+    wl-clipboard-rs
+    glib
+    wayland
+    libnotify
 
-  # programs.niri = {
-  #   enable = true;
-  # };
+    blueman
+    networkmanagerapplet
+    pavucontrol
+  ];
 }
