@@ -5,13 +5,7 @@
   ...
 }:
 lib.mkIf config.myDesktop.gnome {
-  # X11 windowing system.
-  services.xserver = {
-    desktopManager.gnome.enable = true;
-    displayManager.gdm.enable = true;
-    displayManager.gdm.wayland = true;
-    excludePackages = [pkgs.xterm];
-  };
+  service.xserver.excludePackages = [pkgs.xterm];
 
   programs.dconf.enable = true;
 

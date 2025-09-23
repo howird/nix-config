@@ -9,8 +9,8 @@
   either = hyprland || niri;
 in {
   services.displayManager.gdm = {
-    enable = either;
-    wayland = either;
+    enable = either || config.services.desktopManager.gnome.enable;
+    wayland = either || config.services.desktopManager.gnome.enable;
   };
 
   services.gnome.gnome-keyring.enable = either;
