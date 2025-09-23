@@ -1,6 +1,6 @@
 {config, ...}: {
   services.clipse = {
-    enable = config.myDesktop.hyprland;
+    enable = config.wayland.windowManager.hyprland.enable;
     allowDuplicates = false;
     historySize = 150;
     imageDisplay.type = "sixel";

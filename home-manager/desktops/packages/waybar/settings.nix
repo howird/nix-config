@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   programs.waybar.settings.mainBar = with config.lib.stylix.colors; {
     position = "bottom";
     layer = "top";
@@ -7,10 +11,11 @@
     margin-bottom = 0;
     margin-left = 0;
     margin-right = 0;
-    modules-left = [
-      "custom/launcher"
-      "hyprland/workspaces"
-    ];
+    modules-left =
+      [
+        "custom/launcher"
+      ]
+      ++ (lib.optional config.wayland.windowManager.hyprland.enable "hyprland/workspaces");
     modules-center = [
       "custom/uair"
       "clock"

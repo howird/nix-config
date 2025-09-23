@@ -11,6 +11,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       inputs.rust-overlay.overlays.default
+      inputs.niri.overlays.niri
     ];
     config = {
       allowUnfree = true;

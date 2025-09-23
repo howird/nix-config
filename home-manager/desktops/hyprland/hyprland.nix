@@ -3,9 +3,10 @@
   pkgs,
   lib,
   ...
-}:
-lib.mkIf config.myDesktop.hyprland {
-  home.packages = with pkgs; [
+}: let
+  hyprland = config.wayland.windowManager.hyprland.enable;
+in {
+  home.packages = with pkgs; (lib.optionals hyprland [
     hyprpaper
     wl-clipboard-rs
     glib
@@ -15,14 +16,11 @@ lib.mkIf config.myDesktop.hyprland {
     blueman
     networkmanagerapplet
     pavucontrol
-  ];
+  ]);
 
-  systemd.user.targets.hyprland-session.Unit.Wants = [
-    "xdg-desktop-autostart.target"
-  ];
+  systemd.user.targets.hyprland-session.Unit.Wants = lib.optional hyprland "xdg-desktop-autostart.target";
 
-  wayland.windowManager.hyprland = {
-    enable = true;
+  wayland.windowManager.hyprland = lib.mkIf hyprland {
     xwayland = {
       enable = true;
     };

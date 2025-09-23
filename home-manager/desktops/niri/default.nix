@@ -1,10 +1,9 @@
-{
+{inputs, ...}: {
   imports = [
-    ./hyprland.nix
-    ./hyprlock.nix
-    ./hypridle.nix
+    # inputs.niri.homeModules.niri
+    ./niri.nix
 
-    ./config
-    ./packages
+    # ./config
+    # ./packages
   ];
 }

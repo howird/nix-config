@@ -2,9 +2,11 @@
   imports = [
     inputs.hardware.nixosModules.framework-13-7040-amd
     ./hardware-configuration.nix
+    inputs.niri.nixosModules.niri
   ];
 
-  myDesktop.hyprland = true;
+  programs.hyprland.enable = true;
+  programs.niri.enable = true;
 
   hardware = {
     graphics = {

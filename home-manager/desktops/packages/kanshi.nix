@@ -4,7 +4,7 @@
   ...
 }: {
   services.kanshi = {
-    enable = config.myDesktop.hyprland;
+    enable = config.wayland.windowManager.hyprland.enable;
     systemdTarget = "hyprland-session.target";
 
     settings =

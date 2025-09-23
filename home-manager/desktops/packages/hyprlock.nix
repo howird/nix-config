@@ -1,9 +1,10 @@
 {
-  pkgs,
   config,
+  pkgs,
+  lib,
   ...
 }: {
-  home.packages = [pkgs.hyprlock];
+  home.packages = lib.optional config.wayland.windowManager.hyprland.enable pkgs.hyprlock;
   xdg.configFile."hypr/hyprlock.conf".text = let
     mkRgba = c: a: let
       r = config.lib.stylix.colors."${c}-rgb-r";

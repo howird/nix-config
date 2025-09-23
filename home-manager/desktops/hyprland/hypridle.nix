@@ -1,9 +1,10 @@
 {
+  config,
   host,
   lib,
   ...
 }: {
-  services.hypridle.enable = true;
+  services.hypridle.enable = config.wayland.windowManager.hyprland.enable;
   services.hypridle.settings = {
     general = {
       lock_cmd = "pidof hyprlock || hyprlock";

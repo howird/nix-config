@@ -1,6 +1,6 @@
 {config, ...}: {
   services.batsignal = {
-    enable = config.myDesktop.hyprland;
+    enable = config.wayland.windowManager.hyprland.enable;
     extraArgs = [
       "-c"
       "5"

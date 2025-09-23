@@ -13,9 +13,8 @@
 
   # rm -frv ~/.cache/plasma* ~/.config/plasma* ~/.config/k* ~/.local/share/plasma* ~/.gtkrc-2.0
   # then restart
-  config = lib.mkIf config.myDesktop.kde {
+  config = {
     programs.plasma = {
-      enable = true;
       overrideConfig = true;
 
       workspace.clickItemTo = "select";
@@ -84,6 +83,28 @@
           "exclude folders[$e]" = "$HOME/,/nix/";
           "folders[$e]" = "$HOME/Desktop/,$HOME/Documents/,$HOME/Downloads/,$HOME/Pictures/,$HOME/Videos/";
         };
+      };
+    };
+  };
+
+  options = with lib; {
+    myDesktop = {
+      kdeTheme = mkOption {
+        type = types.str;
+        default = "reactionary";
+        description = "Theme name. Must be installed in nixos config.";
+      };
+    };
+    myCursor = {
+      theme = mkOption {
+        type = types.str;
+        default = "Posy_Cursor";
+        description = "Cursor name. Must be installed in nixos config.";
+      };
+      size = mkOption {
+        type = types.ints.positive;
+        default = 32;
+        description = "Cursor size.";
       };
     };
   };

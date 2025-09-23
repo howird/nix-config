@@ -10,7 +10,7 @@
     programs.ghostty.enable = true; # gl issues for non-NixOS
 
     # desktops
-    myDesktop.hyprland = true;
+    wayland.windowManager.hyprland.enable = true;
 
     # editors
     myEditor.zed = true;

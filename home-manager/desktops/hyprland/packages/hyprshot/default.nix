@@ -1,10 +1,14 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
+{
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; (lib.optionals config.wayland.windowManager.hyprland.enable [
     hyprshot
     zenity
     wf-recorder
     (writeShellScriptBin "record" (builtins.readFile ./record))
-  ];
+  ]);
 
   wayland.windowManager.hyprland.settings.bind = [
     "$mainMod ALT, S, exec, hyprshot -m output"

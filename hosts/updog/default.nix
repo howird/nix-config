@@ -11,7 +11,7 @@
     ./hardware-configuration.nix
   ];
 
-  myDesktop.hyprland = true;
+  programs.hyprland.enable = true;
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;

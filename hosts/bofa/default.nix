@@ -18,8 +18,6 @@
   services.ollama.enable = false;
   services.open-webui.enable = false;
 
-  myDesktop.hyprland = true;
-
   # GPU STUFF
   myGraphics.amd = false;
   myGraphics.nvidia = true;

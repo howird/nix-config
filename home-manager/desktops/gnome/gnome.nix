@@ -1,11 +1,9 @@
 {
   lib,
-  config,
   pkgs,
   ...
-}:
-lib.mkIf config.myDesktop.gnome {
-  home.packages = with pkgs; [
+}: {
+  home.packages = with pkgs; (lib.optionals programs.gnome-shell.enable [
     dconf-editor
     gnome-tweaks
 
@@ -15,5 +13,5 @@ lib.mkIf config.myDesktop.gnome {
     # gnomeExtensions.dash-to-panel
     # # gnomeExtensions.sound-output-device-chooser
     # gnomeExtensions.space-bar
-  ];
+  ]);
 }
