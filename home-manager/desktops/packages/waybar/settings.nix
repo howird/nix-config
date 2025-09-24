@@ -14,6 +14,7 @@
     modules-left =
       [
         "custom/launcher"
+        "niri/workspaces"
       ]
       ++ (lib.optional config.wayland.windowManager.hyprland.enable "hyprland/workspaces");
     modules-center = [
@@ -39,6 +40,14 @@
       tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
       format-alt = "  {:%b %d}";
     };
+
+    "niri/workspaces" = {
+      format = "{icon}";
+      format-icons = {
+        "default" = "";
+      };
+    };
+
     "hyprland/workspaces" = {
       active-only = false;
       format = "{icon}";
@@ -52,6 +61,7 @@
         "4" = [];
       };
     };
+
     cpu = {
       format = "<span foreground='#${green}'> </span> {usage}%";
       format-alt = "<span foreground='#${green}'> </span> {avg_frequency} GHz";

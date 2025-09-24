@@ -1,9 +1,5 @@
 {
   wayland.windowManager.hyprland.settings = {
-    exec-once = [
-      "swayosd-server"
-    ];
-
     bind = [
       ",XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
     ];

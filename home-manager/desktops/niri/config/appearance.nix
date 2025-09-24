@@ -1,5 +1,27 @@
 {
   programs.niri.settings = {
+    window-rules = [
+      # Global window rules
+      {
+        geometry-corner-radius = {
+          top-left = 20.0;
+          top-right = 20.0;
+          bottom-left = 20.0;
+          bottom-right = 20.0;
+        };
+        clip-to-geometry = true;
+        tiled-state = true;
+      }
+
+      # Urgent window shadow
+      {
+        matches = [{is-urgent = true;}];
+        shadow = {
+          color = "#7d0d2d70";
+        };
+      }
+    ];
+
     # Layout configuration
     layout = {
       # Forest green theme inspired by Hyprland config
@@ -13,7 +35,7 @@
           gradient = {
             from = "#7fbbb3";
             to = "#a7c080";
-            angle = 0;
+            angle = 45;
             relative-to = "workspace-view";
           };
         };
@@ -22,24 +44,13 @@
         };
       };
 
-      # Border configuration
-      border = {
-        enable = true;
-        width = 5;
-        active = {
-          gradient = {
-            from = "#7fbbb3";
-            to = "#a7c080";
-            angle = 0;
-            relative-to = "workspace-view";
-          };
-        };
-        inactive = {
-          color = "#859289";
-        };
+      struts = {
+        left = -5;
+        right = -5;
+        top = -5;
+        bottom = -5;
       };
 
-      # Tab indicator configuration
       tab-indicator = {
         enable = true;
         width = 2;
@@ -77,40 +88,8 @@
           };
         };
       };
-
-      # Preset column widths
-      preset-column-widths = [
-        {proportion = 0.3333333333333333;}
-        {proportion = 0.5;}
-        {proportion = 0.66667;}
-        {proportion = 0.75;}
-        {fixed = 1000;}
-        {fixed = 1200;}
-      ];
-
-      # Default column width
-      default-column-width = {
-        proportion = 0.3333333333333333;
-      };
-
-      # Gaps configuration (ported from Hyprland gaps_in/gaps_out)
-      gaps = 1;
-
-      # Struts configuration (commented out in original)
-      struts = {
-        left = 0;
-        right = 0;
-        top = 0;
-        bottom = 0;
-      };
     };
 
-    # Cursor configuration
-    cursor = {
-      size = 24;
-      theme = "default";
-      hide-when-typing = false;
-    };
+    cursor.hide-when-typing = true;
   };
 }
-

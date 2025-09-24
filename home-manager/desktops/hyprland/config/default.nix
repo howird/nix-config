@@ -24,6 +24,7 @@
           "hyprpaper"
 
           "waybar &"
+          "swayosd-server"
           "swaync &"
 
           "uair -q &"
