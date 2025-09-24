@@ -1,7 +1,8 @@
-{
-  programs.niri.settings = {
+{config, ...}: {
+  programs.niri.settings = let
+    inherit (config.lib.stylix.colors.withHashtag) base00 base03 base08 base09 base0A base0B base0D;
+  in {
     window-rules = [
-      # Global window rules
       {
         geometry-corner-radius = {
           top-left = 20.0;
@@ -12,37 +13,29 @@
         clip-to-geometry = true;
         tiled-state = true;
       }
-
-      # Urgent window shadow
       {
         matches = [{is-urgent = true;}];
         shadow = {
-          color = "#7d0d2d70";
+          color = base08;
         };
       }
     ];
 
-    # Layout configuration
     layout = {
-      # Forest green theme inspired by Hyprland config
-      background-color = "#272e33";
-
-      # Focus ring configuration
+      background-color = base00;
       focus-ring = {
         enable = true;
         width = 5;
         active = {
           gradient = {
-            from = "#7fbbb3";
-            to = "#a7c080";
+            from = base0B;
+            to = base0D;
             angle = 45;
             relative-to = "workspace-view";
           };
         };
-        inactive = {
-          color = "#859289";
-        };
       };
+      border.enable = false;
 
       struts = {
         left = -5;
@@ -56,33 +49,27 @@
         width = 2;
         gap = 4;
         gaps-between-tabs = 2;
-        active = {
-          color = "#7fbbb3";
-        };
-        inactive = {
-          color = "#859289";
-        };
+        active.color = base0D;
+        inactive.color = base03;
       };
 
-      # Shadow configuration
       shadow = {
         enable = true;
         softness = 20;
         spread = 3;
-        color = "#272e3399";
+        color = base00;
         offset = {
           x = 0;
           y = 2;
         };
       };
 
-      # Insert hint configuration
       insert-hint = {
         enable = true;
         display = {
           gradient = {
-            from = "#7fbbb380";
-            to = "#a7c08080";
+            from = base0A;
+            to = base09;
             angle = 45;
             relative-to = "workspace-view";
           };

@@ -3,15 +3,15 @@
     {
       matches = [
         {
-          app-id = "^zenity$";
+          app-id = "zenity";
           title = "🍅";
         }
         {
-          app-id = "^zenity$";
-          title = "^what to do 🍅$";
+          app-id = "zenity";
+          title = "what to do 🍅";
         }
         {
-          app-id = "^zenity$";
+          app-id = "zenity";
           title = "^🍅: .*$";
         }
       ];
@@ -22,12 +22,12 @@
 
     {
       matches = [
-        {title = ".*Transmission.*$";}
-        {title = ".*Volume Control.*$";}
-        {title = ".*Sharing Indicator.*$";}
-        {app-id = "^com\\.github\\.finefindus\\.eyedropper$";}
+        {title = "^.*Transmission.*$";}
+        {title = "^.*Volume Control.*$";}
+        {title = "^.*Sharing Indicator.*$";}
+        {app-id = "com.github.finefindus.eyedropper";}
         {
-          app-id = "^zen$";
+          app-id = "zen";
           title = "^Extension:.*$";
         }
         {app-id = "^xdg-desktop-portal-.*$";}
@@ -36,11 +36,11 @@
         {app-id = "^.*SoundWireServer.*$";}
         {app-id = "^.*.sameboy-wrapped.*$";}
         {
-          app-id = "^Zotero$";
-          title = "^Zotero Settings$";
+          app-id = "Zotero";
+          title = "Zotero Settings";
         }
         {
-          app-id = "^Zotero$";
+          app-id = "Zotero";
           title = "^Plugins Manager.*$";
         }
         {app-id = "^.*file_progress.*$";}
@@ -54,7 +54,7 @@
         {title = ".*branchdialog.*$";}
         {title = ".*Confirm to replace files.*$";}
         {title = ".*File Operation Progress.*$";}
-        {app-id = "^zenity$";}
+        {app-id = "zenity";}
       ];
       open-floating = true;
     }
@@ -68,7 +68,7 @@
     {
       matches = [
         {
-          app-id = "^Zotero$";
+          app-id = "Zotero";
           title = ".*Progress.*$";
         }
       ];
@@ -78,12 +78,12 @@
 
     {
       matches = [{app-id = "^.*qBittorrent.*$";}];
-      excludes = [{title = "^qBittorrent$";}];
+      excludes = [{title = "qBittorrent";}];
       open-floating = true;
     }
 
     {
-      matches = [{app-id = "^org\\.gnome\\.FileRoller$";}];
+      matches = [{app-id = "org.gnome.FileRoller";}];
       open-floating = true;
       default-column-width = {fixed = 850;};
       default-window-height = {fixed = 500;};
@@ -101,9 +101,8 @@
       default-column-width = {fixed = 850;};
       default-window-height = {fixed = 450;};
     }
-    # Special rules for specific applications
     {
-      matches = [{app-id = "^xwaylandvideobridge$";}];
+      matches = [{app-id = "xwaylandvideobridge";}];
       opacity = 0.0;
       open-focused = false;
       default-column-width = {fixed = 1;};

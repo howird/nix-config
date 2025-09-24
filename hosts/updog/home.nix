@@ -1,13 +1,8 @@
 {
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
   imports = [
     ../../home-manager
     ../../home-manager/nixos-only.nix
   ];
+  programs.hyprland.enable = true;
+  programs.niri.enable = true;
 }

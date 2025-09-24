@@ -1,12 +1,14 @@
-# {config, ...}: {
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./styles.nix
     ./hyprland.nix
   ];
 
   # services.swayosd.enable = config.myDesktop.hyprland;
-  home.packages = with pkgs; [
-    swayosd
-  ];
+  home.packages = lib.optional (config.programs.niri.enable || config.programs.hyprland.enable) pkgs.swayosd;
 }

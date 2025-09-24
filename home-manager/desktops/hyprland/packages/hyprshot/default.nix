@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  home.packages = with pkgs; (lib.optionals config.wayland.windowManager.hyprland.enable [
+  home.packages = with pkgs; (lib.optionals config.programs.hyprland.enable [
     hyprshot
     zenity
     wf-recorder

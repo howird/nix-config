@@ -23,7 +23,7 @@
       Restart = "always";
     };
     Install.WantedBy =
-      if config.wayland.windowManager.hyprland.enable
+      if config.programs.hyprland.enable
       then ["hyprland-session.target"]
       else ["default.target"];
   };

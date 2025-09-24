@@ -1,6 +1,10 @@
 {
   imports = [
     ./niri.nix
-    ./config
+    ./appearance.nix
+    ./binds.nix
+    ./window-rules.nix
+    ./workspaces.nix
   ];
 }
+

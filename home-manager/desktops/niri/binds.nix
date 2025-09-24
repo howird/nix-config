@@ -7,7 +7,9 @@
     "Super+Shift+Q".action = spawn "hyprlock";
     "Mod+Ctrl+Alt+Q".action = quit;
     "Mod+Return".action = spawn "rofi" "-show" "drun";
+
     "Mod+T".action = spawn "ghostty";
+    "Mod+O".action = spawn "nautilus";
     "Mod+B".action = spawn "zen";
     "Mod+M".action = spawn "spotify";
     "Mod+N".action = spawn "swaync-client" "-t" "-sw";
@@ -101,6 +103,7 @@
     "Mod+Shift+J".action = focus-monitor-down;
     "Mod+Shift+K".action = focus-monitor-up;
     "Mod+Shift+L".action = focus-monitor-right;
+
     "Mod+Shift+Left".action = focus-monitor-left;
     "Mod+Shift+Down".action = focus-monitor-down;
     "Mod+Shift+Up".action = focus-monitor-up;
@@ -110,6 +113,7 @@
     "Mod+Shift+Ctrl+J".action = move-column-to-monitor-down;
     "Mod+Shift+Ctrl+K".action = move-column-to-monitor-up;
     "Mod+Shift+Ctrl+L".action = move-column-to-monitor-right;
+
     "Mod+Shift+Ctrl+Left".action = move-column-to-monitor-left;
     "Mod+Shift+Ctrl+Down".action = move-column-to-monitor-down;
     "Mod+Shift+Ctrl+Up".action = move-column-to-monitor-up;
@@ -169,8 +173,8 @@
     "Mod+Ctrl+Plus".action = set-column-width "+10%";
     "Mod+Ctrl+Equal".action = set-column-width "+10%";
     "Mod+Ctrl+Shift+Minus".action = set-window-height "-10%";
-    "Mod+Ctrl+Shift+Plus".action = set-window-height "-10%";
-    "Mod+Ctrl+Shift+Equal".action = set-window-height "-10%";
+    "Mod+Ctrl+Shift+Plus".action = set-window-height "+10%";
+    "Mod+Ctrl+Shift+Equal".action = set-window-height "+10%";
 
     "Mod+Space".action = toggle-window-floating;
     "Mod+W".action = toggle-column-tabbed-display;

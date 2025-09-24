@@ -9,9 +9,6 @@
     myShell.aliases.nixwird = "sudo nixos-rebuild switch --flake /home/${config.home.username}/nix/config";
     programs.ghostty.enable = true; # gl issues for non-NixOS
 
-    # desktops
-    wayland.windowManager.hyprland.enable = true;
-
     # editors
     myEditor.zed = true;
 

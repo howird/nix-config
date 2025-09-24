@@ -14,9 +14,9 @@
     modules-left =
       [
         "custom/launcher"
-        "niri/workspaces"
       ]
-      ++ (lib.optional config.wayland.windowManager.hyprland.enable "hyprland/workspaces");
+      ++ (lib.optional config.programs.niri.enable "niri/workspaces")
+      ++ (lib.optional config.programs.hyprland.enable "hyprland/workspaces");
     modules-center = [
       "custom/uair"
       "clock"
@@ -44,7 +44,7 @@
     "niri/workspaces" = {
       format = "{icon}";
       format-icons = {
-        "default" = "";
+        "default" = " ";
       };
     };
 
