@@ -9,16 +9,18 @@
     ./swayosd
     ./waybar
     ./uair
+    ./record
 
+    ./clipse.nix
     ./batsignal.nix
     ./hyprlock.nix
+    ./hypridle.nix
     ./rofi.nix
     ./kanshi.nix
   ];
 
   home.packages = with pkgs; (lib.optionals (config.programs.hyprland.enable || config.programs.hyprland.enable) [
     hyprpaper
-    wl-clipboard-rs
     glib
     wayland
     libnotify

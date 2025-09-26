@@ -1,6 +1,0 @@
-{...}: {
-  imports = [
-    ./hyprshot
-    ./clipse.nix
-  ];
-}

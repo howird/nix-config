@@ -12,6 +12,7 @@
         };
         clip-to-geometry = true;
         tiled-state = true;
+        draw-border-with-background = false;
       }
       {
         matches = [{is-urgent = true;}];
@@ -20,6 +21,9 @@
         };
       }
     ];
+
+    animations.enable = true;
+    prefer-no-csd = true; # client-side decorations
 
     layout = {
       background-color = base00;

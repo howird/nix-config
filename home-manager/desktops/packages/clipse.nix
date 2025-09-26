@@ -1,6 +1,6 @@
 {config, ...}: {
   services.clipse = {
-    enable = config.programs.hyprland.enable;
+    enable = config.programs.hyprland.enable || config.programs.niri.enable;
     allowDuplicates = false;
     historySize = 150;
     imageDisplay.type = "sixel";

@@ -13,7 +13,6 @@
   };
 
   programs.niri.settings.window-rules = [
-    # Workspace assignments
     {
       matches = [
         {app-id = "obsidian";}
@@ -21,6 +20,17 @@
         {app-id = "^libreoffice-.*$";}
       ];
       open-on-workspace = "note";
+      open-focused = true;
+    }
+
+    {
+      matches = [
+        {
+          app-id = "zen";
+          at-startup = true;
+        }
+      ];
+      open-on-workspace = "read";
     }
 
     {
@@ -30,6 +40,22 @@
         {app-id = "com.github.johnfactotum.Foliate";}
       ];
       open-on-workspace = "read";
+      open-focused = true;
+    }
+
+    {
+      matches = [{app-id = "com.mitchellh.ghostty";}];
+      default-column-width = {};
+    }
+
+    {
+      matches = [
+        {
+          app-id = "com.mitchellh.ghostty";
+          at-startup = true;
+        }
+      ];
+      open-on-workspace = "create";
     }
 
     {
@@ -41,6 +67,7 @@
         {app-id = "^jetbrains-.*$";}
       ];
       open-on-workspace = "create";
+      open-focused = true;
     }
 
     # {

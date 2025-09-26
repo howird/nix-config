@@ -4,6 +4,15 @@
       matches = [
         {
           app-id = "zenity";
+          title = "what to do 🍅";
+        }
+      ];
+      baba-is-float = true;
+    }
+    {
+      matches = [
+        {
+          app-id = "zenity";
           title = "🍅";
         }
         {
@@ -17,7 +26,6 @@
       ];
       open-floating = true;
       opacity = 0.75;
-      open-focused = false;
     }
 
     {
@@ -80,6 +88,11 @@
       matches = [{app-id = "^.*qBittorrent.*$";}];
       excludes = [{title = "qBittorrent";}];
       open-floating = true;
+    }
+
+    {
+      matches = [{app-id = "org.gnome.Nautilus";}];
+      default-column-width = {proportion = 0.5;};
     }
 
     {

@@ -19,34 +19,6 @@
     "Mod+Shift+S".action = screenshot-window {write-to-disk = false;};
     "Mod+Ctrl+Shift+S".action = screenshot-window {write-to-disk = true;};
 
-    "XF86AudioRaiseVolume" = {
-      action = spawn "swayosd-client" "--output-volume" "+2" "--max-volume=100";
-      allow-when-locked = true;
-      repeat = true;
-    };
-    "XF86AudioLowerVolume" = {
-      action = spawn "swayosd-client" "--output-volume" "-2";
-      allow-when-locked = true;
-      repeat = true;
-    };
-    "XF86AudioMute" = {
-      action = spawn "swayosd-client" "--output-volume" "mute-toggle";
-      allow-when-locked = true;
-      repeat = false;
-    };
-
-    # Brightness controls
-    "XF86MonBrightnessUp" = {
-      action = spawn "swayosd-client" "--brightness" "raise" "5%";
-      allow-when-locked = true;
-      repeat = true;
-    };
-    "XF86MonBrightnessDown" = {
-      action = spawn "swayosd-client" "--brightness" "lower" "5%";
-      allow-when-locked = true;
-      repeat = true;
-    };
-
     # Media controls
     "XF86AudioPlay" = {
       action = spawn "playerctl" "play-pause";

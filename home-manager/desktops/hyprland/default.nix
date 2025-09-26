@@ -1,9 +1,8 @@
 {
   imports = [
     ./hyprland.nix
-    ./hypridle.nix
+    ./hyprshot.nix
 
     ./config
-    ./packages
   ];
 }

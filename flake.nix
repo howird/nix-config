@@ -109,7 +109,16 @@
     packages = forAllSystems (system:
       import ./pkgs {
         inherit inputs;
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          overlays = [
+            self.overlays.additions
+            self.overlays.modifications
+            rust-overlay.overlays.default
+            nixgl.overlay
+          ];
+          config = {allowUnfree = true;};
+        };
       });
 
     # Formatter for your nix files, available through 'nix fmt'

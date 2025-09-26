@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./styles.nix
+    ./niri.nix
     ./hyprland.nix
   ];
 
