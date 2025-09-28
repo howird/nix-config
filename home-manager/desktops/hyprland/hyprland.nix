@@ -15,9 +15,9 @@ in {
     };
     systemd.enable = true;
     systemd.variables = ["--all"];
-    plugins = with pkgs; [
-      hyprscrolling
-      hyprexpo
-    ];
+    # plugins = with pkgs; [
+    #   hyprscrolling
+    #   hyprexpo
+    # ];
   };
 }

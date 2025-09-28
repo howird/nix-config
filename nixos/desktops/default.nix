@@ -1,7 +1,7 @@
 {
   imports = [
     ./gdm.nix
-    ./hyprland.nix
+    # ./hyprland.nix
     ./niri.nix
   ];
 }

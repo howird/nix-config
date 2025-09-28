@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   host,
@@ -25,12 +26,14 @@
 
     spawn-at-startup =
       [
+        {argv = ["swww" "img" "${config.stylix.image}"];}
         {argv = ["waybar"];}
         {argv = ["swaync"];}
         {argv = ["swayosd-server"];}
         {argv = ["uair" "-q"];}
         {argv = ["start-day"];}
         {argv = ["niri" "msg" "action" "focus-workspace" "note"];}
+        {argv = ["ghostty" "--launched-from=desktop"];}
         {argv = ["obsidian"];}
         {argv = ["zotero"];}
         {argv = ["zen"];}

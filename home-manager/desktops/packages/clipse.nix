@@ -4,7 +4,6 @@
     allowDuplicates = false;
     historySize = 150;
     imageDisplay.type = "sixel";
-    systemdTarget = "hyprland-session.target";
     theme = with config.lib.stylix.colors.withHashtag; {
       useCustomTheme = true;
       DimmedDesc = base07;

@@ -19,8 +19,8 @@
     ./kanshi.nix
   ];
 
-  home.packages = with pkgs; (lib.optionals (config.programs.hyprland.enable || config.programs.hyprland.enable) [
-    hyprpaper
+  services.swww.enable = config.programs.niri.enable;
+  home.packages = with pkgs; (lib.optionals (config.programs.niri.enable || config.programs.hyprland.enable) [
     glib
     wayland
     libnotify

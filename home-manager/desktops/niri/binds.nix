@@ -8,7 +8,7 @@
     "Mod+Ctrl+Alt+Q".action = quit;
     "Mod+Return".action = spawn "rofi" "-show" "drun";
 
-    "Mod+T".action = spawn "ghostty";
+    "Mod+T".action = spawn "ghostty" "--launched-from=desktop";
     "Mod+O".action = spawn "nautilus";
     "Mod+B".action = spawn "zen";
     "Mod+M".action = spawn "spotify";

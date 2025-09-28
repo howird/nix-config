@@ -22,7 +22,7 @@
     # apps
     firefox
     vlc
-    clapper
+    showtime
     libreoffice
     gnome-disk-utility
     gnome-text-editor

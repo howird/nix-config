@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  home.packages = lib.optional (config.programs.hyprland.enable || config.programs.niri.enable) pkgs.rofi-wayland;
+  home.packages = lib.optional (config.programs.hyprland.enable || config.programs.niri.enable) pkgs.rofi;
 
   xdg.configFile."rofi/theme.rasi".text = with config.lib.stylix.colors.withHashtag; ''
     * {

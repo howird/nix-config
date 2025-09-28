@@ -21,6 +21,11 @@ in {
     enable = either;
     wlr.enable = either;
     xdgOpenUsePortal = either;
+    config = {
+      common.default = ["gtk"];
+      hyprland.default = ["gtk" "hyprland"];
+      niri.default = ["gtk" "gnome"];
+    };
     extraPortals = with pkgs; (
       (lib.optionals either [xdg-desktop-portal xdg-desktop-portal-gtk kdePackages.xdg-desktop-portal-kde])
       ++ lib.optional niri xdg-desktop-portal-gnome

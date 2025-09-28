@@ -15,6 +15,16 @@
   programs.niri.settings.window-rules = [
     {
       matches = [
+        {
+          app-id = "com.mitchellh.ghostty";
+          at-startup = true;
+        }
+      ];
+      open-on-workspace = "task";
+    }
+
+    {
+      matches = [
         {app-id = "obsidian";}
         {app-id = "chromium-browser";}
         {app-id = "^libreoffice-.*$";}
@@ -36,6 +46,7 @@
     {
       matches = [
         {app-id = "Zotero";}
+        {app-id = "vlc";}
         {app-id = "org.gnome.Papers";}
         {app-id = "com.github.johnfactotum.Foliate";}
       ];
@@ -43,20 +54,15 @@
       open-focused = true;
     }
 
-    {
-      matches = [{app-id = "com.mitchellh.ghostty";}];
-      default-column-width = {};
-    }
-
-    {
-      matches = [
-        {
-          app-id = "com.mitchellh.ghostty";
-          at-startup = true;
-        }
-      ];
-      open-on-workspace = "create";
-    }
+    # {
+    #   matches = [
+    #     {
+    #       app-id = "com.mitchellh.ghostty";
+    #       at-startup = true;
+    #     }
+    #   ];
+    #   open-on-workspace = "create";
+    # }
 
     {
       matches = [

@@ -6,7 +6,7 @@
   imports = [
     ./appearance.nix
     ./binds.nix
-    ./scrolling.nix
+    # ./scrolling.nix
     ./window-rules.nix
     ./workspaces.nix
   ];

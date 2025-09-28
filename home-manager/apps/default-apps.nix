@@ -19,7 +19,7 @@
       };
       video = mkOption {
         type = types.str;
-        default = "com.github.rafostar.Clapper.desktop";
+        default = "vlc.desktop";
       };
       text = mkOption {
         type = types.str;

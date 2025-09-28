@@ -14,7 +14,6 @@
     nixd
     textpieces
 
-    # inputs.pix2tex.packages.${system}.default
     bun
     aider-chat
     fabric-ai
