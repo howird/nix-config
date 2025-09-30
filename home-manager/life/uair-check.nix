@@ -4,7 +4,7 @@
   start-day = writeShellScriptBin "start-day" (builtins.readFile ./scripts/start-day);
   uair-check = writeShellScriptBin "uair-check" (builtins.readFile ./scripts/uair-check);
 in {
-  systemd.user.services.uairwird = {
+  systemd.user.services.uair-check = {
     Unit.Description = "Checks that pomodoros are running";
     Service = {
       Type = "oneshot";
@@ -12,25 +12,22 @@ in {
     };
   };
 
-  systemd.user.timers.uairwird = {
+  systemd.user.timers.uair-check = {
     Unit.Description = "Checks that pomodoros are running";
     Install.WantedBy = ["timers.target"];
 
     Timer = {
       OnBootSec = "5m";
       OnUnitActiveSec = "5m";
-      Unit = "uairwird.service";
+      Unit = "uair-check.service";
     };
-  };
-
-  myShell.aliases = {
-    uair-check-start = "systemctl --user start uairwird.timer";
-    uair-check-stop = "systemctl --user stop uairwird.timer";
   };
 
   home.packages = [
     uairzen
     start-day
     uair-check
+    (writeShellScriptBin "uair-check-start" "systemctl --user start uair-check.timer")
+    (writeShellScriptBin "uair-check-stop" "systemctl --user start uair-check.timer")
   ];
 }

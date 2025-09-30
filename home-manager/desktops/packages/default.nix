@@ -8,7 +8,6 @@
     ./swaync
     ./swayosd
     ./waybar
-    ./uair
     ./record
 
     ./clipse.nix

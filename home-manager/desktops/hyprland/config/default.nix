@@ -30,7 +30,7 @@
           "uair -q &"
           "start-day"
         ]
-        ++ lib.optionals (host == "bofa") [
+        ++ lib.optionals (host == "yerm") [
           "nm-applet &"
           "poweralertd &"
           "blueman-applet &"

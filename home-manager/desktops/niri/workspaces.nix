@@ -14,13 +14,10 @@
 
   programs.niri.settings.window-rules = [
     {
-      matches = [
-        {
-          app-id = "com.mitchellh.ghostty";
-          at-startup = true;
-        }
-      ];
+      matches = [{app-id = "sh.task";}];
+      open-focused = true;
       open-on-workspace = "task";
+      default-column-width = {proportion = 1.0;};
     }
 
     {
@@ -54,15 +51,15 @@
       open-focused = true;
     }
 
-    # {
-    #   matches = [
-    #     {
-    #       app-id = "com.mitchellh.ghostty";
-    #       at-startup = true;
-    #     }
-    #   ];
-    #   open-on-workspace = "create";
-    # }
+    {
+      matches = [
+        {
+          app-id = "com.mitchellh.ghostty";
+          at-startup = true;
+        }
+      ];
+      open-on-workspace = "create";
+    }
 
     {
       matches = [

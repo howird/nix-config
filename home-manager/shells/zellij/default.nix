@@ -2,6 +2,7 @@
   imports = [
     ./zellij.nix
     ./default-layout.nix
+    ./zjstatus.nix
   ];
 
   programs.zellij.enable = true;

@@ -8,7 +8,7 @@
     "Mod+Ctrl+Alt+Q".action = quit;
     "Mod+Return".action = spawn "rofi" "-show" "drun";
 
-    "Mod+T".action = spawn "ghostty" "--launched-from=desktop";
+    "Mod+T".action = spawn "ghostty";
     "Mod+O".action = spawn "nautilus";
     "Mod+B".action = spawn "zen";
     "Mod+M".action = spawn "spotify";
@@ -18,24 +18,6 @@
     "Mod+Ctrl+S".action = screenshot {show-pointer = false;};
     "Mod+Shift+S".action = screenshot-window {write-to-disk = false;};
     "Mod+Ctrl+Shift+S".action = screenshot-window {write-to-disk = true;};
-
-    # Media controls
-    "XF86AudioPlay" = {
-      action = spawn "playerctl" "play-pause";
-      allow-when-locked = true;
-    };
-    "XF86AudioNext" = {
-      action = spawn "playerctl" "next";
-      allow-when-locked = true;
-    };
-    "XF86AudioPrev" = {
-      action = spawn "playerctl" "previous";
-      allow-when-locked = true;
-    };
-    "XF86AudioStop" = {
-      action = spawn "playerctl" "stop";
-      allow-when-locked = true;
-    };
 
     # Window
     "Mod+H".action = focus-column-left;
@@ -48,9 +30,9 @@
     "Mod+Ctrl+Left".action = move-column-left;
     "Mod+Ctrl+Right".action = move-column-right;
 
+    "Mod+Tab".action = focus-workspace-previous;
     "Mod+J".action = focus-workspace-down;
     "Mod+K".action = focus-workspace-up;
-
     "Mod+Ctrl+J".action = move-column-to-workspace-down;
     "Mod+Ctrl+K".action = move-column-to-workspace-up;
 
@@ -119,20 +101,6 @@
     "Mod+Ctrl+Shift+WheelScrollDown".action = move-column-right;
     "Mod+Ctrl+Shift+WheelScrollUp".action = move-column-left;
 
-    # Numbered workspace navigation
-    "Mod+1".action = focus-workspace 1;
-    "Mod+2".action = focus-workspace 2;
-    "Mod+3".action = focus-workspace 3;
-    "Mod+4".action = focus-workspace 4;
-    "Mod+5".action = focus-workspace 5;
-    "Mod+6".action = focus-workspace 6;
-    "Mod+7".action = focus-workspace 7;
-    "Mod+8".action = focus-workspace 8;
-    "Mod+9".action = focus-workspace 9;
-
-    # Additional workspace binds
-    "Mod+Tab".action = focus-workspace-previous;
-
     "Mod+R".action = switch-preset-column-width;
     "Mod+Shift+R".action = switch-preset-window-height;
     "Mod+Ctrl+R".action = reset-window-height;
@@ -150,5 +118,23 @@
 
     "Mod+Space".action = toggle-window-floating;
     "Mod+W".action = toggle-column-tabbed-display;
+
+    # Media controls
+    "XF86AudioPlay" = {
+      action = spawn "playerctl" "play-pause";
+      allow-when-locked = true;
+    };
+    "XF86AudioNext" = {
+      action = spawn "playerctl" "next";
+      allow-when-locked = true;
+    };
+    "XF86AudioPrev" = {
+      action = spawn "playerctl" "previous";
+      allow-when-locked = true;
+    };
+    "XF86AudioStop" = {
+      action = spawn "playerctl" "stop";
+      allow-when-locked = true;
+    };
   };
 }

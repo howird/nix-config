@@ -4,45 +4,44 @@
       matches = [
         {
           app-id = "zenity";
-          title = "what to do 🍅";
+          title = "^.*🍅.+$";
         }
       ];
       baba-is-float = true;
     }
-    {
-      matches = [
-        {
-          app-id = "zenity";
-          title = "🍅";
-        }
-        {
-          app-id = "zenity";
-          title = "what to do 🍅";
-        }
-        {
-          app-id = "zenity";
-          title = "^🍅: .*$";
-        }
-      ];
-      open-floating = true;
-      opacity = 0.75;
-    }
 
     {
       matches = [
+        {app-id = "^.*.sameboy-wrapped.*$";}
+        {app-id = "^.*SoundWireServer.*$";}
+        {app-id = "^.*blueman.*$";}
+        {app-id = "^.*confirm.*$";}
+        {app-id = "^.*confirmreset.*$";}
+        {app-id = "^.*dialog.*$";}
+        {app-id = "^.*download.*$";}
+        {app-id = "^.*error.*$";}
+        {app-id = "^.*file_progress.*$";}
+        {app-id = "^.*notification.*$";}
+        {app-id = "^.*pavucontrol.*$";}
+        {app-id = "^.*qBittorrent.*$";}
+        {app-id = "^nm-.*$";}
+        {app-id = "^xdg-desktop-portal-.*$";}
+        {app-id = "com.github.finefindus.eyedropper";}
+        {app-id = "org.gnome.FileRoller";}
+        {app-id = "zenity";}
+        {title = ".*file upload.*$";}
+        {title = "^.*Confirm to replace files.*$";}
+        {title = "^.*File Operation Progress.*$";}
+        {title = "^.*Open File.*$";}
+        {title = "^.*Picture-in-Picture.*$";}
+        {title = "^.*Sharing Indicator.*$";}
         {title = "^.*Transmission.*$";}
         {title = "^.*Volume Control.*$";}
-        {title = "^.*Sharing Indicator.*$";}
-        {app-id = "com.github.finefindus.eyedropper";}
+        {title = "^.*branchdialog.*$";}
         {
           app-id = "zen";
           title = "^Extension:.*$";
         }
-        {app-id = "^xdg-desktop-portal-.*$";}
-        {app-id = "^nm-.*$";}
-        {app-id = "^.*blueman.*$";}
-        {app-id = "^.*SoundWireServer.*$";}
-        {app-id = "^.*.sameboy-wrapped.*$";}
         {
           app-id = "Zotero";
           title = "Zotero Settings";
@@ -51,43 +50,19 @@
           app-id = "Zotero";
           title = "^Plugins Manager.*$";
         }
-        {app-id = "^.*file_progress.*$";}
-        {app-id = "^.*confirm.*$";}
-        {app-id = "^.*dialog.*$";}
-        {app-id = "^.*download.*$";}
-        {app-id = "^.*notification.*$";}
-        {app-id = "^.*error.*$";}
-        {app-id = "^.*confirmreset.*$";}
-        {title = ".*Open File.*$";}
-        {title = ".*branchdialog.*$";}
-        {title = ".*Confirm to replace files.*$";}
-        {title = ".*File Operation Progress.*$";}
-        {app-id = "zenity";}
-      ];
-      open-floating = true;
-    }
-
-    {
-      matches = [{title = ".*Picture-in-Picture.*$";}];
-      open-floating = true;
-      opacity = 1.0;
-    }
-
-    {
-      matches = [
         {
           app-id = "Zotero";
-          title = ".*Progress.*$";
+          title = "^.*Progress.*$";
         }
       ];
+      excludes = [{title = "qBittorrent";}];
       open-floating = true;
-      opacity = 0.5;
+      opacity = 0.85;
     }
 
     {
-      matches = [{app-id = "^.*qBittorrent.*$";}];
-      excludes = [{title = "qBittorrent";}];
-      open-floating = true;
+      matches = [{app-id = "vlc";}];
+      default-column-width = {proportion = 1.0;};
     }
 
     {
@@ -97,20 +72,17 @@
 
     {
       matches = [{app-id = "org.gnome.FileRoller";}];
-      open-floating = true;
       default-column-width = {fixed = 850;};
       default-window-height = {fixed = 500;};
     }
 
     {
       matches = [{title = ".*File Upload.*$";}];
-      open-floating = true;
       default-window-height = {fixed = 500;};
     }
 
     {
       matches = [{app-id = "^.*pavucontrol.*$";}];
-      open-floating = true;
       default-column-width = {fixed = 850;};
       default-window-height = {fixed = 450;};
     }

@@ -1,13 +1,5 @@
 {
-  config,
-  pkgs,
-  lib,
-  host,
-  ...
-}: {
   programs.niri.settings = {
-    gestures.hot-corners.enable = true;
-
     layout = {
       # center-focused-column = "on-overflow";
       always-center-single-column = true;
@@ -20,34 +12,11 @@
       ];
 
       default-column-width = {
-        proportion = 0.9;
+        proportion = 0.8;
       };
     };
 
-    spawn-at-startup =
-      [
-        {argv = ["swww" "img" "${config.stylix.image}"];}
-        {argv = ["waybar"];}
-        {argv = ["swaync"];}
-        {argv = ["swayosd-server"];}
-        {argv = ["uair" "-q"];}
-        {argv = ["start-day"];}
-        {argv = ["niri" "msg" "action" "focus-workspace" "note"];}
-        {argv = ["ghostty" "--launched-from=desktop"];}
-        {argv = ["obsidian"];}
-        {argv = ["zotero"];}
-        {argv = ["zen"];}
-      ]
-      ++ lib.optionals (host == "bofa") [
-        {argv = ["nm-applet"];}
-        {argv = ["poweralertd"];}
-        {argv = ["blueman-applet"];}
-      ];
-
-    xwayland-satellite = {
-      enable = true;
-      path = lib.getExe pkgs.xwayland-satellite-unstable;
-    };
+    gestures.hot-corners.enable = true;
 
     input = {
       keyboard = {

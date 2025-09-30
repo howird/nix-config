@@ -21,7 +21,7 @@ if [[ "$state" == "paused" ]]; then
         uairctl resume
     else
         # cancel-label: what should I do
-        hyprctl dispatch workspace 1
+        niri msg action focus-workspace task
         uairctl jump med-prep
         uairctl pause
         (
