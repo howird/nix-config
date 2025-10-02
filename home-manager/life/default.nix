@@ -16,7 +16,6 @@
     timewarrior
     taskwarrior-tui
     taskopen
-    tasksh
   ];
 
   myShell.aliases = {

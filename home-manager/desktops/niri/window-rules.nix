@@ -63,6 +63,7 @@
     {
       matches = [{app-id = "vlc";}];
       default-column-width = {proportion = 1.0;};
+      scroll-factor = 0.2;
     }
 
     {

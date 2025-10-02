@@ -14,7 +14,19 @@
         {argv = ["swayosd-server"];}
         {argv = ["uair" "-q"];}
         {argv = ["niri" "msg" "action" "focus-workspace" "note"];}
-        {argv = ["ghostty" "--class=sh.task" "--title=tasksh" "-e" "tasksh"];}
+        {
+          argv = [
+            "ghostty"
+            "--class=task.warrior"
+            "--title=taskwarrior"
+            "-e"
+            "zellij"
+            "--session"
+            "taskwarrior"
+            "--new-session-with-layout"
+            "/home/${config.home.username}/.config/zellij/layouts/task.kdl"
+          ];
+        }
         {argv = ["obsidian"];}
         {argv = ["zotero"];}
         {argv = ["zen"];}

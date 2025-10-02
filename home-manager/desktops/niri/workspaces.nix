@@ -14,7 +14,7 @@
 
   programs.niri.settings.window-rules = [
     {
-      matches = [{app-id = "sh.task";}];
+      matches = [{app-id = "task.warrior";}];
       open-focused = true;
       open-on-workspace = "task";
       default-column-width = {proportion = 1.0;};

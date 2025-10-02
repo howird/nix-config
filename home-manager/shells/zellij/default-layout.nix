@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   xdg.configFile."zellij/layouts/default.kdl".text = ''
     layout {
         swap_tiled_layout name="vertical" {
@@ -93,7 +97,10 @@
         }
 
         default_tab_template {
-            ${config.zellij.layout-bar}
+            ${(import ./zjstatus.nix) {
+      zjstatus_wasm = "file:${pkgs.zjstatus}/bin/zjstatus.wasm";
+      colors = config.lib.stylix.colors;
+    }}
             children
         }
     }

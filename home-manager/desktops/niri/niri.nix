@@ -30,7 +30,7 @@
         tap = true;
         natural-scroll = true;
         accel-speed = 0.1;
-        scroll-factor = 0.4;
+        scroll-factor = 0.3;
       };
 
       mouse = {
