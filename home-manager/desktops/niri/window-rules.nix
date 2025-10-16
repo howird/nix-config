@@ -57,13 +57,20 @@
       ];
       excludes = [{title = "qBittorrent";}];
       open-floating = true;
-      opacity = 0.85;
     }
 
     {
       matches = [{app-id = "vlc";}];
+      scroll-factor = 0.15;
+    }
+
+    {
+      matches = [
+        {app-id = "vlc";}
+        {app-id = "task.warrior";}
+        {app-id = "obsidian";}
+      ];
       default-column-width = {proportion = 1.0;};
-      scroll-factor = 0.2;
     }
 
     {

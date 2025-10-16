@@ -12,7 +12,17 @@
     "Mod+O".action = spawn "nautilus";
     "Mod+B".action = spawn "zen";
     "Mod+M".action = spawn "spotify";
+    "Mod+I".action = spawn "vesktop";
     "Mod+N".action = spawn "swaync-client" "-t" "-sw";
+    "Mod+Alt+T".action =
+      spawn
+      "ghostty"
+      "--class=task.warrior"
+      "--title=taskwarrior"
+      "-e"
+      "zellij"
+      "attach"
+      "taskwarrior";
 
     "Mod+S".action = screenshot {show-pointer = false;};
     "Mod+Ctrl+S".action = screenshot {show-pointer = false;};

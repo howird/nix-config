@@ -14,6 +14,7 @@
         {argv = ["swayosd-server"];}
         {argv = ["uair" "-q"];}
         {argv = ["niri" "msg" "action" "focus-workspace" "note"];}
+        {argv = ["zellij" "d" "taskwarrior"];}
         {
           argv = [
             "ghostty"

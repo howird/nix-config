@@ -19,7 +19,7 @@
       };
       video = mkOption {
         type = types.str;
-        default = "vlc.desktop";
+        default = "org.gnome.Showtime.desktop";
       };
       text = mkOption {
         type = types.str;

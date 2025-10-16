@@ -14,10 +14,15 @@
 
   programs.niri.settings.window-rules = [
     {
-      matches = [{app-id = "task.warrior";}];
+      matches = [
+        {app-id = "task.warrior";}
+        {app-id = "vesktop";}
+        {app-id = "Slack";}
+        {app-id = "zoom";}
+        {app-id = "org.qbittorrent.qBittorrent";}
+      ];
       open-focused = true;
       open-on-workspace = "task";
-      default-column-width = {proportion = 1.0;};
     }
 
     {
@@ -75,56 +80,8 @@
 
     # {
     #   matches = [
-    #     {
-    #       app-id = "^.*qBittorrent.*$";
-    #     }
     #   ];
     #   open-on-workspace = "6";
-    # }
-
-    # {
-    #   matches = [
-    #     {app-id = "vlc";}
-    #     {app-id = "com.github.rafostar.Clapper";}
-    #     {app-id = "org.gnome.Loupe";}
-    #     {app-id = "rhythmbox";}
-    #   ];
-    #   open-on-workspace = "10";
-    # }
-
-    # {
-    #   matches = [
-    #     {app-id = "spotify";}
-    #   ];
-    #   open-on-workspace = "10";
-    #   open-floating = true;
-    #   opacity = 0.8;
-    # }
-
-    # {
-    #   matches = [
-    #     {
-    #       app-id = "zen";
-    #       title = ".*Zen Browser Private Browsing$";
-    #     }
-    #   ];
-    #   open-on-workspace = "10";
-    # }
-
-    # {
-    #   matches = [
-    #     {app-id = "vesktop";}
-    #     {app-id = "Slack";}
-    #     {app-id = "zoom";}
-    #   ];
-    #   open-on-workspace = "11";
-    # }
-
-    # {
-    #   matches = [
-    #     {app-id = "org.gnome.Nautilus";}
-    #   ];
-    #   open-on-workspace = "12";
     # }
   ];
 }

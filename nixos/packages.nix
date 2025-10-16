@@ -20,7 +20,6 @@
     monitor
 
     # apps
-    firefox
     vlc
     showtime
     libreoffice

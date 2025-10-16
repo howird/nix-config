@@ -18,6 +18,7 @@
     aider-chat
     fabric-ai
     code-cursor
+    cursor-cli
     opencode
     goose-cli
     jetbrains.clion
@@ -54,7 +55,7 @@
         context7 = {
           enabled = true;
           type = "local";
-          command = ["bunx" "@upstash/context7-mcp"];
+          command = ["${pkgs.bun}/bin/bunx" "@upstash/context7-mcp"];
         };
       };
     };

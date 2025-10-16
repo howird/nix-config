@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   config,
   pkgs,
@@ -6,6 +7,7 @@
 }: {
   imports = [
     ./chromium.nix
+    inputs.schizofox.homeManagerModules.default
   ];
   options = {
     myBrowser = {
@@ -37,5 +39,6 @@
       ++ lib.optional config.myBrowser.zen pkgs.zen-browser;
 
     programs.firefox.enable = config.myBrowser.firefox;
+    programs.schizofox.enable = true;
   };
 }
