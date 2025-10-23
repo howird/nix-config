@@ -1,8 +1,19 @@
 #!/usr/bin/env bash
 
+check_file="/tmp/uair-check-stop.$USER.txt"
+
+if [[ "$1" == "start" ]]; then
+    rm -f "$check_file"
+    exit 0
+elif [[ "$1" == "stop" ]]; then
+    touch "$check_file"
+    exit 0
+fi
+
 state=$(uairctl fetch "{state}\n")
 
-if [[ "$state" == "paused" ]]; then
+if [[ ! -f "$check_file" && "$state" == "paused" ]]; then
+    niri msg action focus-workspace task
     zenity_output=$(zenity --question \
       --title="checking in 🍅" --text \
       "noticed you might be off track, need help getting back?" \
@@ -14,8 +25,6 @@ if [[ "$state" == "paused" ]]; then
     if [[ $zenity_exit_code -eq 0 ]]; then
         # ok-label: need meditation
         start-day
-        xdg-open "https://coaching.healthygamer.gg/guide/meditation-tracks"
-        uairctl jump med-prep
     elif [[ "$zenity_output" == Unpause* ]]; then
         # extra-button: unpause
         uairctl resume

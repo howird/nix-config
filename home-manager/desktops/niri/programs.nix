@@ -8,10 +8,10 @@
   programs.niri.settings = {
     spawn-at-startup =
       [
-        {argv = ["swww" "img" "${config.stylix.image}"];}
         {argv = ["waybar"];}
         {argv = ["swaync"];}
         {argv = ["swayosd-server"];}
+        {argv = ["swww" "img" "${config.stylix.image}"];}
         {argv = ["uair" "-q"];}
         {argv = ["niri" "msg" "action" "focus-workspace" "note"];}
         {argv = ["zellij" "d" "taskwarrior"];}

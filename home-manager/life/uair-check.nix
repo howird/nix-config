@@ -27,7 +27,5 @@ in {
     uairzen
     start-day
     uair-check
-    (writeShellScriptBin "uair-check-start" "systemctl --user start uair-check.timer")
-    (writeShellScriptBin "uair-check-stop" "systemctl --user start uair-check.timer")
   ];
 }

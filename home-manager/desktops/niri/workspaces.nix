@@ -16,12 +16,24 @@
     {
       matches = [
         {app-id = "task.warrior";}
+        {app-id = "com.rafaelmardojai.Blanket";}
         {app-id = "vesktop";}
         {app-id = "Slack";}
         {app-id = "zoom";}
         {app-id = "org.qbittorrent.qBittorrent";}
       ];
       open-focused = true;
+      open-on-workspace = "task";
+    }
+
+    {
+      matches = [
+        {
+          app-id = "zenity";
+          title = "^.*🍅.*$";
+        }
+      ];
+      baba-is-float = true;
       open-on-workspace = "task";
     }
 

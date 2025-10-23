@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+niri msg action focus-workspace task
 uairctl resume
 uairctl listen | zenity \
   --progress \

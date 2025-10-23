@@ -2,16 +2,6 @@
   programs.niri.settings.window-rules = [
     {
       matches = [
-        {
-          app-id = "zenity";
-          title = "^.*🍅.+$";
-        }
-      ];
-      baba-is-float = true;
-    }
-
-    {
-      matches = [
         {app-id = "^.*.sameboy-wrapped.*$";}
         {app-id = "^.*SoundWireServer.*$";}
         {app-id = "^.*blueman.*$";}

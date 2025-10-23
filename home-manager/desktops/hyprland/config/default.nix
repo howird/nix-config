@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   host,
   ...
@@ -21,7 +22,7 @@
           # "wl-paste --watch cliphist store &"
 
           "hypridle"
-          "hyprpaper"
+          "swww img ${config.stylix.image}"
 
           "waybar &"
           "swayosd-server"

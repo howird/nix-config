@@ -7,8 +7,8 @@
     openconnect_openssl
     networkmanager
 
-    reaper
-    # audacity
+    # reaper
+    audacity
     obs-studio
     video-trimmer
     eyedropper
@@ -17,12 +17,14 @@
     vesktop
     slack
     zoom-us
-    warp
 
     # intentional watching, not streaming!
     qbittorrent
     spotify
     ncspot
     fretboard
+    gnome-decoder
+    warp
+    blanket
   ];
 }
