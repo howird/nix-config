@@ -13,7 +13,7 @@
     layout {
         ${zjstatus}
         pane command="taskwarrior-tui"
-        pane size="55%"
+        pane size="30%"
     }
   '';
 }

@@ -23,6 +23,16 @@
             bind "k" { MoveFocus "up"; SwitchToMode "locked"; }
             bind "l" { MoveFocusOrTab "right"; SwitchToMode "locked"; }
 
+            bind "1" { GoToTab 1; SwitchToMode "locked"; }
+            bind "2" { GoToTab 2; SwitchToMode "locked"; }
+            bind "3" { GoToTab 3; SwitchToMode "locked"; }
+            bind "4" { GoToTab 4; SwitchToMode "locked"; }
+            bind "5" { GoToTab 5; SwitchToMode "locked"; }
+            bind "6" { GoToTab 6; SwitchToMode "locked"; }
+            bind "7" { GoToTab 7; SwitchToMode "locked"; }
+            bind "8" { GoToTab 8; SwitchToMode "locked"; }
+            bind "9" { GoToTab 9; SwitchToMode "locked"; }
+
             bind "+" { Resize "Increase"; SwitchToMode "locked"; }
             bind "-" { Resize "Decrease"; SwitchToMode "locked"; }
             bind "=" { Resize "Increase"; SwitchToMode "locked"; }
