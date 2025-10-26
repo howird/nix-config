@@ -1,9 +1,10 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
-  home.packages = with pkgs; (lib.optionals (config.programs.hyprland.enable || config.programs.niri.enable) [
+  home.packages = lib.optionals config.programs.niri.enable (with pkgs; [
     zenity
     wf-recorder
     slurp

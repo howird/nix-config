@@ -1,7 +1,7 @@
-{...}: {
+{config, ...}: {
   imports = [
     ./waybar.nix
-    ./settings.nix
     ./style.nix
   ];
+  programs.waybar.enable = config.programs.niri.enable;
 }

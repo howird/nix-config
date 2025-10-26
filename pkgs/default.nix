@@ -4,8 +4,6 @@
   ...
 }:
 with pkgs.stdenv.hostPlatform; {
-  # inherit (inputs.hyprland.packages.${system}) hyprland xdg-desktop-portal-hyprland;
-  # inherit (inputs.hyprland-plugins.packages.${system}) hyprexpo hyprscrolling;
   zjstatus = inputs.zjstatus.packages.${system}.default;
   ghostty = inputs.ghostty.packages.${system}.default;
   zen-browser = inputs.zen-browser.packages.${system}.default;

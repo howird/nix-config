@@ -37,9 +37,6 @@
       ExecStart = "${pkgs.uair}/bin/uair";
       Restart = "always";
     };
-    Install.WantedBy =
-      if config.programs.hyprland.enable
-      then ["hyprland-session.target"]
-      else ["default.target"];
+    Install.WantedBy = ["default.target"];
   };
 }

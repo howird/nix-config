@@ -5,7 +5,7 @@
   ...
 }: {
   services.hypridle = {
-    enable = config.programs.hyprland.enable || config.programs.niri.enable;
+    inherit (config.programs.niri) enable;
     settings = {
       general = {
         lock_cmd = "pidof hyprlock || hyprlock";

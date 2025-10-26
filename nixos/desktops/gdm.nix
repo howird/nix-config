@@ -3,33 +3,29 @@
   config,
   pkgs,
   ...
-}: let
-  hyprland = config.programs.hyprland.enable;
-  niri = config.programs.niri.enable;
-  either = hyprland || niri;
-in {
+}: {
   services.displayManager.gdm = {
-    enable = either || config.services.desktopManager.gnome.enable;
-    wayland = either || config.services.desktopManager.gnome.enable;
+    enable = config.programs.niri.enable || config.services.desktopManager.gnome.enable;
+    wayland = config.programs.niri.enable || config.services.desktopManager.gnome.enable;
   };
 
-  services.gnome.gnome-keyring.enable = either;
-  security.pam.services.gdm.enableGnomeKeyring = either;
-  programs.seahorse.enable = either;
+  services.gnome.gnome-keyring.enable = config.programs.niri.enable;
+  security.pam.services.gdm.enableGnomeKeyring = config.programs.niri.enable;
+  programs.seahorse.enable = config.programs.niri.enable;
 
   xdg.portal = {
-    enable = either;
-    wlr.enable = either;
-    xdgOpenUsePortal = either;
+    enable = config.programs.niri.enable;
+    wlr.enable = config.programs.niri.enable;
+    xdgOpenUsePortal = config.programs.niri.enable;
     config = {
       common.default = ["gtk"];
-      hyprland.default = ["gtk" "hyprland"];
       niri.default = ["gtk" "gnome"];
     };
-    extraPortals = with pkgs; (
-      (lib.optionals either [xdg-desktop-portal xdg-desktop-portal-gtk kdePackages.xdg-desktop-portal-kde])
-      ++ lib.optional niri xdg-desktop-portal-gnome
-      ++ lib.optional hyprland xdg-desktop-portal-hyprland
-    );
+    extraPortals = lib.optionals config.programs.niri.enable (with pkgs; [
+      xdg-desktop-portal
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
+      kdePackages.xdg-desktop-portal-kde
+    ]);
   };
 }

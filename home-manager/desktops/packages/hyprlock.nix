@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  home.packages = lib.optional (config.programs.hyprland.enable || config.programs.niri.enable) pkgs.hyprlock;
+  home.packages = lib.optional config.programs.niri.enable pkgs.hyprlock;
   xdg.configFile."hypr/hyprlock.conf".text = let
     mkRgba = c: a: let
       r = config.lib.stylix.colors."${c}-rgb-r";

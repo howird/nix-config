@@ -1,10 +1,4 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}:
-lib.mkIf config.myDesktop.gnome {
+{pkgs, ...}: {
   service.xserver.excludePackages = [pkgs.xterm];
 
   programs.dconf.enable = true;

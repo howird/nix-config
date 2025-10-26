@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    ./hyprland
     ./niri
     ./packages
   ];
@@ -17,6 +16,5 @@
 
   options.programs = {
     niri.enable = lib.mkEnableOption "niri";
-    hyprland.enable = lib.mkEnableOption "hyprland";
   };
 }

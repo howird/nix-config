@@ -19,7 +19,7 @@
   ];
 
   services.swww.enable = config.programs.niri.enable;
-  home.packages = with pkgs; (lib.optionals (config.programs.niri.enable || config.programs.hyprland.enable) [
+  home.packages = lib.optionals config.programs.niri.enable (with pkgs; [
     glib
     wayland
     libnotify

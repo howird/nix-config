@@ -4,8 +4,7 @@
   ...
 }: {
   services.kanshi = {
-    enable = config.programs.hyprland.enable || config.programs.niri.enable;
-
+    inherit (config.programs.niri) enable;
     settings =
       [
         {
