@@ -14,7 +14,7 @@ in {
 
   systemd.user.timers.uair-check = {
     Unit.Description = "Checks that pomodoros are running";
-    Install.WantedBy = ["timers.target"];
+    Install.WantedBy = ["graphical-session.target"];
 
     Timer = {
       OnBootSec = "5m";

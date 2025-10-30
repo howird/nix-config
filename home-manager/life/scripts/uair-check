@@ -1,18 +1,45 @@
 #!/usr/bin/env bash
 
 check_file="/tmp/uair-check-stop.$USER.txt"
+max_minutes=120
 
 if [[ "$1" == "start" ]]; then
     rm -f "$check_file"
     exit 0
 elif [[ "$1" == "stop" ]]; then
-    touch "$check_file"
+    # Default to max_minutes if no duration specified
+    minutes=${2:-$max_minutes}
+    # Cap at max_minutes maximum
+    if [[ $minutes -gt $max_minutes ]]; then
+        minutes=$max_minutes
+    fi
+    echo "$(date +%s)" > "$check_file"
+    echo "$minutes" >> "$check_file"
     exit 0
+fi
+
+if [[ -f "$check_file" ]]; then
+    stored_timestamp=$(head -n 1 "$check_file")
+    stored_minutes=$(tail -n 1 "$check_file")
+
+    if [[ $stored_minutes -gt $max_minutes ]]; then
+        stored_minutes=$max_minutes
+    fi
+
+    current_timestamp=$(date +%s)
+    time_diff=$((current_timestamp - stored_timestamp))
+    duration_seconds=$((stored_minutes * 60))
+
+    if [[ $time_diff -ge $duration_seconds ]]; then
+        rm -f "$check_file"
+    else
+        exit 0
+    fi
 fi
 
 state=$(uairctl fetch "{state}\n")
 
-if [[ ! -f "$check_file" && "$state" == "paused" ]]; then
+if [[ "$state" == "paused" ]]; then
     niri msg action focus-workspace task
     zenity_output=$(zenity --question \
       --title="checking in 🍅" --text \

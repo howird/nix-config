@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./taskwarrior.nix
     ./uair.nix
@@ -31,12 +27,19 @@
   };
 
   systemd.user.services.uair = {
-    Unit.Description = "Uair pomodoro timer";
+    Unit = {
+      Description = "Uair pomodoro timer";
+      After = ["graphical-session.target"];
+      PartOf = ["graphical-session.target"];
+    };
+
     Service = {
       Type = "simple";
       ExecStart = "${pkgs.uair}/bin/uair";
-      Restart = "always";
+      Restart = "on-failure";
+      RestartSec = 1;
     };
-    Install.WantedBy = ["default.target"];
+
+    Install.WantedBy = ["graphical-session.target"];
   };
 }

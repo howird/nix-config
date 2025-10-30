@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -22,4 +26,8 @@
     enable = true;
     # settings = {};
   };
+
+  home.packages = with pkgs; [
+    git-filter-repo
+  ];
 }
