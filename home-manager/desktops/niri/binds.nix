@@ -24,10 +24,10 @@
       "attach"
       "taskwarrior";
 
-    "Mod+S".action = screenshot {show-pointer = false;};
-    "Mod+Ctrl+S".action = screenshot {show-pointer = false;};
-    "Mod+Shift+S".action = screenshot-window {write-to-disk = false;};
-    "Mod+Ctrl+Shift+S".action = screenshot-window {write-to-disk = true;};
+    "Mod+S".action.screenshot = {show-pointer = false;};
+    "Mod+Ctrl+S".action.screenshot = {show-pointer = false;};
+    "Mod+Shift+S".action.screenshot-window = {write-to-disk = false;};
+    "Mod+Ctrl+Shift+S".action.screenshot-window = {write-to-disk = true;};
 
     # Window
     "Mod+H".action = focus-column-left;

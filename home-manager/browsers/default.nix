@@ -8,6 +8,7 @@
   imports = [
     ./chromium.nix
     inputs.schizofox.homeManagerModules.default
+    inputs.zen-browser.homeModules.twilight-official
   ];
   options = {
     myBrowser = {
@@ -35,9 +36,9 @@
         })
         pkgs.libsForQt5.qtwayland # for some reason this is needed?
       ]
-      ++ lib.optional config.myBrowser.edge (pkgs.microsoft-edge.override {inherit commandLineArgs;})
-      ++ lib.optional config.myBrowser.zen pkgs.zen-browser;
+      ++ lib.optional config.myBrowser.edge (pkgs.microsoft-edge.override {inherit commandLineArgs;});
 
+    programs.zen-browser.enable = config.myBrowser.zen;
     programs.firefox.enable = config.myBrowser.firefox;
     programs.schizofox.enable = true;
   };

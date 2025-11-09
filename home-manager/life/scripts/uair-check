@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 check_file="/tmp/uair-check-stop.$USER.txt"
+default_minutes=30
 max_minutes=120
 
 if [[ "$1" == "start" ]]; then
@@ -8,7 +9,7 @@ if [[ "$1" == "start" ]]; then
     exit 0
 elif [[ "$1" == "stop" ]]; then
     # Default to max_minutes if no duration specified
-    minutes=${2:-$max_minutes}
+    minutes=${2:-$default_minutes}
     # Cap at max_minutes maximum
     if [[ $minutes -gt $max_minutes ]]; then
         minutes=$max_minutes

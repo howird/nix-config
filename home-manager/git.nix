@@ -6,28 +6,27 @@
   programs.git = {
     enable = true;
     lfs.enable = true;
-    userName = "Howard Nguyen-Huu";
-    userEmail = config.myEmail;
-    aliases = {
-      ci = "commit";
-      co = "checkout";
-      s = "status";
-    };
     ignores = [
       "**/.aider*"
     ];
-    extraConfig = {
+    settings = {
       core.editor = "nvim";
       pull.ff = "only";
+      user = {
+        name = "Howard Nguyen-Huu";
+        email = config.myEmail;
+      };
+      aliases = {
+        ci = "commit";
+        co = "checkout";
+        s = "status";
+      };
     };
-  };
-
-  programs.lazygit = {
-    enable = true;
-    # settings = {};
   };
 
   home.packages = with pkgs; [
     git-filter-repo
+    gitui
+    lazygit
   ];
 }

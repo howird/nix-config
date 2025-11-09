@@ -1,7 +1,7 @@
 {lib, ...}: {
   imports = [
     ./vscode
-    ./nvf
+    # ./nvf
     ./zed
     ./helix
   ];

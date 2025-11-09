@@ -22,7 +22,7 @@
     myShell.zsh = true;
 
     myEditor.vscode = true;
-    myEditor.nvim = true;
+    # myEditor.nvim = true;
     myEditor.helix = true;
 
     myBrowser.zen = true;

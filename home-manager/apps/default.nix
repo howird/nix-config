@@ -26,5 +26,6 @@
     gnome-decoder
     warp
     blanket
+    apostrophe
   ];
 }

@@ -28,7 +28,6 @@
     typst.enable = true;
     typst.lsp.enable = true;
     typst.format.enable = true;
-    typst.format.type = "typstyle";
     typst.treesitter.enable = true;
     typst.extensions.typst-preview-nvim.enable = true;
 
