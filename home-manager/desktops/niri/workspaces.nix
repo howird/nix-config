@@ -50,7 +50,7 @@
     {
       matches = [
         {
-          app-id = "zen";
+          app-id = "zen-twilight";
           at-startup = true;
         }
       ];

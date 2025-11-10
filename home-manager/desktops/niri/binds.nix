@@ -10,7 +10,7 @@
 
     "Mod+T".action = spawn "ghostty";
     "Mod+O".action = spawn "nautilus";
-    "Mod+B".action = spawn "zen";
+    "Mod+B".action = spawn "zen-twilight";
     "Mod+M".action = spawn "spotify";
     "Mod+I".action = spawn "vesktop";
     "Mod+N".action = spawn "swaync-client" "-t" "-sw";

@@ -30,7 +30,7 @@
         }
         {argv = ["obsidian"];}
         {argv = ["zotero"];}
-        {argv = ["zen"];}
+        {argv = ["zen-twilight"];}
         {argv = ["ghostty"];}
         {argv = ["start-day"];}
       ]

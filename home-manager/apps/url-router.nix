@@ -19,7 +19,7 @@ in {
       if [[ "$URL" == *"localhost"* || "$URL" == *"127.0.0.1"* ]]; then
           exec chromium "$URL"
       else
-          exec zen "$URL"
+          exec zen-twilight "$URL"
       fi
     '';
   in [

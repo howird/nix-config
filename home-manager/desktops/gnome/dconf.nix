@@ -14,7 +14,7 @@
     "org/gnome/shell" = {
       disable-user-extensions = false;
       favorite-apps = [
-        "zen.desktop"
+        "zen-twilight.desktop"
         "alacritty.desktop"
         "obsidian.desktop"
         "vesktop.desktop"
@@ -93,7 +93,7 @@
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
       binding = "<Super>b";
-      command = "zen";
+      command = "zen-twilight";
       name = "browser";
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {

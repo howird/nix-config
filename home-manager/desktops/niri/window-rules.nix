@@ -29,7 +29,7 @@
         {title = "^.*Volume Control.*$";}
         {title = "^.*branchdialog.*$";}
         {
-          app-id = "zen";
+          app-id = "zen-twilight";
           title = "^Extension:.*$";
         }
         {

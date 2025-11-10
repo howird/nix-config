@@ -14,22 +14,27 @@
         auto-format = true;
         formatter.command = "${pkgs.alejandra}/bin/alejandra";
       }
+      {
+        name = "python";
+        auto-format = true;
+      }
+      {
+        name = "rust";
+        auto-format = true;
+      }
+      {
+        name = "cpp";
+        auto-format = true;
+      }
+      {
+        name = "c";
+        auto-format = true;
+      }
     ];
   };
 
-  # xdg.configFile."helix/config.toml".text = ''
-  #   [language-server.ruff]
-  #   command = "${pkgs.ruff}"
-  #   args = ["server"]
-
-  #   [[language]]
-  #   name = "python"
-  #   language-servers = ["ruff"]
-  #   auto-format = true
-  # '';
-
-  # home.packages = with pkgs; [
-  #   rustfmt
-  #   pyright
-  # ];
+  home.packages = with pkgs; [
+    ruff
+    pyright
+  ];
 }
