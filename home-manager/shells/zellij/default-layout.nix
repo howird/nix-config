@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   xdg.configFile."zellij/layouts/default.kdl".text = ''
     layout {
         swap_tiled_layout name="vertical" {
@@ -97,11 +93,31 @@
         }
 
         default_tab_template {
-            ${(import ./zjstatus.nix) {
-      zjstatus_wasm = "file:${pkgs.zjstatus}/bin/zjstatus.wasm";
-      colors = config.lib.stylix.colors;
-    }}
+            pane size=1 borderless=true {
+              plugin location="tab-bar"
+            }
             children
+        }
+
+        tab name="main" hide_floating_panes=true {
+            pane focus=true
+            floating_panes {
+                pane {
+                    name "todo"
+                    command "hx"
+                    args "~/todo.md"
+                    start_suspended true
+                    close_on_exit true
+                }
+            }
+        }
+
+        tab name="shell" split_direction="vertical" {
+            pane stacked=true {
+                pane command="gitui" start_suspended=true
+                pane focus=true expanded=true
+                pane command="yazi" start_suspended=true
+            }
         }
     }
   '';

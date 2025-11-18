@@ -6,15 +6,7 @@
 with pkgs.stdenv.hostPlatform; {
   zjstatus = inputs.zjstatus.packages.${system}.default;
   ghostty = inputs.ghostty.packages.${system}.default;
-  zen-browser = inputs.zen-browser.packages.${system}.default;
+  zen-browser = inputs.zen-browser.packages.${system}.twilight;
 
-  expose-theme = pkgs.callPackage ./expose {};
-  reactionary-theme = pkgs.callPackage ./reactionary {};
-  commonality-theme = pkgs.callPackage ./commonality {};
-  chicago95-theme = pkgs.callPackage ./chicago95 {};
-  retrosmart-cursors = pkgs.callPackage ./retrosmart-cursors {};
-  kde-compact-pager = pkgs.callPackage ./kde-compact-pager {};
-  kde-fokus = pkgs.callPackage ./kde-fokus {};
-  tahoma2d = pkgs.callPackage ./tahoma2d {};
   zesh = pkgs.callPackage ./zesh {};
 }

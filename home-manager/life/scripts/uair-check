@@ -6,6 +6,7 @@ max_minutes=120
 
 if [[ "$1" == "start" ]]; then
     rm -f "$check_file"
+    uairctl resume
     exit 0
 elif [[ "$1" == "stop" ]]; then
     # Default to max_minutes if no duration specified
@@ -16,6 +17,7 @@ elif [[ "$1" == "stop" ]]; then
     fi
     echo "$(date +%s)" > "$check_file"
     echo "$minutes" >> "$check_file"
+    uairctl pause
     exit 0
 fi
 
@@ -48,7 +50,7 @@ if [[ "$state" == "paused" ]]; then
       --extra-button="Unpause the pomo, lets do this" \
       --cancel-label="I'm wasting time, what should I do?" \
       --ok-label="My mind is cloudy, I need a meditation")
-    
+
     zenity_exit_code=$?
     if [[ $zenity_exit_code -eq 0 ]]; then
         # ok-label: need meditation

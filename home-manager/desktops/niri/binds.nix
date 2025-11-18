@@ -1,6 +1,6 @@
 {config, ...}: {
   programs.niri.settings.binds = with config.lib.niri.actions; {
-    "Mod+Slash".action = show-hotkey-overlay;
+    "Mod+Shift+Slash".action = show-hotkey-overlay;
     "Mod+Escape".action = toggle-overview;
 
     "Mod+Q".action = close-window;
@@ -46,21 +46,16 @@
     "Mod+Ctrl+J".action = move-column-to-workspace-down;
     "Mod+Ctrl+K".action = move-column-to-workspace-up;
 
-    "Alt+J".action = focus-window-down;
-    "Alt+K".action = focus-window-up;
-    "Alt+Down".action = focus-window-down;
-    "Alt+Up".action = focus-window-up;
+    "Mod+Semicolon".action = focus-window-down;
+    "Mod+Shift+Semicolon".action = focus-window-up;
+    "Mod+Ctrl+Semicolon".action = move-window-down;
+    "Mod+Ctrl+Shift+Semicolon".action = move-window-up;
 
-    "Alt+Ctrl+J".action = move-window-down;
-    "Alt+Ctrl+K".action = move-window-up;
-    "Alt+Ctrl+Down".action = move-window-down;
-    "Alt+Ctrl+Up".action = move-window-up;
+    "Mod+Comma".action = consume-window-into-column;
+    "Mod+Period".action = expel-window-from-column;
 
-    "Alt+Comma".action = consume-window-into-column;
-    "Alt+Period".action = expel-window-from-column;
-
-    "Alt+BracketLeft".action = consume-or-expel-window-left;
-    "Alt+BracketRight".action = consume-or-expel-window-right;
+    "Mod+BracketLeft".action = consume-or-expel-window-left;
+    "Mod+BracketRight".action = consume-or-expel-window-right;
 
     # Monitor
     "Mod+Shift+H".action = focus-monitor-left;

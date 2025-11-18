@@ -8,7 +8,7 @@
   imports = [
     ./chromium.nix
     inputs.schizofox.homeManagerModules.default
-    inputs.zen-browser.homeModules.twilight-official
+    inputs.zen-browser.homeModules.twilight
   ];
   options = {
     myBrowser = {

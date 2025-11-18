@@ -3,9 +3,11 @@
     ./zellij.nix
     ./default-layout.nix
     ./task-layout.nix
+    ./tab-bar.nix
   ];
 
   programs.zellij.enable = true;
+  programs.zellij.tab-bar.name = "zjstatus";
 
   home.packages = with pkgs; [
     zesh

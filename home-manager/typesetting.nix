@@ -6,6 +6,7 @@
     texliveFull
     zotero
     pandoc
+    pdftk
 
     typst
     typstyle
