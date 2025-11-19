@@ -17,6 +17,12 @@
       {
         name = "python";
         auto-format = true;
+        # for some reason pyright is not configured by default
+        language-servers = ["pyright"];
+        formatter = {
+          command = "${pkgs.ruff}/bin/ruff";
+          args = ["format" "%{buffer_name}"];
+        };
       }
       {
         name = "rust";
@@ -36,5 +42,6 @@
   home.packages = with pkgs; [
     ruff
     pyright
+    ty
   ];
 }
