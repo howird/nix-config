@@ -21,7 +21,15 @@
         language-servers = ["pyright"];
         formatter = {
           command = "${pkgs.ruff}/bin/ruff";
-          args = ["format" "%{buffer_name}"];
+          args = ["format" "-"];
+        };
+      }
+      {
+        name = "markdown";
+        auto-format = true;
+        formatter = {
+          command = "${pkgs.deno}/bin/deno";
+          args = ["fmt" "-" "--ext" "md"];
         };
       }
       {
