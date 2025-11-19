@@ -51,5 +51,6 @@
     ruff
     pyright
     ty
+    marksman
   ];
 }
