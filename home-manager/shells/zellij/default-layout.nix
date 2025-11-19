@@ -114,9 +114,9 @@
 
         tab name="shell" split_direction="vertical" {
             pane stacked=true {
-                pane command="gitui" start_suspended=true
-                pane focus=true expanded=true
-                pane command="yazi" start_suspended=true
+                pane name="git" command="gitui" start_suspended=true
+                pane name="shell" focus=true expanded=true
+                pane name="files" command="yazi" start_suspended=true
             }
         }
     }

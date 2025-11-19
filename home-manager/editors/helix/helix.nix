@@ -36,8 +36,6 @@
       };
     };
   };
-  # see https://rushter.com/blog/helix-editor/
-  # https://github.com/sxyazi/yazi/pull/2461
 
   programs.helix.settings.theme = lib.mkDefault "everforest_dark_no_bg";
   xdg.configFile."helix/themes/everforest_dark_no_bg.toml".text = ''

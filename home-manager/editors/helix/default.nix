@@ -3,7 +3,11 @@
   pkgs,
   ...
 }: {
-  imports = [./helix.nix ./languages.nix];
+  imports = [
+    ./helix.nix
+    ./languages.nix
+    ./binds.nix
+  ];
   programs.helix = {
     enable = config.myEditor.helix;
     defaultEditor = true;

@@ -10,7 +10,7 @@
       "**/.aider*"
     ];
     settings = {
-      core.editor = "nvim";
+      core.editor = "hx";
       pull.ff = "only";
       user = {
         name = "Howard Nguyen-Huu";
