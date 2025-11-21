@@ -32,7 +32,6 @@
       uw-vpn = "sudo openconnect -v cn-vpn.uwaterloo.ca";
       tree = "eza --tree";
       cat = "bat";
-      code = lib.mkIf config.myEditor.vscodium "codium";
     };
 
     home.packages = with pkgs; [

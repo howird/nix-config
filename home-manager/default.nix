@@ -21,9 +21,8 @@
   config = {
     myShell.zsh = true;
 
-    myEditor.vscode = true;
-    # myEditor.nvim = true;
-    myEditor.helix = true;
+    programs.vscode.enable = true;
+    programs.helix.enable = true;
 
     myBrowser.zen = true;
 

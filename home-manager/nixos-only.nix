@@ -10,7 +10,7 @@
     programs.ghostty.enable = true; # gl issues for non-NixOS
 
     # editors
-    myEditor.zed = true;
+    programs.zed-editor.enable = true;
 
     # browsers
     myBrowser.chromium = true;

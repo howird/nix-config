@@ -1,18 +1,11 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./helix.nix
     ./languages.nix
     ./binds.nix
   ];
-  programs.helix = {
-    enable = config.myEditor.helix;
-    defaultEditor = true;
-  };
 
+  programs.helix.defaultEditor = true;
   home.packages = with pkgs; [
     yazi
   ];

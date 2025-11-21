@@ -7,12 +7,13 @@
     openconnect_openssl
     networkmanager
 
-    # reaper
     audacity
     obs-studio
     video-trimmer
     eyedropper
     krita
+    gimp
+    rnote
 
     vesktop
     slack

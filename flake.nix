@@ -17,10 +17,6 @@
       url = "github:nix-community/nixos-vscode-server";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvf = {
-      url = "github:NotAShelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";

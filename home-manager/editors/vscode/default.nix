@@ -1,26 +1,15 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./extensions.nix
     ./settings.nix
   ];
 
   programs.vscode = {
-    enable = config.myEditor.vscode || config.myEditor.vscodium;
-    package =
-      (
-        if config.myEditor.vscode
-        then pkgs.vscode
-        else pkgs.vscodium
-      )
-        .override {
-        commandLineArgs = [
-          "--enable-features=UseOzonePlatform"
-          "--ozone-platform=wayland"
-        ];
-      };
+    package = pkgs.vscode.override {
+      commandLineArgs = [
+        "--enable-features=UseOzonePlatform"
+        "--ozone-platform=wayland"
+      ];
+    };
   };
 }

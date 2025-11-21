@@ -7,6 +7,9 @@
     dust
     dua
 
+    ast-grep
+    serpl
+
     devenv
     nixd
     textpieces
@@ -14,11 +17,8 @@
     bun
     aider-chat
     fabric-ai
-    code-cursor
     cursor-cli
-    opencode
     goose-cli
-    jetbrains.clion
   ];
 
   services.lorri.enable = true;
@@ -44,17 +44,5 @@
     enable = true;
     enableZshIntegration = config.myShell.zsh;
     enableFishIntegration = config.myShell.fish;
-  };
-  programs.opencode = {
-    enable = true;
-    settings = {
-      mcp = {
-        context7 = {
-          enabled = true;
-          type = "local";
-          command = ["${pkgs.bun}/bin/bunx" "@upstash/context7-mcp"];
-        };
-      };
-    };
   };
 }

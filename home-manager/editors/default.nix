@@ -1,18 +1,14 @@
-{lib, ...}: {
+{pkgs, ...}: {
   imports = [
     ./vscode
-    # ./nvf
     ./zed
+    ./opencode
     ./helix
   ];
 
-  options = {
-    myEditor = {
-      vscode = lib.mkEnableOption "vscode";
-      vscodium = lib.mkEnableOption "vscodium";
-      nvim = lib.mkEnableOption "nvim";
-      zed = lib.mkEnableOption "zed";
-      helix = lib.mkEnableOption "helix";
-    };
-  };
+  home.packages = with pkgs; [
+    claude-code
+    code-cursor
+    jetbrains.clion
+  ];
 }
