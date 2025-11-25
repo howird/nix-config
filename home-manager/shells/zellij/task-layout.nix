@@ -18,7 +18,7 @@
     }
     layout {
         pane command="taskwarrior-tui"
-        pane name="taskwarrior-shell" size="30%"
+        pane name="taskwarrior-shell" size="30%" focus=true
     }
   '';
 }

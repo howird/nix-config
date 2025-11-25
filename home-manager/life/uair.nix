@@ -23,7 +23,7 @@
       "work${n}"
       "!WORK ${n}!"
       "25" "true"
-      "uairzen ': 🧠 WORK ${n} done, rest time! DON'T SCROLL! try: long-distance gaze, meditation, stretch, etc. 🌅'"
+      "uairzen ': 🧠 WORK ${n} done, rest time! DO NOT SCROLL! try: long-distance gaze, meditation, stretch, etc. 🌅'"
     );
     rest-session = n: (
       session-fmt
