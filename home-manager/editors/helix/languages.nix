@@ -17,8 +17,7 @@
       {
         name = "python";
         auto-format = true;
-        # for some reason pyright is not configured by default
-        language-servers = ["ty" "ruff" "pyright" "pylsp"];
+        language-servers = ["ty" "ruff"];
         formatter = {
           command = "${pkgs.ruff}/bin/ruff";
           args = ["format" "-"];

@@ -14,6 +14,7 @@
     krita
     gimp
     rnote
+    anki
 
     vesktop
     slack

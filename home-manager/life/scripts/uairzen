@@ -1,9 +1,22 @@
 #!/usr/bin/env bash
 niri msg action focus-workspace task
 uairctl resume
+
+# Start the timer with zenity in the background
 uairctl listen | zenity \
   --progress \
   --title="🍅$1" \
   --percentage=0 \
   --auto-close \
-  --no-cancel &> /dev/null
+  --no-cancel &> /dev/null &
+
+TIMER_PID=$!
+
+# Keep focusing the task workspace every second while timer is running
+while kill -0 $TIMER_PID 2>/dev/null; do
+  sleep 1
+  niri msg action focus-workspace task
+done
+
+# Wait for the timer process to fully complete
+wait $TIMER_PID

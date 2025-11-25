@@ -8,6 +8,7 @@
   myShell.aliases.nixwird = "home-manager switch --flake /home/${config.home.username}/nix/config${config.myShell.hmFlakeArgs}";
   stylix.autoEnable = false;
   stylix.targets.zellij.enable = true;
+  stylix.targets.zed.enable = true;
   stylix.targets.gnome.enable = true;
   stylix.targets.gtk.enable = true;
 
