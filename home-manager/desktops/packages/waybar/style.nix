@@ -10,7 +10,12 @@
     base = colors.base00;
     mantle = colors.base01;
     surface1 = colors.base03;
+    red = colors.base08;
+    orange = colors.base09;
+    yellow = colors.base0A;
     green = colors.base0B;
+    aqua = colors.base0C;
+    blue = colors.base0D;
   in ''
     * {
       border: none;
@@ -37,7 +42,7 @@
     }
 
     #workspaces {
-      padding-left: 15px;
+      padding-left: 10px;
     }
     #workspaces button {
       color: ${text};
@@ -45,25 +50,39 @@
       padding-right: 5px;
       margin-right: 10px;
     }
-    #workspaces button.empty {
-      color: ${text};
-    }
-    #workspaces button.active {
+    #workspaces button.active, #custom-uair-time.resumed {
       color: ${green};
     }
-
-    #clock {
-      color: ${text};
+    #custom-uair-time.paused {
+      color: ${red};
     }
 
-    #tray {
-      margin-left: 10px;
+    #custom-uair.settling-my-mind {
+      color: ${yellow};
+    }
+    #custom-uair.meditating {
+      color: ${orange};
+    }
+    #custom-uair.intention-setting {
+      color: ${aqua};
+    }
+    #custom-uair.working {
+      color: ${blue};
+    }
+    #custom-uair.resting {
+      color: ${orange};
+    }
+
+    #clock, #tray {
       color: ${text};
+    }
+    #tray {
+      margin-right: 5px;
     }
     #tray menu {
       background: ${mantle};
       border: 1px solid ${surface1};
-      padding: 8px;
+      padding: 5px;
     }
     #tray menuitem {
       padding: 1px;
@@ -72,26 +91,8 @@
     #pulseaudio, #network, #cpu, #memory, #disk, #battery, #custom-notification {
       padding-left: 5px;
       padding-right: 5px;
-      margin-right: 10px;
+      margin-right: 8px;
       color: ${text};
-    }
-
-    #pulseaudio {
-      margin-left: 15px;
-    }
-
-    #custom-notification {
-      margin-left: 15px;
-      padding-right: 2px;
-      margin-right: 5px;
-    }
-
-    #custom-launcher {
-      font-size: 20px;
-      color: ${text};
-      font-weight: bold;
-      margin-left: 15px;
-      padding-right: 10px;
     }
   '';
 }

@@ -13,7 +13,7 @@
     pre-session = n: (
       session-fmt
       "pre-work${n}"
-      "!pre-WORK ${n}!"
+      "intention-setting"
       "1"
       "true"
       "notify-send '🍅: 🌅 rest done! time for WORK ${n} 🧠'"
@@ -21,14 +21,14 @@
     work-session = n: (
       session-fmt
       "work${n}"
-      "!WORK ${n}!"
+      "working"
       "25" "true"
-      "uairzen ': 🧠 WORK ${n} done, rest time! DO NOT SCROLL! try: long-distance gaze, meditation, stretch, etc. 🌅'"
+      "uairzen ': 🧠 WORK ${n} done, rest time! DO NOT SCROLL! settle your mind with long-distance gaze, meditation, stretches, etc. 🌅'"
     );
     rest-session = n: (
       session-fmt
       "rest${n}"
-      "~rest ${n}~"
+      "resting"
       "5"
       "true"
       "uairzen ': 🌅 rest ${n} done! spend the next moment choosing what you want to accomplish next! 🧠'"
@@ -38,25 +38,25 @@
       loop_on_end = true
 
       [defaults]
-      format = "{percent}\n#{time} left in {name}\n"
+      format = "{percent}\n#{time} of {name} name left.\n"
       paused_state_text = "paused"
       resumed_state_text = "resumed"
     '' [
       (
         session-fmt
         "med-prep"
-        "~meditation prep~"
+        "settling-my-mind"
         "2"
         "true"
-        "uairzen ': 🌅 time to start your 🧘'"
+        "uairzen ': 🌅 time to start your 🧘, try and settle your mind and gather your intentions'"
       )
       (
         session-fmt
         "med"
-        "~meditation~"
+        "meditating"
         "12"
         "true"
-        "notify-send '🍅: 🧘 done, are you ready to start?'"
+        "uairzen ': 🧘 done. spend the next moment choosing what you want to accomplish next! 🧠'"
       )
       (pre-session "1")
       (work-session "1")
@@ -71,7 +71,7 @@
       (
         session-fmt
         "work4"
-        "!WORK 4!"
+        "working"
         "25"
         "true"
         "uairzen ': you did it! time to rest 🌅 and realign 🧘'"

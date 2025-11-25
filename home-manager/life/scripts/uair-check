@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 check_file="/tmp/uair-check-stop.$USER.txt"
+lock_file="/tmp/uair-check-lock.$USER.txt"
 default_minutes=30
 max_minutes=120
 
@@ -43,15 +44,45 @@ fi
 state=$(uairctl fetch "{state}\n")
 
 if [[ "$state" == "paused" ]]; then
+    # Check if another instance is already running
+    if [[ -f "$lock_file" ]]; then
+        exit 0
+    fi
+    
+    # Create lock file
+    echo $$ > "$lock_file"
+    
+    # Setup cleanup trap for lock file and temp files
+    cleanup() {
+        rm -f "$lock_file" "$zenity_output_file" "$zenity_exit_file"
+    }
+    trap cleanup EXIT INT TERM
+    
     niri msg action focus-workspace task
-    zenity_output=$(zenity --question \
+    
+    # Run zenity in the background and capture its output and exit code
+    zenity_output_file=$(mktemp)
+    zenity_exit_file=$(mktemp)
+    (zenity --question \
       --title="checking in 🍅" --text \
       "noticed you might be off track, need help getting back?" \
       --extra-button="Unpause the pomo, lets do this" \
       --cancel-label="I'm wasting time, what should I do?" \
-      --ok-label="My mind is cloudy, I need a meditation")
+      --ok-label="My mind is cloudy, I need a meditation" > "$zenity_output_file" 2>/dev/null
+    echo $? > "$zenity_exit_file") &
+    zenity_pid=$!
+    
+    # Wait for zenity to close, refocusing the workspace every second
+    while kill -0 "$zenity_pid" 2>/dev/null; do
+        niri msg action focus-workspace task
+        sleep 1
+    done
+    
+    # Wait for background process to complete and read results
+    wait "$zenity_pid" 2>/dev/null
+    zenity_output=$(cat "$zenity_output_file")
+    zenity_exit_code=$(cat "$zenity_exit_file")
 
-    zenity_exit_code=$?
     if [[ $zenity_exit_code -eq 0 ]]; then
         # ok-label: need meditation
         start-day

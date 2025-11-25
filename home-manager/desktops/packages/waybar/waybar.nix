@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{config, ...}: {
   programs.waybar.settings.mainBar = with config.lib.stylix.colors; {
     position = "bottom";
     layer = "top";
@@ -11,19 +7,17 @@
     margin-bottom = 0;
     margin-left = 0;
     margin-right = 0;
-    modules-left =
-      [
-        "custom/launcher"
-      ]
-      ++ (lib.optional config.programs.niri.enable "niri/workspaces");
+
+    modules-left = [
+      "niri/workspaces"
+    ];
     modules-center = [
-      "custom/uair"
+      "custom/uair-time"
       "clock"
+      "custom/uair"
     ];
     modules-right = [
       "tray"
-      "cpu"
-      "disk"
       "pulseaudio"
       "battery"
       "custom/notification"
@@ -34,36 +28,53 @@
           today = "<span color='#98971A'><b>{}</b></span>";
         };
       };
-      format = "  {:%I:%M %p}";
+      format = "  it's {:%I:%M%p on %a}, ";
       tooltip = "true";
       tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-      format-alt = "  {:%b %d}";
+      format-alt = "  {:%F, w%U/52, %R} ";
+      interval = 1;
     };
-
     "niri/workspaces" = {
       format = "{icon}";
       format-icons = {
-        "default" = " ";
+        "default" = "󰙟 ";
       };
+    };
+    "custom/notification" = {
+      tooltip = false;
+      format = "{icon} ";
+      format-icons = {
+        notification = "<span foreground='red'><sup></sup></span> <span foreground='#${red}'></span>";
+        none = " <span foreground='#${red}'></span>";
+        dnd-notification = "<span foreground='red'><sup></sup></span> <span foreground='#${red}'></span>";
+        dnd-none = " <span foreground='#${red}'></span>";
+        inhibited-notification = "<span foreground='red'><sup></sup></span> <span foreground='#${red}'></span>";
+        inhibited-none = " <span foreground='#${red}'></span>";
+        dnd-inhibited-notification = "<span foreground='red'><sup></sup></span> <span foreground='#${red}'></span>";
+        dnd-inhibited-none = " <span foreground='#${red}'></span>";
+      };
+      return-type = "json";
+      exec-if = "which swaync-client";
+      exec = "swaync-client -swb";
+      on-click = "swaync-client -t -sw";
+      on-click-right = "swaync-client -d -sw";
+      escape = true;
     };
 
     cpu = {
       format = "<span foreground='#${green}'> </span> {usage}%";
       format-alt = "<span foreground='#${green}'> </span> {avg_frequency} GHz";
       interval = 2;
-      on-click-right = "hyprctl dispatch exec '[float; center; size 950 650] alacritty --override font_size=14 --title float_alacritty btop'";
     };
     memory = {
       format = "<span foreground='#${cyan}'>󰟜 </span>{}%";
       format-alt = "<span foreground='#${cyan}'>󰟜 </span>{used} GiB"; # 
       interval = 2;
-      on-click-right = "hyprctl dispatch exec '[float; center; size 950 650] alacritty --override font_size=14 --title float_alacritty btop'";
     };
     disk = {
       # path = "/";
       format = "<span foreground='#${orange}'>󰋊 </span>{percentage_used}%";
       interval = 60;
-      on-click-right = "hyprctl dispatch exec '[float; center; size 950 650] alacritty --override font_size=14 --title float_alacritty btop'";
     };
     network = {
       format-wifi = "<span foreground='#${magenta}'> </span> {signalStrength}%";
@@ -73,7 +84,7 @@
       format-disconnected = "<span foreground='#${magenta}'>󰖪 </span>";
     };
     tray = {
-      icon-size = 20;
+      icon-size = 15;
       spacing = 8;
     };
     pulseaudio = {
@@ -104,30 +115,6 @@
       format-time = "{H}h{M}m";
       tooltip = true;
       tooltip-format = "{time}";
-    };
-    "custom/launcher" = {
-      format = "";
-      on-click = "rofi -show drun";
-    };
-    "custom/notification" = {
-      tooltip = false;
-      format = "{icon} ";
-      format-icons = {
-        notification = "<span foreground='red'><sup></sup></span>  <span foreground='#${red}'></span>";
-        none = "  <span foreground='#${red}'></span>";
-        dnd-notification = "<span foreground='red'><sup></sup></span>  <span foreground='#${red}'></span>";
-        dnd-none = "  <span foreground='#${red}'></span>";
-        inhibited-notification = "<span foreground='red'><sup></sup></span>  <span foreground='#${red}'></span>";
-        inhibited-none = "  <span foreground='#${red}'></span>";
-        dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>  <span foreground='#${red}'></span>";
-        dnd-inhibited-none = "  <span foreground='#${red}'></span>";
-      };
-      return-type = "json";
-      exec-if = "which swaync-client";
-      exec = "swaync-client -swb";
-      on-click = "swaync-client -t -sw";
-      on-click-right = "swaync-client -d -sw";
-      escape = true;
     };
   };
 }
