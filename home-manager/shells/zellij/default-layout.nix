@@ -99,14 +99,14 @@
             children
         }
 
-        tab name="main" hide_floating_panes=true {
+        tab name="main" {
             pane
         }
 
-        tab name="shell" split_direction="vertical" hide_floating_panes=true {
+        tab name="shell" hide_floating_panes=true {
             pane stacked=true {
                 pane name="git" command="gitui" start_suspended=true
-                pane name="shell" focus=true expanded=true
+                pane name="shell" expanded=true
             }
         }
     }
