@@ -100,23 +100,13 @@
         }
 
         tab name="main" hide_floating_panes=true {
-            pane focus=true
-            floating_panes {
-                pane {
-                    name "todo"
-                    command "hx"
-                    args "~/todo.md"
-                    start_suspended true
-                    close_on_exit true
-                }
-            }
+            pane
         }
 
-        tab name="shell" split_direction="vertical" {
+        tab name="shell" split_direction="vertical" hide_floating_panes=true {
             pane stacked=true {
                 pane name="git" command="gitui" start_suspended=true
                 pane name="shell" focus=true expanded=true
-                pane name="files" command="yazi" start_suspended=true
             }
         }
     }

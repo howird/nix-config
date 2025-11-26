@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   imports = [
     ./helix.nix
     ./languages.nix
@@ -6,7 +6,5 @@
   ];
 
   programs.helix.defaultEditor = true;
-  home.packages = with pkgs; [
-    yazi
-  ];
+  programs.yazi.enable = true;
 }
