@@ -15,7 +15,10 @@ TIMER_PID=$!
 # Keep focusing the task workspace every second while timer is running
 while kill -0 $TIMER_PID 2>/dev/null; do
   sleep 1
-  niri msg action focus-workspace task
+  STATE=$(uairctl fetch {state})
+  if [ "$STATE" != "paused" ]; then
+    niri msg action focus-workspace task
+  fi
 done
 
 # Wait for the timer process to fully complete

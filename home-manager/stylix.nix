@@ -43,17 +43,18 @@
       };
     };
 
-    stylix.fonts = rec {
+    stylix.fonts = {
       serif = {
         package = pkgs.aleo-fonts;
         name = "Aleo";
       };
 
-      sansSerif = serif;
+      sansSerif = {
+        package = pkgs.inter;
+        name = "Inter";
+      };
 
       monospace = {
-        # package = pkgs.nerd-fonts.jetbrains-mono;
-        # name = "JetBrainsMono NF";
         package = pkgs.maple-mono.NF;
         name = "Maple Mono NF";
       };

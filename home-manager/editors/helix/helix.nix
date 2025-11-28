@@ -19,7 +19,7 @@
       end-of-line-diagnostics = "hint";
       color-modes = true;
 
-      inline-diagnostics.cursor-line = "warning";
+      inline-diagnostics.cursor-line = "hint";
       file-picker.hidden = false;
 
       indent-guides = {
@@ -27,7 +27,7 @@
         character = "╎";
         skip-levels = 0;
       };
-      soft-wrap.enable = false;
+      soft-wrap.enable = true;
 
       auto-save = {
         focus-lost = true;

@@ -10,7 +10,7 @@
     * {
       bg-col: ${base00};
       bg-col-light: ${base01};
-      border-col: ${base07};
+      border-col: ${base0B};
       selected-col: ${base0C};
       green: ${base0B};
       fg-col: ${base05};
@@ -25,10 +25,10 @@
       modi: "run,drun,window";
       lines: 5;
       cycle: false;
-      font: "${config.stylix.fonts.monospace.name} Bold 15";
+      font: "${config.desktop.font.name} 15";
       show-icons: true;
       icon-theme: "Papirus-dark";
-      terminal: "alacritty";
+      terminal: "ghostty";
       drun-display-format: "{icon} {name}";
       location: 0;
       disable-history: true;
@@ -51,9 +51,10 @@
     window {
       height: 600px;
       width: 900px;
-      border: 2px;
+      border: 5px;
       border-color: @border-col;
       background-color: @bg-col;
+      border-radius: 20px;
     }
 
     mainbox {
@@ -63,7 +64,7 @@
     inputbar {
       children: [prompt,entry];
       background-color: @bg-col-light;
-      border-radius: 5px;
+      border-radius: 20px;
       padding: 0px;
     }
 
@@ -71,7 +72,7 @@
       background-color: @green;
       padding: 4px;
       text-color: @bg-col-light;
-      border-radius: 3px;
+      border-radius: 15px;
       margin: 10px 0px 10px 10px;
     }
 
@@ -85,7 +86,7 @@
       margin: 10px 10px 10px 5px;
       text-color: @fg-col;
       background-color: @bg-col;
-      border-radius: 3px;
+      border-radius: 15px;
     }
 
     listview {
@@ -102,6 +103,7 @@
       margin: 0px 10px 4px 4px;
       background-color: @bg-col;
       text-color: @fg-col;
+      border-radius: 15px;
     }
 
     element-icon {
@@ -111,7 +113,7 @@
     element selected {
       background-color:  @selected-col ;
       text-color: @fg-col2  ;
-      border-radius: 3px;
+      border-radius: 15px;
     }
 
     mode-switcher {

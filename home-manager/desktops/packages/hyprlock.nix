@@ -42,10 +42,10 @@
       monitor =
       text = cmd[update:1000] echo "$(date +"%I:%M %p")"
       color = ${text "0.9"}
-      font_size = 115
-      font_family = ${config.stylix.fonts.serif.name} Bold
-      shadow_passes = 3
-      position = 0, -150
+      font_size = 150
+      font_family = ${config.desktop.font.name} 800
+      shadow_passes = 4
+      position = 0, -180
       halign = center
       valign = top
     }
@@ -53,12 +53,12 @@
     # Day
     label {
       monitor =
-      text = cmd[update:1000] echo "- $(date +"%A, %B %d") -"
+      text = cmd[update:1000] echo "<i>~ $(date +"%A, %B %d") ~</i>"
       color = ${text "0.9"}
-      font_size = 18
-      font_family = ${config.stylix.fonts.serif.name}
+      font_size = 40
+      font_family = ${config.desktop.font.name} 600
       shadow_passes = 3
-      position = 0, -350
+      position = 0, -420
       halign = center
       valign = top
     }
@@ -67,14 +67,14 @@
     # USER-BOX
     shape {
       monitor =
-      size = 300, 50
+      size = 360, 60
       color = ${base "0.33"}
-      rounding = 15
+      rounding = 25
       border_size = 0
       border_color = rgba(255, 255, 255, 0.0)
       rotate = 0
 
-      position = 0, 270
+      position = 0, 310
       halign = center
       valign = bottom
     }
@@ -84,9 +84,9 @@
       monitor =
       text =   $USER
       color = ${text "1.0"}
-      font_size = 15
-      font_family = ${config.stylix.fonts.serif.name}
-      position = 0, 281
+      font_size = 20
+      font_family = ${config.desktop.font.name}
+      position = 0, 322
       halign = center
       valign = bottom
     }
@@ -94,9 +94,9 @@
     # INPUT FIELD
     input-field {
       monitor =
-      size = 300, 50
+      size = 360, 60
       outline_thickness = 0
-      rounding = 15
+      rounding = 25
       dots_size = 0.25 # Scale of input-field height, 0.2 - 0.8
       dots_spacing = 0.4 # Scale of dots' absolute size, 0.0 - 1.0
       dots_center = true
@@ -105,11 +105,11 @@
       color = ${base "0.9"}
       font_color = ${text "0.9"}
       font_size = 14
-      font_family = ${config.stylix.fonts.serif.name}
+      font_family = ${config.desktop.font.name}
       fade_on_empty = false
       placeholder_text = <i><span foreground="#${config.lib.stylix.colors.withHashtag.base00}">Enter Password</span></i>
       hide_input = false
-      position = 0, 200
+      position = 0, 230
       halign = center
       valign = bottom
     }

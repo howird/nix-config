@@ -1,6 +1,6 @@
 {config, ...}: {
   xdg.configFile."swaync/style.css".text = let
-    font = config.stylix.fonts.serif.name;
+    font = config.desktop.font.name;
 
     text = "#${config.lib.stylix.colors.base05}";
     base = "#${config.lib.stylix.colors.base00}";
@@ -40,7 +40,7 @@
         box-shadow: none;
         /* margin: 0px; */
         /* margin: -15px -10px -15px -10px; */
-        border-radius: 4px;
+        border-radius: 15px;
         background: inherit;
         /* background: @theme_bg_color; */
         /* background: shade(alpha(@borders, 2.55), 0.25); */
@@ -48,7 +48,7 @@
 
     .notification button {
         background: transparent;
-        border-radius: 0px;
+        border-radius: 15px;
         border: none;
         margin: 0px;
         padding: 0px;
@@ -64,7 +64,7 @@
         min-height: 64px;
         margin: 10px;
         padding: 0px;
-        border-radius: 0px;
+        border-radius: 15px;
     }
 
     .close-button {
@@ -80,7 +80,7 @@
 
 
     .notification-default-action {
-        border-radius: 4px;
+        border-radius: 15px;
     }
 
     /* When alternative actions are visible */
@@ -90,7 +90,7 @@
     }
 
     .notification-action {
-        border-radius: 0px;
+        border-radius: 15px;
         padding: 2px;
         color: @text;
         /* color: @theme_text_color; */
@@ -134,7 +134,7 @@
     }
 
     .body-image {
-        border-radius: 4px;
+        border-radius: 15px;
     }
 
     /* The "Notifications" and "Do Not Disturb" text widget */
@@ -147,11 +147,10 @@
     /* Control center */
 
     .control-center {
-        /* background: transparent; */
         background: @mantle;
         /* background: @theme_bg_color; */
-        border: 2px solid ${surface2};
-        border-radius: 0px;
+        border: 5px solid ${green};
+        border-radius: 20px;
         box-shadow: 0px 0px 2px black;
     }
 
@@ -159,17 +158,13 @@
         background: alpha(black, 0.2);
     }
 
-    /* .right.overlay-indicator { */
-    /*   border: solid 5px red; */
-    /* } */
-
     .control-center-list {
         /* background: @base; */
         background: @mantle;
         min-height: 5px;
         /* border: 1px solid @surface1; */
         border-top: none;
-        border-radius: 0px 0px 4px 4px;
+        border-radius: 15px;
     }
 
     .control-center-list-placeholder,
@@ -198,7 +193,7 @@
         margin: 0px;
         /* margin: 0px -5px; */
         border: none;
-        border-radius: 4px;
+        border-radius: 15px;
         box-shadow: none;
     }
 
@@ -210,7 +205,7 @@
         /* background: @theme_bg_color; */
         border: 1px solid @mantle;
         margin: 10px 5px 0px 5px;
-        border-radius: 4px;
+        border-radius: 15px;
         /* box-shadow: 0px 0px 4px black; */
         /* background: alpha(currentColor, 0.05); */
     }
@@ -247,7 +242,7 @@
         margin: 0px;
         background: inherit;
         /* background: @theme_bg_color; */
-        border-radius: 4px 4px 0px 0px;
+        border-radius: 15px;
         /* border: 1px solid @surface1; */
         border-bottom: none;
         padding-bottom: 20px;
@@ -267,7 +262,7 @@
         color: @text;
         /* color: @theme_text_color; */
         /* border: none; */
-        border-radius: 4px;
+        border-radius: 15px;
     }
 
     .widget-title>button:hover {
@@ -304,7 +299,7 @@
     .widget-menubar>box>box {
         margin: 5px 10px 5px 10px;
         min-height: 40px;
-        border-radius: 4px;
+        border-radius: 15px;
         background: transparent;
     }
 
@@ -336,7 +331,7 @@
         margin: 5px 10px 5px 10px;
         background: @mantle;
         /* background: alpha(currentColor, 0.05); */
-        border-radius: 4px;
+        border-radius: 15px;
     }
 
     .widget-menubar>box>revealer>box>button {
@@ -357,13 +352,13 @@
         font-weight: 500;
         margin: 0px;
         padding: 5px;
-        border-radius: 0px;
+        border-radius: 15px;
     }
 
     .widget-buttons-grid>flowbox>flowboxchild {
         background: @mantle;
         /* background: alpha(currentColor, 0.05); */
-        border-radius: 4px;
+        border-radius: 15px;
         min-height: 50px;
         min-width: 85px;
         margin: 5px;
@@ -372,7 +367,7 @@
 
     .widget-buttons-grid>flowbox>flowboxchild>button {
         background: transparent;
-        border-radius: 4px;
+        border-radius: 15px;
         margin: 0px;
         border: none;
         box-shadow: none;
@@ -396,7 +391,7 @@
         padding: 0px;
         margin: -5px 0px -10px 0px;
         padding: 0px;
-        border-radius: 4px;
+        border-radius: 15px;
         /* background: alpha(currentColor, 0.05); */
         background: @mantle;
     }
@@ -429,7 +424,7 @@
 
     /* Player buttons */
     .widget-mpris>box>carousel>widget>box>box:nth-child(2)>button {
-        border-radius: 4px;
+        border-radius: 15px;
     }
 
     .widget-mpris>box>carousel>widget>box>box:nth-child(2)>button:hover {
@@ -454,7 +449,7 @@
     }
 
     .widget-mpris-player {
-        border-radius: 0px;
+        border-radius: 15px;
         margin: 0px;
     }
 
@@ -477,7 +472,7 @@
         border-bottom: none;
         font-size: 13px;
         font-weight: 600;
-        border-radius: 0px;
+        border-radius: 15px;
         margin: 0px;
         padding: 0px;
     }
@@ -485,7 +480,7 @@
     .widget-volume>box {
         background: @mantle;
         /* background: alpha(currentColor, 0.05); */
-        border-radius: 4px;
+        border-radius: 15px;
         margin: 5px 10px 5px 10px;
         min-height: 50px;
     }
@@ -509,7 +504,7 @@
     .widget-volume>revealer>list {
         background: @mantle;
         /* background: alpha(currentColor, 0.05); */
-        border-radius: 4px;
+        border-radius: 15px;
         margin-top: 5px;
         padding: 0px;
     }
@@ -523,7 +518,7 @@
     .widget-volume>revealer>list>row:hover {
         background: transparent;
         box-shadow: none;
-        border-radius: 4px;
+        border-radius: 15px;
     }
 
     .widget-backlight>scale {
@@ -590,13 +585,13 @@
     }
 
     scale trough {
-        border-radius: 4px;
+        border-radius: 15px;
         background: @surface0;
         /* background: alpha(currentColor, 0.1); */
     }
 
     scale highlight {
-        border-radius: 5px;
+        border-radius: 15px;
         min-height: 10px;
         margin-right: -5px;
     }

@@ -1,8 +1,6 @@
 {config, ...}: {
   programs.waybar.style = let
-    font = config.stylix.fonts.serif.name;
-    font_weight = "bold";
-    font_size = "18px";
+    fontWeight = "500";
     opacity = "1";
 
     colors = config.lib.stylix.colors.withHashtag;
@@ -22,10 +20,9 @@
       border-radius: 0px;
       padding: 0;
       margin: 0;
-      font-family: "${font}";
-      font-weight: ${font_weight};
+      /* font-family and font-size set by stylix, see desktop/default.nix */
       opacity: ${opacity};
-      font-size: ${font_size};
+      font-weight: ${fontWeight};
     }
 
     window#waybar {
@@ -38,44 +35,28 @@
     }
     tooltip label {
       margin: 5px;
-      color: ${text};
     }
 
     #workspaces {
       padding-left: 10px;
     }
     #workspaces button {
-      color: ${text};
       padding-left:  5px;
       padding-right: 5px;
       margin-right: 10px;
     }
-    #workspaces button.active, #custom-uair-time.resumed {
-      color: ${green};
-    }
-    #custom-uair-time.paused {
-      color: ${red};
-    }
+    #workspaces button.active, #custom-uair-time.resumed { color: ${green}; }
+    #custom-uair-time.paused { color: ${red}; }
+    #custom-uair.settling-my-mind { color: ${yellow}; }
+    #custom-uair.meditating { color: ${orange}; }
+    #custom-uair.intention-setting { color: ${aqua}; }
+    #custom-uair.working { color: ${blue}; }
+    #custom-uair.resting { color: ${orange}; }
 
-    #custom-uair.settling-my-mind {
-      color: ${yellow};
-    }
-    #custom-uair.meditating {
-      color: ${orange};
-    }
-    #custom-uair.intention-setting {
-      color: ${aqua};
-    }
-    #custom-uair.working {
-      color: ${blue};
-    }
-    #custom-uair.resting {
-      color: ${orange};
-    }
-
-    #clock, #tray {
+    #clock, #tray, #workspaces button, tooltip label {
       color: ${text};
     }
+
     #tray {
       margin-right: 5px;
     }
@@ -92,7 +73,6 @@
       padding-left: 5px;
       padding-right: 5px;
       margin-right: 8px;
-      color: ${text};
     }
   '';
 }

@@ -4,10 +4,8 @@
       {
         name = "typst";
         auto-format = true;
-        formatter = {
-          command = "${pkgs.typstyle}/bin/typstyle";
-          args = ["--wrap-text"];
-        };
+        language-servers = ["tinymist" "harper-ls"];
+        formatter.command = "${pkgs.typstyle}/bin/typstyle";
       }
       {
         name = "nix";
@@ -51,5 +49,6 @@
     pyright
     ty
     marksman
+    harper
   ];
 }

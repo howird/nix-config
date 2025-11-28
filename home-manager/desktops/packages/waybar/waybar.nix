@@ -1,5 +1,5 @@
 {config, ...}: {
-  programs.waybar.settings.mainBar = with config.lib.stylix.colors; {
+  programs.waybar.settings.mainBar = with config.lib.stylix.colors.withHashtag; {
     position = "bottom";
     layer = "top";
     height = 28;
@@ -25,33 +25,33 @@
     clock = {
       calendar = {
         format = {
-          today = "<span color='#98971A'><b>{}</b></span>";
+          today = "<span color='${green}'><b>{}</b></span>";
         };
       };
-      format = "  it's {:%I:%M%p on %a}, ";
+      format = "   it's {:%I:%M%p on a %A}, ";
       tooltip = "true";
-      tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+      tooltip-format = "<tt><small>{calendar}</small></tt>";
       format-alt = "  {:%F, w%U/52, %R} ";
       interval = 1;
     };
     "niri/workspaces" = {
       format = "{icon}";
       format-icons = {
-        "default" = "󰙟 ";
+        default = "󰹟 ";
       };
     };
     "custom/notification" = {
       tooltip = false;
       format = "{icon} ";
       format-icons = {
-        notification = "<span foreground='red'><sup></sup></span> <span foreground='#${red}'></span>";
-        none = " <span foreground='#${red}'></span>";
-        dnd-notification = "<span foreground='red'><sup></sup></span> <span foreground='#${red}'></span>";
-        dnd-none = " <span foreground='#${red}'></span>";
-        inhibited-notification = "<span foreground='red'><sup></sup></span> <span foreground='#${red}'></span>";
-        inhibited-none = " <span foreground='#${red}'></span>";
-        dnd-inhibited-notification = "<span foreground='red'><sup></sup></span> <span foreground='#${red}'></span>";
-        dnd-inhibited-none = " <span foreground='#${red}'></span>";
+        notification = "<span foreground='red'><sup></sup></span> <span foreground='${red}'></span>";
+        none = " <span foreground='${red}'></span>";
+        dnd-notification = "<span foreground='red'><sup></sup></span> <span foreground='${red}'></span>";
+        dnd-none = " <span foreground='${red}'></span>";
+        inhibited-notification = "<span foreground='red'><sup></sup></span> <span foreground='${red}'></span>";
+        inhibited-none = " <span foreground='${red}'></span>";
+        dnd-inhibited-notification = "<span foreground='red'><sup></sup></span> <span foreground='${red}'></span>";
+        dnd-inhibited-none = " <span foreground='${red}'></span>";
       };
       return-type = "json";
       exec-if = "which swaync-client";
@@ -62,42 +62,45 @@
     };
 
     cpu = {
-      format = "<span foreground='#${green}'> </span> {usage}%";
-      format-alt = "<span foreground='#${green}'> </span> {avg_frequency} GHz";
+      format = "<span foreground='${green}'> </span> {usage}%";
+      format-alt = "<span foreground='${green}'> </span> {avg_frequency} GHz";
       interval = 2;
     };
     memory = {
-      format = "<span foreground='#${cyan}'>󰟜 </span>{}%";
-      format-alt = "<span foreground='#${cyan}'>󰟜 </span>{used} GiB"; # 
+      format = "<span foreground='${cyan}'>󰟜 </span>{}%";
+      format-alt = "<span foreground='${cyan}'>󰟜 </span>{used} GiB"; # 
       interval = 2;
     };
     disk = {
       # path = "/";
-      format = "<span foreground='#${orange}'>󰋊 </span>{percentage_used}%";
+      format = "<span foreground='${orange}'>󰋊 </span>{percentage_used}%";
       interval = 60;
     };
     network = {
-      format-wifi = "<span foreground='#${magenta}'> </span> {signalStrength}%";
-      format-ethernet = "<span foreground='#${magenta}'>󰀂 </span>";
+      format-wifi = "<span foreground='${magenta}'> </span> {signalStrength}%";
+      format-ethernet = "<span foreground='${magenta}'>󰀂 </span>";
       tooltip-format = "Connected to {essid} {ifname} via {gwaddr}";
       format-linked = "{ifname} (No IP)";
-      format-disconnected = "<span foreground='#${magenta}'>󰖪 </span>";
+      format-disconnected = "<span foreground='${magenta}'>󰖪 </span>";
     };
     tray = {
-      icon-size = 15;
+      icon-size = 16;
       spacing = 8;
     };
     pulseaudio = {
       format = "{icon} {volume}%";
-      format-muted = "<span foreground='#${blue}'> </span> {volume}%";
-      format-icons = {
-        default = ["<span foreground='#${blue}'> </span>"];
-      };
+      format-muted = "<span foreground='${red}'> </span>";
+      format-icons = [
+        "<span foreground='${yellow}'> </span>"
+        "<span foreground='${blue}'> </span>"
+        "<span foreground='${blue}'> </span>"
+        "<span foreground='${blue}'> </span>"
+      ];
       scroll-step = 2;
       on-click = "pavucontrol";
     };
     battery = {
-      format = "<span foreground='#${yellow}'>{icon}</span> {capacity}%";
+      format = "<span foreground='${yellow}'>{icon}</span> {capacity}%";
       format-icons = [
         " "
         " "
@@ -105,16 +108,16 @@
         " "
         " "
       ];
-      format-charging = "<span foreground='#${yellow}'> </span>{capacity}%";
-      format-full = "<span foreground='#${yellow}'> </span>{capacity}%";
-      format-warning = "<span foreground='#${yellow}'> </span>{capacity}%";
+      format-charging = "<span foreground='${yellow}'> </span>{capacity}%";
+      format-full = "<span foreground='${yellow}'> </span>{capacity}%";
+      format-warning = "<span foreground='${yellow}'> </span>{capacity}%";
       interval = 5;
       states = {
         warning = 20;
       };
       format-time = "{H}h{M}m";
       tooltip = true;
-      tooltip-format = "{time}";
+      tooltip-format = "{time} left";
     };
   };
 }

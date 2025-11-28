@@ -38,7 +38,7 @@
       loop_on_end = true
 
       [defaults]
-      format = "{percent}\n#{time} of {name} name left.\n"
+      format = "{percent}\n#{time} of {name} left.\n"
       paused_state_text = "paused"
       resumed_state_text = "resumed"
     '' [
