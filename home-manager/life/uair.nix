@@ -48,7 +48,7 @@
         "settling-my-mind"
         "2"
         "true"
-        "uairzen ': 🌅 time to start your 🧘, try and settle your mind and gather your intentions'"
+        "uairzen ': 🌅 time to start meditating 🧘, your goal is to sharpen 🔪 your intentions by settling your mind'"
       )
       (
         session-fmt
@@ -56,7 +56,7 @@
         "meditating"
         "12"
         "true"
-        "uairzen ': 🧘 done. spend the next moment choosing what you want to accomplish next! 🧠'"
+        "uairzen ': meditation 🧘 done. spend the next moment choosing what you want to accomplish next! 🧠'"
       )
       (pre-session "1")
       (work-session "1")

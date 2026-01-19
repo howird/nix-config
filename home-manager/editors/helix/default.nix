@@ -1,7 +1,8 @@
 {
   imports = [
+    ./languages
+
     ./helix.nix
-    ./languages.nix
     ./binds.nix
   ];
 

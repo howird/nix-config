@@ -41,7 +41,7 @@
   ; (tap-hold-release $tap-time $hold-time ; @sym)
   . (tap-hold-release $tap-time $hold-time . @fns)
 
-  ;; BOTTOM KEYS    
+  ;; BOTTOM KEYS
   tbs (tap-hold-release $tap-time $hold-time tab lsft)
   rtn (tap-hold-release $tap-time $hold-time ret @nua)
 
@@ -74,7 +74,7 @@
 (deflayer base
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
   XX   q    w    e    r    t    y    u    i    o    p    XX   XX
-  XX   @a   @s   @d   @f   g    h    @j   @k   @l   @;   bspc
+  XX   @a   @s   @d   @f   g    h    @j   @k   @l   @;   XX
   z    @x   c    v    b    esc  n    m    ,    @.   /    XX
   XX   XX   @tbs            bspc     spc  @rtn XX
 )
@@ -82,7 +82,7 @@
 (deflayer numarrows
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
   XX   @ast 7    8    9    +    XX   XX   XX   XX   XX   XX   XX
-  XX   /    @4   @5   @6   -    left down up   rght XX   del
+  XX   /    @4   @5   @6   -    left down up   rght XX   XX
   0    1    2    3    =    XX   XX   @zo  @zi  XX   XX   XX
   XX   XX   @tbs             del     @und @rtn XX
 )
@@ -90,7 +90,7 @@
 (deflayer symbols
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
   XX   XX   @tld @at  @csh grv  XX   @ast @hat @pip XX   XX   XX
-  XX   XX   @bng @{   @}   '    @dqu @obr @cbr @and \    del
+  XX   XX   @bng @{   @}   '    @dqu @obr @cbr @and \    XX
   XX   XX   [    ]    @hsh XX   @pct @lt  @gt  @que XX   XX
   XX   XX   @stb             del     @und XX   XX
 )

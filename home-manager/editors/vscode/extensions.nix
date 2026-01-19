@@ -60,7 +60,7 @@
 
       # AI
       github.copilot
-      anthropic.claude-code
+      # anthropic.claude-code
       saoudrizwan.claude-dev
     ]
     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [

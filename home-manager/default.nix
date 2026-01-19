@@ -21,7 +21,7 @@
   config = {
     myShell.zsh = true;
 
-    programs.vscode.enable = true;
+    # programs.vscode.enable = true;
     programs.helix.enable = true;
 
     myBrowser.zen = true;

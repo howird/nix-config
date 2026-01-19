@@ -15,6 +15,8 @@
     gimp
     rnote
     anki
+    zathura
+    sioyek
 
     vesktop
     slack

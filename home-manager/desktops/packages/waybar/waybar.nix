@@ -88,19 +88,19 @@
       spacing = 8;
     };
     pulseaudio = {
-      format = "{icon} {volume}%";
+      format = "{icon}  {volume}%";
       format-muted = "<span foreground='${red}'> </span>";
       format-icons = [
         "<span foreground='${yellow}'> </span>"
-        "<span foreground='${blue}'> </span>"
-        "<span foreground='${blue}'> </span>"
+        "<span foreground='${orange}'> </span>"
+        "<span foreground='${green}'> </span>"
         "<span foreground='${blue}'> </span>"
       ];
       scroll-step = 2;
       on-click = "pavucontrol";
     };
     battery = {
-      format = "<span foreground='${yellow}'>{icon}</span> {capacity}%";
+      format = "<span foreground='${yellow}'>{icon}</span>   {capacity}%";
       format-icons = [
         " "
         " "
@@ -108,9 +108,9 @@
         " "
         " "
       ];
-      format-charging = "<span foreground='${yellow}'> </span>{capacity}%";
-      format-full = "<span foreground='${yellow}'> </span>{capacity}%";
-      format-warning = "<span foreground='${yellow}'> </span>{capacity}%";
+      format-charging = "<span foreground='${yellow}'></span>   {capacity}%";
+      format-full = "<span foreground='${green}'></span>   {capacity}%";
+      format-warning = "<span foreground='${red}'></span>   {capacity}%";
       interval = 5;
       states = {
         warning = 20;

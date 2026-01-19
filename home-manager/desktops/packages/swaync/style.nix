@@ -210,14 +210,11 @@
         /* background: alpha(currentColor, 0.05); */
     }
 
-    .notification-row:focus,
-    .notification-row:hover {
+    .notification-row:focus, .notification-row:hover {
         box-shadow: none;
     }
 
-    .control-center-list>row,
-    .control-center-list>row:focus,
-    .control-center-list>row:hover {
+    .control-center-list>row, .control-center-list>row:focus, .control-center-list>row:hover {
         background: transparent;
         border: none;
         margin: 0px;
@@ -357,9 +354,7 @@
 
     .widget-buttons-grid>flowbox>flowboxchild {
         background: @mantle;
-        /* background: alpha(currentColor, 0.05); */
         border-radius: 15px;
-        min-height: 50px;
         min-width: 85px;
         margin: 5px;
         padding: 0px;
@@ -376,7 +371,6 @@
 
     .widget-buttons-grid>flowbox>flowboxchild>button:hover {
         background: @mantle;
-        /* background: alpha(currentColor, 0.1); */
     }
 
     /* Mpris widget */
@@ -396,8 +390,7 @@
         background: @mantle;
     }
 
-    .widget-mpris>box>button:nth-child(1),
-    .widget-mpris>box>button:nth-child(3) {
+    .widget-mpris>box>button:nth-child(1), .widget-mpris>box>button:nth-child(3) {
         margin-bottom: 0px;
     }
 
@@ -407,8 +400,7 @@
         opacity: 0;
     }
 
-    .widget-mpris>box>button:nth-child(3) {
-        margin-left: -25px;
+    .widget-mpris>box>button:nth-child(3) { margin-left: -25px;
         margin-right: -25px;
         opacity: 0;
     }

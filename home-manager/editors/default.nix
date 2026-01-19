@@ -9,6 +9,5 @@
   home.packages = with pkgs; [
     claude-code
     code-cursor
-    jetbrains.clion
   ];
 }

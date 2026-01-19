@@ -5,6 +5,36 @@ lock_file="/tmp/uair-check-lock.$USER.txt"
 default_minutes=30
 max_minutes=120
 
+show_help() {
+    niri msg action focus-workspace task
+    uairctl jump med-prep
+    uairctl pause
+    (
+        echo "10" ; sleep 1
+        echo "# Think about your main goals atm." ; sleep 3
+        echo "20" ; sleep 3
+        echo "30" ; sleep 3
+        echo "# Are there any tasks that are missing?" ; sleep 3
+        echo "40" ; sleep 3
+        echo "50" ; sleep 3
+        echo "# Its always good to get the easy ones out of the way first." ; sleep 3
+        echo "60" ; sleep 3
+        echo "70" ; sleep 3
+        echo "# Urgent and Important > Urgent > Important > Neither." ; sleep 3
+        echo "80" ; sleep 3
+        echo "90" ; sleep 3
+        echo "# Take a breath, be **conscious** to be in control." ; sleep 3
+        echo "95" ; sleep 3
+        echo "100" ; sleep 1
+    ) | zenity \
+      --progress \
+      --title="what to do 🍅" \
+      --percentage=0 \
+      --auto-close \
+      --no-cancel &> /dev/null
+    uairzen ': 🌅 spend the next moment choosing what you want to accomplish next! 🧠'
+}
+
 if [[ "$1" == "start" ]]; then
     rm -f "$check_file"
     uairctl resume
@@ -19,6 +49,9 @@ elif [[ "$1" == "stop" ]]; then
     echo "$(date +%s)" > "$check_file"
     echo "$minutes" >> "$check_file"
     uairctl pause
+    exit 0
+elif [[ "$1" == "help" ]]; then
+    show_help
     exit 0
 fi
 
@@ -91,32 +124,6 @@ if [[ "$state" == "paused" ]]; then
         uairctl resume
     else
         # cancel-label: what should I do
-        niri msg action focus-workspace task
-        uairctl jump med-prep
-        uairctl pause
-        (
-            echo "10" ; sleep 1
-            echo "# Think about your main goals atm." ; sleep 3
-            echo "20" ; sleep 3
-            echo "30" ; sleep 3
-            echo "# Are there any tasks that are missing?" ; sleep 3
-            echo "40" ; sleep 3
-            echo "50" ; sleep 3
-            echo "# Its always good to get the easy ones out of the way first." ; sleep 3
-            echo "60" ; sleep 3
-            echo "70" ; sleep 3
-            echo "# Urgent and Important > Urgent > Important > Neither." ; sleep 3
-            echo "80" ; sleep 3
-            echo "90" ; sleep 3
-            echo "# Take a breath, be **conscious** to be in control." ; sleep 3
-            echo "95" ; sleep 3
-            echo "100" ; sleep 1
-        ) | zenity \
-          --progress \
-          --title="what to do 🍅" \
-          --percentage=0 \
-          --auto-close \
-          --no-cancel &> /dev/null
-        uairzen ': 🌅 spend the next moment choosing what you want to accomplish next! 🧠'
+        show_help
     fi
 fi

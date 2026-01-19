@@ -4,7 +4,10 @@
   lib,
   ...
 }: {
-  home.packages = lib.optional config.programs.niri.enable pkgs.hyprlock;
+  home.packages = lib.optionals config.programs.niri.enable (with pkgs; [
+    hyprlock
+    # fortune-kind
+  ]);
   xdg.configFile."hypr/hyprlock.conf".text = let
     mkRgba = c: a: let
       r = config.lib.stylix.colors."${c}-rgb-r";
@@ -43,7 +46,7 @@
       text = cmd[update:1000] echo "$(date +"%I:%M %p")"
       color = ${text "0.9"}
       font_size = 150
-      font_family = ${config.desktop.font.name} 800
+      font_family = ${config.desktop.font.name}
       shadow_passes = 4
       position = 0, -180
       halign = center
@@ -63,6 +66,17 @@
       valign = top
     }
 
+    # QUOTE
+    # label {
+    #   monitor =
+    #   text = cmd[update:600000] echo "<i>$(fortune-kind)</i>"
+    #   color = ${text "1.0"}
+    #   font_size = 30
+    #   font_family = ${config.desktop.font.name}
+    #   position = 0, 0
+    #   halign = center
+    #   valign = center
+    # }
 
     # USER-BOX
     shape {

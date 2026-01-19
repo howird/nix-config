@@ -11,7 +11,6 @@
         {argv = ["waybar"];}
         {argv = ["swaync"];}
         {argv = ["swayosd-server"];}
-        {argv = ["swww" "img" "${config.stylix.image}"];}
         {argv = ["uair" "-q"];}
         {argv = ["niri" "msg" "action" "focus-workspace" "note"];}
         {argv = ["zellij" "d" "taskwarrior"];}
@@ -32,7 +31,8 @@
         {argv = ["zotero"];}
         {argv = ["zen-twilight"];}
         {argv = ["ghostty"];}
-        {argv = ["start-day"];}
+        {argv = ["uair-startup"];}
+        {argv = ["swww" "img" "${config.stylix.image}"];}
       ]
       ++ lib.optionals (host == "yerm") [
         {argv = ["nm-applet"];}

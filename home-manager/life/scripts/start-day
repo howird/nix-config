@@ -2,7 +2,7 @@
 uair-check start
 niri msg action focus-workspace task
 uairctl jump med-prep
-uairzen ': start your day off right by setting intentions 🌅 and aligning with them 🧘' &
+uairzen ': start your day off right by taking control of your mind 🧘 to enable intentional work 🌅' &
 sleep 3
 niri msg action focus-workspace read
 sleep 1

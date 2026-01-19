@@ -124,12 +124,13 @@
     "Mod+Ctrl+F".action = expand-column-to-available-width;
     "Mod+Z".action = center-column;
 
-    "Mod+Ctrl+Minus".action = set-column-width "-10%";
-    "Mod+Ctrl+Plus".action = set-column-width "+10%";
-    "Mod+Ctrl+Equal".action = set-column-width "+10%";
-    "Mod+Ctrl+Shift+Minus".action = set-window-height "-10%";
-    "Mod+Ctrl+Shift+Plus".action = set-window-height "+10%";
-    "Mod+Ctrl+Shift+Equal".action = set-window-height "+10%";
+    "Mod+Minus".action = set-window-height "-10%";
+    "Mod+Plus".action = set-window-height "+10%";
+    "Mod+Equal".action = set-window-height "+10%";
+
+    "Mod+Shift+Minus".action = set-column-width "-10%";
+    "Mod+Shift+Plus".action = set-column-width "+10%";
+    "Mod+Shift+Equal".action = set-column-width "+10%";
 
     "Mod+Space".action = toggle-window-floating;
     "Mod+W".action = toggle-column-tabbed-display;

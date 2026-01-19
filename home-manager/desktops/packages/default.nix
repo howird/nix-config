@@ -23,6 +23,7 @@
     glib
     wayland
     libnotify
+    wdisplays
 
     blueman
     networkmanagerapplet
