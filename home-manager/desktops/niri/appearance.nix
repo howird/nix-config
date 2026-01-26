@@ -41,11 +41,12 @@
       };
       border.enable = false;
 
+      gaps = 10;
       struts = {
-        left = -5;
-        right = -5;
-        top = -5;
-        bottom = -5;
+        left = -12;
+        right = -12;
+        top = -2;
+        bottom = -2;
       };
 
       tab-indicator = {

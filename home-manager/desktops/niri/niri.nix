@@ -5,14 +5,14 @@
       always-center-single-column = true;
 
       preset-column-widths = [
-        {proportion = 0.3;}
+        {proportion = 0.3334;}
         {proportion = 0.5;}
-        {proportion = 0.8;}
+        {proportion = 0.6666;}
         {proportion = 1.0;}
       ];
 
       default-column-width = {
-        proportion = 0.8;
+        proportion = 0.5;
       };
     };
 

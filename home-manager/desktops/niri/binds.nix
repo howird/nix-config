@@ -14,7 +14,7 @@
     "Mod+M".action = spawn "spotify";
     "Mod+I".action = spawn "vesktop";
     "Mod+N".action = spawn "swaync-client" "-t" "-sw";
-    "Mod+Alt+T".action =
+    "Mod+Shift+T".action =
       spawn
       "ghostty"
       "--class=task.warrior"
@@ -58,35 +58,35 @@
     "Mod+BracketRight".action = consume-or-expel-window-right;
 
     # Monitor
-    "Mod+Shift+H".action = focus-monitor-left;
-    "Mod+Shift+J".action = focus-monitor-down;
-    "Mod+Shift+K".action = focus-monitor-up;
-    "Mod+Shift+L".action = focus-monitor-right;
+    "Mod+Alt+H".action = focus-monitor-left;
+    "Mod+Alt+J".action = focus-monitor-down;
+    "Mod+Alt+K".action = focus-monitor-up;
+    "Mod+Alt+L".action = focus-monitor-right;
 
-    "Mod+Shift+Left".action = focus-monitor-left;
-    "Mod+Shift+Down".action = focus-monitor-down;
-    "Mod+Shift+Up".action = focus-monitor-up;
-    "Mod+Shift+Right".action = focus-monitor-right;
+    "Mod+Alt+Left".action = focus-monitor-left;
+    "Mod+Alt+Down".action = focus-monitor-down;
+    "Mod+Alt+Up".action = focus-monitor-up;
+    "Mod+Alt+Right".action = focus-monitor-right;
 
-    "Mod+Shift+Ctrl+H".action = move-workspace-to-monitor-left;
-    "Mod+Shift+Ctrl+J".action = move-workspace-to-monitor-down;
-    "Mod+Shift+Ctrl+K".action = move-workspace-to-monitor-up;
-    "Mod+Shift+Ctrl+L".action = move-workspace-to-monitor-right;
+    "Mod+Alt+Ctrl+H".action = move-workspace-to-monitor-left;
+    "Mod+Alt+Ctrl+J".action = move-workspace-to-monitor-down;
+    "Mod+Alt+Ctrl+K".action = move-workspace-to-monitor-up;
+    "Mod+Alt+Ctrl+L".action = move-workspace-to-monitor-right;
 
-    "Mod+Shift+Ctrl+Left".action = move-workspace-to-monitor-left;
-    "Mod+Shift+Ctrl+Down".action = move-workspace-to-monitor-down;
-    "Mod+Shift+Ctrl+Up".action = move-workspace-to-monitor-up;
-    "Mod+Shift+Ctrl+Right".action = move-workspace-to-monitor-right;
+    "Mod+Alt+Ctrl+Left".action = move-workspace-to-monitor-left;
+    "Mod+Alt+Ctrl+Down".action = move-workspace-to-monitor-down;
+    "Mod+Alt+Ctrl+Up".action = move-workspace-to-monitor-up;
+    "Mod+Alt+Ctrl+Right".action = move-workspace-to-monitor-right;
 
-    "Mod+Alt+Ctrl+H".action = move-column-to-monitor-left;
-    "Mod+Alt+Ctrl+J".action = move-column-to-monitor-down;
-    "Mod+Alt+Ctrl+K".action = move-column-to-monitor-up;
-    "Mod+Alt+Ctrl+L".action = move-column-to-monitor-right;
+    "Mod+Alt+Ctrl+Shift+H".action = move-column-to-monitor-left;
+    "Mod+Alt+Ctrl+Shift+J".action = move-column-to-monitor-down;
+    "Mod+Alt+Ctrl+Shift+K".action = move-column-to-monitor-up;
+    "Mod+Alt+Ctrl+Shift+L".action = move-column-to-monitor-right;
 
-    "Mod+Alt+Ctrl+Left".action = move-column-to-monitor-left;
-    "Mod+Alt+Ctrl+Down".action = move-column-to-monitor-down;
-    "Mod+Alt+Ctrl+Up".action = move-column-to-monitor-up;
-    "Mod+Alt+Ctrl+Right".action = move-column-to-monitor-right;
+    "Mod+Alt+Ctrl+Shift+Left".action = move-column-to-monitor-left;
+    "Mod+Alt+Ctrl+Shift+Down".action = move-column-to-monitor-down;
+    "Mod+Alt+Ctrl+Shift+Up".action = move-column-to-monitor-up;
+    "Mod+Alt+Ctrl+Shift+Right".action = move-column-to-monitor-right;
 
     # Mouse wheel workspace switching
     "Mod+WheelScrollDown" = {
