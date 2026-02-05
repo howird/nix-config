@@ -9,6 +9,7 @@
 
     ast-grep
     serpl
+    just
 
     devenv
     nixd

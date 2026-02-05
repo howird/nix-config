@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     hardware.url = "github:nixos/nixos-hardware";
 
     home-manager = {
@@ -27,7 +27,7 @@
       inputs.home-manager.follows = "home-manager";
     };
     niri = {
-      url = "github:sodiboo/niri-flake/75bacb66302bca38fa6e0c180f1e5369a8115454";
+      url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
@@ -46,6 +46,14 @@
     };
     nixgl = {
       url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zsh-helix-mode = {
+      url = "github:multirious/zsh-helix-mode/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    voxtype = {
+      url = "github:peteonrails/voxtype";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -127,7 +135,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            # home-manager.backupFileExtension = "old";
+            home-manager.backupFileExtension = "old";
             home-manager.users.howird = import ./hosts/${host}/home.nix;
             home-manager.extraSpecialArgs = {inherit inputs outputs host;};
           }

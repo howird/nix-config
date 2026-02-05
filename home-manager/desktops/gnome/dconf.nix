@@ -19,7 +19,7 @@
         "obsidian.desktop"
         "vesktop.desktop"
         "code.desktop"
-        "org.gnome.Nautilus.desktop"
+        "thunar.desktop"
       ];
       # `gnome-extensions list` for a list
       # enabled-extensions = [

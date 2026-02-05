@@ -6,6 +6,7 @@
   home.packages = with pkgs; [
     openconnect_openssl
     networkmanager
+    aria2
 
     audacity
     obs-studio
@@ -13,9 +14,10 @@
     eyedropper
     krita
     gimp
+    darktable
+
     rnote
     anki
-    sioyek
 
     vesktop
     slack

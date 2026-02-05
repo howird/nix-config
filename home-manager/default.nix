@@ -4,18 +4,21 @@
   ...
 }: {
   imports = [
+    ./apps
     ./browsers
     ./editors
-    ./shells
     ./life
-    ./apps
+    ./shells
 
     ./ghostty.nix
     ./git.nix
     ./htop.nix
     ./programming.nix
     ./rclone.nix
+    ./sioyek.nix
+    ./thunar.nix
     ./typesetting.nix
+    ./voxtype.nix
   ];
 
   config = {

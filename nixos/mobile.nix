@@ -7,6 +7,7 @@
   environment.systemPackages = with pkgs; [
     libimobiledevice
     ifuse
+    android-tools
 
     scrcpy
   ];

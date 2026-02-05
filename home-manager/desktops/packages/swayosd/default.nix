@@ -1,13 +1,8 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{config, ...}: {
   imports = [
     ./styles.nix
     ./niri.nix
   ];
 
-  home.packages = lib.optional config.programs.niri.enable pkgs.swayosd;
+  services.swayosd.enable = config.programs.niri.enable;
 }

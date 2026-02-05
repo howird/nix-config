@@ -10,7 +10,6 @@
       [
         {argv = ["waybar"];}
         {argv = ["swaync"];}
-        {argv = ["swayosd-server"];}
         {argv = ["uair" "-q"];}
         {argv = ["niri" "msg" "action" "focus-workspace" "note"];}
         {argv = ["zellij" "d" "taskwarrior"];}
@@ -39,6 +38,15 @@
         {argv = ["poweralertd"];}
         {argv = ["blueman-applet"];}
       ];
+
+    window-rules = [
+      {
+        matches = [
+          {at-startup = true;}
+        ];
+        open-focused = false;
+      }
+    ];
 
     xwayland-satellite = {
       enable = true;

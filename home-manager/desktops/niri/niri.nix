@@ -8,6 +8,12 @@
         {proportion = 0.3334;}
         {proportion = 0.5;}
         {proportion = 0.6666;}
+      ];
+
+      preset-window-heights = [
+        {proportion = 0.3334;}
+        {proportion = 0.5;}
+        {proportion = 0.6666;}
         {proportion = 1.0;}
       ];
 

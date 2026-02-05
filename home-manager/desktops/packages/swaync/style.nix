@@ -2,13 +2,13 @@
   xdg.configFile."swaync/style.css".text = let
     font = config.desktop.font.name;
 
-    text = "#${config.lib.stylix.colors.base05}";
-    base = "#${config.lib.stylix.colors.base00}";
-    mantle = "#${config.lib.stylix.colors.base01}";
-    surface0 = "#${config.lib.stylix.colors.base02}";
-    surface1 = "#${config.lib.stylix.colors.base03}";
-    surface2 = "#${config.lib.stylix.colors.base04}";
-    green = "#${config.lib.stylix.colors.base0B}";
+    text = config.lib.stylix.colors.withHashtag.base05;
+    base = config.lib.stylix.colors.withHashtag.base00;
+    mantle = config.lib.stylix.colors.withHashtag.base01;
+    surface0 = config.lib.stylix.colors.withHashtag.base02;
+    surface1 = config.lib.stylix.colors.withHashtag.base03;
+    surface2 = config.lib.stylix.colors.withHashtag.base04;
+    green = config.lib.stylix.colors.withHashtag.base0B;
   in ''
     @define-color shadow rgba(0, 0, 0, 0.25);
 

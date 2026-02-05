@@ -37,23 +37,26 @@
           ];
         }
       ]
-      ++ (lib.imap0 (index: value: {
-          profile.name = "disable_laptop_screen_${builtins.toString index}";
+      ++ (let
+        imapAttrs0 = f: attrs: lib.imap0 (i: kv: f i kv.name kv.value) (lib.attrsToList attrs);
+      in
+        imapAttrs0 (index: criteria: mode: {
+          profile.name = "disable_laptop_screen_${toString index}";
           profile.outputs = [
             {
-              criteria = value;
+              inherit criteria mode;
               position = "0,0";
-              mode = "2560x1080@60Hz";
             }
             {
               criteria = "eDP-1";
               status = "disable";
             }
           ];
-        }) [
-          "LG Electronics LG ULTRAWIDE 0x0007F992"
-          "LG Electronics LG ULTRAWIDE 0x01010101"
-          "LG Electronics LG ULTRAWIDE 0x0003D937"
-        ]);
+        }) {
+          "LG Electronics LG ULTRAWIDE 0x0007F992" = "2560x1080@60Hz";
+          "LG Electronics LG ULTRAWIDE 0x01010101" = "2560x1080@60Hz";
+          "LG Electronics LG ULTRAWIDE 0x0003D937" = "2560x1080@60Hz";
+          "Acer Technologies G236HL LVNAA0052482" = "1920x1080@60Hz";
+        });
   };
 }

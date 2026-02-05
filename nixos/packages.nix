@@ -16,7 +16,7 @@
     unrar
     imagemagick
     xorg.xhost
-    ouch
+    ouch # compression
     monitor
 
     # apps
@@ -27,8 +27,8 @@
     gnome-text-editor
     emote
     kdePackages.okular # pdf-markup
-    papers # pdf
-    foliate # ebooks
+    # papers # pdf
+    foliate # ebooks, pdfs
     rhythmbox # music
     loupe # image viewer
   ];

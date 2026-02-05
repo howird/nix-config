@@ -43,8 +43,8 @@
 
       gaps = 10;
       struts = {
-        left = -12;
-        right = -12;
+        left = -10;
+        right = -10;
         top = -2;
         bottom = -2;
       };

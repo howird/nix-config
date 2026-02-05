@@ -79,20 +79,29 @@ state=$(uairctl fetch "{state}\n")
 if [[ "$state" == "paused" ]]; then
     # Check if another instance is already running
     if [[ -f "$lock_file" ]]; then
-        exit 0
+        lock_pid=$(cat "$lock_file")
+        if kill -0 "$lock_pid" 2>/dev/null; then
+            # PID is still alive, another instance is running
+            echo "Another instance is already running, exiting."
+            exit 0
+        else
+            # Stale lock file from dead process, remove it
+            echo "Removing stale lock file."
+            rm -f "$lock_file"
+        fi
     fi
-    
+
     # Create lock file
     echo $$ > "$lock_file"
-    
+
     # Setup cleanup trap for lock file and temp files
     cleanup() {
         rm -f "$lock_file" "$zenity_output_file" "$zenity_exit_file"
     }
     trap cleanup EXIT INT TERM
-    
+
     niri msg action focus-workspace task
-    
+
     # Run zenity in the background and capture its output and exit code
     zenity_output_file=$(mktemp)
     zenity_exit_file=$(mktemp)
@@ -104,13 +113,13 @@ if [[ "$state" == "paused" ]]; then
       --ok-label="My mind is cloudy, I need a meditation" > "$zenity_output_file" 2>/dev/null
     echo $? > "$zenity_exit_file") &
     zenity_pid=$!
-    
+
     # Wait for zenity to close, refocusing the workspace every second
     while kill -0 "$zenity_pid" 2>/dev/null; do
         niri msg action focus-workspace task
         sleep 1
     done
-    
+
     # Wait for background process to complete and read results
     wait "$zenity_pid" 2>/dev/null
     zenity_output=$(cat "$zenity_output_file")

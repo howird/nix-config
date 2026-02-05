@@ -18,12 +18,12 @@
 
     # Brightness controls
     "XF86MonBrightnessUp" = {
-      action = spawn "swayosd-client" "--brightness" "raise" "5%";
+      action = spawn "swayosd-client" "--brightness" "+5";
       allow-when-locked = true;
       repeat = true;
     };
     "XF86MonBrightnessDown" = {
-      action = spawn "swayosd-client" "--brightness" "lower" "5%";
+      action = spawn "swayosd-client" "--brightness" "-5";
       allow-when-locked = true;
       repeat = true;
     };

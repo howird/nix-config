@@ -9,7 +9,7 @@
     "Mod+Return".action = spawn "rofi" "-show" "drun";
 
     "Mod+T".action = spawn "ghostty";
-    "Mod+O".action = spawn "nautilus";
+    "Mod+O".action = spawn "thunar";
     "Mod+B".action = spawn "zen-twilight";
     "Mod+M".action = spawn "spotify";
     "Mod+I".action = spawn "vesktop";
@@ -119,8 +119,8 @@
     "Mod+R".action = switch-preset-column-width;
     "Mod+Shift+R".action = switch-preset-window-height;
     "Mod+Ctrl+R".action = reset-window-height;
-    "Mod+F".action = fullscreen-window;
-    "Mod+Shift+F".action = maximize-column;
+    "Mod+Shift+F".action = fullscreen-window;
+    "Mod+F".action = maximize-column;
     "Mod+Ctrl+F".action = expand-column-to-available-width;
     "Mod+Z".action = center-column;
 
@@ -134,6 +134,9 @@
 
     "Mod+Space".action = toggle-window-floating;
     "Mod+W".action = toggle-column-tabbed-display;
+
+    "Mod+V".action = spawn "voxtype" "record" "start";
+    "Mod+Alt+V".action = spawn "voxtype" "record" "stop";
 
     # Media controls
     "XF86AudioPlay" = {

@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     obsidian
     presenterm
+    percollate
 
     texliveFull
     zotero

@@ -29,6 +29,14 @@
         {title = "^.*Volume Control.*$";}
         {title = "^.*branchdialog.*$";}
         {
+          app-id = "sioyek";
+          title = "Select Document";
+        }
+        {
+          app-id = "Thunar";
+          title = "^Rename.*$";
+        }
+        {
           app-id = "zen-twilight";
           title = "^Extension:.*$";
         }
@@ -57,15 +65,20 @@
     {
       matches = [
         {app-id = "vlc";}
+        {app-id = "org.gnome.Showtime";}
         {app-id = "task.warrior";}
         {app-id = "obsidian";}
+        {app-id = "Zotero";}
+        {app-id = "zen-twilight";}
       ];
       default-column-width = {proportion = 1.0;};
     }
 
     {
-      matches = [{app-id = "org.gnome.Nautilus";}];
-      default-column-width = {proportion = 0.5;};
+      matches = [
+        {app-id = "com.mitchellh.ghostty";}
+      ];
+      default-column-width = {proportion = 0.6666;};
     }
 
     {

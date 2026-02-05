@@ -44,7 +44,6 @@
         {app-id = "^libreoffice-.*$";}
       ];
       open-on-workspace = "note";
-      open-focused = true;
     }
 
     {
