@@ -30,20 +30,22 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+    enableZshIntegration = config.programs.zsh.enable;
+    enableFishIntegration = config.programs.fish.enable;
   };
   programs.eza = {
     enable = true;
-    enableZshIntegration = config.myShell.zsh;
-    enableFishIntegration = config.myShell.fish;
+    enableZshIntegration = config.programs.zsh.enable;
+    enableFishIntegration = config.programs.fish.enable;
   };
   programs.fzf = {
     enable = true;
-    enableZshIntegration = config.myShell.zsh;
-    enableFishIntegration = config.myShell.fish;
+    enableZshIntegration = config.programs.zsh.enable;
+    enableFishIntegration = config.programs.fish.enable;
   };
   programs.zoxide = {
     enable = true;
-    enableZshIntegration = config.myShell.zsh;
-    enableFishIntegration = config.myShell.fish;
+    enableZshIntegration = config.programs.zsh.enable;
+    enableFishIntegration = config.programs.fish.enable;
   };
 }

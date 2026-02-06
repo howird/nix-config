@@ -1,16 +1,13 @@
 {
-  lib,
   config,
   pkgs,
   ...
-}:
-lib.mkIf config.myShell.fish {
+}: {
   home.packages = with pkgs; [
     grc
   ];
 
   programs.fish = {
-    enable = true;
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
     '';

@@ -1,6 +1,5 @@
 {
   lib,
-  config,
   pkgs,
   ...
 }: {
@@ -14,8 +13,6 @@
 
   options = {
     myShell = {
-      fish = lib.mkEnableOption "fish";
-      zsh = lib.mkEnableOption "zsh";
       aliases = lib.mkOption {
         type = lib.types.attrs;
         default = {};
@@ -37,14 +34,5 @@
     home.packages = with pkgs; [
       (writeShellScriptBin "nv-users" (builtins.readFile ./scripts/nv-users))
     ];
-
-    programs.direnv = {
-      enableZshIntegration = config.myShell.zsh;
-      enableFishIntegration = config.myShell.fish;
-    };
-    programs.fzf = {
-      enableZshIntegration = config.myShell.zsh;
-      enableFishIntegration = config.myShell.fish;
-    };
   };
 }

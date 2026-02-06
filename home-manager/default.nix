@@ -22,7 +22,7 @@
   ];
 
   config = {
-    myShell.zsh = true;
+    programs.zsh.enable = true;
 
     # programs.vscode.enable = true;
     programs.helix.enable = true;

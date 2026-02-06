@@ -3,13 +3,12 @@
   config,
   pkgs,
   ...
-}:
-lib.mkIf config.myShell.zsh {
-  programs.zsh = let
-    zesh = "${pkgs.zesh}/bin/zesh";
-    fzf = "${pkgs.fzf}/bin/fzf";
-  in {
-    enable = true;
+}: {
+  imports = [
+    ./zsh_hx.nix
+  ];
+
+  programs.zsh = {
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
@@ -22,31 +21,12 @@ lib.mkIf config.myShell.zsh {
         precmd() {
           echo -n -e "\033]0;TEXT\007"
         }
-        if [[ -z "$TMUX" && -z "$ZELLIJ" && $TERM_PROGRAM != "vscode" && $TERM_PROGRAM != "zed" ]]; then
-          ${zesh} cn $(${zesh} l | ${fzf})
+        if [[ -z "$TMUX" && -z "$ZELLIJ" && -z $FILEBROWSER && $TERM_PROGRAM != "vscode" && $TERM_PROGRAM != "zed" ]]; then
+          ${pkgs.zesh}/bin/zesh cn $(${pkgs.zesh}/bin/zesh l | ${pkgs.fzf}/bin/fzf)
         fi
       ''
       else ''
         source ${./scripts/auto_tmux.sh}
-
-        # ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(
-        #   zhm_history_prev
-        #   zhm_history_next
-        #   zhm_prompt_accept
-        #   zhm_accept
-        #   zhm_accept_or_insert_newline
-        # )
-        # ZSH_AUTOSUGGEST_ACCEPT_WIDGETS+=(
-        #   zhm_move_right
-        #   zhm_clear_selection_move_right
-        # )
-        # ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+=(
-        #   zhm_move_next_word_start
-        #   zhm_move_next_word_end
-        # )
-
-        # zhm_wrap_widget fzf-completion zhm_fzf_completion
-        # bindkey '^I' zhm_fzf_completion
       ''
     );
 
@@ -56,15 +36,10 @@ lib.mkIf config.myShell.zsh {
     };
 
     plugins = [
-      {
-        name = "zsh-vi-mode";
-        src = pkgs.zsh-vi-mode;
-        file = "share/zsh-vi-mode/zsh-vi-mode.zsh";
-      }
       # {
-      #   name = "zsh-helix-mode";
-      #   src = pkgs.zsh-helix-mode;
-      #   file = "share/zsh-helix-mode/zsh-helix-mode.plugin.zsh";
+      #   name = "zsh-vi-mode";
+      #   src = pkgs.zsh-vi-mode;
+      #   file = "share/zsh-vi-mode/zsh-vi-mode.zsh";
       # }
       {
         name = "zsh-autopair";

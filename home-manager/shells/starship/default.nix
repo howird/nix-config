@@ -5,7 +5,7 @@
 
   programs.starship = {
     enable = true;
-    enableZshIntegration = config.myShell.zsh;
-    enableFishIntegration = config.myShell.fish;
+    enableZshIntegration = config.programs.zsh.enable;
+    enableFishIntegration = config.programs.fish.enable;
   };
 }
