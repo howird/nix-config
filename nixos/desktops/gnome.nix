@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   service.xserver.excludePackages = [pkgs.xterm];
+  gtk.gtk4.theme = null;
 
   programs.dconf.enable = true;
 

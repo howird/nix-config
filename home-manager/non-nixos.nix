@@ -1,6 +1,5 @@
 {config, ...}: {
   imports = [
-    # inputs.stylix.homeModules.stylix
     ./stylix.nix
     ./desktops/gnome/dconf.nix
   ];

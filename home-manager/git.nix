@@ -6,6 +6,7 @@
   programs.git = {
     enable = true;
     lfs.enable = true;
+    signing.format = "openpgp";
     ignores = [
       "**/.aider*"
     ];

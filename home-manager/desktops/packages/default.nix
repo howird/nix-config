@@ -18,7 +18,7 @@
     ./kanshi.nix
   ];
 
-  services.swww.enable = config.programs.niri.enable;
+  services.awww.enable = config.programs.niri.enable;
   home.packages = lib.optionals config.programs.niri.enable (with pkgs; [
     glib
     wayland

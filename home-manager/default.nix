@@ -19,6 +19,7 @@
     ./thunar.nix
     ./typesetting.nix
     ./voxtype.nix
+    ./yazi.nix
   ];
 
   config = {

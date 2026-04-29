@@ -15,9 +15,11 @@
     yt-dlp
     unrar
     imagemagick
-    xorg.xhost
+    xhost
     ouch # compression
     monitor
+    lshw
+    dmidecode
 
     # apps
     vlc

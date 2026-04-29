@@ -28,6 +28,7 @@
         {title = "^.*Transmission.*$";}
         {title = "^.*Volume Control.*$";}
         {title = "^.*branchdialog.*$";}
+        {app-id = "python3";}
         {
           app-id = "sioyek";
           title = "Select Document";

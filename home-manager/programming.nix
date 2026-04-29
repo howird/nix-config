@@ -16,10 +16,6 @@
     textpieces
 
     bun
-    aider-chat
-    fabric-ai
-    cursor-cli
-    goose-cli
   ];
 
   services.lorri.enable = true;

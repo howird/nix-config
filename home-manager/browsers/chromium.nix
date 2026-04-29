@@ -6,7 +6,7 @@
 }: {
   programs.chromium = {
     enable = config.myBrowser.chromium;
-    package = pkgs.ungoogled-chromium;
+    package = pkgs.ungoogled-chromium.override {enableWideVine = true;};
     commandLineArgs = [
       "--enable-features=UseOzonePlatform"
       "--ozone-platform=wayland"

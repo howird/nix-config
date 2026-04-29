@@ -31,7 +31,7 @@
         {argv = ["zen-twilight"];}
         {argv = ["ghostty"];}
         {argv = ["uair-startup"];}
-        {argv = ["swww" "img" "${config.stylix.image}"];}
+        {argv = ["awww" "img" "${config.stylix.image}"];}
       ]
       ++ lib.optionals (host == "yerm") [
         {argv = ["nm-applet"];}

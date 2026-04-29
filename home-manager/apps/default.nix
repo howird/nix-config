@@ -10,14 +10,16 @@
 
     audacity
     obs-studio
-    video-trimmer
+    kdePackages.kdenlive
+
     eyedropper
-    krita
     gimp
     darktable
+    graphite
 
     rnote
     anki
+    appflowy
 
     vesktop
     slack

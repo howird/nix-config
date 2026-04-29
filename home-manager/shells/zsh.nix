@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ./zsh_hx.nix
+    # ./zsh_hx.nix
   ];
 
   programs.zsh = {
@@ -36,11 +36,11 @@
     };
 
     plugins = [
-      # {
-      #   name = "zsh-vi-mode";
-      #   src = pkgs.zsh-vi-mode;
-      #   file = "share/zsh-vi-mode/zsh-vi-mode.zsh";
-      # }
+      {
+        name = "zsh-vi-mode";
+        src = pkgs.zsh-vi-mode;
+        file = "share/zsh-vi-mode/zsh-vi-mode.zsh";
+      }
       {
         name = "zsh-autopair";
         src = pkgs.zsh-autopair;

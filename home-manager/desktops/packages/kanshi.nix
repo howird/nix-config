@@ -18,6 +18,36 @@
           ];
         }
         {
+          profile.name = "home_tv";
+          profile.outputs = [
+            {
+              criteria = "Hisense Electric Co., Ltd. 6Series55 0x00000154";
+              position = "0,0";
+              scale = 4.0;
+              mode = "3840x2160@60Hz";
+            }
+            {
+              criteria = "eDP-1";
+              status = "disable";
+            }
+          ];
+        }
+        {
+          profile.name = "condo_tv";
+          profile.outputs = [
+            {
+              criteria = "Philips Consumer Electronics Company Philips FTV Unknown";
+              position = "0,0";
+              scale = 4.0;
+              mode = "3840x2160@30Hz";
+            }
+            {
+              criteria = "eDP-1";
+              status = "disable";
+            }
+          ];
+        }
+        {
           profile.name = "home_office";
           profile.outputs = [
             {

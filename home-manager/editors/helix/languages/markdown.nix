@@ -3,18 +3,19 @@
     language = [
       {
         name = "markdown";
+        language-servers = ["markdown-oxide" "rumdl"];
         auto-format = true;
+        rulers = [];
         formatter = {
           command = "rumdl";
           args = ["fmt" "--stdin"];
         };
-        comment-tokens = ["-" "+" "*" "- [ ]" ">"];
+        comment-tokens = ["-" "+" "*" "- [ ]" "- [x]" ">"];
       }
     ];
   };
 
   home.packages = with pkgs; [
-    marksman
     markdown-oxide
     rumdl
     harper
