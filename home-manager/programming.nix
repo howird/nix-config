@@ -8,10 +8,9 @@
     dua
 
     ast-grep
-    serpl
+    scooter
     just
 
-    devenv
     nixd
     textpieces
 

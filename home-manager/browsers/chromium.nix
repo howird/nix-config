@@ -30,14 +30,20 @@
       (createChromiumExtension {
         # bitwarden
         id = "nngceckbapebfimnlniiiahkandclblb";
-        sha256 = "sha256:0vlgm61wgp2gr2b7ys2pmasj7s202xjvv6h13inj41gbll1rpywn";
-        version = "2025.5.1";
+        sha256 = "sha256:1fpylw7d1scsjfn9zm6impqajkp4dwmbmgbwv0mynvwxrjqvhc1a";
+        version = "2026.4.0";
       })
       (createChromiumExtension {
         # google docs offline
         id = "ghbmnnjooekpmoecnnnilnnbdlolhkhi";
-        sha256 = "sha256:1zyzqqclnzqgrr9wjiz4b2rckxa8z7fysyiwrfx5m0j2f7xi24zv";
-        version = "1.92.1";
+        sha256 = "sha256:0m9f64wp4zgbr2gsqc8dxm53a7956mfgndibh3swsv3h7hgn4mij";
+        version = "1.104.1";
+      })
+      (createChromiumExtension {
+        # chrome dark scheme toggle
+        id = "idnbggfpadjhjicgjmhlpeilafaplnhd";
+        sha256 = "sha256:0b6842ppgxkx016yndmmnik1nwri588l8sy8kj1ac5wfv8l2nhps";
+        version = "1.1.2";
       })
     ];
   };

@@ -18,7 +18,7 @@
     ./sioyek.nix
     ./thunar.nix
     ./typesetting.nix
-    ./voxtype.nix
+    # ./voxtype.nix
     ./yazi.nix
   ];
 

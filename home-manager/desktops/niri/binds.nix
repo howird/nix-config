@@ -14,15 +14,6 @@
     "Mod+M".action = spawn "spotify";
     "Mod+I".action = spawn "vesktop";
     "Mod+N".action = spawn "swaync-client" "-t" "-sw";
-    "Mod+Shift+T".action =
-      spawn
-      "ghostty"
-      "--class=task.warrior"
-      "--title=taskwarrior"
-      "-e"
-      "zellij"
-      "attach"
-      "taskwarrior";
 
     "Mod+S".action.screenshot = {show-pointer = false;};
     "Mod+Ctrl+S".action.screenshot = {show-pointer = false;};
@@ -135,8 +126,8 @@
     "Mod+Space".action = toggle-window-floating;
     "Mod+W".action = toggle-column-tabbed-display;
 
-    "Mod+V".action = spawn "voxtype" "record" "start";
-    "Mod+Alt+V".action = spawn "voxtype" "record" "stop";
+    # "Mod+V".action = spawn "voxtype" "record" "start";
+    # "Mod+Alt+V".action = spawn "voxtype" "record" "stop";
 
     # Media controls
     "XF86AudioPlay" = {

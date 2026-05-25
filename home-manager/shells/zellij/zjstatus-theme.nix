@@ -35,7 +35,7 @@ in ''
         mode_rename_tab    "${mode-fmt base07 "RENAME-T"}"
         mode_rename_pane   "${mode-fmt base0D "RENAME-P"}"
         mode_session       "${mode-fmt base0E " SESSION "}"
-        mode_move          "${mode-fmt base0F "  MOVE  "}"
+        mode_move          "${mode-fmt base0F " MOVE PANES "}"
         mode_prompt        "${mode-fmt base0D " PROMPT "}"
         mode_tmux          "${mode-fmt base09 "  TMUX  "}"
 

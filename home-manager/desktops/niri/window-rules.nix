@@ -59,16 +59,50 @@
     }
 
     {
+      matches = [
+        {
+          app-id = "Zotero";
+          title = "Citation Dialog";
+        }
+      ];
+      open-focused = true;
+      default-window-height = {fixed = 500;};
+      open-floating = true;
+    }
+
+    {
+      matches = [{app-id = "com.stremio.Stremio";}];
+      scroll-factor = 10.0;
+    }
+
+    {
       matches = [{app-id = "vlc";}];
       scroll-factor = 0.15;
     }
 
     {
       matches = [
+        {
+          app-id = "^chrome-.*$";
+          title = "^.*Readwise.*$";
+        }
+      ];
+      open-maximized = true;
+    }
+
+    {
+      matches = [
         {app-id = "vlc";}
         {app-id = "org.gnome.Showtime";}
-        {app-id = "task.warrior";}
+        {
+          app-id = "^chrome-.*$";
+          title = "^.*Fizzy.*$";
+        }
         {app-id = "obsidian";}
+        {
+          app-id = "electron";
+          title = "^.*Obsidian.*$";
+        }
         {app-id = "Zotero";}
         {app-id = "zen-twilight";}
       ];

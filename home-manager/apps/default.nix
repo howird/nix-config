@@ -4,9 +4,15 @@
   ];
 
   home.packages = with pkgs; [
+    obsidian
+    presenterm
+    percollate
+    wordbook
+
     openconnect_openssl
     networkmanager
     aria2
+    dex
 
     audacity
     obs-studio
@@ -15,12 +21,9 @@
     eyedropper
     gimp
     darktable
-    graphite
+    krita
 
-    rnote
-    anki
-    appflowy
-
+    readest
     vesktop
     slack
     zoom-us

@@ -42,22 +42,6 @@
       paused_state_text = "paused"
       resumed_state_text = "resumed"
     '' [
-      (
-        session-fmt
-        "med-prep"
-        "settling-my-mind"
-        "2"
-        "true"
-        "uairzen ': 🌅 time to start meditating 🧘, your goal is to sharpen 🔪 your intentions by settling your mind'"
-      )
-      (
-        session-fmt
-        "med"
-        "meditating"
-        "12"
-        "true"
-        "uairzen ': meditation 🧘 done. spend the next moment choosing what you want to accomplish next! 🧠'"
-      )
       (pre-session "1")
       (work-session "1")
       (rest-session "1")
@@ -75,6 +59,22 @@
         "25"
         "true"
         "uairzen ': you did it! time to rest 🌅 and realign 🧘'"
+      )
+      (
+        session-fmt
+        "med-prep"
+        "settling-my-mind"
+        "2"
+        "true"
+        "uairzen ': 🌅 time to start meditating 🧘, your goal is to sharpen 🔪 your intentions by settling your mind'"
+      )
+      (
+        session-fmt
+        "med"
+        "meditating"
+        "12"
+        "true"
+        "uairzen ': meditation 🧘 done. spend the next moment choosing what you want to accomplish next! 🧠'"
       )
     ];
 }

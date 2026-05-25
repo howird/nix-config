@@ -2,7 +2,6 @@
   imports = [
     ./zellij.nix
     ./default-layout.nix
-    ./task-layout.nix
     ./tab-bar.nix
   ];
 

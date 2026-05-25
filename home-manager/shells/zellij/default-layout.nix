@@ -107,6 +107,7 @@
             pane stacked=true {
                 pane name="git" command="gitui" start_suspended=true
                 pane name="shell" expanded=true
+                pane name="files" command="yazi" cwd="." start_suspended=true
             }
         }
     }
