@@ -8,6 +8,7 @@
     presenterm
     percollate
     wordbook
+    wike
 
     openconnect_openssl
     networkmanager

@@ -87,6 +87,7 @@
           "LG Electronics LG ULTRAWIDE 0x01010101" = "2560x1080@60Hz";
           "LG Electronics LG ULTRAWIDE 0x0003D937" = "2560x1080@60Hz";
           "Acer Technologies G236HL LVNAA0052482" = "1920x1080@60Hz";
+          "PNP(BBY) NS-50D510NA19 0x00000001" = "1920x1080@60Hz";
         });
   };
 }

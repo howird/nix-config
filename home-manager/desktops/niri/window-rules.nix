@@ -76,6 +76,11 @@
     }
 
     {
+      matches = [{app-id = "com.github.hugolabe.Wike";}];
+      scroll-factor = 2.0;
+    }
+
+    {
       matches = [{app-id = "vlc";}];
       scroll-factor = 0.15;
     }

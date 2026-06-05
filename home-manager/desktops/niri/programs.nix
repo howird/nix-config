@@ -14,7 +14,6 @@
         {argv = ["niri" "msg" "action" "focus-workspace" "note"];}
         {argv = ["obsidian"];}
         {argv = ["zotero"];}
-        {argv = ["zen-twilight"];}
         {argv = ["ghostty"];}
         {argv = ["uair-startup"];}
         {argv = ["awww" "img" "${config.stylix.image}"];}
