@@ -6,6 +6,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     hardware.url = "github:nixos/nixos-hardware";
     flake-utils.url = "github:numtide/flake-utils";
+    crane.url = "github:ipetkov/crane";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -23,6 +24,7 @@
     zjstatus = {
       url = "github:dj95/zjstatus";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.crane.follows = "crane";
       inputs.flake-utils.follows = "flake-utils";
       inputs.rust-overlay.follows = "rust-overlay";
     };
@@ -49,11 +51,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    schizofox = {
-      url = "github:schizofox/schizofox";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
+    # schizofox = {
+    #   url = "github:schizofox/schizofox";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.home-manager.follows = "home-manager";
+    # };
     # graphite = {
     #   url = "github:GraphiteEditor/Graphite";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -63,6 +65,12 @@
       url = "github:mattwparas/helix/steel-event-system";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.rust-overlay.follows = "rust-overlay";
+    };
+    zesh = {
+      url = "github:roberte777/zesh";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.crane.follows = "crane";
+      inputs.flake-utils.follows = "flake-utils";
     };
     zsh-helix-mode = {
       url = "github:multirious/zsh-helix-mode/main";

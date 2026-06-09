@@ -7,7 +7,7 @@
 }: {
   imports = [
     ./chromium.nix
-    inputs.schizofox.homeManagerModules.default
+    # inputs.schizofox.homeManagerModules.default
     inputs.zen-browser.homeModules.twilight
   ];
   options = {
@@ -40,6 +40,6 @@
 
     programs.zen-browser.enable = config.myBrowser.zen;
     programs.firefox.enable = config.myBrowser.firefox;
-    programs.schizofox.enable = true;
+    # programs.schizofox.enable = true;
   };
 }
