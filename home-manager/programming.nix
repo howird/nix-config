@@ -15,6 +15,7 @@
     textpieces
 
     bun
+    pixi
   ];
 
   services.lorri.enable = true;

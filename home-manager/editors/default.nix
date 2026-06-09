@@ -1,13 +1,8 @@
-{pkgs, ...}: {
+{
   imports = [
+    ./claude
+    ./helix
     ./vscode
     ./zed
-    ./opencode
-    ./helix
-  ];
-
-  home.packages = with pkgs; [
-    claude-code
-    code-cursor
   ];
 }
