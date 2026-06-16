@@ -28,9 +28,8 @@
     gnome-disk-utility
     gnome-text-editor
     emote
-    kdePackages.okular # pdf-markup
-    # papers # pdf
-    foliate # ebooks, pdfs
+    xournalpp
+    papers
     rhythmbox # music
     loupe # image viewer
   ];

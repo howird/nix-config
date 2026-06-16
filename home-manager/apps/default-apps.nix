@@ -11,7 +11,7 @@
     myApps = {
       document = mkOption {
         type = types.str;
-        default = "sioyek.desktop";
+        default = "org.gnome.Papers.desktop";
       };
       image = mkOption {
         type = types.str;
