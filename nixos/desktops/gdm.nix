@@ -4,12 +4,9 @@
   pkgs,
   ...
 }: {
-  services.displayManager.gdm = {
-    enable = config.programs.niri.enable || config.services.desktopManager.gnome.enable;
-    wayland = config.programs.niri.enable || config.services.desktopManager.gnome.enable;
-  };
-
+  services.displayManager.gdm.enable = config.programs.niri.enable || config.services.desktopManager.gnome.enable;
   services.gnome.gnome-keyring.enable = config.programs.niri.enable;
+
   security.pam.services.gdm.enableGnomeKeyring = config.programs.niri.enable;
   programs.seahorse.enable = config.programs.niri.enable;
 

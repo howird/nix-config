@@ -12,7 +12,7 @@
   defaultTabBar = "zellij";
   tabBars = {
     zellij = ''location="zellij:tab-bar"'';
-    zjstatus = ''location="file:${pkgs.zjstatus}/bin/zjstatus.wasm"'';
+    zjstatus = ''location="file:${pkgs.zellijPlugins.zjstatus}/bin/zjstatus.wasm"'';
   };
 in {
   config.programs.zellij.tab-bar = {

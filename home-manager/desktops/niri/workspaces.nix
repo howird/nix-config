@@ -1,14 +1,14 @@
 {
   programs.niri.settings.workspaces = {
     "1".name = "task";
-    "2".name = "read";
-    "3".name = "note";
+    "2".name = "note";
+    "3".name = "read";
     "4".name = "create";
   };
   programs.waybar.settings.mainBar."niri/workspaces".format-icons = {
     "task" = "";
-    "read" = "";
     "note" = "󰧑";
+    "read" = "";
     "create" = "󰽉";
   };
 

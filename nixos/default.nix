@@ -14,6 +14,7 @@
     ./inputs.nix
     ./mobile.nix
     ./files.nix
+    ./firewall.nix
     # ./vm.nix
   ];
 
