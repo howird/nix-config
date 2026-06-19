@@ -14,6 +14,6 @@
 
   myShell.aliases = {
     zh = "zesh cn .";
-    zls = ''zesh cn "$(zesh l | fzf)"'';
+    zls = ''zesh connect "$(zesh list | fzf | sed "s|^~|$HOME|")"'';
   };
 }

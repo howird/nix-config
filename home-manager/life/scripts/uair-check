@@ -48,6 +48,7 @@ elif [[ "$1" == "stop" ]]; then
     fi
     echo "$(date +%s)" > "$check_file"
     echo "$minutes" >> "$check_file"
+    uairctl jump pre-work1
     uairctl pause
     exit 0
 elif [[ "$1" == "help" ]]; then

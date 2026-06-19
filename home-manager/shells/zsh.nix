@@ -21,9 +21,6 @@
         precmd() {
           echo -n -e "\033]0;TEXT\007"
         }
-        if [[ -z "$TMUX" && -z "$ZELLIJ" && -z $FILEBROWSER && $TERM_PROGRAM != "vscode" && $TERM_PROGRAM != "zed" ]]; then
-          ${pkgs.zesh}/bin/zesh cn $(${pkgs.zesh}/bin/zesh l | ${pkgs.fzf}/bin/fzf)
-        fi
       ''
       else ''
         source ${./scripts/auto_tmux.sh}

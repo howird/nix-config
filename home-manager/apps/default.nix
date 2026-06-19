@@ -4,6 +4,8 @@
   ];
 
   home.packages = with pkgs; [
+    apostrophe
+    readest
     obsidian
     presenterm
     percollate
@@ -19,12 +21,13 @@
     obs-studio
     kdePackages.kdenlive
 
+    f3d
+    drawio
     eyedropper
     gimp
     darktable
     krita
 
-    readest
     vesktop
     slack
     zoom-us
@@ -37,6 +40,5 @@
     gnome-decoder
     warp
     blanket
-    apostrophe
   ];
 }
