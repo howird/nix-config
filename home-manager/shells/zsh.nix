@@ -22,9 +22,7 @@
           echo -n -e "\033]0;TEXT\007"
         }
       ''
-      else ''
-        source ${./scripts/auto_tmux.sh}
-      ''
+      else ""
     );
 
     history = {
