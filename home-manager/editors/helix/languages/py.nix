@@ -15,7 +15,7 @@
 
   home.packages = with pkgs; [
     ruff
-    pyright
+    basedpyright
     ty
   ];
 }

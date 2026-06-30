@@ -13,6 +13,7 @@
 
     nixd
     textpieces
+    glow
 
     bun
     pixi
