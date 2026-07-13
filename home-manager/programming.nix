@@ -4,19 +4,13 @@
   ...
 }: {
   home.packages = with pkgs; [
+    # better disk usage tuis
     dust
     dua
 
-    ast-grep
-    scooter
-    just
-
-    nixd
-    textpieces
-    glow
-
-    bun
-    pixi
+    ast-grep # abstract code grep
+    scooter # search and replace tui
+    glow # markdown reader tui
   ];
 
   services.lorri.enable = true;

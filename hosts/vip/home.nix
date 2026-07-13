@@ -21,7 +21,7 @@
     '';
   in {
     home.username = "howard";
-    myEmail = "howard.nguyen-huu@uwaterloo.ca";
+    # myEmail = "howard.nguyen-huu@uwaterloo.ca";
 
     programs.zsh.initContent = lib.mkBefore initExtra;
     programs.bash.initExtra = initExtra;
