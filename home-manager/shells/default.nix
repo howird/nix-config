@@ -33,6 +33,7 @@
 
     home.packages = with pkgs; [
       (writeShellScriptBin "nv-users" (builtins.readFile ./scripts/nv-users))
+      (writeShellScriptBin "link2epub" (builtins.readFile ./scripts/link2epub))
     ];
   };
 }

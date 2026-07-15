@@ -34,7 +34,7 @@
           title = "Select Document";
         }
         {
-          app-id = "Thunar";
+          app-id = "thunar";
           title = "^Rename.*$";
         }
         {

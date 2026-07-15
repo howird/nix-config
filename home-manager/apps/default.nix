@@ -5,7 +5,7 @@
 
   home.packages = with pkgs; [
     apostrophe
-    readest
+    foliate
     obsidian
     presenterm
     percollate

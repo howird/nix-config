@@ -1,0 +1,169 @@
+#!/usr/bin/env bash
+# Interactively fetch a web article via percollate, let you edit the
+# markdown, then build a clean multi-chapter epub via pandoc.
+set -euo pipefail
+
+command -v percollate >/dev/null || { echo "percollate not found in PATH" >&2; exit 1; }
+command -v pandoc >/dev/null || { echo "pandoc not found in PATH" >&2; exit 1; }
+
+urls=()
+echo "Article URL(s). Enter one at a time, blank line to finish."
+while true; do
+	read -rp "  url: " u
+	[ -z "$u" ] && break
+	urls+=("$u")
+done
+[ "${#urls[@]}" -gt 0 ] || { echo "No URL given, aborting." >&2; exit 1; }
+
+workdir=$(mktemp -d)
+trap 'rm -rf "$workdir"' EXIT
+
+md_file="$workdir/article.md"
+
+echo "Fetching article(s)..."
+percollate md -o "$md_file" --no-toc --inline "${urls[@]}"
+
+# Force every image onto its own paragraph, so pandoc's implicit-figures
+# extension turns it into a <figure>/<figcaption> instead of leaving it
+# inline with whatever prose shared its paragraph in the source HTML. Any
+# text trailing the image within that same paragraph becomes the caption
+# (replacing its alt text) rather than a separate, duplicated paragraph.
+#
+# Operates in paragraph mode (RS="") rather than line-by-line: --inline
+# embeds images as huge base64 data URIs, and the markdown serializer
+# soft-wraps a line after those without a blank line, so "same line" is
+# not a reliable signal for "same paragraph" once --inline is in play.
+normalize_awk="$workdir/normalize.awk"
+cat >"$normalize_awk" <<'AWK'
+BEGIN { RS = ""; FS = "\n" }
+{
+	para = $0
+	gsub(/\n/, " ", para)
+	gsub(/^[ \t]+|[ \t]+$/, "", para)
+
+	pat = "\\[!\\[[^]]*\\]\\([^)]*\\)\\]\\([^)]*\\)|!\\[[^]]*\\]\\([^)]*\\)"
+	if (match(para, pat)) {
+		pre = substr(para, 1, RSTART - 1)
+		img = substr(para, RSTART, RLENGTH)
+		post = substr(para, RSTART + RLENGTH)
+
+		gsub(/^[ \t]+|[ \t]+$/, "", pre)
+		gsub(/^[ \t]+|[ \t]+$/, "", post)
+
+		if (substr(img, 1, 2) == "[!") {
+			match(img, /!\[[^]]*\]\([^)]*\)/)
+			inner = substr(img, RSTART, RLENGTH)
+		} else {
+			inner = img
+		}
+
+		match(inner, /!\[[^]]*\]/)
+		bracket_len = RLENGTH
+		alt = substr(inner, 3, bracket_len - 3)
+		src = substr(inner, bracket_len + 2, length(inner) - bracket_len - 2)
+
+		caption = (post != "") ? post : alt
+
+		if (pre != "") print pre "\n"
+		print "![" caption "](" src ")" "\n"
+	} else {
+		print para "\n"
+	}
+}
+AWK
+awk -f "$normalize_awk" "$md_file" >"$workdir/article.normalized.md"
+mv "$workdir/article.normalized.md" "$md_file"
+
+editor="${VISUAL:-${EDITOR:-nano}}"
+echo "Opening in $editor. Edit the article, then save and quit to continue."
+"$editor" "$md_file"
+
+echo "Headings found in document:"
+mapfile -t heading_counts < <(grep -oE '^#+' "$md_file" | awk '{ print length }' | sort -n | uniq -c) || true
+if [ "${#heading_counts[@]}" -eq 0 ]; then
+	echo "  (none)"
+	target_level=2
+else
+	for line in "${heading_counts[@]}"; do
+		read -r count level <<<"$line"
+		printf "  %s level-%s heading(s)\n" "$count" "$level"
+	done
+	# A lone top-level heading is usually just the article title, not a
+	# chapter marker, so target the next level down for the split point.
+	read -r first_count first_level <<<"${heading_counts[0]}"
+	if [ "${#heading_counts[@]}" -ge 2 ] && [ "$first_count" -eq 1 ]; then
+		read -r _ target_level <<<"${heading_counts[1]}"
+	else
+		target_level="$first_level"
+	fi
+fi
+default_shift=$((1 - target_level))
+read -rp "Shift heading levels by [$default_shift]: " shift_by
+shift_by="${shift_by:-$default_shift}"
+
+echo
+read -rp "Title: " title
+
+authors=()
+echo "Author name(s). Enter one at a time, blank line to finish."
+while true; do
+	read -rp "  author: " a
+	[ -z "$a" ] && break
+	authors+=("$a")
+done
+author_metadata=()
+for a in "${authors[@]}"; do
+	author_metadata+=(--metadata author="$a")
+done
+
+extra_metadata=()
+echo "Add any other epub metadata as key=value (e.g. date=2026-07-12, language=en)."
+echo "Leave blank and press enter to finish."
+while true; do
+	read -rp "  metadata: " kv
+	[ -z "$kv" ] && break
+	extra_metadata+=(--metadata "$kv")
+done
+
+default_slug=$(printf '%s' "$title" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-*//; s/-*$//')
+[ -n "$default_slug" ] || default_slug="article"
+read -rp "Save epub as [$(pwd)/$default_slug.epub]: " out_path
+out_path="${out_path:-$(pwd)/$default_slug.epub}"
+case "$out_path" in
+*.epub) ;;
+*) out_path="$out_path.epub" ;;
+esac
+
+# Optional custom stylesheet: pass a path as $1, otherwise use this default.
+css_file="${1:-}"
+if [ -z "$css_file" ]; then
+	css_file="$workdir/style.css"
+	cat >"$css_file" <<'EOF'
+body { font-family: Georgia, 'Times New Roman', serif; line-height: 1.5; }
+h1, h2 { font-family: Helvetica, Arial, sans-serif; }
+figure { display: block; margin: 1.5em auto; text-align: center; }
+figure img { display: block; max-width: 100%; margin: 0 auto; }
+figcaption {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 0.85em;
+	font-style: italic;
+	color: #555;
+	text-align: center;
+	margin-top: 0.5em;
+}
+EOF
+fi
+
+epub_build="$workdir/out.epub"
+
+pandoc "$md_file" -o "$epub_build" \
+	--toc --split-level=1 --shift-heading-level-by="$shift_by" \
+	--css="$css_file" \
+	--metadata title="$title" \
+	"${author_metadata[@]}" \
+	"${extra_metadata[@]}"
+
+mkdir -p "$(dirname "$out_path")"
+cp "$epub_build" "$out_path"
+
+echo "Saved: $out_path"
