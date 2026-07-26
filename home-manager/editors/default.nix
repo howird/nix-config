@@ -11,7 +11,7 @@
 
   home.packages = with pkgs; [
     inputs.claude-desktop.packages.${system}.claude-desktop
-    claude-code
+    inputs.claude-code.packages.${system}.default
 
     kiro-fhs
     kiro-cli

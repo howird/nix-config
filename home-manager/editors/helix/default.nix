@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{...}: {
   imports = [
     ./languages
 
@@ -12,10 +8,10 @@
 
   programs.helix = {
     defaultEditor = true;
-    package = inputs.helix-flake.packages.${pkgs.system}.default.overrideAttrs (oldAttrs: {
-      cargoBuildFlags = (oldAttrs.cargoBuildFlags or []) ++ ["--features" "steel,git"];
-    });
-    extraPackages = with pkgs; [steel];
+    # package = inputs.helix-flake.packages.${pkgs.system}.default.overrideAttrs (oldAttrs: {
+    #   cargoBuildFlags = (oldAttrs.cargoBuildFlags or []) ++ ["--features" "steel,git"];
+    # });
+    # extraPackages = with pkgs; [steel];
   };
 
   programs.yazi.enable = true;

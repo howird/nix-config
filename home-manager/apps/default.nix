@@ -29,8 +29,8 @@
     krita
 
     vesktop
-    slack
-    zoom-us
+    # slack
+    # zoom-us
 
     # intentional watching, not streaming!
     qbittorrent

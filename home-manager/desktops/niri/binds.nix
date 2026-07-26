@@ -126,8 +126,7 @@
     "Mod+Space".action = toggle-window-floating;
     "Mod+W".action = toggle-column-tabbed-display;
 
-    # "Mod+V".action = spawn "voxtype" "record" "start";
-    # "Mod+Alt+V".action = spawn "voxtype" "record" "stop";
+    "Mod+V".action = spawn "cursor-clip";
 
     # Media controls
     "XF86AudioPlay" = {

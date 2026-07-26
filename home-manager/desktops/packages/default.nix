@@ -10,7 +10,6 @@
     ./waybar
     ./record
 
-    ./clipse.nix
     ./batsignal.nix
     ./hyprlock.nix
     ./hypridle.nix
@@ -24,6 +23,7 @@
     wayland
     libnotify
     wdisplays
+    cursor-clip
 
     blueman
     networkmanagerapplet
