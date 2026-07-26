@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   pkgs,
   ...
@@ -35,5 +36,10 @@
       (writeShellScriptBin "nv-users" (builtins.readFile ./scripts/nv-users))
       (writeShellScriptBin "link2epub" (builtins.readFile ./scripts/link2epub))
     ];
+
+    # Point legacy `<nixpkgs>` lookups (nix-shell, nix-instantiate, etc) at the
+    # exact nixpkgs revision pinned in this flake's flake.lock, so they never
+    # drift from what nixos-rebuild/home-manager actually build
+    home.sessionVariables.NIX_PATH = "nixpkgs=${inputs.nixpkgs}:home-manager=${inputs.home-manager}";
   };
 }
