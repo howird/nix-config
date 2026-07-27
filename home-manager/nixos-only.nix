@@ -1,8 +1,13 @@
 {config, ...}: {
   imports = [
+    ./apps
+    ./browsers
     ./desktops
+    ./life
 
     ./gpg.nix
+    ./rclone.nix
+    ./thunar.nix
   ];
 
   config = {

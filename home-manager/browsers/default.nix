@@ -18,6 +18,7 @@
   };
 
   config = {
+    myBrowser.zen = true;
     programs.zen-browser.enable = config.myBrowser.zen;
     programs.firefox.enable = config.myBrowser.firefox;
     # programs.schizofox.enable = true;

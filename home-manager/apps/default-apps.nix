@@ -32,30 +32,28 @@
     };
   };
 
-  config = {
-    xdg.mimeApps = {
-      enable = true;
+  config.xdg.mimeApps = {
+    enable = true;
 
-      defaultApplications = with config.myApps; {
-        "application/pdf" = document;
-        "text/plain" = text;
-        "text/csv" = text;
+    defaultApplications = with config.myApps; {
+      "application/pdf" = document;
+      "text/plain" = text;
+      "text/csv" = text;
 
-        "application/x-latex" = code;
-        "text/markdown" = code;
-        "text/x-tex" = code;
+      "application/x-latex" = code;
+      "text/markdown" = code;
+      "text/x-tex" = code;
 
-        "video/mp4" = video;
-        "video/webm" = video;
-        "video/x-matroska" = video;
+      "video/mp4" = video;
+      "video/webm" = video;
+      "video/x-matroska" = video;
 
-        "image/gif" = image;
-        "image/jpeg" = image;
-        "image/png" = image;
-        "image/svg+xml" = image;
+      "image/gif" = image;
+      "image/jpeg" = image;
+      "image/png" = image;
+      "image/svg+xml" = image;
 
-        "x-scheme-handler/magnet" = "org.qbittorrent.qBittorrent.desktop";
-      };
+      "x-scheme-handler/magnet" = "org.qbittorrent.qBittorrent.desktop";
     };
   };
 }

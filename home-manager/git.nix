@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -15,7 +11,7 @@
       pull.ff = "only";
       user = {
         name = "Howard Nguyen-Huu";
-        email = config.myEmail;
+        email = "howardnguyenhuu@gmail.com";
       };
       aliases = {
         ci = "commit";
