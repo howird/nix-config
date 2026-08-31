@@ -29,6 +29,13 @@
       url = "github:ghostty-org/ghostty";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    granola = {
+      url = "github:howird/granola-flake";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
     hardware.url = "github:nixos/nixos-hardware";
     helix-flake = {
       url = "github:mattwparas/helix/steel-event-system";

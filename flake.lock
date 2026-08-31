@@ -379,6 +379,29 @@
         "type": "gitlab"
       }
     },
+    "granola": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788213825,
+        "narHash": "sha256-iaNvlS73q5qM6/2UADz/x9Cl8Q9musOoKA8PV+/J2Gw=",
+        "owner": "howird",
+        "repo": "granola-flake",
+        "rev": "14ca66df47d29a1ccf8e7bc155cb5d1cbea25ddf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "howird",
+        "repo": "granola-flake",
+        "type": "github"
+      }
+    },
     "hardware": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -678,6 +701,7 @@
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
         "ghostty": "ghostty",
+        "granola": "granola",
         "hardware": "hardware",
         "helix-flake": "helix-flake",
         "home-manager": "home-manager_2",
