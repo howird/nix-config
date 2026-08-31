@@ -13,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {
-      url = "github:sodiboo/niri-flake";
+      url = "github:epireyn/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
@@ -30,18 +30,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
-    claude-desktop = {
-      url = "github:heytcass/claude-desktop-linux-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-    claude-code = {
-      url = "github:ryoppippi/nix-claude-code";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    vscode-server = {
-      url = "github:nix-community/nixos-vscode-server";
-    };
+
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,16 +40,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    # schizofox = {
-    #   url = "github:schizofox/schizofox";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.home-manager.follows = "home-manager";
-    # };
-    # graphite = {
-    #   url = "github:GraphiteEditor/Graphite";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.rust-overlay.follows = "rust-overlay";
-    # };
     helix-flake = {
       url = "github:mattwparas/helix/steel-event-system";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -74,6 +53,21 @@
     };
     zsh-helix-mode = {
       url = "github:multirious/zsh-helix-mode/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # AI
+    claude-desktop = {
+      url = "github:heytcass/claude-desktop-linux-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+    claude-code = {
+      url = "github:ryoppippi/nix-claude-code";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    pi = {
+      url = "github:lukasl-dev/pi.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # voxtype = {

@@ -1,34 +1,16 @@
 {
   programs.niri.settings.workspaces = {
-    "1".name = "task";
-    "2".name = "note";
-    "3".name = "read";
-    "4".name = "create";
+    "1".name = "create";
+    "2".name = "read";
+    "3".name = "note";
   };
   programs.waybar.settings.mainBar."niri/workspaces".format-icons = {
-    "task" = "";
-    "note" = "󰧑";
-    "read" = "";
     "create" = "󰽉";
+    "read" = "";
+    "note" = "󰧑";
   };
 
   programs.niri.settings.window-rules = [
-    {
-      matches = [
-        {
-          app-id = "^chrome-.*$";
-          title = "^.*Fizzy.*$";
-        }
-        {app-id = "com.rafaelmardojai.Blanket";}
-        {app-id = "vesktop";}
-        {app-id = "Slack";}
-        {app-id = "zoom";}
-        {app-id = "org.qbittorrent.qBittorrent";}
-      ];
-      open-focused = true;
-      open-on-workspace = "task";
-    }
-
     {
       matches = [
         {
@@ -37,7 +19,7 @@
         }
       ];
       baba-is-float = true;
-      open-on-workspace = "task";
+      open-on-workspace = "note";
     }
 
     {
@@ -45,10 +27,6 @@
         {
           app-id = "zen-twilight";
           at-startup = true;
-        }
-        {
-          app-id = "^chrome-.*$";
-          title = "^.*Readwise.*$";
         }
         {app-id = "Zotero";}
       ];
@@ -69,12 +47,33 @@
       matches = [
         {app-id = "obsidian";}
         {
-          app-id = "electron";
-          title = "^.*Obsidian.*$";
+          app-id = "claude-desktop";
         }
-        {app-id = "chromium-browser";}
+        {app-id = "org.qbittorrent.qBittorrent";}
         {app-id = "^libreoffice-.*$";}
+
+        {app-id = "chromium-browser";}
+        {
+          app-id = "^chrome-.*$";
+          title = "^Fizzy.*$";
+        }
+        {
+          app-id = "^chrome-.*$";
+          title = "^Google Gemini.*$";
+        }
+        {
+          app-id = "^chrome-.*$";
+          title = "^Microsoft Teams.*$";
+        }
+        {
+          app-id = "^chrome-.*$";
+          title = "^Facebook Messenger.*$";
+        }
+        {app-id = "vesktop";}
+        {app-id = "Slack";}
+        {app-id = "zoom";}
       ];
+      open-focused = true;
       open-on-workspace = "note";
     }
 

@@ -6,7 +6,6 @@
   imports = [
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.hardware.nixosModules.common-pc-ssd
-    inputs.vscode-server.nixosModules.default
     ../../nixos/graphics
 
     ./hardware-configuration.nix
@@ -42,5 +41,4 @@
     vulkan-loader
     vulkan-tools
   ];
-  services.vscode-server.enable = true;
 }

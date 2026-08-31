@@ -1,7 +1,7 @@
 {
   programs.niri.settings = {
     layout = {
-      # center-focused-column = "on-overflow";
+      center-focused-column = "on-overflow";
       always-center-single-column = true;
 
       preset-column-widths = [

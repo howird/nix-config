@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-niri msg action focus-workspace task
+niri msg action focus-workspace note
 uairctl resume
 
 # Start the timer with zenity in the background
@@ -12,12 +12,12 @@ uairctl listen | zenity \
 
 TIMER_PID=$!
 
-# Keep focusing the task workspace every second while timer is running
+# Keep focusing the note workspace every second while timer is running
 while kill -0 $TIMER_PID 2>/dev/null; do
   sleep 1
   STATE=$(uairctl fetch {state})
   if [ "$STATE" != "paused" ]; then
-    niri msg action focus-workspace task
+    niri msg action focus-workspace note
   fi
 done
 

@@ -2,6 +2,7 @@
   xdg.configFile."zellij/config.kdl".text = ''
     default_mode "locked"
     pane_frames false
+    stacked_pane_list false
     mirror_session true
     copy_command "wl-copy"
     attach_to_session true

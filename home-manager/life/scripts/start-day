@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 uair-check start
-niri msg action focus-workspace task
+niri msg action focus-workspace note
 uairctl jump med-prep
 uairzen ': start your day off right by taking control of your mind 🧘 to enable intentional work 🌅' &

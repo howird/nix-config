@@ -4,8 +4,8 @@
   ];
 
   home.packages = with pkgs; [
-    apostrophe
     foliate
+    typora
     obsidian
     presenterm
     percollate
@@ -19,6 +19,7 @@
 
     audacity
     obs-studio
+    footage
     kdePackages.kdenlive
 
     f3d
@@ -29,10 +30,11 @@
     krita
 
     vesktop
-    # slack
+    slack
     # zoom-us
 
     # intentional watching, not streaming!
+    # ^^^YOO!!!
     qbittorrent
     spotify
     ncspot

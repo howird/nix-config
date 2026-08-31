@@ -1,6 +1,7 @@
 {
-  lib,
   config,
+  pkgs,
+  lib,
   ...
 }: {
   imports = [
@@ -32,28 +33,34 @@
     };
   };
 
-  config.xdg.mimeApps = {
-    enable = true;
+  config = {
+    home.packages = with pkgs; [
+      file
+    ];
 
-    defaultApplications = with config.myApps; {
-      "application/pdf" = document;
-      "text/plain" = text;
-      "text/csv" = text;
+    xdg.mimeApps = {
+      enable = true;
 
-      "application/x-latex" = code;
-      "text/markdown" = code;
-      "text/x-tex" = code;
+      defaultApplications = with config.myApps; {
+        "application/pdf" = document;
+        "text/plain" = text;
+        "text/csv" = text;
 
-      "video/mp4" = video;
-      "video/webm" = video;
-      "video/x-matroska" = video;
+        "application/x-latex" = code;
+        "text/x-tex" = code;
 
-      "image/gif" = image;
-      "image/jpeg" = image;
-      "image/png" = image;
-      "image/svg+xml" = image;
+        "video/mp4" = video;
+        "video/webm" = video;
+        "video/x-matroska" = video;
 
-      "x-scheme-handler/magnet" = "org.qbittorrent.qBittorrent.desktop";
+        "image/gif" = image;
+        "image/jpeg" = image;
+        "image/png" = image;
+        "image/svg+xml" = image;
+
+        "text/markdown" = "typora.desktop";
+        "x-scheme-handler/magnet" = "org.qbittorrent.qBittorrent.desktop";
+      };
     };
   };
 }

@@ -6,7 +6,7 @@ default_minutes=30
 max_minutes=120
 
 show_help() {
-    niri msg action focus-workspace task
+    niri msg action focus-workspace note
     uairctl jump med-prep
     uairctl pause
     (
@@ -101,7 +101,7 @@ if [[ "$state" == "paused" ]]; then
     }
     trap cleanup EXIT INT TERM
 
-    niri msg action focus-workspace task
+    niri msg action focus-workspace note
 
     # Run zenity in the background and capture its output and exit code
     zenity_output_file=$(mktemp)
@@ -117,7 +117,7 @@ if [[ "$state" == "paused" ]]; then
 
     # Wait for zenity to close, refocusing the workspace every second
     while kill -0 "$zenity_pid" 2>/dev/null; do
-        niri msg action focus-workspace task
+        niri msg action focus-workspace note
         sleep 1
     done
 
