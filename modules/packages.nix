@@ -1,4 +1,9 @@
 {inputs, ...}: {
+  flake-file.inputs.ghostty = {
+    url = "github:ghostty-org/ghostty";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
   # This overlay brings our custom packages (thin aliases onto other flakes'
   # own packages) into `pkgs.*`, so nixos/home-manager modules can reference
   # them normally (e.g. `pkgs.ghostty`).
