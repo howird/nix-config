@@ -1,190 +1,93 @@
+# DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
+# Use `nix run .#write-flake` to regenerate it.
 {
-  description = "";
+  description = "Howard's dendritic NixOS + home-manager configuration, using Den";
+
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
-    hardware.url = "github:nixos/nixos-hardware";
-    flake-utils.url = "github:numtide/flake-utils";
+    claude-code = {
+      url = "github:ryoppippi/nix-claude-code";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    claude-desktop = {
+      url = "github:heytcass/claude-desktop-linux-flake";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
     crane.url = "github:ipetkov/crane";
-
+    den.url = "github:denful/den";
+    flake-file.url = "github:vic/flake-file";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+    flake-utils.url = "github:numtide/flake-utils";
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hardware.url = "github:nixos/nixos-hardware";
+    helix-flake = {
+      url = "github:mattwparas/helix/steel-event-system";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+      };
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    import-tree.url = "github:vic/import-tree";
     niri = {
       url = "github:epireyn/niri-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-stable.follows = "nixpkgs-stable";
+      };
+    };
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
+    pi = {
+      url = "github:lukasl-dev/pi.nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+    };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixgl = {
-      url = "github:nix-community/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     zen-browser = {
       url = "github:/0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-    helix-flake = {
-      url = "github:mattwparas/helix/steel-event-system";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.rust-overlay.follows = "rust-overlay";
+      inputs = {
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     zesh = {
       url = "github:roberte777/zesh";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.crane.follows = "crane";
-      inputs.flake-utils.follows = "flake-utils";
+      inputs = {
+        crane.follows = "crane";
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     zsh-helix-mode = {
       url = "github:multirious/zsh-helix-mode/main";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # AI
-    claude-desktop = {
-      url = "github:heytcass/claude-desktop-linux-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-    claude-code = {
-      url = "github:ryoppippi/nix-claude-code";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    pi = {
-      url = "github:lukasl-dev/pi.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # voxtype = {
-    #   url = "github:peteonrails/voxtype";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-  };
-
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    nixgl,
-    rust-overlay,
-    stylix,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-    # Supported systems for your flake packages, shell, etc.
-    systems = [
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
-    nixosHosts = [
-      "yerm"
-      "updog"
-      "bofa"
-    ];
-
-    # IN PYTHON:
-    # def genAttrs(systems):
-    #   return lambda fn: { system: fn(system) for system in systems }
-    # forAllSystems = genAttrs(systems)
-    forAllSystems = nixpkgs.lib.genAttrs systems;
-    forAllHosts = nixpkgs.lib.genAttrs nixosHosts;
-  in {
-    # Your custom packages
-    # Accessible through 'nix build', 'nix shell', etc
-    packages = forAllSystems (system:
-      import ./pkgs {
-        inherit inputs;
-        pkgs = import nixpkgs {
-          system = "x86_64-linux";
-          overlays = [
-            self.overlays.additions
-            self.overlays.modifications
-            rust-overlay.overlays.default
-            nixgl.overlay
-          ];
-          config = {allowUnfree = true;};
-        };
-      });
-
-    # Formatter for your nix files, available through 'nix fmt'
-    # Other options beside 'alejandra' include 'nixpkgs-fmt'
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-
-    # Your custom packages and modifications, exported as overlays
-    overlays = import ./overlays {inherit inputs;};
-
-    # Reusable nixos modules you might want to export
-    # These are usually stuff you would upstream into nixpkgs
-    nixosModules = import ./modules/nixos;
-
-    # Reusable home-manager modules you might want to export
-    # These are usually stuff you would upstream into home-manager
-    homeManagerModules = import ./modules/home-manager;
-
-    apps = forAllSystems (system: {
-      plasma-rc2nix = inputs.plasma-manager.apps.${system}.rc2nix;
-    });
-
-    # NixOS configuration entrypoint
-    # Available through 'sudo nixos-rebuild switch --flake .#your-hostname'
-    nixosConfigurations = forAllHosts (host:
-      nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs host;};
-        modules = [
-          ./nixos
-          ./hosts/${host}
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "old";
-            home-manager.users.howird = import ./hosts/${host}/home.nix;
-            home-manager.extraSpecialArgs = {inherit inputs outputs host;};
-          }
-        ];
-      });
-
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager switch --flake .#howird@yerm'
-    homeConfigurations = {
-      "howard@vip" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "x86_64-linux";
-          overlays = [
-            self.overlays.additions
-            self.overlays.modifications
-            rust-overlay.overlays.default
-            nixgl.overlay
-          ];
-          config = {allowUnfree = true;};
-        };
-        extraSpecialArgs = {
-          host = "vip";
-          inherit inputs outputs;
-        };
-        modules = [
-          stylix.homeModules.stylix
-          ./hosts/vip/home.nix
-          ./home-manager
-          ./home-manager/non-nixos.nix
-        ];
-      };
     };
   };
 }
