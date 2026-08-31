@@ -1,4 +1,10 @@
 {inputs, ...}: {
+  flake-file.inputs.nixgl = {
+    url = "github:nix-community/nixGL";
+    inputs.nixpkgs.follows = "nixpkgs";
+    inputs.flake-utils.follows = "flake-utils";
+  };
+
   # den.homes standalone configs default to a plain, non-overlaid
   # `nixpkgs.legacyPackages.<system>` — override pkgs explicitly so
   # howard@vip gets the same custom packages + overlays as before.

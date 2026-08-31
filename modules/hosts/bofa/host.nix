@@ -3,7 +3,11 @@
   den,
   ...
 }: {
-  den.hosts.x86_64-linux.bofa.users.howird = {};
+  den.hosts.x86_64-linux.bofa = {
+    users.howird = {};
+    gpu = "nvidia";
+    gpuVulkan = true;
+  };
 
   den.aspects.bofa.includes = [
     den.aspects.graphics
@@ -21,11 +25,6 @@
     services.glances.enable = false;
     services.ollama.enable = false;
     services.open-webui.enable = false;
-
-    # GPU STUFF
-    myGraphics.amd = false;
-    myGraphics.nvidia = true;
-    myGraphics.nvidiaVulkan = true;
 
     hardware.graphics = {
       enable = true;

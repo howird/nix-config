@@ -1,25 +1,39 @@
-{inputs, ...}: {
+{
+  den,
+  inputs,
+  ...
+}: {
+  # Every NixOS host gets these by default — replaces the old manual
+  # `imports = [ <raw file paths> ]` list, which also meant `host`/`user`
+  # never reached those files as real den context args (only plain module
+  # composition). Promoting each to its own top-level `den.aspects.<name>`
+  # and including it here lets den's own dispatch inject `host`/`user`
+  # directly (see aspects/syncthing.nix).
+  den.schema.host.includes = [
+    den.aspects.niri
+    den.aspects.gdm
+    den.aspects.stylix
+    den.aspects.system-packages
+    den.aspects.boot
+    den.aspects.nixpkgs-settings
+    den.aspects.syncthing
+    den.aspects.emulators
+    den.aspects.input-devices
+    den.aspects.mobile
+    den.aspects.files
+    den.aspects.firewall
+  ];
+
   den.default.nixos = {
     host,
     pkgs,
     ...
   }: {
+    # Makes `inputs` available as a plain specialArg to every nixos-class
+    # aspect for this host, regardless of whether it's a top-level
+    # `den.aspects.<name>.nixos` (den's own context-injection only threads
+    # `host`/`user`, not `inputs`) or nested content.
     _module.args.inputs = inputs;
-
-    imports = [
-      ./aspects/_nixos/desktop
-      ./aspects/_nixos/system-packages.nix
-      (import ./aspects/_nixos/style.nix inputs)
-      ./aspects/_nixos/boot.nix
-      ./aspects/_nixos/nixpkgs-settings.nix
-      (import ./aspects/_nixos/syncthing.nix host)
-      ./aspects/_nixos/emulators.nix
-      ./aspects/_nixos/input-devices.nix
-      ./aspects/_nixos/mobile.nix
-      ./aspects/_nixos/files.nix
-      ./aspects/_nixos/firewall.nix
-      inputs.niri.nixosModules.niri
-    ];
 
     networking.networkmanager.enable = true;
     networking.hostName = host.name;
@@ -70,19 +84,6 @@
     ...
   }: {
     _module.args.inputs = inputs;
-
-    imports = [
-      (import ./aspects/_home/editors inputs)
-      (import ./aspects/_home/shells inputs)
-      ./aspects/_home/ghostty.nix
-      ./aspects/_home/git.nix
-      ./aspects/_home/htop.nix
-      ./aspects/_home/programming.nix
-      ./aspects/_home/sioyek.nix
-      ./aspects/_home/typesetting.nix
-      # ./aspects/_home/voxtype.nix
-      ./aspects/_home/yazi.nix
-    ];
 
     programs.zsh.enable = true;
     programs.helix.enable = true;
