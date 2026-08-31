@@ -1,4 +1,27 @@
-{inputs, ...}: {
+{den, ...}: {
+  den.aspects.howard.includes = [
+    den.aspects.gnome
+
+    # shared with howird
+    den.aspects.editors-helix
+    den.aspects.editors-vscode
+    den.aspects.editors-zed
+    den.aspects.editors-agents
+    den.aspects.shells-zsh
+    den.aspects.shells-fish
+    den.aspects.shells-starship
+    den.aspects.shells-zellij
+    den.aspects.shell-aliases
+    den.aspects.ghostty
+    den.aspects.git
+    den.aspects.htop
+    den.aspects.programming
+    den.aspects.sioyek
+    den.aspects.typesetting
+    den.aspects.yazi
+    den.aspects.stylix
+  ];
+
   den.aspects.howard.homeManager = {
     config,
     lib,
@@ -20,12 +43,6 @@
       source $HOME_PROFILE/hm-session-vars.sh
     '';
   in {
-    imports = [
-      inputs.stylix.homeModules.stylix
-      ../aspects/_shared/stylix.nix
-      ../aspects/_home-workstation/desktops/gnome/dconf.nix
-    ];
-
     home.username = "howard";
 
     programs.zsh.initContent = lib.mkBefore initExtra;
