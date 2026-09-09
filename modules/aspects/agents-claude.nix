@@ -8,24 +8,17 @@
     url = "github:ryoppippi/nix-claude-code";
     inputs.nixpkgs.follows = "nixpkgs";
   };
-  flake-file.inputs.pi = {
-    url = "github:lukasl-dev/pi.nix";
-    inputs.nixpkgs.follows = "nixpkgs";
-  };
 
-  den.aspects.editors-agents.homeManager = {pkgs, ...}: let
+  den.aspects.agents-claude.homeManager = {pkgs, ...}: let
     inherit (pkgs.stdenv.hostPlatform) system;
   in {
-    home.packages = with pkgs; [
-      inputs.pi.packages.${system}.default
-
+    home.packages = [
       inputs.claude-desktop.packages.${system}.claude-desktop
-      inputs.claude-code.packages.${system}.default
-
-      kiro-fhs
-      kiro-cli
-
-      antigravity-cli
     ];
+
+    programs.claude-code = {
+      enable = true;
+      package = inputs.claude-code.packages.${system}.default;
+    };
   };
 }
