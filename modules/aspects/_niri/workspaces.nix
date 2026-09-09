@@ -1,16 +1,34 @@
 {
   programs.niri.settings.workspaces = {
-    "1".name = "create";
-    "2".name = "read";
-    "3".name = "note";
+    "1".name = "make";
+    "2".name = "note";
+    "3".name = "read";
+    "4".name = "surf";
   };
   programs.waybar.settings.mainBar."niri/workspaces".format-icons = {
-    "create" = "󰽉";
-    "read" = "";
+    "make" = "󰽉";
     "note" = "󰧑";
+    "read" = "";
+    "surf" = "󱝆";
   };
 
   programs.niri.settings.window-rules = [
+    {
+      matches = [
+        {
+          app-id = "com.mitchellh.ghostty";
+          at-startup = true;
+        }
+        {app-id = "code";}
+        {app-id = "cursor";}
+        {app-id = "dev.zed.Zed";}
+        {app-id = "krita";}
+        {app-id = "^jetbrains-.*$";}
+      ];
+      open-on-workspace = "make";
+      open-focused = true;
+    }
+
     {
       matches = [
         {
@@ -24,17 +42,7 @@
 
     {
       matches = [
-        {
-          app-id = "zen-twilight";
-          at-startup = true;
-        }
         {app-id = "Zotero";}
-      ];
-      open-on-workspace = "read";
-    }
-
-    {
-      matches = [
         {app-id = "vlc";}
         {app-id = "org.kde.okular";}
         {app-id = "com.github.johnfactotum.Foliate";}
@@ -57,6 +65,13 @@
           app-id = "^chrome-.*$";
           title = "^Fizzy.*$";
         }
+      ];
+      open-focused = true;
+      open-on-workspace = "note";
+    }
+
+    {
+      matches = [
         {
           app-id = "^chrome-.*$";
           title = "^Google Gemini.*$";
@@ -69,34 +84,13 @@
           app-id = "^chrome-.*$";
           title = "^Facebook Messenger.*$";
         }
+        {app-id = "org.gnome.Showtime";}
         {app-id = "vesktop";}
-        {app-id = "Slack";}
+        {app-id = "slack";}
         {app-id = "zoom";}
+        {app-id = "zen-twilight";}
       ];
-      open-focused = true;
-      open-on-workspace = "note";
-    }
-
-    {
-      matches = [
-        {
-          app-id = "com.mitchellh.ghostty";
-          at-startup = true;
-        }
-      ];
-      open-on-workspace = "create";
-    }
-
-    {
-      matches = [
-        {app-id = "code";}
-        {app-id = "cursor";}
-        {app-id = "dev.zed.Zed";}
-        {app-id = "krita";}
-        {app-id = "^jetbrains-.*$";}
-      ];
-      open-on-workspace = "create";
-      open-focused = true;
+      open-on-workspace = "surf";
     }
   ];
 }
