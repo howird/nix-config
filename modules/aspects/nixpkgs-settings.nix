@@ -11,7 +11,6 @@
     ...
   }: {
     nixpkgs.overlays = [
-      inputs.self.overlays.default
       inputs.rust-overlay.overlays.default
       inputs.niri.overlays.niri
     ];
@@ -66,5 +65,34 @@
     environment.systemPackages = with pkgs; [
       nix-index
     ];
+  };
+
+  den.aspects.nixpkgs-settings.darwin = {
+    inputs,
+    lib,
+    ...
+  }: {
+    nixpkgs.overlays = [
+      inputs.rust-overlay.overlays.default
+    ];
+    nixpkgs.config.allowUnfree = true;
+
+    nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
+
+    nix.settings = {
+      substituters = [
+        "https://cache.nixos.org"
+        "https://nixpkgs-python.cachix.org"
+        "https://pi.cachix.org"
+        "https://ryoppippi.cachix.org"
+      ];
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU="
+        "pi.cachix.org-1:lGeoGJaZ5ZDabuRzkcD5EBTNnDM4HJ1vqeOxlWk1Flk="
+        "ryoppippi.cachix.org-1:b2LbtWNvJeL/qb1B6TYOMK+apaCps4SCbzlPRfSQIms="
+      ];
+      trusted-users = ["root" "howird"];
+    };
   };
 }

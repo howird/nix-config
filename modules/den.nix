@@ -1,5 +1,6 @@
 {
   inputs,
+  den,
   lib,
   ...
 }: {
@@ -10,18 +11,22 @@
     (inputs.den.flakeModules.dendritic or {})
   ];
 
-  den.systems = ["x86_64-linux" "aarch64-linux"];
+  den.systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin"];
 
-  # Every user we declare wants a home-manager environment.
   den.schema.user.classes = lib.mkDefault ["homeManager"];
 
-  # Only genuinely foundational inputs with no single owning aspect live here.
-  # Everything else is declared via `flake-file.inputs.<name>` right next to
-  # the aspect file that actually consumes it.
+  den.policies.host-guards = {host ? {}, ...}: [
+    (den.lib.policy.resolve {
+      isNixos = (host.class or null) == "nixos";
+      isDarwin = (host.class or null) == "darwin";
+    })
+  ];
+  den.default.includes = [den.policies.host-guards];
+
   flake-file.inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
-    hardware.url = "github:nixos/nixos-hardware"; # used by hosts/{yerm,updog,bofa}/host.nix
+    hardware.url = "github:nixos/nixos-hardware";
     flake-utils.url = "github:numtide/flake-utils";
     crane.url = "github:ipetkov/crane";
 

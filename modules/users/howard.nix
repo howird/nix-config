@@ -20,7 +20,6 @@
     den.aspects.htop
     den.aspects.programming
     den.aspects.sioyek
-    den.aspects.typesetting
     den.aspects.yazi
     den.aspects.stylix
   ];

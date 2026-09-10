@@ -1,9 +1,4 @@
 {...}: {
-  flake-file.inputs.zsh-helix-mode = {
-    url = "github:multirious/zsh-helix-mode/main";
-    inputs.nixpkgs.follows = "nixpkgs";
-  };
-
   den.aspects.shells-zsh.homeManager = {
     lib,
     config,

@@ -5,8 +5,10 @@
     # workstation-only (nixos-config-attached, not shared with howard@vip)
     den.aspects.niri
     den.aspects.apps
+    den.aspects.linux-apps
     den.aspects.granola
-    den.aspects.browsers
+    den.aspects.chromium
+    den.aspects.zen
     den.aspects.life
     den.aspects.gpg
     den.aspects.rclone
@@ -43,8 +45,5 @@
 
     # editors
     programs.zed-editor.enable = true;
-
-    # browsers
-    myBrowser.chromium = true;
   };
 }

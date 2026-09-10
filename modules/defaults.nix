@@ -81,24 +81,54 @@
   den.default.homeManager = {
     lib,
     config,
+    isDarwin,
     ...
-  }: {
+  }:
+    {
+      _module.args.inputs = inputs;
+
+      programs.zsh.enable = true;
+      programs.helix.enable = true;
+
+      programs.home-manager.enable = true;
+      home = {
+        username = lib.mkDefault "howird";
+        homeDirectory = lib.mkDefault (
+          if isDarwin
+          then "/Users/${config.home.username}"
+          else "/home/${config.home.username}"
+        );
+        sessionPath = ["$HOME/.local/bin"];
+      };
+
+      # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+      home.stateVersion = "23.11";
+    }
+    // (
+      if isDarwin
+      then {
+        targets.darwin.linkApps.enable = false;
+        targets.darwin.copyApps.enable = true;
+      }
+      else {
+        # Nicely reload system units when changing configs
+        systemd.user.startServices = "sd-switch";
+      }
+    );
+
+  den.default.darwin = {host, ...}: {
     _module.args.inputs = inputs;
 
+    nix.settings.experimental-features = ["nix-command" "flakes"];
     programs.zsh.enable = true;
-    programs.helix.enable = true;
 
-    programs.home-manager.enable = true;
-    home = {
-      username = lib.mkDefault "howird";
-      homeDirectory = "/home/${config.home.username}";
-      sessionPath = ["$HOME/.local/bin"];
-    };
+    networking.hostName = host.name;
 
-    # Nicely reload system units when changing configs
-    systemd.user.startServices = "sd-switch";
+    home-manager.useGlobalPkgs = true;
+    home-manager.useUserPackages = true;
+    home-manager.backupFileExtension = "old";
 
-    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-    home.stateVersion = "23.11";
+    # https://nix-darwin.github.io/nix-darwin/manual/index.html#opt-system.stateVersion
+    system.stateVersion = 6;
   };
 }
