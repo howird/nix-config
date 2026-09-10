@@ -18,6 +18,10 @@
       };
     };
     crane.url = "github:ipetkov/crane";
+    darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     den.url = "github:denful/den";
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
@@ -25,10 +29,6 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils";
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     granola = {
       url = "github:howird/granola-flake";
       inputs = {
@@ -56,6 +56,7 @@
         nixpkgs-stable.follows = "nixpkgs-stable";
       };
     };
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     nixgl = {
       url = "github:nix-community/nixGL";
       inputs = {
@@ -91,10 +92,6 @@
         flake-utils.follows = "flake-utils";
         nixpkgs.follows = "nixpkgs";
       };
-    };
-    zsh-helix-mode = {
-      url = "github:multirious/zsh-helix-mode/main";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 }

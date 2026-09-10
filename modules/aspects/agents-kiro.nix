@@ -1,8 +1,14 @@
 {...}: {
   den.aspects.agents-kiro.homeManager = {pkgs, ...}: {
-    home.packages = with pkgs; [
-      kiro-fhs
-      kiro-cli
-    ];
+    home.packages = with pkgs;
+      [
+        kiro-cli
+      ]
+      ++ (
+        # for NixOS
+        if pkgs.stdenv.hostPlatform.isLinux
+        then [kiro-fhs]
+        else [kiro]
+      );
   };
 }

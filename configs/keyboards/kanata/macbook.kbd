@@ -1,0 +1,126 @@
+;; to quit KANATA, press `ctrl+space+esc`
+;;
+;; adapted from framework.kbd: same aliases/layers, only the defcfg device
+;; selection and the bottom row's defsrc key order change, since the MacBook
+;; keyboard's physical bottom row is ctrl/option/command (framework's is
+;; ctrl/command/option) and has no physical right-ctrl key.
+
+(defcfg
+  ;; exclude the Karabiner virtual output device so kanata doesn't grab and
+  ;; re-process its own synthesized events
+  macos-dev-names-include (
+    "Apple Internal Keyboard / Trackpad"
+  )
+)
+
+
+(defsrc
+  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]
+  caps a    s    d    f    g    h    j    k    l    ;    '
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lalt lmet           spc            rmet ralt
+)
+
+
+(defvar
+  tap-time 200
+  hold-time 200
+)
+(defalias
+  ;; LAYERS
+  nua (layer-while-held numarrows)
+  sym (layer-while-held symbols)
+  fns (layer-while-held functions)
+
+  ;; QWERTY HOME ROW MODS
+  a (tap-hold-release $tap-time $hold-time a @sym)
+  s (tap-hold-release $tap-time $hold-time s lalt)
+  4 (tap-hold-release $tap-time $hold-time 4 lalt)
+  d (tap-hold-release $tap-time $hold-time d lmet)
+  5 (tap-hold-release $tap-time $hold-time 5 lmet)
+  f (tap-hold-release $tap-time $hold-time f lctl)
+  6 (tap-hold-release $tap-time $hold-time 6 lctl)
+  x (tap-hold-release $tap-time $hold-time x @fns)
+
+  j (tap-hold-release $tap-time $hold-time j rctl)
+  k (tap-hold-release $tap-time $hold-time k rmet)
+  l (tap-hold-release $tap-time $hold-time l ralt)
+  ; (tap-hold-release $tap-time $hold-time ; @sym)
+  . (tap-hold-release $tap-time $hold-time . @fns)
+
+  ;; BOTTOM KEYS
+  tbs (tap-hold-release $tap-time $hold-time tab lsft)
+  rtn (tap-hold-release $tap-time $hold-time ret @nua)
+
+  ;; SHIFTED KEYS
+  { S-[
+  } S-]
+  dqu S-'
+  bng S-1
+  at  S-2
+  hsh S-3
+  csh S-4
+  pct S-5
+  hat S-6
+  and S-7
+  ast S-8
+  obr S-9
+  cbr S-0
+  tld S-grv
+  pip S-\
+  que S-/
+  lt S-,
+  gt S-.
+  und S--
+  stb S-tab
+  zi C-+
+  zo C--
+)
+
+
+;; The physical F-row arrives as plain f1..f12 regardless of the macOS "use F1,
+;; F2, etc. keys as standard function keys" setting — kanata's macOS backend
+;; doesn't see the media-key HID usages directly, so leaving these unmapped
+;; (or passing them through as literal f1..f12) does not trigger the media
+;; actions; they have to be named explicitly so kanata synthesizes the actual
+;; action. Same on every layer since these should always work regardless of
+;; which layer is active. Adjust f3/f4/f5/f6 below if your System Settings >
+;; Keyboard shortcuts differ (this assumes the stock mission
+;; control/spotlight/dictation/do-not-disturb layout).
+(deflayer base
+  brdn brup mctl sls  dtn  dnd  prev pp   next mute vold volu
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX   q    w    e    r    t    y    u    i    o    p    XX   XX
+  XX   @a   @s   @d   @f   g    h    @j   @k   @l   @;   XX
+  z    @x   c    v    b    esc  n    m    ,    @.   /    XX
+  XX   @tbs bspc             spc          @rtn XX
+)
+
+(deflayer numarrows
+  brdn brup mctl sls  dtn  dnd  prev pp   next mute vold volu
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX   @ast 7    8    9    +    XX   XX   XX   XX   XX   XX   XX
+  XX   /    @4   @5   @6   -    left down up   rght XX   XX
+  0    1    2    3    =    XX   XX   @zo  @zi  XX   XX   XX
+  XX   @tbs del              @und         @rtn XX
+)
+
+(deflayer symbols
+  brdn brup mctl sls  dtn  dnd  prev pp   next mute vold volu
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   @tld @at  @csh grv  XX   @ast @hat @pip XX   XX   XX
+  XX   XX   @bng @{   @}   '    @dqu @obr @cbr @and \    XX
+  XX   XX   [    ]    @hsh XX   @pct @lt  @gt  @que XX   XX
+  XX   @stb del              @und         XX   XX
+)
+
+(deflayer functions
+  brdn brup mctl sls  dtn  dnd  prev pp   next mute vold volu
+  XX   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  XX   XX   f7   f8   f9   XX   XX   XX   mute XX   XX   XX   XX
+  XX   XX   lalt lmet lctl XX   prev vold volu next XX   XX
+  XX   f1   f2   f3   XX   XX   XX   brdn brup XX   XX   XX
+  XX   XX   XX               pp           XX   XX
+)

@@ -1,4 +1,4 @@
-{...}: {
+{inputs, ...}: {
   flake-file.inputs.zesh = {
     url = "github:roberte777/zesh";
     inputs.nixpkgs.follows = "nixpkgs";
@@ -6,7 +6,9 @@
     inputs.flake-utils.follows = "flake-utils";
   };
 
-  den.aspects.shells-zellij.homeManager = {pkgs, ...}: {
+  den.aspects.shells-zellij.homeManager = {pkgs, ...}: let
+    inherit (pkgs.stdenv.hostPlatform) system;
+  in {
     imports = [
       ./_shells-zellij/zellij.nix
       ./_shells-zellij/default-layout.nix
@@ -16,8 +18,8 @@
     programs.zellij.enable = true;
     programs.zellij.tab-bar.name = "zjstatus";
 
-    home.packages = with pkgs; [
-      zesh
+    home.packages = [
+      inputs.zesh.packages.${system}.default
     ];
 
     myShell.aliases = {

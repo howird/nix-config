@@ -9,10 +9,14 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  den.aspects.agents-claude.homeManager = {pkgs, ...}: let
+  den.aspects.agents-claude.homeManager = {
+    pkgs,
+    lib,
+    ...
+  }: let
     inherit (pkgs.stdenv.hostPlatform) system;
   in {
-    home.packages = [
+    home.packages = lib.optionals pkgs.stdenv.hostPlatform.isLinux [
       inputs.claude-desktop.packages.${system}.claude-desktop
     ];
 

@@ -1,5 +1,13 @@
-{inputs, ...}: {
+{
+  inputs,
+  den,
+  ...
+}: {
   den.hosts.x86_64-linux.yerm.users.howird = {};
+
+  den.aspects.yerm.includes = [
+    den.aspects.kanata
+  ];
 
   den.aspects.yerm.nixos = {
     imports = [
@@ -21,11 +29,8 @@
     services = {
       syncthing.enable = true;
       upower.enable = true;
-      kanata = {
-        enable = true;
-        keyboards.laptop.configFile = ../../../configs/keyboards/kanata/framework.kbd;
-        # keyboards.foldable.configFile = ../../../configs/keyboards/kanata/protoarc.kbd;
-      };
+      kanata.keyboards.laptop.configFile = ../../../configs/keyboards/kanata/framework.kbd;
+      # kanata.keyboards.foldable.configFile = ../../../configs/keyboards/kanata/protoarc.kbd;
     };
   };
 

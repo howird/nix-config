@@ -1,36 +1,23 @@
 {...}: {
   # howird-only (matches the pre-migration repo's home-manager/apps, only ever
-  # imported by nixos-only.nix).
+  # imported by nixos-only.nix). Cross-platform only — packages with no
+  # aarch64-darwin build in nixpkgs live in den.aspects.linux-apps instead,
+  # so this aspect stays safe to include from a darwin host too. (percollate
+  # claims darwin support in meta.platforms but actually pulls in chromium
+  # internally, which isn't buildable there — moved out too. Same for warp,
+  # whose meta.broken is true on aarch64-darwin specifically.)
   den.aspects.apps.homeManager = {pkgs, ...}: {
-    imports = [
-      ./_apps/default-apps.nix
-    ];
-
     home.packages = with pkgs; [
-      foliate
       typora
       obsidian
-      presenterm
-      percollate
-      wordbook
-      wike
 
       openconnect_openssl
-      networkmanager
       aria2
-      dex
 
-      audacity
-      obs-studio
-      footage
-      kdePackages.kdenlive
-
-      f3d
+      # audacity
+      # f3d
       drawio
-      eyedropper
-      gimp
-      darktable
-      krita
+      # darktable
 
       vesktop
       slack
@@ -40,11 +27,8 @@
       # ^^^YOO!!!
       qbittorrent
       spotify
-      ncspot
-      fretboard
-      gnome-decoder
-      warp
-      blanket
+      # ncspot
+      # fretboard
     ];
   };
 }

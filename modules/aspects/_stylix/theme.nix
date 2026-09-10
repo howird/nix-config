@@ -43,6 +43,7 @@
       };
     };
 
+
     stylix.fonts = {
       serif = {
         package = pkgs.aleo-fonts;

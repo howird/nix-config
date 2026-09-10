@@ -18,17 +18,26 @@
   };
 
   den.aspects.stylix.homeManager = {
-    host,
+    isNixos,
+    isDarwin,
     lib,
+    pkgs,
     ...
   }: {
-    # NixOS-attached users (howird) already get stylix's home-manager module
-    # auto-injected via NixOS's own stylix integration (home-manager.sharedModules)
-    # — importing it again here would redefine its read-only options. Only a
-    # standalone home with no real host behind it (howard@vip) needs it
-    # imported explicitly.
     imports =
-      lib.optional (!(host ? class)) inputs.stylix.homeModules.stylix
+      lib.optional (!isNixos) inputs.stylix.homeModules.stylix
       ++ [./_stylix/theme.nix];
+
+    config = lib.mkIf isDarwin {
+      home.pointerCursor = lib.mkForce {
+        enable = false;
+        package = pkgs.bibata-cursors;
+        name = "Bibata-Original-Ice";
+        size = 24;
+      };
+
+      stylix.targets.gtksourceview.enable = false;
+      stylix.overlays.enable = false;
+    };
   };
 }
