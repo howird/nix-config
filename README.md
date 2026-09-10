@@ -43,6 +43,43 @@ echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
 home-manager switch --flake .#howard@vip
 ```
 
+#### macOS Machines:
+
+- Install Nix (multi-user daemon install — nix-darwin manages it from here,
+  which conflicts with the Determinate Systems installer's own daemon
+  management, so avoid that one):
+
+```bash
+curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh
+```
+
+- Enable flakes (not on by default with the official installer):
+
+```bash
+sudo mkdir -p /etc/nix
+echo "experimental-features = nix-command flakes" | sudo tee -a /etc/nix/nix.conf
+sudo launchctl kickstart -k system/org.nixos.nix-daemon
+```
+
+- Clone this repo:
+
+```bash
+mkdir -p ~/nix
+git clone git@github.com:howird/nix-config ~/nix/config
+```
+
+- Bootstrap (no `darwin-rebuild` binary exists yet on a fresh machine):
+
+```bash
+sudo nix run nix-darwin -- switch --flake ~/nix/config#<hostname>
+```
+
+- Apply subsequent updates:
+
+```bash
+darwin-rebuild switch --flake ~/nix/config#<hostname>
+```
+
 ## Next Times
 
 ```bash
