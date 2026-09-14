@@ -52,23 +52,16 @@
     };
 
     config = {
-      home.packages = with pkgs;
-        [
-          wl-clipboard-rs
-          slurp
-          grim
-        ]
-        ++ lib.optionals config.programs.niri.enable [
-          glib
-          wayland
-          libnotify
-          wdisplays
-          cursor-clip
+      home.packages = lib.mkIf config.programs.niri.enable (with pkgs; [
+        glib
+        wayland
+        libnotify
+        wdisplays
 
-          blueman
-          networkmanagerapplet
-          pavucontrol
-        ];
+        blueman
+        networkmanagerapplet
+        pavucontrol
+      ]);
 
       desktop.font.name =
         if config.desktop.font.useSerif
