@@ -10,7 +10,6 @@
   programs.niri.settings = {
     spawn-at-startup = [
       {argv = ["waybar"];}
-      {argv = ["cursor-clip" "--daemon"];}
       {argv = ["swaync"];}
       {argv = ["uair" "-q"];}
       {argv = ["niri" "msg" "action" "focus-workspace" "note"];}

@@ -1,15 +1,40 @@
-{
+{config, ...}: {
   programs.niri.settings.workspaces = {
     "1".name = "make";
     "2".name = "note";
     "3".name = "read";
     "4".name = "surf";
   };
+
   programs.waybar.settings.mainBar."niri/workspaces".format-icons = {
     "make" = "󰽉";
     "note" = "󰧑";
     "read" = "";
     "surf" = "󱝆";
+  };
+
+  programs.niri.settings.binds = with config.lib.niri.actions; {
+    "Mod+Alt+A" = {
+      action = focus-workspace "make";
+      allow-inhibiting = false;
+    };
+    "Mod+Alt+S" = {
+      action = focus-workspace "note";
+      allow-inhibiting = false;
+    };
+    "Mod+Alt+D" = {
+      action = focus-workspace "read";
+      allow-inhibiting = false;
+    };
+    "Mod+Alt+F" = {
+      action = focus-workspace "surf";
+      allow-inhibiting = false;
+    };
+
+    "Mod+Alt+Ctrl+A".action.move-column-to-workspace = "make";
+    "Mod+Alt+Ctrl+S".action.move-column-to-workspace = "note";
+    "Mod+Alt+Ctrl+D".action.move-column-to-workspace = "read";
+    "Mod+Alt+Ctrl+F".action.move-column-to-workspace = "surf";
   };
 
   programs.niri.settings.window-rules = [
@@ -53,7 +78,7 @@
 
     {
       matches = [
-        {app-id = "obsidian";}
+        {app-id = "md.Obsidian";}
         {
           app-id = "claude-desktop";
         }

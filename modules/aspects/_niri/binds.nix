@@ -16,9 +16,7 @@
     "Mod+N".action = spawn "swaync-client" "-t" "-sw";
 
     "Mod+S".action.screenshot = {show-pointer = false;};
-    "Mod+Ctrl+S".action.screenshot = {show-pointer = false;};
     "Mod+Shift+S".action.screenshot-window = {write-to-disk = false;};
-    "Mod+Ctrl+Shift+S".action.screenshot-window = {write-to-disk = true;};
 
     # Window
     "Mod+H".action = focus-column-left;
@@ -32,6 +30,7 @@
     "Mod+Ctrl+Right".action = move-column-right;
 
     "Mod+Tab".action = focus-workspace-previous;
+
     "Mod+J".action = focus-workspace-down;
     "Mod+K".action = focus-workspace-up;
     "Mod+Ctrl+J".action = move-column-to-workspace-down;
@@ -125,8 +124,6 @@
 
     "Mod+Space".action = toggle-window-floating;
     "Mod+W".action = toggle-column-tabbed-display;
-
-    "Mod+V".action = spawn "cursor-clip";
 
     # Media controls
     "XF86AudioPlay" = {
