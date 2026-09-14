@@ -120,11 +120,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787936559,
-        "narHash": "sha256-aSBTf5M8EqNvrz616EP2cm4peK/LedSdl/enjNLkYFg=",
+        "lastModified": 1789066899,
+        "narHash": "sha256-9JKN9rn2mlioHFbZfzq/m9T8L2grTYTI2TLVyRLW9Xo=",
         "owner": "ryoppippi",
         "repo": "nix-claude-code",
-        "rev": "244a1199d6764ee7584e85b7696c03d1ef46e113",
+        "rev": "092ae62a8e5b856ab784cff9dd1ca84da953c156",
         "type": "github"
       },
       "original": {
@@ -143,11 +143,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787564323,
-        "narHash": "sha256-UHC6dEybwy3VP4rHXIkpX0v+V9/GqUE/MEoPNwLjdqg=",
+        "lastModified": 1788791927,
+        "narHash": "sha256-pECaMalVumiDxlmA4qp4mw//ZRYPzVfqFL9bmEgsB/4=",
         "owner": "heytcass",
         "repo": "claude-desktop-linux-flake",
-        "rev": "baea2b098822dd83f79d2c530f21da174c72ca7b",
+        "rev": "7aa1c10d81264627e47104131d7f8db76e14e891",
         "type": "github"
       },
       "original": {
@@ -168,6 +168,32 @@
       "original": {
         "owner": "ipetkov",
         "repo": "crane",
+        "type": "github"
+      }
+    },
+    "cursor-clip": {
+      "inputs": {
+        "crane": [
+          "crane"
+        ],
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785999603,
+        "narHash": "sha256-IJ/sPzP0+dVUxRBW6b77H4a032pYq7uLapMBkWzR7qQ=",
+        "owner": "sirulex",
+        "repo": "cursor-clip",
+        "rev": "0bc9006e97173242926bc58b57da7699040cbc29",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sirulex",
+        "repo": "cursor-clip",
         "type": "github"
       }
     },
@@ -491,6 +517,22 @@
         "type": "sourcehut"
       }
     },
+    "mattpocock-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788511407,
+        "narHash": "sha256-dF5i37jHnqfcXD1IRSVzSSm/pfCYSUmOsEhhs5Zx340=",
+        "owner": "mattpocock",
+        "repo": "skills",
+        "rev": "3cca18b368ae95cdbdebbff572ccafa662551015",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "type": "github"
+      }
+    },
     "niri": {
       "inputs": {
         "niri-stable": "niri-stable",
@@ -672,11 +714,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1788173678,
-        "narHash": "sha256-u0YZmQ8Z5luYELFHA6GAQ68HT2Dh5kU3sMFLQ68+2P0=",
+        "lastModified": 1788857715,
+        "narHash": "sha256-QrGCBqM2ZBH0e5g3fxTPVwX/vi5piAzm15T1JT65jbg=",
         "owner": "lukasl-dev",
         "repo": "pi.nix",
-        "rev": "2a11906417b5f2bd9e8f9130da31dfbdfeffecda",
+        "rev": "f41e1136297ccd039ead5131739da85d0ac4a77c",
         "type": "github"
       },
       "original": {
@@ -690,6 +732,7 @@
         "claude-code": "claude-code",
         "claude-desktop": "claude-desktop",
         "crane": "crane",
+        "cursor-clip": "cursor-clip",
         "darwin": "darwin",
         "den": "den",
         "flake-file": "flake-file",
@@ -700,6 +743,7 @@
         "helix-flake": "helix-flake",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
+        "mattpocock-skills": "mattpocock-skills",
         "niri": "niri",
         "nix-homebrew": "nix-homebrew",
         "nixgl": "nixgl",

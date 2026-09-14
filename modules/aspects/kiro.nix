@@ -1,5 +1,5 @@
 {...}: {
-  den.aspects.agents-kiro.homeManager = {pkgs, ...}: {
+  den.aspects.kiro.homeManager = {pkgs, ...}: {
     home.packages = with pkgs;
       [
         kiro-cli

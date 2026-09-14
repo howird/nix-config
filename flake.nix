@@ -18,6 +18,14 @@
       };
     };
     crane.url = "github:ipetkov/crane";
+    cursor-clip = {
+      url = "github:sirulex/cursor-clip";
+      inputs = {
+        crane.follows = "crane";
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
     darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,6 +57,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     import-tree.url = "github:vic/import-tree";
+    mattpocock-skills = {
+      url = "github:mattpocock/skills";
+      flake = false;
+    };
     niri = {
       url = "github:epireyn/niri-flake";
       inputs = {

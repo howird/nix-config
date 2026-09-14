@@ -8,8 +8,13 @@
     url = "github:ryoppippi/nix-claude-code";
     inputs.nixpkgs.follows = "nixpkgs";
   };
+  flake-file.inputs.mattpocock-skills = {
+    url = "github:mattpocock/skills";
+    flake = false;
+  };
 
-  den.aspects.agents-claude.homeManager = {
+  den.aspects.claude.homeManager = {
+    config,
     pkgs,
     lib,
     ...
@@ -23,6 +28,9 @@
     programs.claude-code = {
       enable = true;
       package = inputs.claude-code.packages.${system}.default;
+      enableMcpIntegration = true;
     };
+
+    home.file."${config.programs.claude-code.configDir}/skills/mattpocock-skills".source = inputs.mattpocock-skills;
   };
 }

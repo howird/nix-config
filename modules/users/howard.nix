@@ -6,10 +6,11 @@
     den.aspects.editors-helix
     den.aspects.editors-vscode
     den.aspects.editors-zed
-    den.aspects.agents-kiro
-    den.aspects.agents-claude
-    den.aspects.agents-pi
-    den.aspects.agents-antigravity
+    den.aspects.kiro
+    den.aspects.claude
+    den.aspects.pi
+    den.aspects.mcp
+    den.aspects.antigravity
     den.aspects.shells-zsh
     den.aspects.shells-fish
     den.aspects.shells-starship
