@@ -1,10 +1,9 @@
 {den, ...}: {
   den.aspects.howird-mac.includes = [
-    den.aspects.editors-helix
-    den.aspects.editors-vscode
-    den.aspects.editors-zed
+    den.aspects.helix
+    den.aspects.vscode
+    den.aspects.zed
 
-    den.aspects.kiro
     den.aspects.claude
     den.aspects.pi
     den.aspects.mcp

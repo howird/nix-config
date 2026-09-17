@@ -3,10 +3,9 @@
     den.aspects.gnome
 
     # shared with howird
-    den.aspects.editors-helix
-    den.aspects.editors-vscode
-    den.aspects.editors-zed
-    den.aspects.kiro
+    den.aspects.helix
+    den.aspects.vscode
+    den.aspects.zed
     den.aspects.claude
     den.aspects.pi
     den.aspects.mcp

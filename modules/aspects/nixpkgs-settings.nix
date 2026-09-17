@@ -1,9 +1,4 @@
 {...}: {
-  flake-file.inputs.rust-overlay = {
-    url = "github:oxalica/rust-overlay";
-    inputs.nixpkgs.follows = "nixpkgs";
-  };
-
   den.aspects.nixpkgs-settings.nixos = {
     inputs,
     lib,
@@ -11,7 +6,6 @@
     ...
   }: {
     nixpkgs.overlays = [
-      inputs.rust-overlay.overlays.default
       inputs.niri.overlays.niri
     ];
     nixpkgs.config = {
@@ -72,9 +66,6 @@
     lib,
     ...
   }: {
-    nixpkgs.overlays = [
-      inputs.rust-overlay.overlays.default
-    ];
     nixpkgs.config.allowUnfree = true;
 
     nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);

@@ -45,13 +45,6 @@
       };
     };
     hardware.url = "github:nixos/nixos-hardware";
-    helix-flake = {
-      url = "github:mattwparas/helix/steel-event-system";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
-      };
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -80,10 +73,6 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
     pi = {
       url = "github:lukasl-dev/pi.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
