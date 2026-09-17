@@ -1,16 +1,15 @@
 {...}: {
-  flake-file.inputs.helix-flake = {
-    url = "github:mattwparas/helix/steel-event-system";
-    inputs.nixpkgs.follows = "nixpkgs";
-    inputs.rust-overlay.follows = "rust-overlay";
-  };
+  # flake-file.inputs.helix-flake = {
+  #   url = "github:mattwparas/helix/steel-event-system";
+  #   inputs.nixpkgs.follows = "nixpkgs";
+  # };
 
-  den.aspects.editors-helix.homeManager = {pkgs, ...}: {
+  den.aspects.helix.homeManager = _: {
     imports = [
-      ./_editors-helix/languages/default.nix
+      ./_helix/languages/default.nix
 
-      ./_editors-helix/helix.nix
-      ./_editors-helix/binds.nix
+      ./_helix/helix.nix
+      ./_helix/binds.nix
     ];
 
     programs.helix = {

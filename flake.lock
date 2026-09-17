@@ -443,30 +443,6 @@
         "type": "github"
       }
     },
-    "helix-flake": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": [
-          "rust-overlay"
-        ]
-      },
-      "locked": {
-        "lastModified": 1788027645,
-        "narHash": "sha256-PlQAiZtyhrNtNxXtor2OFIYyE4aGkQT45YKCrsYm3eY=",
-        "owner": "mattwparas",
-        "repo": "helix",
-        "rev": "7738d6dcb12763517d277f5dbcc06677f5f0a204",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mattwparas",
-        "ref": "steel-event-system",
-        "repo": "helix",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -740,7 +716,6 @@
         "flake-utils": "flake-utils",
         "granola": "granola",
         "hardware": "hardware",
-        "helix-flake": "helix-flake",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
         "mattpocock-skills": "mattpocock-skills",
@@ -750,7 +725,6 @@
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-stable": "nixpkgs-stable",
         "pi": "pi",
-        "rust-overlay": "rust-overlay",
         "stylix": "stylix",
         "zen-browser": "zen-browser",
         "zesh": "zesh"
@@ -770,26 +744,6 @@
         "owner": "rust-lang",
         "ref": "nightly",
         "repo": "rust-analyzer",
-        "type": "github"
-      }
-    },
-    "rust-overlay": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1788165049,
-        "narHash": "sha256-en4IoUeCqvq9F66YhwOrUFw1nc70OBhrJwrzfalezvY=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "d03cd474bd97389dcc2e8cd3b3bb6b8c6e346b1a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
         "type": "github"
       }
     },
