@@ -6,13 +6,13 @@
     inputs.flake-utils.follows = "flake-utils";
   };
 
-  den.aspects.shells-zellij.homeManager = {pkgs, ...}: let
+  den.aspects.zellij.homeManager = {pkgs, ...}: let
     inherit (pkgs.stdenv.hostPlatform) system;
   in {
     imports = [
-      ./_shells-zellij/zellij.nix
-      ./_shells-zellij/default-layout.nix
-      ./_shells-zellij/tab-bar.nix
+      ./_zellij/zellij.nix
+      ./_zellij/default-layout.nix
+      ./_zellij/tab-bar.nix
     ];
 
     programs.zellij.enable = true;
