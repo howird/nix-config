@@ -14,6 +14,11 @@
       glow # markdown reader tui
     ];
 
+    programs.nh = {
+      enable = true;
+      flake = config.myShell.flakePath;
+    };
+
     services.lorri.enable = true;
     programs.ripgrep.enable = true;
     programs.uv.enable = true;

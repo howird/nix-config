@@ -1,31 +1,14 @@
 {den, ...}: {
   den.aspects.howird-mac.includes = [
-    den.aspects.helix
-    den.aspects.vscode
-    den.aspects.zed
-
-    den.aspects.claude
-    den.aspects.pi
-    den.aspects.mcp
-    den.aspects.antigravity
-
-    den.aspects.zsh
-    den.aspects.fish
-    den.aspects.starship
-    den.aspects.zellij
-    den.aspects.shell-aliases
-    den.aspects.git
-    den.aspects.htop
-    den.aspects.programming
-    den.aspects.sioyek
-    den.aspects.yazi
     den.aspects.stylix
-    den.aspects.rclone
 
-    den.aspects.ghostty
-    den.aspects.zen
+    den.aspects.bundles.shell
+    den.aspects.bundles.editors
+    den.aspects.bundles.agents
+    den.aspects.bundles.devtools
+    den.aspects.bundles.docs
+    den.aspects.bundles.personal
 
-    den.aspects.apps
     den.aspects.mac-apps
   ];
 
@@ -37,10 +20,6 @@
     home.username = lib.mkForce "howird";
     home.homeDirectory = lib.mkForce "/Users/howird";
 
-    myShell.aliases.nixwird = "sudo darwin-rebuild switch --flake /Users/howird/nix/config#mba";
-
-    programs.ghostty.enable = true;
     programs.ghostty.package = pkgs.ghostty-bin;
-    programs.zed-editor.enable = true;
   };
 }

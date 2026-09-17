@@ -1,50 +1,27 @@
 {den, ...}: {
   den.aspects.howird.includes = [
     den.batteries.host-aspects
+    den.aspects.stylix
+
+    den.aspects.bundles.shell
+    den.aspects.bundles.editors
+    den.aspects.bundles.agents
+    den.aspects.bundles.devtools
+    den.aspects.bundles.docs
+    den.aspects.bundles.personal
 
     # workstation-only (nixos-config-attached, not shared with howard@vip)
     den.aspects.niri
     den.aspects.clipboard
-    den.aspects.apps
     den.aspects.linux-apps
     den.aspects.granola
     den.aspects.chromium
-    den.aspects.zen
     den.aspects.life
     den.aspects.gpg
-    den.aspects.rclone
     den.aspects.thunar
-
-    # shared with howard@vip
-    den.aspects.helix
-    den.aspects.vscode
-    den.aspects.zed
-    den.aspects.claude
-    den.aspects.pi
-    den.aspects.mcp
-    den.aspects.antigravity
-    den.aspects.zsh
-    den.aspects.fish
-    den.aspects.starship
-    den.aspects.zellij
-    den.aspects.shell-aliases
-    den.aspects.ghostty
-    den.aspects.git
-    den.aspects.htop
-    den.aspects.programming
-    den.aspects.sioyek
-    den.aspects.typesetting
-    den.aspects.yazi
-    den.aspects.stylix
   ];
 
-  den.aspects.howird.homeManager = {config, ...}: {
+  den.aspects.howird.homeManager = {
     programs.niri.enable = true;
-
-    myShell.aliases.nixwird = "sudo nixos-rebuild switch --flake /home/${config.home.username}/nix/config";
-    programs.ghostty.enable = true; # gl issues for non-NixOS
-
-    # editors
-    programs.zed-editor.enable = true;
   };
 }

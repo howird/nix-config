@@ -1,6 +1,7 @@
 {...}: {
   den.aspects.zed.homeManager = {pkgs, ...}: {
     programs.zed-editor = {
+      enable = true;
       installRemoteServer = true;
       mutableUserKeymaps = true;
       mutableUserDebug = true;
