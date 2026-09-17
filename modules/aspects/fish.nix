@@ -1,5 +1,5 @@
 {...}: {
-  den.aspects.shells-fish.homeManager = {
+  den.aspects.fish.homeManager = {
     config,
     pkgs,
     ...

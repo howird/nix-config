@@ -1,5 +1,5 @@
 {...}: {
-  den.aspects.shells-starship.homeManager = {
+  den.aspects.starship.homeManager = {
     config,
     lib,
     ...

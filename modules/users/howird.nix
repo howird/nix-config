@@ -23,10 +23,10 @@
     den.aspects.pi
     den.aspects.mcp
     den.aspects.antigravity
-    den.aspects.shells-zsh
-    den.aspects.shells-fish
-    den.aspects.shells-starship
-    den.aspects.shells-zellij
+    den.aspects.zsh
+    den.aspects.fish
+    den.aspects.starship
+    den.aspects.zellij
     den.aspects.shell-aliases
     den.aspects.ghostty
     den.aspects.git
