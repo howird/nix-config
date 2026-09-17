@@ -1,27 +1,13 @@
 {den, ...}: {
   den.aspects.howard.includes = [
     den.aspects.gnome
-
-    # shared with howird
-    den.aspects.helix
-    den.aspects.vscode
-    den.aspects.zed
-    den.aspects.claude
-    den.aspects.pi
-    den.aspects.mcp
-    den.aspects.antigravity
-    den.aspects.zsh
-    den.aspects.fish
-    den.aspects.starship
-    den.aspects.zellij
-    den.aspects.shell-aliases
-    den.aspects.ghostty
-    den.aspects.git
-    den.aspects.htop
-    den.aspects.programming
-    den.aspects.sioyek
-    den.aspects.yazi
     den.aspects.stylix
+
+    den.aspects.bundles.shell
+    den.aspects.bundles.editors
+    den.aspects.bundles.agents
+    den.aspects.bundles.devtools
+    den.aspects.bundles.docs
   ];
 
   den.aspects.howard.homeManager = {
@@ -49,18 +35,14 @@
 
     programs.zsh.initContent = lib.mkBefore initExtra;
     programs.bash.initExtra = initExtra;
+
+    # Standalone home-manager: no host to name the flake output after.
     myShell.hmFlakeArgs = "#${config.home.username}@vip";
 
-    myShell.aliases.nixwird = "home-manager switch --flake /home/${config.home.username}/nix/config${config.myShell.hmFlakeArgs}";
     stylix.autoEnable = false;
     stylix.targets.zellij.enable = true;
     stylix.targets.zed.enable = true;
     stylix.targets.gnome.enable = true;
     stylix.targets.gtk.enable = true;
-
-    programs.nh = {
-      enable = true;
-      flake = "/home/${config.home.username}/nix/config";
-    };
   };
 }
