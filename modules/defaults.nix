@@ -83,38 +83,60 @@
     config,
     isDarwin,
     ...
-  }:
-    {
-      _module.args.inputs = inputs;
-
-      programs.zsh.enable = true;
-      programs.helix.enable = true;
-
-      programs.home-manager.enable = true;
-      home = {
-        username = lib.mkDefault "howird";
-        homeDirectory = lib.mkDefault (
-          if isDarwin
-          then "/Users/${config.home.username}"
-          else "/home/${config.home.username}"
-        );
-        sessionPath = ["$HOME/.local/bin"];
+  }: {
+    # Declared here, not in `shell-aliases`, so any aspect may read them
+    # without depending on that one being included — `programming` builds
+    # nh's flake path out of `myShell.flakePath`.
+    options.myShell = {
+      aliases = lib.mkOption {
+        type = lib.types.attrs;
+        default = {};
       };
+      # Flake output selector for users whose rebuild command needs one
+      # (a standalone home-manager config has no host to name it after).
+      hmFlakeArgs = lib.mkOption {
+        type = lib.types.str;
+        default = "";
+      };
+      flakePath = lib.mkOption {
+        type = lib.types.str;
+        default = "${config.home.homeDirectory}/nix/config";
+      };
+    };
 
-      # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-      home.stateVersion = "23.11";
-    }
-    // (
-      if isDarwin
-      then {
-        targets.darwin.linkApps.enable = false;
-        targets.darwin.copyApps.enable = true;
+    config =
+      {
+        _module.args.inputs = inputs;
+
+        programs.zsh.enable = true;
+        programs.helix.enable = true;
+
+        programs.home-manager.enable = true;
+        home = {
+          username = lib.mkDefault "howird";
+          homeDirectory = lib.mkDefault (
+            if isDarwin
+            then "/Users/${config.home.username}"
+            else "/home/${config.home.username}"
+          );
+          sessionPath = ["$HOME/.local/bin"];
+        };
+
+        # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+        home.stateVersion = "23.11";
       }
-      else {
-        # Nicely reload system units when changing configs
-        systemd.user.startServices = "sd-switch";
-      }
-    );
+      // (
+        if isDarwin
+        then {
+          targets.darwin.linkApps.enable = false;
+          targets.darwin.copyApps.enable = true;
+        }
+        else {
+          # Nicely reload system units when changing configs
+          systemd.user.startServices = "sd-switch";
+        }
+      );
+  };
 
   den.default.darwin = {host, ...}: {
     _module.args.inputs = inputs;
