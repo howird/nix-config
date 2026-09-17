@@ -1,5 +1,5 @@
 {...}: {
-  den.aspects.shells-zsh.homeManager = {
+  den.aspects.zsh.homeManager = {
     lib,
     config,
     pkgs,
