@@ -11,7 +11,6 @@
   den.homes.x86_64-linux."howard@vip".pkgs = import inputs.nixpkgs {
     system = "x86_64-linux";
     overlays = [
-      inputs.rust-overlay.overlays.default
       inputs.nixgl.overlay
     ];
     config = {allowUnfree = true;};
