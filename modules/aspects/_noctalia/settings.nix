@@ -172,10 +172,13 @@
 
     widget = {
       clock = {
-        format = "{:%I:%M %p}";
+        format = "{:%I:%M %p} on {:%A}";
         tooltip_format = "{:%A, %B %-d, %Y}";
       };
-      uair.type = "howird/uair:timer";
+      uair = {
+        type = "howird/uair:timer";
+        label_format = "{name} for {minutes} more {min_unit}, at";
+      };
       workspaces = {
         label_source = "name";
         max_label_chars = 1;
