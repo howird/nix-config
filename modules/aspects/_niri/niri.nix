@@ -65,20 +65,5 @@
       #   __GL_GSYNC_ALLOWED = "0";
       #   __GL_VRR_ALLOWED = "0";
     };
-
-    layer-rules = [
-      {
-        matches = [{namespace = "^launcher$";}];
-        shadow.enable = true;
-      }
-      {
-        matches = [{namespace = "^notifications$";}];
-        block-out-from = "screencast";
-      }
-      {
-        matches = [{namespace = "^wallpaper$";}];
-        place-within-backdrop = true;
-      }
-    ];
   };
 }
