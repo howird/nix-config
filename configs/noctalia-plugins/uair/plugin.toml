@@ -1,0 +1,65 @@
+# Pomodoro widget mirroring the `uair` daemon (see modules/aspects/life.nix
+# and modules/aspects/_life/uair.nix). Replaces the two waybar modules in
+# _life/uair-waybar.nix: custom/uair and custom/uair-time.
+#
+# plugin_api 14 is the oldest level that covers everything used here: the
+# script itself only needs 3 (setUpdateInterval, runAsync, notify, the
+# imperative barWidget calls), but `[widget.actions]` below is a level-14
+# feature. Verified with `noctalia plugins lint`.
+id = "howird/uair"
+name = "uair"
+version = "1.0.0"
+plugin_api = 14
+author = "howird"
+license = "MIT"
+icon = "clock-play"
+description = "Pomodoro timer mirroring the uair daemon."
+tags = ["pomodoro", "timer"]
+dependencies = ["uair"]
+
+[[widget]]
+id = "timer"
+entry = "widget.luau"
+
+# Every widget gets a built-in middle-click binding that opens its settings,
+# so onMiddleClick never fires until that is cleared. Middle click is
+# `uairctl finish`, matching the old waybar module.
+[widget.actions]
+middle = "none"
+
+[[widget.setting]]
+key = "uairctl"
+type = "string"
+label_key = "settings.uairctl.label"
+description_key = "settings.uairctl.description"
+default = "uairctl"
+
+[[widget.setting]]
+key = "interval_ms"
+type = "int"
+label_key = "settings.interval.label"
+description_key = "settings.interval.description"
+default = 1000
+min = 200
+max = 10000
+
+# Glyph names are noctalia aliases or Tabler icon names. Exposed as settings
+# rather than hardcoded so a rename upstream is a settings edit, not a rebuild.
+[[widget.setting]]
+key = "glyph_running"
+type = "glyph"
+label_key = "settings.glyphRunning.label"
+default = "player-play"
+
+[[widget.setting]]
+key = "glyph_paused"
+type = "glyph"
+label_key = "settings.glyphPaused.label"
+default = "player-pause"
+
+[[widget.setting]]
+key = "show_name"
+type = "bool"
+label_key = "settings.showName.label"
+description_key = "settings.showName.description"
+default = true
