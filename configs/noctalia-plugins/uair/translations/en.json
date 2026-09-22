@@ -1,0 +1,10 @@
+{
+  "settings.uairctl.label": "uairctl command",
+  "settings.uairctl.description": "Path to the uairctl binary used to talk to the running uair daemon.",
+  "settings.interval.label": "Refresh interval (ms)",
+  "settings.interval.description": "How often the remaining time is re-read from uair.",
+  "settings.glyphRunning.label": "Running glyph",
+  "settings.glyphPaused.label": "Paused glyph",
+  "settings.showName.label": "Show session name",
+  "settings.showName.description": "Show the uair session name (working, resting, ...) next to the countdown."
+}
