@@ -66,49 +66,40 @@ in {
 
     programs.niri.settings.window-rules = [
       {
+        open-on-workspace = ws.make;
+
+        open-focused = true;
         matches = [
           {
             app-id = "com.mitchellh.ghostty";
             at-startup = true;
           }
+          {app-id = "claude-desktop";}
           {app-id = "code";}
           {app-id = "cursor";}
           {app-id = "dev.zed.Zed";}
           {app-id = "krita";}
           {app-id = "^jetbrains-.*$";}
         ];
-        open-on-workspace = ws.make;
-        open-focused = true;
       }
 
       {
+        open-on-workspace = ws.note;
+
+        baba-is-float = true;
         matches = [
           {
             app-id = "zenity";
             title = "^.*🍅.*$";
           }
         ];
-        baba-is-float = true;
-        open-on-workspace = ws.note;
       }
 
       {
-        matches = [
-          {app-id = "Zotero";}
-          {app-id = "vlc";}
-          {app-id = "org.kde.okular";}
-          {app-id = "com.github.johnfactotum.Foliate";}
-        ];
-        open-on-workspace = ws.read;
         open-focused = true;
-      }
-
-      {
+        open-on-workspace = ws.note;
         matches = [
           {app-id = "md.Obsidian";}
-          {
-            app-id = "claude-desktop";
-          }
           {app-id = "org.qbittorrent.qBittorrent";}
           {app-id = "^libreoffice-.*$";}
 
@@ -117,13 +108,33 @@ in {
             app-id = "^chrome-.*$";
             title = "^Fizzy.*$";
           }
+          {
+            app-id = "^chrome-.*$";
+            title = "^Linear.*$";
+          }
         ];
-        open-focused = true;
-        open-on-workspace = ws.note;
       }
 
       {
+        open-on-workspace = ws.read;
+
+        open-focused = true;
         matches = [
+          {app-id = "Zotero";}
+          {app-id = "org.kde.okular";}
+          {app-id = "com.github.johnfactotum.Foliate";}
+        ];
+      }
+
+      {
+        open-on-workspace = ws.surf;
+
+        matches = [
+          {app-id = "zen-twilight";}
+
+          {app-id = "org.gnome.Showtime";}
+          {app-id = "vlc";}
+
           {
             app-id = "^chrome-.*$";
             title = "^Google Gemini.*$";
@@ -136,13 +147,11 @@ in {
             app-id = "^chrome-.*$";
             title = "^Facebook Messenger.*$";
           }
-          {app-id = "org.gnome.Showtime";}
+
           {app-id = "vesktop";}
           {app-id = "slack";}
           {app-id = "zoom";}
-          {app-id = "zen-twilight";}
         ];
-        open-on-workspace = ws.surf;
       }
     ];
   };

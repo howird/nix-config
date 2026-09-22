@@ -1,7 +1,11 @@
 {...}: {
   # Display-profile switching. Shell-agnostic: noctalia does not do output
   # layout, so this is included on its own.
-  den.aspects.kanshi.homeManager = {lib, ...}: {
+  den.aspects.kanshi.homeManager = {
+    lib,
+    config,
+    ...
+  }: {
     services.kanshi = {
       enable = true;
       settings =
@@ -11,10 +15,7 @@
             profile.outputs = [
               {
                 criteria = "eDP-1";
-                # 3200x1800 on a 13.3" panel (~276 DPI). Integer scale, so
-                # Xwayland and non-fractional-aware toolkits stay sharp;
-                # logical size is 1600x900.
-                scale = 2.0;
+                scale = config.desktop.internalScale;
                 status = "enable";
               }
             ];

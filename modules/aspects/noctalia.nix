@@ -60,7 +60,7 @@
     # spelling (0.29999999999999999 vs 0.3) with the real changes buried in it.
     home.packages = [
       (pkgs.writeShellApplication {
-        name = "noctalia-drift";
+        name = "noctalia-cfg-drift";
         runtimeInputs = [pkgs.yj pkgs.jq config.programs.noctalia.package];
         text = ''
           norm() { yj -tj | jq -S; }
