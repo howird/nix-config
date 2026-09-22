@@ -33,4 +33,8 @@
       kanata.keyboards.laptop.configFile = ../../../configs/keyboards/kanata/razer.kbd;
     };
   };
+
+  den.aspects.razer.homeManager = {
+    desktop.internalScale = 2.0;
+  };
 }

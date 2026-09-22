@@ -47,10 +47,13 @@
         radius_top_right = 20;
         shadow = false;
 
-        start = ["launcher" "workspaces" "active_window"];
+        start = [
+          "launcher"
+          "workspaces"
+          "active_window"
+        ];
         center = ["uair" "clock"];
         end = [
-          "privacy"
           "tray"
           "notifications"
           "network"
@@ -182,9 +185,10 @@
       workspaces = {
         label_source = "name";
         max_label_chars = 1;
+        labels_only_when_occupied = true;
 
         capsule = true;
-        capsule_padding = 8;
+        capsule_padding = 6;
         active_pill_size = 3;
         inactive_pill_size = 1.5;
 
