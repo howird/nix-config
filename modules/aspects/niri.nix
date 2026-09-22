@@ -9,10 +9,29 @@
     imports = [inputs.niri.nixosModules.niri];
 
     programs.niri = {
+      enable = true;
       package = pkgs.niri-unstable;
     };
     niri-flake.cache.enable = true;
     environment.systemPackages = [pkgs.xwayland-satellite-unstable];
+
+    services.gnome.gnome-keyring.enable = true;
+    programs.seahorse.enable = true;
+
+    xdg.portal = {
+      enable = true;
+      wlr.enable = true;
+      xdgOpenUsePortal = true;
+      config = {
+        common.default = ["gtk"];
+        niri.default = ["gtk" "gnome"];
+      };
+      extraPortals = with pkgs; [
+        xdg-desktop-portal
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-gnome
+      ];
+    };
   };
 
   den.aspects.niri.homeManager = {
