@@ -52,9 +52,7 @@
         end = [
           "privacy"
           "tray"
-          "media"
           "notifications"
-          "clipboard"
           "network"
           "bluetooth"
           "volume"
@@ -134,7 +132,7 @@
       clipboard_enabled = true;
       polkit_agent = true;
       niri_overview_type_to_launch_enabled = true;
-      settings_show_advanced = true;
+      settings_show_advanced = false;
       setup_wizard_enabled = false;
 
       date_format = "%A, %B %-d";
@@ -181,6 +179,16 @@
       workspaces = {
         label_source = "name";
         max_label_chars = 1;
+
+        capsule = true;
+        capsule_padding = 8;
+        active_pill_size = 3;
+        inactive_pill_size = 1.5;
+
+        focused_color = "tertiary";
+        occupied_color = "primary";
+        empty_color = "primary";
+        urgent_color = "secondary";
       };
     };
   };
