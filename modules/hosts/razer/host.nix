@@ -6,6 +6,7 @@
   den.hosts.x86_64-linux.razer.users.howird = {};
 
   den.aspects.razer.includes = [
+    den.aspects.bluetooth
     den.aspects.kanata
   ];
 
@@ -23,8 +24,6 @@
         enable = true;
         enable32Bit = true;
       };
-      bluetooth.enable = true;
-      bluetooth.powerOnBoot = true;
     };
 
     services = {

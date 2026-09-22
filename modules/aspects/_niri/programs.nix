@@ -3,9 +3,6 @@
   lib,
   ...
 }: {
-  # yerm-only startup apps (nm-applet/poweralertd/blueman-applet) are added
-  # via den.aspects.yerm.homeManager, projected onto howird by
-  # den.batteries.host-aspects (see modules/hosts/yerm/host.nix).
   programs.niri.settings = {
     spawn-at-startup = [
       {argv = ["uair" "-q"];}
@@ -13,6 +10,7 @@
       {argv = ["zotero"];}
       {argv = ["ghostty"];}
       {argv = ["uair-startup"];}
+      {argv = ["nm-applet" "--indicator"];}
     ];
 
     window-rules = [
