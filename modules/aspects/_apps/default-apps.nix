@@ -42,6 +42,8 @@
       enable = true;
 
       defaultApplications = with config.myApps; {
+        "inode/directory" = "yazi.desktop";
+
         "application/pdf" = document;
         "text/plain" = text;
         "text/csv" = text;
