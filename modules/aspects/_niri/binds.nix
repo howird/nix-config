@@ -7,7 +7,7 @@
     "Mod+Ctrl+Alt+Q".action = quit;
 
     "Mod+T".action = spawn "ghostty";
-    "Mod+O".action = spawn "thunar";
+    "Mod+O".action = spawn "xdg-terminal-exec" "yazi";
     "Mod+B".action = spawn "zen-twilight";
     "Mod+M".action = spawn "spotify";
     "Mod+I".action = spawn "vesktop";
