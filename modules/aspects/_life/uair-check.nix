@@ -1,9 +1,22 @@
-{pkgs, ...}: let
-  inherit (pkgs) writeShellScriptBin;
-  uairzen = writeShellScriptBin "uairzen" (builtins.readFile ./scripts/uairzen);
-  start-day = writeShellScriptBin "start-day" (builtins.readFile ./scripts/start-day);
-  uair-check = writeShellScriptBin "uair-check" (builtins.readFile ./scripts/uair-check);
-  uair-startup = writeShellScriptBin "uair-startup" (builtins.readFile ./scripts/uair-startup);
+{
+  config,
+  pkgs,
+  ...
+}: let
+  mkScript = name:
+    pkgs.replaceVarsWith {
+      src = ./scripts/${name};
+      replacements.noteWorkspace = config.desktop.workspaces.note;
+      dir = "bin";
+      isExecutable = true;
+      postCheck = ''${pkgs.stdenv.shellDryRun} "$target"'';
+      meta.mainProgram = name;
+    };
+
+  uairzen = mkScript "uairzen";
+  start-day = mkScript "start-day";
+  uair-check = mkScript "uair-check";
+  uair-startup = mkScript "uair-startup";
 in {
   systemd.user.services.uair-check = {
     Unit.Description = "Checks that pomodoros are running";
