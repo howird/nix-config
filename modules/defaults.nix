@@ -105,6 +105,12 @@
       };
     };
 
+    options.desktop.internalScale = lib.mkOption {
+      type = lib.types.float;
+      default = 1.0;
+      description = "Scale for the built-in laptop panel.";
+    };
+
     config =
       {
         _module.args.inputs = inputs;

@@ -34,8 +34,7 @@
     };
   };
 
-  # Projected onto howird via den.batteries.host-aspects (see modules/users/howird.nix).
   den.aspects.yerm.homeManager = {
-    home.sessionVariables.GDK_SCALE = "1.6";
+    desktop.internalScale = 1.6;
   };
 }
