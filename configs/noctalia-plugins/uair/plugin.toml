@@ -58,8 +58,8 @@ label_key = "settings.glyphPaused.label"
 default = "player-pause"
 
 [[widget.setting]]
-key = "show_name"
-type = "bool"
-label_key = "settings.showName.label"
-description_key = "settings.showName.description"
-default = true
+key = "label_format"
+type = "string"
+label_key = "settings.labelFormat.label"
+description_key = "settings.labelFormat.description"
+default = "{name} {time}"
