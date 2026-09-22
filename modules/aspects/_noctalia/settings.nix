@@ -81,8 +81,7 @@
 
     system.monitor.enabled = true;
 
-    # Mirrors the hypridle timings the waybar stack used: lock at 10 minutes,
-    # screen off a minute later.
+    # lock at 10 minutes, screen off a minute later
     idle = {
       pre_action_fade_seconds = 2.0;
       behavior = {

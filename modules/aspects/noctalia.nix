@@ -24,8 +24,7 @@
     # (shell.polkit_agent in _noctalia/settings.nix) and polkit accepts only
     # one registration per session, so with both on one silently loses the
     # race - and the KDE one pulls kdePackages in for a prompt that may never
-    # be drawn. Disabled here rather than in the niri aspect because
-    # bundles/waybar-shell has no agent of its own and still needs it.
+    # be drawn.
     systemd.user.services.niri-flake-polkit.enable =
       lib.mkIf config.programs.noctalia.enable false;
   };
