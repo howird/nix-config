@@ -12,6 +12,7 @@
   den.schema.host.includes = [
     den.aspects.niri
     den.aspects.noctalia
+    den.aspects.noctalia-greeter
     den.aspects.gdm
     den.aspects.stylix
     den.aspects.system-packages
