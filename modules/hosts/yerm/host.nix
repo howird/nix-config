@@ -37,11 +37,5 @@
   # Projected onto howird via den.batteries.host-aspects (see modules/users/howird.nix).
   den.aspects.yerm.homeManager = {
     home.sessionVariables.GDK_SCALE = "1.6";
-
-    programs.niri.settings.spawn-at-startup = [
-      {argv = ["nm-applet"];}
-      {argv = ["poweralertd"];}
-      {argv = ["blueman-applet"];}
-    ];
   };
 }

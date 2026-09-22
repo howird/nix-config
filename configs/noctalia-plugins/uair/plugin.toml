@@ -1,6 +1,6 @@
 # Pomodoro widget mirroring the `uair` daemon (see modules/aspects/life.nix
-# and modules/aspects/_life/uair.nix). Replaces the two waybar modules in
-# _life/uair-waybar.nix: custom/uair and custom/uair-time.
+# and modules/aspects/_life/uair.nix). Replaces the two waybar modules this
+# repo used to carry: custom/uair and custom/uair-time.
 #
 # plugin_api 14 is the oldest level that covers everything used here: the
 # script itself only needs 3 (setUpdateInterval, runAsync, notify, the

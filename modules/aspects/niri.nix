@@ -15,10 +15,6 @@
     environment.systemPackages = [pkgs.xwayland-satellite-unstable];
   };
 
-  # The compositor itself: layout, appearance, window/workspace rules and the
-  # binds that drive niri. The bar, launcher, notifications, OSD, lock screen
-  # and wallpaper are a separate concern - see den.aspects.bundles.waybar-shell
-  # and den.aspects.noctalia.
   den.aspects.niri.homeManager = {
     lib,
     pkgs,
@@ -45,6 +41,11 @@
 
         blueman
         pavucontrol
+
+        # clipboard
+        slurp
+        grim
+        wl-clipboard-rs
       ]);
     };
   };

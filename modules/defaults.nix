@@ -105,28 +105,13 @@
       };
     };
 
-    # Same rationale as `myShell` above: the desktop font is read by whichever
-    # shell aspect is active (waybar, swaync, rofi, hyprlock, noctalia), so it
-    # cannot live inside any one of them.
     # Workspace names are consumed well outside the niri aspect - the _life
-    # pomodoro scripts focus one by name, and waybar labels them - so they
+    # pomodoro scripts focus one by name, and the bar labels them - so they
     # cannot live in _niri/workspaces.nix. Same rationale as `myShell` above.
     options.desktop.workspaces = lib.mkOption {
       type = lib.types.attrsOf lib.types.str;
       default = {};
       description = "Named niri workspaces, keyed by a readable short name.";
-    };
-
-    options.desktop.font = {
-      useSerif = lib.mkEnableOption "useSerif";
-      name = lib.mkOption {
-        type = lib.types.str;
-        default =
-          if config.desktop.font.useSerif
-          then config.stylix.fonts.serif.name
-          else config.stylix.fonts.sansSerif.name;
-        description = "Name of the font.";
-      };
     };
 
     config =

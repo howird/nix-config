@@ -4,7 +4,6 @@
   den.aspects.life.homeManager = {pkgs, ...}: {
     imports = [
       ./_life/uair.nix
-      ./_life/uair-waybar.nix
       ./_life/uair-check.nix
     ];
 
