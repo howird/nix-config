@@ -6,6 +6,7 @@
   den.hosts.x86_64-linux.yerm.users.howird = {};
 
   den.aspects.yerm.includes = [
+    den.aspects.bluetooth
     den.aspects.kanata
   ];
 
@@ -22,8 +23,6 @@
         enable = true;
         enable32Bit = true;
       };
-      bluetooth.enable = true;
-      bluetooth.powerOnBoot = true;
     };
 
     services = {
