@@ -17,8 +17,6 @@
       ./_hardware-configuration.nix
     ];
 
-    programs.niri.enable = true;
-
     hardware = {
       graphics = {
         enable = true;

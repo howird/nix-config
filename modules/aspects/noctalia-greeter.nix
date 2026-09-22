@@ -12,7 +12,7 @@
     imports = [inputs.noctalia-greeter.nixosModules.default];
 
     services.displayManager.noctalia-greeter = {
-      enable = config.programs.niri.enable || config.services.desktopManager.gnome.enable;
+      enable = true;
       passwordless-sync-users = ["howird"];
       cursorTheme.package = config.stylix.cursor.package;
       settings = {
