@@ -105,15 +105,6 @@
       };
     };
 
-    # Workspace names are consumed well outside the niri aspect - the _life
-    # pomodoro scripts focus one by name, and the bar labels them - so they
-    # cannot live in _niri/workspaces.nix. Same rationale as `myShell` above.
-    options.desktop.workspaces = lib.mkOption {
-      type = lib.types.attrsOf lib.types.str;
-      default = {};
-      description = "Named niri workspaces, keyed by a readable short name.";
-    };
-
     config =
       {
         _module.args.inputs = inputs;
