@@ -1,33 +1,13 @@
-{inputs, ...}: {
-  flake-file.inputs.cursor-clip = {
-    url = "github:sirulex/cursor-clip";
-    inputs.nixpkgs.follows = "nixpkgs";
-    inputs.crane.follows = "crane";
-    inputs.flake-utils.follows = "flake-utils";
-  };
-
-  # Wayland clipboard tooling. The cursor-clip daemon/overlay is wired into
-  # niri, so this expects den.aspects.niri alongside it.
-  den.aspects.clipboard.homeManager = {
-    lib,
-    pkgs,
-    config,
-    ...
-  }: let
-    inherit (pkgs.stdenv.hostPlatform) system;
-  in {
+{...}: {
+  # Shell-agnostic wayland clipboard/capture primitives: `wl-copy`/`wl-paste`
+  # for scripts, and grim+slurp behind niri's own Mod+S screenshot bind.
+  # The clipboard *manager* is a shell concern - see den.aspects.cursor-clip
+  # and noctalia's `[shell] clipboard_enabled`.
+  den.aspects.clipboard.homeManager = {pkgs, ...}: {
     home.packages = with pkgs; [
       slurp
       grim
       wl-clipboard-rs
-      inputs.cursor-clip.packages.${system}.default
     ];
-
-    programs.niri.settings = lib.mkIf config.programs.niri.enable {
-      spawn-at-startup = [
-        {argv = ["cursor-clip" "--daemon"];}
-      ];
-      binds."Mod+V".action = config.lib.niri.actions.spawn "cursor-clip";
-    };
   };
 }

@@ -1,10 +1,9 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: {
-  home.packages = lib.optional config.programs.niri.enable pkgs.rofi;
+  home.packages = [pkgs.rofi];
 
   xdg.configFile."rofi/theme.rasi".text = with config.lib.stylix.colors.withHashtag; ''
     * {

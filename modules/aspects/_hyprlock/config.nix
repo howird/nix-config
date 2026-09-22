@@ -1,13 +1,12 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: {
-  home.packages = lib.optionals config.programs.niri.enable (with pkgs; [
+  home.packages = with pkgs; [
     hyprlock
     # fortune-kind
-  ]);
+  ];
   xdg.configFile."hypr/hyprlock.conf".text = let
     mkRgba = c: a: let
       r = config.lib.stylix.colors."${c}-rgb-r";

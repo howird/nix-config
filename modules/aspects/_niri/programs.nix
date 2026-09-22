@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   ...
@@ -9,15 +8,11 @@
   # den.batteries.host-aspects (see modules/hosts/yerm/host.nix).
   programs.niri.settings = {
     spawn-at-startup = [
-      {argv = ["waybar"];}
-      {argv = ["swaync"];}
       {argv = ["uair" "-q"];}
-      {argv = ["niri" "msg" "action" "focus-workspace" "note"];}
       {argv = ["obsidian"];}
       {argv = ["zotero"];}
       {argv = ["ghostty"];}
       {argv = ["uair-startup"];}
-      {argv = ["awww" "img" "${config.stylix.image}"];}
     ];
 
     window-rules = [

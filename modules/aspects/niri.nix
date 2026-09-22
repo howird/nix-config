@@ -15,6 +15,10 @@
     environment.systemPackages = [pkgs.xwayland-satellite-unstable];
   };
 
+  # The compositor itself: layout, appearance, window/workspace rules and the
+  # binds that drive niri. The bar, launcher, notifications, OSD, lock screen
+  # and wallpaper are a separate concern - see den.aspects.bundles.waybar-shell
+  # and den.aspects.noctalia.
   den.aspects.niri.homeManager = {
     lib,
     pkgs,
@@ -28,28 +32,9 @@
       ./_niri/programs.nix
       ./_niri/window-rules.nix
       ./_niri/workspaces.nix
-
-      ./_niri/packages/batsignal.nix
-      ./_niri/packages/hypridle.nix
-      ./_niri/packages/hyprlock.nix
-      ./_niri/packages/kanshi.nix
-      ./_niri/packages/rofi.nix
-      ./_niri/packages/record/default.nix
-      ./_niri/packages/swaync
-      ./_niri/packages/swayosd
-      ./_niri/packages/waybar
     ];
 
-    options = {
-      programs.niri.enable = lib.mkEnableOption "niri";
-      desktop.font = {
-        useSerif = lib.mkEnableOption "useSerif";
-        name = lib.mkOption {
-          type = lib.types.str;
-          description = "Name of the font.";
-        };
-      };
-    };
+    options.programs.niri.enable = lib.mkEnableOption "niri";
 
     config = {
       home.packages = lib.mkIf config.programs.niri.enable (with pkgs; [
@@ -59,21 +44,8 @@
         wdisplays
 
         blueman
-        networkmanagerapplet
         pavucontrol
       ]);
-
-      desktop.font.name =
-        if config.desktop.font.useSerif
-        then config.stylix.fonts.serif.name
-        else config.stylix.fonts.sansSerif.name;
-
-      stylix.targets.waybar.font =
-        if config.desktop.font.useSerif
-        then "serif"
-        else "sansSerif";
-
-      services.awww.enable = config.programs.niri.enable;
     };
   };
 }
