@@ -4,19 +4,13 @@
     "Mod+Escape".action = toggle-overview;
 
     "Mod+Q".action = close-window;
-    "Super+Shift+Q".action = spawn "hyprlock";
     "Mod+Ctrl+Alt+Q".action = quit;
-    "Mod+Return".action = spawn "rofi" "-show" "drun";
 
     "Mod+T".action = spawn "ghostty";
     "Mod+O".action = spawn "thunar";
     "Mod+B".action = spawn "zen-twilight";
     "Mod+M".action = spawn "spotify";
     "Mod+I".action = spawn "vesktop";
-    "Mod+N".action = spawn "swaync-client" "-t" "-sw";
-
-    "Mod+S".action.screenshot = {show-pointer = false;};
-    "Mod+Shift+S".action.screenshot-window = {write-to-disk = false;};
 
     # Window
     "Mod+H".action = focus-column-left;
@@ -124,23 +118,5 @@
 
     "Mod+Space".action = toggle-window-floating;
     "Mod+W".action = toggle-column-tabbed-display;
-
-    # Media controls
-    "XF86AudioPlay" = {
-      action = spawn "playerctl" "play-pause";
-      allow-when-locked = true;
-    };
-    "XF86AudioNext" = {
-      action = spawn "playerctl" "next";
-      allow-when-locked = true;
-    };
-    "XF86AudioPrev" = {
-      action = spawn "playerctl" "previous";
-      allow-when-locked = true;
-    };
-    "XF86AudioStop" = {
-      action = spawn "playerctl" "stop";
-      allow-when-locked = true;
-    };
   };
 }

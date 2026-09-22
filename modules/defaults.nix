@@ -104,6 +104,21 @@
       };
     };
 
+    # Same rationale as `myShell` above: the desktop font is read by whichever
+    # shell aspect is active (waybar, swaync, rofi, hyprlock), so it
+    # cannot live inside any one of them.
+    options.desktop.font = {
+      useSerif = lib.mkEnableOption "useSerif";
+      name = lib.mkOption {
+        type = lib.types.str;
+        default =
+          if config.desktop.font.useSerif
+          then config.stylix.fonts.serif.name
+          else config.stylix.fonts.sansSerif.name;
+        description = "Name of the font.";
+      };
+    };
+
     config =
       {
         _module.args.inputs = inputs;
