@@ -11,6 +11,7 @@
   # directly (see aspects/syncthing.nix).
   den.schema.host.includes = [
     den.aspects.niri
+    den.aspects.noctalia
     den.aspects.gdm
     den.aspects.stylix
     den.aspects.system-packages
@@ -105,7 +106,7 @@
     };
 
     # Same rationale as `myShell` above: the desktop font is read by whichever
-    # shell aspect is active (waybar, swaync, rofi, hyprlock), so it
+    # shell aspect is active (waybar, swaync, rofi, hyprlock, noctalia), so it
     # cannot live inside any one of them.
     # Workspace names are consumed well outside the niri aspect - the _life
     # pomodoro scripts focus one by name, and waybar labels them - so they
