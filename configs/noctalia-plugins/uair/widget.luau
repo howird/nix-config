@@ -30,6 +30,46 @@ local function run(args, cb)
   return noctalia.runAsync(uairctl() .. " " .. args, cb)
 end
 
+-- uair renders {time} with time_format = "%M:%S" (modules/aspects/_life/uair.nix),
+-- so a single-digit minute arrives zero-padded ("09:54"). The bar label reads as a
+-- sentence, so the padding goes; the tooltip keeps uair's own string.
+local function trimPad(time)
+  return (time:gsub("^0(%d)", "%1"))
+end
+
+-- Minutes left, rounded to nearest rather than truncated: 9:45 is "10 more
+-- mins", 9:20 is "9". HH:MM:SS is handled too in case a session outgrows an
+-- hour.
+local function minutesLeft(time)
+  local hours, mins, secs = time:match("^(%d+):(%d+):(%d+)$")
+  if hours == nil then
+    hours = "0"
+    mins, secs = time:match("^(%d+):(%d+)$")
+  end
+  if mins == nil then
+    return nil
+  end
+  local total = tonumber(hours) * 3600 + tonumber(mins) * 60 + tonumber(secs)
+  return math.floor((total + 30) / 60)
+end
+
+local function render(template, data)
+  local mins = minutesLeft(data.time)
+
+  -- `%w` alone would not match the underscore in {min_unit}. gsub with a table
+  -- leaves an unknown {placeholder} untouched rather than silently blanking it,
+  -- which makes a typo in the format visible on the bar.
+  local text = template:gsub("{([%w_]+)}", {
+    name = data.name,
+    time = trimPad(data.time),
+    -- Unparseable time leaves both minute fields alone rather than printing
+    -- "nil more mins" -- the raw {time} is still there to fall back on.
+    minutes = mins ~= nil and tostring(mins) or nil,
+    min_unit = mins ~= nil and (mins == 1 and "min" or "mins") or nil,
+  })
+  return (text:gsub("^%s+", ""):gsub("%s+$", ""))
+end
+
 local function paint(data)
   local running = data.state == "resumed"
 
@@ -39,11 +79,7 @@ local function paint(data)
   )
   barWidget.setGlyphColor(running and "primary" or "on_surface_variant")
 
-  local label = data.time
-  if setting("show_name", true) and data.name ~= "" then
-    label = data.name .. " " .. data.time
-  end
-  barWidget.setText(label)
+  barWidget.setText(render(setting("label_format", "{name} {time}"), data))
 
   barWidget.setTooltip({
     {key = "Session", value = data.name},

@@ -5,6 +5,6 @@
   "settings.interval.description": "How often the remaining time is re-read from uair.",
   "settings.glyphRunning.label": "Running glyph",
   "settings.glyphPaused.label": "Paused glyph",
-  "settings.showName.label": "Show session name",
-  "settings.showName.description": "Show the uair session name (working, resting, ...) next to the countdown."
+  "settings.labelFormat.label": "Bar label format",
+  "settings.labelFormat.description": "Text shown on the bar. {name} is the uair session name (working, resting, ...), {time} the remaining time with any padding zero trimmed, {minutes} the minutes left rounded to nearest, and {min_unit} the matching \"min\"/\"mins\"."
 }
