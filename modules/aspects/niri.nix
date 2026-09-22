@@ -39,7 +39,7 @@
         libnotify
         wdisplays
 
-        blueman
+        networkmanagerapplet
         pavucontrol
 
         # clipboard
