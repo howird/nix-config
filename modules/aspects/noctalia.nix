@@ -14,7 +14,7 @@
     # power-profiles-daemon from `recommendedServices` below. Hence
     # `package = null` - there is nothing to install system-wide.
     programs.noctalia = {
-      enable = config.programs.niri.enable;
+      enable = true;
       package = null;
       recommendedServices.enable = true;
     };
