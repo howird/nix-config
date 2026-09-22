@@ -1,6 +1,6 @@
 {...}: {
-  # Display-profile switching. Shell-agnostic: neither waybar nor noctalia
-  # does output layout, so this is included on its own.
+  # Display-profile switching. Shell-agnostic: noctalia does not do output
+  # layout, so this is included on its own.
   den.aspects.kanshi.homeManager = {lib, ...}: {
     services.kanshi = {
       enable = true;

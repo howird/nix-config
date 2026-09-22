@@ -15,7 +15,6 @@
     den.aspects.noctalia
     den.aspects.kanshi
     den.aspects.record
-    den.aspects.clipboard
     den.aspects.linux-apps
     den.aspects.granola
     den.aspects.chromium

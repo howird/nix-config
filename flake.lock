@@ -171,32 +171,6 @@
         "type": "github"
       }
     },
-    "cursor-clip": {
-      "inputs": {
-        "crane": [
-          "crane"
-        ],
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1785999603,
-        "narHash": "sha256-IJ/sPzP0+dVUxRBW6b77H4a032pYq7uLapMBkWzR7qQ=",
-        "owner": "sirulex",
-        "repo": "cursor-clip",
-        "rev": "0bc9006e97173242926bc58b57da7699040cbc29",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sirulex",
-        "repo": "cursor-clip",
-        "type": "github"
-      }
-    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -739,7 +713,6 @@
         "claude-code": "claude-code",
         "claude-desktop": "claude-desktop",
         "crane": "crane",
-        "cursor-clip": "cursor-clip",
         "darwin": "darwin",
         "den": "den",
         "flake-file": "flake-file",

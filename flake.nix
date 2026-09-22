@@ -18,14 +18,6 @@
       };
     };
     crane.url = "github:ipetkov/crane";
-    cursor-clip = {
-      url = "github:sirulex/cursor-clip";
-      inputs = {
-        crane.follows = "crane";
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
     darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
