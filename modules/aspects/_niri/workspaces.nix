@@ -1,40 +1,54 @@
-{config, ...}: {
-  programs.niri.settings.workspaces = {
-    "1".name = "make";
-    "2".name = "note";
-    "3".name = "read";
-    "4".name = "surf";
+{config, ...}: let
+  # Published as `desktop.workspaces` (declared in modules/defaults.nix) so the
+  # _life scripts and waybar can name a workspace without reaching into this
+  # file. The name doubles as the bar label: noctalia's workspaces widget can
+  # only render a workspace's id or its name (`label_source`) - it has no
+  # per-workspace icon map like waybar's format-icons - so the name has to be
+  # the glyph itself.
+  ws = config.desktop.workspaces;
+in {
+  desktop.workspaces = {
+    make = "󰽉";
+    note = "󰧑";
+    read = "";
+    surf = "󱝆";
   };
 
-  programs.waybar.settings.mainBar."niri/workspaces".format-icons = {
-    "make" = "󰽉";
-    "note" = "󰧑";
-    "read" = "";
-    "surf" = "󱝆";
+  programs.niri.settings.workspaces = {
+    "1".name = ws.make;
+    "2".name = ws.note;
+    "3".name = ws.read;
+    "4".name = ws.surf;
   };
+
+  # Lives here rather than in programs.nix: it names a workspace, so it needs
+  # the glyph mapping above.
+  programs.niri.settings.spawn-at-startup = [
+    {argv = ["niri" "msg" "action" "focus-workspace" ws.note];}
+  ];
 
   programs.niri.settings.binds = with config.lib.niri.actions; {
     "Mod+Alt+A" = {
-      action = focus-workspace "make";
+      action = focus-workspace ws.make;
       allow-inhibiting = false;
     };
     "Mod+Alt+S" = {
-      action = focus-workspace "note";
+      action = focus-workspace ws.note;
       allow-inhibiting = false;
     };
     "Mod+Alt+D" = {
-      action = focus-workspace "read";
+      action = focus-workspace ws.read;
       allow-inhibiting = false;
     };
     "Mod+Alt+F" = {
-      action = focus-workspace "surf";
+      action = focus-workspace ws.surf;
       allow-inhibiting = false;
     };
 
-    "Mod+Alt+Ctrl+A".action.move-column-to-workspace = "make";
-    "Mod+Alt+Ctrl+S".action.move-column-to-workspace = "note";
-    "Mod+Alt+Ctrl+D".action.move-column-to-workspace = "read";
-    "Mod+Alt+Ctrl+F".action.move-column-to-workspace = "surf";
+    "Mod+Alt+Ctrl+A".action.move-column-to-workspace = ws.make;
+    "Mod+Alt+Ctrl+S".action.move-column-to-workspace = ws.note;
+    "Mod+Alt+Ctrl+D".action.move-column-to-workspace = ws.read;
+    "Mod+Alt+Ctrl+F".action.move-column-to-workspace = ws.surf;
   };
 
   programs.niri.settings.window-rules = [
@@ -50,7 +64,7 @@
         {app-id = "krita";}
         {app-id = "^jetbrains-.*$";}
       ];
-      open-on-workspace = "make";
+      open-on-workspace = ws.make;
       open-focused = true;
     }
 
@@ -62,7 +76,7 @@
         }
       ];
       baba-is-float = true;
-      open-on-workspace = "note";
+      open-on-workspace = ws.note;
     }
 
     {
@@ -72,7 +86,7 @@
         {app-id = "org.kde.okular";}
         {app-id = "com.github.johnfactotum.Foliate";}
       ];
-      open-on-workspace = "read";
+      open-on-workspace = ws.read;
       open-focused = true;
     }
 
@@ -92,7 +106,7 @@
         }
       ];
       open-focused = true;
-      open-on-workspace = "note";
+      open-on-workspace = ws.note;
     }
 
     {
@@ -115,7 +129,7 @@
         {app-id = "zoom";}
         {app-id = "zen-twilight";}
       ];
-      open-on-workspace = "surf";
+      open-on-workspace = ws.surf;
     }
   ];
 }

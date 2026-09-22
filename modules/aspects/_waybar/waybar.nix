@@ -34,12 +34,9 @@
       format-alt = "  {:%F, w%U/52, %R} ";
       interval = 1;
     };
-    "niri/workspaces" = {
-      format = "{icon}";
-      format-icons = {
-        default = "󰹟 ";
-      };
-    };
+    # Workspace names are nerd-font glyphs (see _niri/workspaces.nix), so the
+    # name is the label; unnamed workspaces fall back to their index.
+    "niri/workspaces".format = "{name}";
     "custom/notification" = {
       tooltip = false;
       format = "{icon} ";
