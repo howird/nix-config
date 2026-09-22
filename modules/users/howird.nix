@@ -12,7 +12,7 @@
 
     # workstation-only (nixos-config-attached, not shared with howard@vip)
     den.aspects.niri
-    den.aspects.bundles.waybar-shell
+    den.aspects.noctalia
     den.aspects.kanshi
     den.aspects.record
     den.aspects.clipboard
