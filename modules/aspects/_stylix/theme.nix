@@ -41,6 +41,13 @@
         name = "Bibata-Original-Ice";
         size = 24;
       };
+
+      icons = {
+        enable = true;
+        package = pkgs.adwaita-icon-theme;
+        dark = "Adwaita";
+        light = "Adwaita";
+      };
     };
 
     stylix.fonts = {

@@ -25,7 +25,7 @@
       auto-optimise-store = true;
       substituters = [
         "https://cache.nixos.org"
-        "https://cuda-maintainers.cachix.org"
+        "https://cache.nixos-cuda.org"
         "https://nixpkgs-python.cachix.org"
         "https://pi.cachix.org"
         "https://ryoppippi.cachix.org"
@@ -34,7 +34,7 @@
       ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+        "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
         "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU="
         "pi.cachix.org-1:lGeoGJaZ5ZDabuRzkcD5EBTNnDM4HJ1vqeOxlWk1Flk="
         "ryoppippi.cachix.org-1:b2LbtWNvJeL/qb1B6TYOMK+apaCps4SCbzlPRfSQIms="
