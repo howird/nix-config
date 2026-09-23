@@ -37,10 +37,9 @@ local function trimPad(time)
   return (time:gsub("^0(%d)", "%1"))
 end
 
--- Minutes left, rounded to nearest rather than truncated: 9:45 is "10 more
--- mins", 9:20 is "9". HH:MM:SS is handled too in case a session outgrows an
--- hour.
-local function minutesLeft(time)
+-- Seconds left, parsed from uair's {time}. HH:MM:SS is handled too in case a
+-- session outgrows an hour.
+local function secondsLeft(time)
   local hours, mins, secs = time:match("^(%d+):(%d+):(%d+)$")
   if hours == nil then
     hours = "0"
@@ -49,12 +48,26 @@ local function minutesLeft(time)
   if mins == nil then
     return nil
   end
-  local total = tonumber(hours) * 3600 + tonumber(mins) * 60 + tonumber(secs)
-  return math.floor((total + 30) / 60)
+  return tonumber(hours) * 3600 + tonumber(mins) * 60 + tonumber(secs)
+end
+
+-- The countdown for {minutes}/{min_unit}: minutes rounded to nearest rather
+-- than truncated (9:45 is "10 more mins", 9:20 is "9"), dropping to seconds
+-- for the last minute so it never reads "1 more min" at 0:05.
+local function countdown(time)
+  local total = secondsLeft(time)
+  if total == nil then
+    return nil, nil
+  end
+  if total < 60 then
+    return total, total == 1 and "sec" or "secs"
+  end
+  local mins = math.floor((total + 30) / 60)
+  return mins, mins == 1 and "min" or "mins"
 end
 
 local function render(template, data)
-  local mins = minutesLeft(data.time)
+  local count, unit = countdown(data.time)
 
   -- `%w` alone would not match the underscore in {min_unit}. gsub with a table
   -- leaves an unknown {placeholder} untouched rather than silently blanking it,
@@ -64,8 +77,8 @@ local function render(template, data)
     time = trimPad(data.time),
     -- Unparseable time leaves both minute fields alone rather than printing
     -- "nil more mins" -- the raw {time} is still there to fall back on.
-    minutes = mins ~= nil and tostring(mins) or nil,
-    min_unit = mins ~= nil and (mins == 1 and "min" or "mins") or nil,
+    minutes = count ~= nil and tostring(count) or nil,
+    min_unit = unit,
   })
   return (text:gsub("^%s+", ""):gsub("%s+$", ""))
 end
@@ -73,13 +86,18 @@ end
 local function paint(data)
   local running = data.state == "resumed"
 
-  barWidget.setGlyph(
-    running and setting("glyph_running", "player-play")
-      or setting("glyph_paused", "player-pause")
-  )
-  barWidget.setGlyphColor(running and "primary" or "on_surface_variant")
-
-  barWidget.setText(render(setting("label_format", "{name} {time}"), data))
+  -- A render() tree rather than setText/setGlyph: the built-in row always puts
+  -- the glyph first, and the label reads as the end of a sentence with the
+  -- play/pause glyph trailing it.
+  local container = barWidget.isVertical() and ui.column or ui.row
+  barWidget.render(container({gap = 6, align = "center"}, {
+    ui.label({text = render(setting("label_format", "{name} {time}"), data)}),
+    ui.glyph({
+      name = running and setting("glyph_running", "player-play")
+        or setting("glyph_paused", "player-pause"),
+      color = running and "primary" or "on_surface_variant",
+    }),
+  }))
 
   barWidget.setTooltip({
     {key = "Session", value = data.name},

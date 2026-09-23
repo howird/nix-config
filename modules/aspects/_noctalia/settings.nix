@@ -48,11 +48,14 @@
         shadow = false;
 
         start = [
+          "clock"
+          "uair"
+        ];
+        center = [
           "launcher"
           "workspaces"
           "active_window"
         ];
-        center = ["uair" "clock"];
         end = [
           "tray"
           "notifications"
@@ -175,12 +178,12 @@
 
     widget = {
       clock = {
-        format = "{:%I:%M %p} on {:%A}";
+        format = "it's {:%I:%M %p} on {:%a},";
         tooltip_format = "{:%A, %B %-d, %Y}";
       };
       uair = {
         type = "howird/uair:timer";
-        label_format = "{name} for {minutes} more {min_unit}, at";
+        label_format = "i'm {name} for {minutes} more {min_unit}";
       };
       workspaces = {
         label_source = "name";
@@ -192,10 +195,16 @@
         active_pill_size = 3;
         inactive_pill_size = 1.5;
 
+        focused_output_only = true;
         focused_color = "tertiary";
         occupied_color = "primary";
         empty_color = "primary";
         urgent_color = "secondary";
+      };
+      active_window = {
+        max_length = 160;
+        show_empty_label = true;
+        title_scroll = "on_hover";
       };
     };
   };
