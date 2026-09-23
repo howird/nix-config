@@ -6,5 +6,5 @@
   "settings.glyphRunning.label": "Running glyph",
   "settings.glyphPaused.label": "Paused glyph",
   "settings.labelFormat.label": "Bar label format",
-  "settings.labelFormat.description": "Text shown on the bar. {name} is the uair session name (working, resting, ...), {time} the remaining time with any padding zero trimmed, {minutes} the minutes left rounded to nearest, and {min_unit} the matching \"min\"/\"mins\"."
+  "settings.labelFormat.description": "Text shown on the bar. {name} is the uair session name (working, resting, ...), {time} the remaining time with any padding zero trimmed, {minutes} the minutes left rounded to nearest (seconds once under a minute), and {min_unit} the matching \"min\"/\"mins\" (or \"sec\"/\"secs\")."
 }
