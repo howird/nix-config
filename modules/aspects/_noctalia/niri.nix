@@ -51,7 +51,7 @@
 
     layer-rules = [
       # Blurred, tinted copy of the wallpaper, shown behind niri's overview
-      # (noctalia's `[backdrop]`, enabled in ./settings.nix).
+      # (noctalia's `[backdrop]`, enabled in ./appearance.nix).
       {
         matches = [{namespace = "^noctalia-backdrop";}];
         place-within-backdrop = true;

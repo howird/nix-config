@@ -92,9 +92,11 @@ local function paint(data)
   local container = barWidget.isVertical() and ui.column or ui.row
   barWidget.render(container({gap = 6, align = "center"}, {
     ui.label({text = render(setting("label_format", "{name} {time}"), data)}),
+    -- The glyph is the action a click will take, like a media player's
+    -- button: pause while running, play while paused.
     ui.glyph({
-      name = running and setting("glyph_running", "player-play")
-        or setting("glyph_paused", "player-pause"),
+      name = running and setting("glyph_running", "player-pause")
+        or setting("glyph_paused", "player-play"),
       color = running and "primary" or "on_surface_variant",
     }),
   }))
