@@ -1,5 +1,11 @@
-{...}: {
+{inputs, ...}: {
+  flake-file.inputs.clipboard-yazi = {
+    url = "github:XYenon/clipboard.yazi";
+    flake = false;
+  };
+
   den.aspects.yazi.homeManager = {
+    config,
     pkgs,
     lib,
     ...
@@ -7,16 +13,70 @@
     programs.yazi = {
       enable = true;
       shellWrapperName = "y";
+      # clipboard.yazi shells out to wl-copy/wl-paste on wayland (osascript on darwin).
+      extraPackages = lib.optionals pkgs.stdenv.hostPlatform.isLinux [pkgs.wl-clipboard];
+      plugins = {
+        clipboard = inputs.clipboard-yazi;
+        git = {
+          package = pkgs.yaziPlugins.git;
+          setup = true;
+          settings.order = 1500;
+        };
+        vcs-files = pkgs.yaziPlugins.vcs-files;
+        jump-to-char = pkgs.yaziPlugins.jump-to-char;
+      };
       settings = {
         mgr.show_hidden = true;
+        # git.yazi fetches status signs for files and directories alike.
+        plugin.prepend_fetchers = [
+          {
+            url = "*";
+            run = "git";
+            group = "git";
+          }
+          {
+            url = "*/";
+            run = "git";
+            group = "git";
+          }
+        ];
       };
       keymap = {
         mgr.prepend_keymap = [
           {
             on = "!";
             for = "unix";
-            run = ''shell "$SHELL" --block'';
-            desc = "Open $SHELL here";
+            # yazi shell-quotes %h itself. For the hovered file/dir:
+            # $f = full path, $fname = basename, $fstem = basename sans extension.
+            # (not $fpath: zsh reserves it for the function search path.)
+            run = ''shell 'f=%h; fname=''${f##*/}; fstem=''${fname%.*}; export f fname fstem; "$SHELL"' --block'';
+            desc = "Open $SHELL here ($f, $fname, $fstem = hovered)";
+          }
+          # Sync yanks to the system clipboard so other apps can paste the files.
+          {
+            on = "y";
+            run = ["yank" "plugin clipboard -- --action=copy"];
+            desc = "Yank selected files (copy)";
+          }
+          {
+            on = "x";
+            run = ["yank --cut" "plugin clipboard -- --action=copy"];
+            desc = "Yank selected files (cut)";
+          }
+          {
+            on = "<C-p>";
+            run = "plugin clipboard -- --action=paste";
+            desc = "Paste files from the system clipboard";
+          }
+          {
+            on = ["g" "c"];
+            run = "plugin vcs-files";
+            desc = "Show Git file changes";
+          }
+          {
+            on = "f";
+            run = "plugin jump-to-char";
+            desc = "Jump to char";
           }
         ];
       };
@@ -45,7 +105,7 @@
             from dbus_fast.service import ServiceInterface, method
 
             TERMINAL = "${pkgs.xdg-terminal-exec}/bin/xdg-terminal-exec"
-            YAZI = "${pkgs.yazi}/bin/yazi"
+            YAZI = "${config.programs.yazi.finalPackage}/bin/yazi"
 
 
             def to_path(uri):

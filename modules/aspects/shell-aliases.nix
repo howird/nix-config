@@ -13,6 +13,7 @@
       uw-vpn = "sudo openconnect -v cn-vpn.uwaterloo.ca";
       tree = "eza --tree";
       cat = "bat";
+      open = "xdg-open";
 
       # Rebuild this flake the way this machine is actually managed.
       nixwird =
