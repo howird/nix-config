@@ -17,6 +17,10 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    clipboard-yazi = {
+      url = "github:XYenon/clipboard.yazi";
+      flake = false;
+    };
     crane.url = "github:ipetkov/crane";
     darwin = {
       url = "github:nix-darwin/nix-darwin/master";

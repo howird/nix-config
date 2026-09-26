@@ -17,7 +17,7 @@ in {
       #!/bin/bash
       URL="$1"
       if [[ "$URL" == *"localhost"* || "$URL" == *"127.0.0.1"* ]]; then
-          exec chromium "$URL"
+          exec chromium --app="$URL"
       else
           exec zen-twilight "$URL"
       fi

@@ -46,6 +46,5 @@
   home.packages = with pkgs; [
     rustfmt
     pyright
-    yazi
   ];
 }

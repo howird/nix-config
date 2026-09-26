@@ -188,6 +188,22 @@
         "type": "github"
       }
     },
+    "clipboard-yazi": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790317305,
+        "narHash": "sha256-MeM68kSoYibdbqZCHh7ZQclHHOlNiRiqE+IE35szMWE=",
+        "owner": "XYenon",
+        "repo": "clipboard.yazi",
+        "rev": "f0b8201bc71a8417778a345a6d75488e0a85b034",
+        "type": "github"
+      },
+      "original": {
+        "owner": "XYenon",
+        "repo": "clipboard.yazi",
+        "type": "github"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1787326676,
@@ -793,6 +809,7 @@
       "inputs": {
         "claude-code": "claude-code",
         "claude-desktop": "claude-desktop",
+        "clipboard-yazi": "clipboard-yazi",
         "crane": "crane",
         "darwin": "darwin",
         "den": "den",
