@@ -49,13 +49,13 @@ max = 10000
 key = "glyph_running"
 type = "glyph"
 label_key = "settings.glyphRunning.label"
-default = "player-play"
+default = "player-pause"
 
 [[widget.setting]]
 key = "glyph_paused"
 type = "glyph"
 label_key = "settings.glyphPaused.label"
-default = "player-pause"
+default = "player-play"
 
 [[widget.setting]]
 key = "label_format"

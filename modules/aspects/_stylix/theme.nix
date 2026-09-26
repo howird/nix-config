@@ -1,84 +1,55 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
-  options = with lib; {
-    myWallpaper = mkOption {
-      type = types.path;
-      default = let
-        catppuccin-wallpapers = pkgs.fetchFromGitHub {
-          owner = "zhichaoh";
-          repo = "catppuccin-wallpapers";
-          rev = "1023077979591cdeca76aae94e0359da1707a60e";
-          sha256 = "sha256-h+cFlTXvUVJPRMpk32jYVDDhHu1daWSezFcvhJqDpmU=";
-        };
-      in "${catppuccin-wallpapers}/misc/lonely-fish.png";
-      description = "Wallpaper filename.";
+{pkgs, ...}: {
+  stylix = {
+    enable = true;
+
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
+    image = ./wallpapers/van-gogh-green-wheat-fields.jpg;
+
+    polarity = "dark";
+    opacity.terminal = 0.7;
+
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Original-Ice";
+      size = 24;
     };
-    myTheme = mkOption {
-      type = types.str;
-      default = "catppuccin-mocha";
-      description = "Theme name, must be in base16Schemes";
+
+    icons = {
+      enable = true;
+      package = pkgs.adwaita-icon-theme;
+      dark = "Adwaita";
+      light = "Adwaita";
     };
   };
 
-  config = {
-    myTheme = "everforest-dark-hard";
-    myWallpaper = ./wallpapers/pokemon-concierge.png;
-
-    stylix = {
-      enable = true;
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.myTheme}.yaml";
-
-      image = config.myWallpaper;
-      polarity = "dark";
-      opacity.terminal = 0.75;
-
-      cursor = {
-        package = pkgs.bibata-cursors;
-        name = "Bibata-Original-Ice";
-        size = 24;
-      };
-
-      icons = {
-        enable = true;
-        package = pkgs.adwaita-icon-theme;
-        dark = "Adwaita";
-        light = "Adwaita";
-      };
+  stylix.fonts = {
+    serif = {
+      package = pkgs.aleo-fonts;
+      name = "Aleo";
     };
 
-    stylix.fonts = {
-      serif = {
-        package = pkgs.aleo-fonts;
-        name = "Aleo";
-      };
+    sansSerif = {
+      package = pkgs.inter;
+      name = "Inter";
+    };
 
-      sansSerif = {
-        package = pkgs.inter;
-        name = "Inter";
-      };
+    monospace = {
+      package = pkgs.maple-mono.NF;
+      name = "Maple Mono NF";
+    };
 
-      monospace = {
-        package = pkgs.maple-mono.NF;
-        name = "Maple Mono NF";
-      };
+    emoji = {
+      package = pkgs.noto-fonts-color-emoji;
+      name = "Noto Color Emoji";
+    };
 
-      emoji = {
-        package = pkgs.noto-fonts-color-emoji;
-        name = "Noto Color Emoji";
-      };
-
-      sizes = let
-        fontSize = 12;
-      in {
-        applications = fontSize;
-        desktop = fontSize;
-        popups = fontSize;
-        terminal = fontSize;
-      };
+    sizes = let
+      fontSize = 12;
+    in {
+      applications = fontSize;
+      desktop = fontSize;
+      popups = fontSize;
+      terminal = fontSize;
     };
   };
 }
