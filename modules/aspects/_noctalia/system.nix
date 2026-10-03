@@ -41,6 +41,11 @@
       screen_time_enabled = false;
       telemetry_enabled = false;
 
+      screenshot = {
+        annotate = true;
+        remember_last_region = true;
+      };
+
       launcher = {
         categories = true;
         sort_by_usage = true;

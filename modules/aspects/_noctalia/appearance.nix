@@ -11,8 +11,8 @@
 
     shell = {
       panel = {
-        clipboard_placement = "attached";
-        launcher_placement = "attached";
+        clipboard_placement = "floating";
+        launcher_placement = "floating";
         transparency_mode = "soft";
       };
 
