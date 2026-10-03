@@ -14,9 +14,11 @@
       enable = true;
       shellWrapperName = "y";
       # clipboard.yazi shells out to wl-copy/wl-paste on wayland (osascript on darwin).
+      # It's installed as `system-clipboard`: yazi's built-in `clipboard` plugin
+      # claims that name but only handles OSC 5522 paste events, not copying out.
       extraPackages = lib.optionals pkgs.stdenv.hostPlatform.isLinux [pkgs.wl-clipboard];
       plugins = {
-        clipboard = inputs.clipboard-yazi;
+        system-clipboard = inputs.clipboard-yazi;
         git = {
           package = pkgs.yaziPlugins.git;
           setup = true;
@@ -55,17 +57,17 @@
           # Sync yanks to the system clipboard so other apps can paste the files.
           {
             on = "y";
-            run = ["yank" "plugin clipboard -- --action=copy"];
+            run = ["yank" "plugin system-clipboard -- --action=copy"];
             desc = "Yank selected files (copy)";
           }
           {
             on = "x";
-            run = ["yank --cut" "plugin clipboard -- --action=copy"];
+            run = ["yank --cut" "plugin system-clipboard -- --action=copy"];
             desc = "Yank selected files (cut)";
           }
           {
             on = "<C-p>";
-            run = "plugin clipboard -- --action=paste";
+            run = "plugin system-clipboard -- --action=paste";
             desc = "Paste files from the system clipboard";
           }
           {
