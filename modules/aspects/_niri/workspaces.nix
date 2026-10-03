@@ -34,12 +34,6 @@ in {
       "4".name = ws.surf;
     };
 
-    # Lives here rather than in programs.nix: it names a workspace, so it needs
-    # the glyph mapping above.
-    programs.niri.settings.spawn-at-startup = [
-      {argv = ["niri" "msg" "action" "focus-workspace" ws.note];}
-    ];
-
     programs.niri.settings.binds = with config.lib.niri.actions; {
       "Mod+Alt+A" = {
         action = focus-workspace ws.make;
