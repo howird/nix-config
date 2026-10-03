@@ -9,7 +9,6 @@
       {argv = ["obsidian"];}
       {argv = ["zotero"];}
       {argv = ["ghostty"];}
-      {argv = ["uair-startup"];}
     ];
 
     window-rules = [

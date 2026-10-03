@@ -16,7 +16,6 @@
   uairzen = mkScript "uairzen";
   start-day = mkScript "start-day";
   uair-check = mkScript "uair-check";
-  uair-startup = mkScript "uair-startup";
 in {
   systemd.user.services.uair-check = {
     Unit.Description = "Checks that pomodoros are running";
@@ -41,6 +40,5 @@ in {
     uairzen
     start-day
     uair-check
-    uair-startup
   ];
 }
