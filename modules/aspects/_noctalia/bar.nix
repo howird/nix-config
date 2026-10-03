@@ -22,7 +22,7 @@
           "uair"
         ];
         center = [
-          "launcher"
+          "control-center"
           "workspaces"
           "active_window"
         ];
@@ -32,9 +32,7 @@
           "network"
           "bluetooth"
           "volume"
-          "brightness"
           "battery"
-          "control-center"
           "session"
         ];
       };
@@ -57,6 +55,10 @@
       clock = {
         format = "it's {:%I:%M %p} on {:%a},";
         tooltip_format = "{:%A, %B %-d, %Y}";
+      };
+      control-center = {
+        capsule = true;
+        capsule_padding = 8;
       };
       uair = {
         type = "howird/uair:timer";
