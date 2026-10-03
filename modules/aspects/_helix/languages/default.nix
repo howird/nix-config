@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
-    ./typesetting.nix
+    ./latex.nix
+    ./typst.nix
     ./py.nix
     ./markdown.nix
   ];
