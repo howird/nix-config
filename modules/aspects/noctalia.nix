@@ -56,10 +56,23 @@
       (pkgs.writeShellApplication {
         name = "noctalia-cfg-drift";
         runtimeInputs = [pkgs.yj pkgs.jq config.programs.noctalia.package];
+        # One `full.dotted.path = value` line per leaf, so every diff line
+        # carries its whole path rather than relying on hunk context for the
+        # parent keys. Arrays stay whole on one line: reorders read as a
+        # single change instead of a cascade of shifted indices.
         text = ''
-          norm() { yj -tj | jq -S; }
+          norm() {
+            yj -tj | jq -r '
+              def key: if test("^[A-Za-z_][A-Za-z0-9_-]*$") then . else tojson end;
+              def leaves($p):
+                if type == "object" and length > 0
+                then to_entries[] as $e | $e.value | leaves($p + [$e.key | key])
+                else "\($p | join(".")) = \(tojson)"
+                end;
+              leaves([])' | sort
+          }
 
-          exec diff -u --color=auto --label nix --label gui \
+          exec diff -U0 --color=auto --label nix --label gui \
             <(norm <"''${XDG_CONFIG_HOME:-$HOME/.config}/noctalia/config.toml") \
             <(noctalia config export | norm)
         '';
