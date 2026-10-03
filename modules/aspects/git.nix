@@ -10,6 +10,7 @@
       settings = {
         core.editor = "hx";
         pull.ff = "only";
+        push.autoSetupRemote = true;
         user = {
           name = "Howard Nguyen-Huu";
           email = "howardnguyenhuu@gmail.com";
