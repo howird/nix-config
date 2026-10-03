@@ -57,8 +57,6 @@
         wayland
         libnotify
         wdisplays
-
-        networkmanagerapplet
         pavucontrol
 
         # clipboard
