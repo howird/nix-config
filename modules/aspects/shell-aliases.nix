@@ -11,6 +11,7 @@
   }: {
     myShell.aliases = {
       uw-vpn = "sudo openconnect -v cn-vpn.uwaterloo.ca";
+      wifitui = "nmtui";
       tree = "eza --tree";
       cat = "bat";
       open = "xdg-open";
