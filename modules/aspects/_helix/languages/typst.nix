@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   # scroll tinymist preview to cursor: hover records the position,
   # scrollPreview with no args jumps there
-  programs.helix.settings.keys.space.v = ["hover" ":lsp-workspace-command tinymist.scrollPreview"];
+  programs.helix.settings.keys.normal.space.v = ["hover" ":lsp-workspace-command tinymist.scrollPreview"];
 
   programs.helix.languages = {
     language = [
