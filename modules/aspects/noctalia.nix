@@ -10,7 +10,7 @@
 
     # The shell itself is a home-manager package spawned by niri, so the NixOS
     # side exists only for the system services its widgets talk to: bluetooth
-    # and upower come from the hosts, networkmanager from defaults.nix, and
+    # and upower come from the hosts, networkmanager from networking.nix, and
     # power-profiles-daemon from `recommendedServices` below. Hence
     # `package = null` - there is nothing to install system-wide.
     programs.noctalia = {

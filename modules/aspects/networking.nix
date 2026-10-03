@@ -1,5 +1,7 @@
 {...}: {
-  den.aspects.firewall.nixos = {
+  den.aspects.networking.nixos = {
+    networking.networkmanager.enable = true;
+
     networking.firewall = {
       enable = true;
       allowedUDPPorts = [7400 7401];

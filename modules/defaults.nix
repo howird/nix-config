@@ -22,7 +22,7 @@
     den.aspects.input-devices
     den.aspects.mobile
     den.aspects.files
-    den.aspects.firewall
+    den.aspects.networking
   ];
 
   den.default.nixos = {
@@ -36,7 +36,6 @@
     # `host`/`user`, not `inputs`) or nested content.
     _module.args.inputs = inputs;
 
-    networking.networkmanager.enable = true;
     networking.hostName = host.name;
 
     time.timeZone = "America/Toronto";
