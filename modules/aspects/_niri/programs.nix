@@ -10,7 +10,6 @@
       {argv = ["zotero"];}
       {argv = ["ghostty"];}
       {argv = ["uair-startup"];}
-      {argv = ["nm-applet" "--indicator"];}
     ];
 
     window-rules = [
