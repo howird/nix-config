@@ -33,5 +33,7 @@
 
   den.aspects.yerm.homeManager = {
     desktop.internalScale = 1.6;
+    # fprintd itself comes from the nixos-hardware framework module
+    programs.noctalia.settings.lockscreen.fingerprint = true;
   };
 }
