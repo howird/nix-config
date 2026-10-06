@@ -28,7 +28,9 @@
     programs.claude-code = {
       enable = true;
       package = inputs.claude-code.packages.${system}.default;
-      enableMcpIntegration = true;
+      context = ''
+        @~/AGENTS.md
+      '';
     };
 
     home.file."${config.programs.claude-code.configDir}/skills/mattpocock-skills".source = inputs.mattpocock-skills;

@@ -2,6 +2,6 @@
   src = mattpocockSkillsSrc;
   categories = ["engineering" "productivity"];
 in {
-  programs.pi-coding-agent.settings.skills =
+  programs.pi.coding-agent.settings.skills =
     map (c: "${src}/skills/${c}") categories;
 }
