@@ -6,7 +6,7 @@
 
   den.aspects.helix.homeManager = _: {
     imports = [
-      ./_helix/languages/default.nix
+      ./_helix/languages
 
       ./_helix/helix.nix
       ./_helix/binds.nix
