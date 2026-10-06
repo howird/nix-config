@@ -28,22 +28,21 @@
       enable = true;
       nix-direnv.enable = true;
       enableZshIntegration = config.programs.zsh.enable;
-      enableFishIntegration = config.programs.fish.enable;
+      enableNushellIntegration = config.programs.nushell.enable;
     };
     programs.eza = {
       enable = true;
       enableZshIntegration = config.programs.zsh.enable;
-      enableFishIntegration = config.programs.fish.enable;
     };
     programs.fzf = {
       enable = true;
       enableZshIntegration = config.programs.zsh.enable;
-      enableFishIntegration = config.programs.fish.enable;
+      enableNushellIntegration = config.programs.nushell.enable;
     };
     programs.zoxide = {
       enable = true;
       enableZshIntegration = config.programs.zsh.enable;
-      enableFishIntegration = config.programs.fish.enable;
+      enableNushellIntegration = config.programs.nushell.enable;
     };
   };
 }

@@ -7,7 +7,7 @@
     programs.starship = {
       enable = true;
       enableZshIntegration = config.programs.zsh.enable;
-      enableFishIntegration = config.programs.fish.enable;
+      enableNushellIntegration = config.programs.nushell.enable;
     };
 
     programs.starship.settings = let
