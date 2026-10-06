@@ -4,6 +4,10 @@
     lib,
     ...
   }: {
+    imports = [
+      ./_chromium/apps.nix
+    ];
+
     programs.chromium = {
       enable = true;
       # linux only
@@ -47,6 +51,13 @@
           version = "1.1.2";
         })
       ];
+
+      apps = {
+        asana = {
+          link = "https://app.asana.com/";
+          thumbnail = ./_chromium/app-icons/asana.svg;
+        };
+      };
     };
   };
 }
