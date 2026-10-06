@@ -26,5 +26,13 @@
       zh = "zesh cn .";
       zls = ''selected=$(zesh list | fzf | sed "s|^~|$HOME|"); [[ -n $selected ]] && zesh connect "$selected"'';
     };
+
+    # The `zls` alias above is POSIX-only; nushell gets its own version.
+    programs.nushell.extraConfig = ''
+      def zls [] {
+        let selected = (zesh list | fzf | complete | get stdout | str trim | str replace -r '^~' $env.HOME)
+        if $selected != "" { zesh connect $selected }
+      }
+    '';
   };
 }
