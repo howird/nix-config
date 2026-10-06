@@ -17,10 +17,7 @@
       ./_pi/binds.nix
       ./_pi/plugins.nix
       ./_pi/settings.nix
-      ./_pi/skills.nix
     ];
-
-    _module.args.mattpocockSkillsSrc = inputs.mattpocock-skills;
 
     home.file.".pi/agent/AGENTS.md".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/AGENTS.md";
