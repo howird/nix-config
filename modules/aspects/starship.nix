@@ -68,7 +68,7 @@
           "Videos" = " ";
           "dev" = "󰲋 ";
           "robo" = " ";
-          "config" = " ";
+          ".config" = " ";
         };
       };
 
