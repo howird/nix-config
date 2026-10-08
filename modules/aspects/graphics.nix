@@ -1,4 +1,4 @@
-{...}: {
+{
   # Host-driven: set `den.hosts.<system>.<name>.gpu = "amd" | "nvidia";` (and
   # `.gpuVulkan = true;` for the nvidia vulkan-beta driver) on the host entity,
   # then `includes = [ den.aspects.graphics ];` on that host, instead of the

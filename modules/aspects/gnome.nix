@@ -1,4 +1,4 @@
-{...}: {
+{
   # Only the dconf half is ever included (by howard@vip) — matches the
   # pre-migration repo, where nixos/desktops/gnome.nix and
   # home-manager/desktops/gnome/gnome.nix both existed but neither was ever

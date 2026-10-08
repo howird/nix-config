@@ -1,4 +1,4 @@
-{...}: {
+{
   den.aspects.mcp.homeManager = {
     pkgs,
     lib,

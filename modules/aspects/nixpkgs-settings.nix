@@ -1,4 +1,4 @@
-{...}: {
+{
   den.aspects.nixpkgs-settings.nixos = {
     inputs,
     lib,

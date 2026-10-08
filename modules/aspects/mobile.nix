@@ -1,4 +1,4 @@
-{...}: {
+{
   den.aspects.mobile.nixos = {pkgs, ...}: {
     services.usbmuxd = {
       enable = true;

@@ -1,4 +1,4 @@
-{...}: {
+{
   den.aspects.zed.homeManager = {pkgs, ...}: {
     programs.zed-editor = {
       enable = true;

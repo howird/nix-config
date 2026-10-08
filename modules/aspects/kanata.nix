@@ -1,4 +1,4 @@
-{...}: {
+{
   den.aspects.kanata.nixos = {
     services.kanata.enable = true;
   };

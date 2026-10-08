@@ -1,4 +1,4 @@
-{...}: {
+{
   den.aspects.zsh.homeManager = {
     lib,
     config,

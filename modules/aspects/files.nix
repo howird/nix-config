@@ -1,4 +1,4 @@
-{...}: {
+{
   den.aspects.files.nixos = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
       sshfs

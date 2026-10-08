@@ -1,4 +1,4 @@
-{...}: {
+{
   den.aspects.syncthing.nixos = {
     host,
     lib,

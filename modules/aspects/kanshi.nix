@@ -1,4 +1,4 @@
-{...}: {
+{
   # Display-profile switching. Shell-agnostic: noctalia does not do output
   # layout, so this is included on its own.
   den.aspects.kanshi.homeManager = {

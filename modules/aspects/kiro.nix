@@ -1,4 +1,4 @@
-{...}: {
+{
   den.aspects.kiro.homeManager = {pkgs, ...}: {
     home.packages = with pkgs;
       [
