@@ -18,7 +18,7 @@
     ...
   }: let
     initExtra = ''
-      HOME_PROFILE="/home/${config.home.username}/.nix-profile/etc/profile.d"
+      HOME_PROFILE="${config.home.homeDirectory}/.nix-profile/etc/profile.d"
       ROOT_NIX_SH="/etc/profile.d/nix.sh"
       HOME_NIX_SH="$HOME_PROFILE/nix.sh"
 

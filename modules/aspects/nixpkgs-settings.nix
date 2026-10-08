@@ -53,10 +53,7 @@
 
     programs.nix-ld.enable = true;
 
-    programs.nh = {
-      enable = true;
-      flake = "/home/howird/nix/config";
-    };
+    programs.nh.enable = true;
 
     environment.systemPackages = with pkgs; [
       nix-index

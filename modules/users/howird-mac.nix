@@ -18,7 +18,6 @@
     ...
   }: {
     home.username = lib.mkForce "howird";
-    home.homeDirectory = lib.mkForce "/Users/howird";
 
     programs.ghostty.package = pkgs.ghostty-bin;
   };

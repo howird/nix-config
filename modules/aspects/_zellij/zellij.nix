@@ -203,7 +203,7 @@
         compact-bar location="zellij:compact-bar"
         configuration location="zellij:configuration"
         filepicker location="zellij:strider" {
-            cwd "/home/${config.home.username}"
+            cwd "${config.home.homeDirectory}"
         }
         plugin-manager location="zellij:plugin-manager"
         session-manager location="zellij:session-manager"
