@@ -8,6 +8,8 @@
     den.aspects.bundles.agents
     den.aspects.bundles.devtools
     den.aspects.bundles.docs
+
+    den.aspects.tailscale-userspace
   ];
 
   den.aspects.howard.homeManager = {
