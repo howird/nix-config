@@ -1,4 +1,4 @@
-{...}: {
+{
   den.aspects.linux-apps.homeManager = {pkgs, ...}: {
     imports = [
       ./_apps/default-apps.nix

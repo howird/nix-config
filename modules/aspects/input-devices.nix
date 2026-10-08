@@ -1,4 +1,4 @@
-{...}: {
+{
   den.aspects.input-devices.nixos = {
     services.libinput.enable = true;
     services.xserver.wacom.enable = true;

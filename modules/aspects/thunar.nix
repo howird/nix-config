@@ -1,4 +1,4 @@
-{...}: {
+{
   # howird-only (matches the pre-migration repo's home-manager/thunar.nix,
   # only ever imported by nixos-only.nix).
   den.aspects.thunar.homeManager = {pkgs, ...}: {

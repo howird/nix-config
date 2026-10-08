@@ -1,4 +1,4 @@
-{...}: {
+{
   # flake-file.inputs.helix-flake = {
   #   url = "github:mattwparas/helix/steel-event-system";
   #   inputs.nixpkgs.follows = "nixpkgs";

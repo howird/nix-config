@@ -1,4 +1,4 @@
-{...}: {
+{
   programs.helix.settings.keys = {
     # see https://rushter.com/blog/helix-editor/
 

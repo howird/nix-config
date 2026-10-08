@@ -1,4 +1,4 @@
-{...}: {
+{
   programs.niri.settings = let
     # `noctalia msg <cmd>` as a niri spawn action.
     msg = cmd: {spawn = ["noctalia" "msg"] ++ cmd;};

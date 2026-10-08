@@ -1,4 +1,4 @@
-{...}: {
+{
   den.aspects.ghostty.homeManager = {
     pkgs,
     lib,
