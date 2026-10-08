@@ -23,6 +23,7 @@
     den.aspects.mobile
     den.aspects.files
     den.aspects.networking
+    den.aspects.tailscale
   ];
 
   den.default.nixos = {
