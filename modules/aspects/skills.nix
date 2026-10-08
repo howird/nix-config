@@ -42,19 +42,37 @@
       // upstreamSkillsIn "productivity"
       // skillsIn ./_skills;
 
-    # every agent reads skills from here
+    # a skill in any form programs.claude-code.skills accepts (inline SKILL.md
+    # text, a SKILL.md file, or a skill dir), as a skill dir
+    toSkillDir = name: content:
+      if lib.isPath content || lib.hm.strings.isPathLike content
+      then
+        pkgs.runCommandLocal "skill-${name}" {} ''
+          src=${lib.escapeShellArg "${content}"}
+          if [[ -d "$src" ]]; then ln -s "$src" $out; else mkdir $out; ln -s "$src" $out/SKILL.md; fi
+        ''
+      else pkgs.writeTextDir "SKILL.md" content;
+
+    # every agent but claude reads skills from here
     dir = "${config.xdg.configHome}/skills";
   in {
-    xdg.configFile = lib.mapAttrs' (name: src: lib.nameValuePair "skills/${name}" {source = src;}) skills;
+    options.programs.pi.coding-agent.excludedClaudeSkills = lib.mkOption {
+      type = with lib.types; listOf str;
+      default = [];
+      description = "Skills in programs.claude-code.skills not shared with pi, e.g. ones that drive claude-only tools.";
+    };
 
-    # one link per skill: ~/.claude/skills also holds home-manager's plugin dir,
-    # and claude doesn't load skills when ~/.claude/skills is itself a symlink
-    home.file = lib.mapAttrs' (name: _:
-      lib.nameValuePair "${config.programs.claude-code.configDir}/skills/${name}" {
-        source = config.lib.file.mkOutOfStoreSymlink "${dir}/${name}";
-      })
-    skills;
+    config = {
+      # claude-code.skills is the one skill list: home-manager modules (e.g.
+      # worktrunk) add theirs here, and claude links each into ~/.claude/skills
+      programs.claude-code.skills = skills;
 
-    programs.pi.coding-agent.settings.skills = [dir];
+      # pi gets the same list
+      xdg.configFile =
+        lib.mapAttrs' (name: content: lib.nameValuePair "skills/${name}" {source = toSkillDir name content;})
+        (removeAttrs config.programs.claude-code.skills config.programs.pi.coding-agent.excludedClaudeSkills);
+
+      programs.pi.coding-agent.settings.skills = [dir];
+    };
   };
 }
