@@ -2,9 +2,11 @@
   den.aspects.syncthing.nixos = {
     host,
     lib,
+    config,
     ...
   }: let
     hostName = host.name;
+    home = config.users.users.howird.home;
   in {
     systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true";
     services.syncthing = let
@@ -12,8 +14,8 @@
     in {
       openDefaultPorts = true;
       user = "howird";
-      dataDir = "/home/howird";
-      configDir = "/home/howird/.config/syncthing";
+      dataDir = home;
+      configDir = "${home}/.config/syncthing";
       settings = {
         devices = lib.attrsets.filterAttrs (n: v: n != hostName) {
           yerm.id = "RBMEI57-GJNYWOV-QU5RHAX-HQSRD7Q-3SYCAG2-KVALZXA-5NP7VMA-V7N3ZA4";
@@ -26,37 +28,37 @@
           Papers = {
             inherit devices;
             id = "5v9ze-qjxem";
-            path = "/home/howird/papers";
+            path = "${home}/papers";
             ignorePerms = true;
           };
           SuperNotes = {
             inherit devices;
             id = "vhkwt-suv6b";
-            path = "/home/howird/supernotes";
+            path = "${home}/supernotes";
             ignorePerms = true;
           };
           Notes = {
             inherit devices;
             id = "h3cfv-d6qmg";
-            path = "/home/howird/notes";
+            path = "${home}/notes";
             ignorePerms = true;
           };
           ReadingList = {
             inherit devices;
             id = "ssrpx-u4pwm";
-            path = "/home/howird/readinglist";
+            path = "${home}/readinglist";
             ignorePerms = true;
           };
           Books = {
             inherit devices;
             id = "aaqo7-hfgmf";
-            path = "/home/howird/books";
+            path = "${home}/books";
             ignorePerms = true;
           };
           ToSign = {
             inherit devices;
             id = "kh2vs-k39ht";
-            path = "/home/howird/tosign";
+            path = "${home}/tosign";
             ignorePerms = true;
           };
         };

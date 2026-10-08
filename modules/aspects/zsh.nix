@@ -24,7 +24,7 @@
 
       history = {
         size = 10000;
-        path = "$HOME/.config/zsh/history";
+        path = "${config.xdg.stateHome}/zsh/history";
       };
 
       plugins = [
