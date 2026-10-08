@@ -3,6 +3,8 @@
   # a headless machine wants the tools and none of texlive.
   den.aspects.bundles.docs.includes = [
     den.aspects.sioyek
-    den.aspects.typesetting
+    den.aspects.latex
+    den.aspects.typst
+    den.aspects.doctools
   ];
 }

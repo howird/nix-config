@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   programs.helix.languages = {
     language-server.texlab = {
       command = "texlab";
@@ -47,9 +47,4 @@
       };
     };
   };
-
-  home.packages = with pkgs; [
-    texlab
-    tectonic
-  ];
 }
