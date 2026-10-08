@@ -1,4 +1,4 @@
-{...}: {
+{
   den.aspects.sioyek.homeManager = {config, ...}: {
     programs.sioyek = {
       enable = true;

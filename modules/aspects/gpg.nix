@@ -1,4 +1,4 @@
-{...}: {
+{
   # howird-only (matches the pre-migration repo's home-manager/gpg.nix, only
   # ever imported by nixos-only.nix).
   den.aspects.gpg.homeManager = {pkgs, ...}: {

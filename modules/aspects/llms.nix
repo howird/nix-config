@@ -1,4 +1,4 @@
-{...}: {
+{
   # Not included by any host today except bofa (matches the pre-migration
   # repo, where nixos/llms.nix was only ever imported by hosts/bofa).
   den.aspects.llms.nixos = {

@@ -1,4 +1,4 @@
-{...}: {
+{
   den.aspects.programming.homeManager = {
     config,
     pkgs,

@@ -1,4 +1,4 @@
-{...}: {
+{
   xdg.configFile."zellij/layouts/default.kdl".text = ''
     layout {
         swap_tiled_layout name="vertical" {

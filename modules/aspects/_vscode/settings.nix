@@ -1,4 +1,4 @@
-{...}: {
+{
   programs.vscode.profiles.default.userSettings = {
     "update.mode" = "none";
     "extensions.autoUpdate" = true;

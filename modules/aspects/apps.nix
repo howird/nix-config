@@ -1,4 +1,4 @@
-{...}: {
+{
   # howird-only (matches the pre-migration repo's home-manager/apps, only ever
   # imported by nixos-only.nix). Cross-platform only — packages with no
   # aarch64-darwin build in nixpkgs live in den.aspects.linux-apps instead,

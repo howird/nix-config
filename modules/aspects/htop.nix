@@ -1,4 +1,4 @@
-{...}: {
+{
   den.aspects.htop.homeManager = {pkgs, ...}: {
     programs.htop = {
       enable = true;
