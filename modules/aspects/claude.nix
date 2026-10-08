@@ -49,6 +49,9 @@
 
         programs.claude-code = {
           enable = true;
+          # merge declared settings (e.g. worktrunk's hooks) into a writable
+          # ~/.claude/settings.json instead of replacing it with a store link
+          mutableSettings = true;
           environmentVariables.CLAUDE_CODE_DISABLE_AUTO_MEMORY = "1";
           context = ''
             @~/AGENTS.md

@@ -4,5 +4,6 @@
     den.aspects.programming
     den.aspects.htop
     den.aspects.yazi
+    den.aspects.worktrunk
   ];
 }
