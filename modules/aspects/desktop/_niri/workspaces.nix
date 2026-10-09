@@ -4,7 +4,7 @@
   ...
 }: let
   # Declared here rather than in modules/defaults.nix even though the _life
-  # pomodoro scripts read it: niri and life both come from bundles.desktop,
+  # pomodoro scripts read it: niri and life both come from the desktop bundle,
   # so this file is loaded wherever the option is read, and the names live
   # next to the workspaces they name.
   #

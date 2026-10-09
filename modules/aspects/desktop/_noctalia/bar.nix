@@ -45,7 +45,7 @@
         {
           name = "howird";
           kind = "path";
-          location = "${../../../configs/noctalia-plugins}";
+          location = "${../../../../configs/noctalia-plugins}";
           enabled = true;
         }
       ];

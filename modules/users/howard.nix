@@ -3,11 +3,11 @@
     den.aspects.gnome
     den.aspects.stylix
 
-    den.aspects.bundles.shell
-    den.aspects.bundles.editors
-    den.aspects.bundles.agents
-    den.aspects.bundles.devtools
-    den.aspects.bundles.docs
+    den.aspects.shell
+    den.aspects.editors
+    den.aspects.agents
+    den.aspects.devtools
+    den.aspects.docs
 
     den.aspects.tailscale-userspace
     den.aspects.paseo-user-daemon

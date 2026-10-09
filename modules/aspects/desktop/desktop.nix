@@ -2,8 +2,8 @@
   # The graphical session: compositor, shell, greeter, theme, and the apps
   # that only make sense with a screen. Included by roles.workstation, not by
   # users, so a headless host never gets it.
-  den.aspects.bundles.desktop.includes = [
-    den.aspects.bundles.gui
+  den.aspects.desktop.includes = [
+    den.aspects.gui
     den.aspects.niri
     den.aspects.noctalia
     den.aspects.noctalia-greeter
@@ -15,8 +15,8 @@
     den.aspects.chromium
   ];
 
-  den.aspects.bundles.desktop.homeManager = {pkgs, ...}: {
-    imports = [../_apps/default-apps.nix];
+  den.aspects.desktop.homeManager = {pkgs, ...}: {
+    imports = [./_apps/default-apps.nix];
 
     programs.niri.enable = true;
 
