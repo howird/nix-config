@@ -1,7 +1,19 @@
-{
+let
+  keymapFile = keymap: ../../configs/keyboards/kanata + "/${keymap}.kbd";
+in {
+  # Included for every host; does nothing unless the host sets `keymap`, the
+  # name of configs/keyboards/kanata/<keymap>.kbd for its built-in keyboard.
   den.aspects.kanata.nixos = {
-    services.kanata.enable = true;
-  };
+    host,
+    lib,
+    ...
+  }:
+    lib.mkIf (host.keymap != null) {
+      services.kanata = {
+        enable = true;
+        keyboards.laptop.configFile = keymapFile host.keymap;
+      };
+    };
 
   # One-time manual steps after the first `darwin-rebuild switch` for a host
   # enabling this (Apple gates these behind GUI approval; nix can't do them
@@ -18,6 +30,7 @@
   #
   #   2: Run: `sudo launchctl kickstart -k system/org.nixos.kanata`
   den.aspects.kanata.darwin = {
+    host,
     config,
     pkgs,
     lib,
@@ -39,51 +52,59 @@
       };
     };
 
-    config = lib.mkIf cfg.enable {
-      environment.systemPackages = [pkgs.kanata];
-
-      system.activationScripts.postActivation.text = lib.mkAfter ''
-        echo "setting up kanata..." >&2
-
-        mkdir -p "$(dirname "${karabinerDaemonApp}")"
-        rm -rf "${karabinerManagerApp}" "${karabinerDaemonApp}"
-        ditto "${karabinerDriver}/Applications/.Karabiner-VirtualHIDDevice-Manager.app" "${karabinerManagerApp}"
-        ditto "${karabinerDriver}/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app" "${karabinerDaemonApp}"
-        chown -R root:wheel "${karabinerManagerApp}" "/Library/Application Support/org.pqrs"
-
-        "${karabinerManagerApp}/Contents/MacOS/Karabiner-VirtualHIDDevice-Manager" activate || true
-
-        # copied to a stable path (rather than referencing /nix/store directly)
-        # so the Input Monitoring/Accessibility grants below survive future
-        # store-path changes from package updates.
-        mkdir -p /usr/local/libexec
-        cp -f ${pkgs.kanata}/bin/kanata /usr/local/libexec/kanata
-        chmod 755 /usr/local/libexec/kanata
-      '';
-
-      launchd.daemons."Karabiner-DriverKit-VirtualHIDDevice-Daemon" = {
-        serviceConfig = {
-          Label = "org.pqrs.Karabiner-DriverKit-VirtualHIDDevice-Daemon";
-          ProgramArguments = ["${karabinerDaemonApp}/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon"];
-          RunAtLoad = true;
-          KeepAlive = true;
-          ProcessType = "Interactive";
+    config = lib.mkMerge [
+      (lib.mkIf (host.keymap != null) {
+        services.kanata = {
+          enable = true;
+          configFile = keymapFile host.keymap;
         };
-      };
+      })
+      (lib.mkIf cfg.enable {
+        environment.systemPackages = [pkgs.kanata];
 
-      launchd.daemons.kanata = {
-        serviceConfig = {
-          ProgramArguments = [
-            "/usr/local/libexec/kanata"
-            "--cfg"
-            "${cfg.configFile}"
-          ];
-          RunAtLoad = true;
-          KeepAlive = true;
-          StandardOutPath = "/var/log/kanata.log";
-          StandardErrorPath = "/var/log/kanata.log";
+        system.activationScripts.postActivation.text = lib.mkAfter ''
+          echo "setting up kanata..." >&2
+
+          mkdir -p "$(dirname "${karabinerDaemonApp}")"
+          rm -rf "${karabinerManagerApp}" "${karabinerDaemonApp}"
+          ditto "${karabinerDriver}/Applications/.Karabiner-VirtualHIDDevice-Manager.app" "${karabinerManagerApp}"
+          ditto "${karabinerDriver}/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app" "${karabinerDaemonApp}"
+          chown -R root:wheel "${karabinerManagerApp}" "/Library/Application Support/org.pqrs"
+
+          "${karabinerManagerApp}/Contents/MacOS/Karabiner-VirtualHIDDevice-Manager" activate || true
+
+          # copied to a stable path (rather than referencing /nix/store directly)
+          # so the Input Monitoring/Accessibility grants below survive future
+          # store-path changes from package updates.
+          mkdir -p /usr/local/libexec
+          cp -f ${pkgs.kanata}/bin/kanata /usr/local/libexec/kanata
+          chmod 755 /usr/local/libexec/kanata
+        '';
+
+        launchd.daemons."Karabiner-DriverKit-VirtualHIDDevice-Daemon" = {
+          serviceConfig = {
+            Label = "org.pqrs.Karabiner-DriverKit-VirtualHIDDevice-Daemon";
+            ProgramArguments = ["${karabinerDaemonApp}/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon"];
+            RunAtLoad = true;
+            KeepAlive = true;
+            ProcessType = "Interactive";
+          };
         };
-      };
-    };
+
+        launchd.daemons.kanata = {
+          serviceConfig = {
+            ProgramArguments = [
+              "/usr/local/libexec/kanata"
+              "--cfg"
+              "${cfg.configFile}"
+            ];
+            RunAtLoad = true;
+            KeepAlive = true;
+            StandardOutPath = "/var/log/kanata.log";
+            StandardErrorPath = "/var/log/kanata.log";
+          };
+        };
+      })
+    ];
   };
 }

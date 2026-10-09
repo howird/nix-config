@@ -13,7 +13,6 @@
   den.aspects.bofa.includes = [
     den.aspects.roles.workstation
     den.aspects.roles.server
-    den.aspects.graphics
     den.aspects.llms
     den.aspects.paseo
     den.aspects.paseo-daemon
@@ -26,15 +25,9 @@
       ./_hardware-configuration.nix
     ];
 
-    services.syncthing.enable = true;
     services.glances.enable = false;
     services.ollama.enable = false;
     services.open-webui.enable = false;
-
-    hardware.graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
 
     environment.systemPackages = with pkgs; [
       lm_sensors

@@ -16,10 +16,6 @@
     keymap = "macbook";
   };
 
-  den.aspects.mba.includes = [
-    den.aspects.kanata
-  ];
-
   den.aspects.mba.darwin = {config, ...}: {
     imports = [inputs.nix-homebrew.darwinModules.nix-homebrew];
 
@@ -29,11 +25,6 @@
     nix-homebrew = {
       enable = true;
       user = config.system.primaryUser;
-    };
-
-    services.kanata = {
-      enable = true;
-      configFile = ../../../configs/keyboards/kanata/macbook.kbd;
     };
   };
 }

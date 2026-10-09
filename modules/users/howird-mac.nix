@@ -14,6 +14,7 @@
 
     den.aspects.mac-apps
     den.aspects.zen
+    den.aspects.syncthing
   ];
 
   den.aspects.howird-mac.homeManager = {

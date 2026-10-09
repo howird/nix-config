@@ -11,6 +11,8 @@
     den.aspects.bundles.devtools
     den.aspects.bundles.docs
     den.aspects.bundles.personal
+
+    den.aspects.syncthing
   ];
 
   den.aspects.howird.nixos.users.users.howird = {

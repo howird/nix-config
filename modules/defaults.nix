@@ -6,6 +6,7 @@
   # Every host, headless or not, nixos or darwin. Anything graphical belongs
   # in roles.workstation instead.
   den.schema.host.includes = [
+    den.aspects.kanata
     den.aspects.system-packages
     den.aspects.boot
     den.aspects.nixpkgs-settings
@@ -43,6 +44,7 @@
   den.default.homeManager = {
     lib,
     config,
+    host,
     isDarwin,
     ...
   }: {
@@ -68,7 +70,8 @@
 
     options.desktop.internalScale = lib.mkOption {
       type = lib.types.float;
-      default = 1.0;
+      # A standalone home's synthetic host has no schema facts.
+      default = host.internalScale or 1.0;
       description = "Scale for the built-in laptop panel.";
     };
 
