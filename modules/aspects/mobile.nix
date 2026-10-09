@@ -1,5 +1,9 @@
 {
-  den.aspects.mobile.nixos = {pkgs, ...}: {
+  den.aspects.mobile.nixos = {
+    pkgs,
+    hostUsers,
+    ...
+  }: {
     services.usbmuxd = {
       enable = true;
       package = pkgs.usbmuxd2;
@@ -15,7 +19,7 @@
 
     programs.weylus = {
       enable = true;
-      users = ["howird"];
+      users = hostUsers;
       openFirewall = true;
     };
   };
