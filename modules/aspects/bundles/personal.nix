@@ -4,7 +4,6 @@
   # have and vip deliberately doesn't.
   den.aspects.bundles.personal.includes = [
     den.aspects.apps
-    den.aspects.zen
     den.aspects.rclone
   ];
 

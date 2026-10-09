@@ -11,6 +11,8 @@
   };
 
   den.aspects.bofa.includes = [
+    den.aspects.roles.workstation
+    den.aspects.roles.server
     den.aspects.graphics
     den.aspects.llms
     den.aspects.paseo
@@ -32,15 +34,6 @@
     hardware.graphics = {
       enable = true;
       enable32Bit = true;
-    };
-
-    services.openssh = {
-      enable = true;
-      settings = {
-        PermitRootLogin = "no";
-        PasswordAuthentication = false;
-        X11Forwarding = true;
-      };
     };
 
     environment.systemPackages = with pkgs; [

@@ -3,25 +3,12 @@
   inputs,
   ...
 }: {
-  # Every NixOS host gets these by default — replaces the old manual
-  # `imports = [ <raw file paths> ]` list, which also meant `host`/`user`
-  # never reached those files as real den context args (only plain module
-  # composition). Promoting each to its own top-level `den.aspects.<name>`
-  # and including it here lets den's own dispatch inject `host`/`user`
-  # directly (see aspects/syncthing.nix).
+  # Every host, headless or not, nixos or darwin. Anything graphical belongs
+  # in roles.workstation instead.
   den.schema.host.includes = [
-    den.aspects.niri
-    den.aspects.noctalia
-    den.aspects.noctalia-greeter
-    den.aspects.stylix
     den.aspects.system-packages
     den.aspects.boot
     den.aspects.nixpkgs-settings
-    den.aspects.syncthing
-    den.aspects.emulators
-    den.aspects.input-devices
-    den.aspects.mobile
-    den.aspects.files
     den.aspects.networking
     den.aspects.tailscale
   ];
@@ -44,28 +31,6 @@
 
     time.timeZone = "America/Toronto";
     i18n.defaultLocale = "en_US.UTF-8";
-
-    services.printing.enable = true;
-
-    services.xserver.enable = true;
-    services.xserver.xkb = {
-      layout = "us";
-      variant = "";
-    };
-
-    security.rtkit.enable = true;
-    services.pipewire = {
-      enable = true;
-      audio.enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      jack.enable = true;
-    };
-
-    services.flatpak.enable = true;
-
-    virtualisation.docker.enable = true;
 
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
