@@ -5,5 +5,6 @@
     den.aspects.htop
     den.aspects.yazi
     den.aspects.worktrunk
+    den.aspects.gpg
   ];
 }

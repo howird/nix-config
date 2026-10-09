@@ -11,7 +11,8 @@
   };
 
   den.aspects.yerm.includes = [
-    den.aspects.bluetooth
+    den.aspects.roles.workstation
+    den.aspects.roles.laptop
     den.aspects.kanata
     den.aspects.paseo
   ];
@@ -31,7 +32,6 @@
 
     services = {
       syncthing.enable = true;
-      upower.enable = true;
       kanata.keyboards.laptop.configFile = ../../../configs/keyboards/kanata/framework.kbd;
       # kanata.keyboards.foldable.configFile = ../../../configs/keyboards/kanata/protoarc.kbd;
     };

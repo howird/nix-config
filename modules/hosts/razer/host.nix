@@ -10,7 +10,8 @@
   };
 
   den.aspects.razer.includes = [
-    den.aspects.bluetooth
+    den.aspects.roles.workstation
+    den.aspects.roles.laptop
     den.aspects.kanata
   ];
 
@@ -30,7 +31,6 @@
 
     services = {
       syncthing.enable = true;
-      upower.enable = true;
       kanata.keyboards.laptop.configFile = ../../../configs/keyboards/kanata/razer.kbd;
     };
   };
