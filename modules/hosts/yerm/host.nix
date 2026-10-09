@@ -8,6 +8,7 @@
   den.aspects.yerm.includes = [
     den.aspects.bluetooth
     den.aspects.kanata
+    den.aspects.paseo
   ];
 
   den.aspects.yerm.nixos = {
