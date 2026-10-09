@@ -3,7 +3,11 @@
   den,
   ...
 }: {
-  den.hosts.x86_64-linux.razer.users.howird = {};
+  den.hosts.x86_64-linux.razer = {
+    users.howird = {};
+    keymap = "razer";
+    internalScale = 2.0;
+  };
 
   den.aspects.razer.includes = [
     den.aspects.bluetooth
