@@ -10,6 +10,7 @@
     den.aspects.bundles.docs
 
     den.aspects.tailscale-userspace
+    den.aspects.paseo-user-daemon
   ];
 
   den.aspects.howard.homeManager = {

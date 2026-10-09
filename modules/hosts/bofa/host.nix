@@ -12,6 +12,8 @@
   den.aspects.bofa.includes = [
     den.aspects.graphics
     den.aspects.llms
+    den.aspects.paseo
+    den.aspects.paseo-daemon
   ];
 
   den.aspects.bofa.nixos = {pkgs, ...}: {
