@@ -11,8 +11,9 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
-  den.hosts.aarch64-darwin.mba.users.howird = {
-    aspect = den.aspects.howird-mac;
+  den.hosts.aarch64-darwin.mba = {
+    users.howird.aspect = den.aspects.howird-mac;
+    keymap = "macbook";
   };
 
   den.aspects.mba.includes = [

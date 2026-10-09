@@ -3,7 +3,12 @@
   den,
   ...
 }: {
-  den.hosts.x86_64-linux.yerm.users.howird = {};
+  den.hosts.x86_64-linux.yerm = {
+    users.howird = {};
+    keymap = "framework";
+    internalScale = 1.6;
+    syncthing.id = "RBMEI57-GJNYWOV-QU5RHAX-HQSRD7Q-3SYCAG2-KVALZXA-5NP7VMA-V7N3ZA4";
+  };
 
   den.aspects.yerm.includes = [
     den.aspects.bluetooth
