@@ -1,5 +1,5 @@
 let
-  keymapFile = keymap: ../../configs/keyboards/kanata + "/${keymap}.kbd";
+  keymapFile = keymap: ../../../configs/keyboards/kanata + "/${keymap}.kbd";
 in {
   # Included for every host; does nothing unless the host sets `keymap`, the
   # name of configs/keyboards/kanata/<keymap>.kbd for its built-in keyboard.
