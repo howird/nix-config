@@ -13,7 +13,6 @@
   den.aspects.yerm.includes = [
     den.aspects.roles.workstation
     den.aspects.roles.laptop
-    den.aspects.kanata
     den.aspects.paseo
   ];
 
@@ -23,22 +22,10 @@
       ./_hardware-configuration.nix
     ];
 
-    hardware = {
-      graphics = {
-        enable = true;
-        enable32Bit = true;
-      };
-    };
-
-    services = {
-      syncthing.enable = true;
-      kanata.keyboards.laptop.configFile = ../../../configs/keyboards/kanata/framework.kbd;
-      # kanata.keyboards.foldable.configFile = ../../../configs/keyboards/kanata/protoarc.kbd;
-    };
+    # services.kanata.keyboards.foldable.configFile = ../../../configs/keyboards/kanata/protoarc.kbd;
   };
 
   den.aspects.yerm.homeManager = {
-    desktop.internalScale = 1.6;
     # fprintd itself comes from the nixos-hardware framework module
     programs.noctalia.settings.lockscreen.fingerprint = true;
   };

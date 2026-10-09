@@ -1,8 +1,7 @@
 {
-  # Host-driven: set `den.hosts.<system>.<name>.gpu = "amd" | "nvidia";` (and
-  # `.gpuVulkan = true;` for the nvidia vulkan-beta driver) on the host entity,
-  # then `includes = [ den.aspects.graphics ];` on that host, instead of the
-  # old `myGraphics.{amd,nvidia,nvidiaVulkan}` option flags.
+  # Included by roles.workstation. Driven by the host facts `gpu` ("amd" |
+  # "nvidia" | null) and `gpuVulkan` (nvidia vulkan-beta driver); with
+  # `gpu = null` only the generic mesa setup applies.
   den.aspects.graphics.nixos = {
     host,
     lib,
@@ -10,6 +9,11 @@
     pkgs,
     ...
   }: {
+    hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+
     boot.initrd.kernelModules = lib.optionals (host.gpu == "amd") ["amdgpu"];
     boot.kernelModules = lib.optionals (host.gpu == "amd") ["kvm-amd"];
 
@@ -28,7 +32,7 @@
       open = true;
       nvidiaSettings = true;
       package =
-        if host.gpuVulkan or false
+        if host.gpuVulkan
         then config.boot.kernelPackages.nvidiaPackages.vulkan_beta
         else config.boot.kernelPackages.nvidiaPackages.stable;
     };
@@ -43,7 +47,7 @@
       ++ lib.optionals (host.gpu == "nvidia") [
         cudatoolkit
         (
-          if host.gpuVulkan or false
+          if host.gpuVulkan
           then linuxPackages.nvidia_x11_vulkan_beta
           else linuxPackages.nvidia_x11
         )

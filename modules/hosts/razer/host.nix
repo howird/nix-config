@@ -12,7 +12,6 @@
   den.aspects.razer.includes = [
     den.aspects.roles.workstation
     den.aspects.roles.laptop
-    den.aspects.kanata
   ];
 
   den.aspects.razer.nixos = {
@@ -21,21 +20,5 @@
       inputs.hardware.nixosModules.common-pc-ssd
       ./_hardware-configuration.nix
     ];
-
-    hardware = {
-      graphics = {
-        enable = true;
-        enable32Bit = true;
-      };
-    };
-
-    services = {
-      syncthing.enable = true;
-      kanata.keyboards.laptop.configFile = ../../../configs/keyboards/kanata/razer.kbd;
-    };
-  };
-
-  den.aspects.razer.homeManager = {
-    desktop.internalScale = 2.0;
   };
 }

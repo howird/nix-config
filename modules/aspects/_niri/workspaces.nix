@@ -4,9 +4,9 @@
   ...
 }: let
   # Declared here rather than in modules/defaults.nix even though the _life
-  # pomodoro scripts read it: every host includes den.aspects.niri
-  # (den.schema.host.includes), so this file is loaded wherever the option is
-  # read, and the names live next to the workspaces they name.
+  # pomodoro scripts read it: niri and life both come from bundles.desktop,
+  # so this file is loaded wherever the option is read, and the names live
+  # next to the workspaces they name.
   #
   # The name doubles as the bar label: noctalia's workspaces widget can only
   # render a workspace's id or its name (`label_source`), with no per-workspace
