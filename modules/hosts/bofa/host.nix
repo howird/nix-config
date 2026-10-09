@@ -7,6 +7,7 @@
     users.howird = {};
     gpu = "nvidia";
     gpuVulkan = true;
+    syncthing.id = "BP3NP5F-OHLLWR3-RY5NCR4-ADNXU3O-6J3TSBF-XZAIBF6-A3UVGKG-AQXHMQ4";
   };
 
   den.aspects.bofa.includes = [
