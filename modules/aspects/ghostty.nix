@@ -5,6 +5,8 @@
     ...
   }: {
     programs.ghostty = {
+      # nixpkgs' ghostty doesn't build on darwin; use the upstream app.
+      package = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin pkgs.ghostty-bin;
       enableZshIntegration = true;
       installVimSyntax = true;
       settings =

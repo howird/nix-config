@@ -10,8 +10,8 @@
     den.aspects.bundles.agents
     den.aspects.bundles.devtools
     den.aspects.bundles.docs
-    den.aspects.bundles.personal
 
+    den.aspects.rclone
     den.aspects.syncthing
   ];
 
