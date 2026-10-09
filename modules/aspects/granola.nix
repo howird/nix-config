@@ -5,7 +5,7 @@
     inputs.flake-utils.follows = "flake-utils";
   };
 
-  # howird-only (matches den.aspects.apps/browsers - a workstation-only app).
+  # Workstation-only, via bundles.desktop.
   den.aspects.granola.homeManager = {pkgs, ...}: let
     inherit (pkgs.stdenv.hostPlatform) system;
   in {

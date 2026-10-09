@@ -12,7 +12,7 @@
     den.aspects.bundles.docs
     den.aspects.bundles.personal
 
-    den.aspects.mac-apps
+    den.aspects.apps
     den.aspects.zen
     den.aspects.syncthing
   ];
