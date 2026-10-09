@@ -12,9 +12,13 @@
   };
 
   den.hosts.aarch64-darwin.mba = {
-    users.howird.aspect = den.aspects.howird-mac;
+    users.howird = {};
     keymap = "macbook";
   };
+
+  den.aspects.mba.includes = [
+    den.aspects.bundles.gui
+  ];
 
   den.aspects.mba.darwin = {config, ...}: {
     imports = [inputs.nix-homebrew.darwinModules.nix-homebrew];
