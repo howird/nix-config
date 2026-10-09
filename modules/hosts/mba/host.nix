@@ -17,7 +17,7 @@
   };
 
   den.aspects.mba.includes = [
-    den.aspects.bundles.gui
+    den.aspects.gui
   ];
 
   den.aspects.mba.darwin = {config, ...}: {

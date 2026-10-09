@@ -1,7 +1,7 @@
 {den, ...}: {
   # Interactive shell environment: the shells themselves, their prompt,
   # multiplexer, aliases, and the terminal they run in.
-  den.aspects.bundles.shell.includes = [
+  den.aspects.shell.includes = [
     den.aspects.zsh
     den.aspects.nushell
     den.aspects.starship

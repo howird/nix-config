@@ -5,7 +5,7 @@
     inputs.flake-utils.follows = "flake-utils";
   };
 
-  # Workstation-only, via bundles.desktop.
+  # Workstation-only, via the desktop bundle.
   den.aspects.granola.homeManager = {pkgs, ...}: let
     inherit (pkgs.stdenv.hostPlatform) system;
   in {

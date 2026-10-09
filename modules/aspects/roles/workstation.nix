@@ -3,7 +3,7 @@
   # and the desktop itself. The desktop bundle's homeManager halves reach the
   # host's users through den.batteries.host-aspects.
   den.aspects.roles.workstation.includes = [
-    den.aspects.bundles.desktop
+    den.aspects.desktop
     den.aspects.graphics
     den.aspects.emulators
     den.aspects.input-devices
