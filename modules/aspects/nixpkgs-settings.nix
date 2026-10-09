@@ -3,6 +3,7 @@
     inputs,
     lib,
     pkgs,
+    hostUsers,
     ...
   }: {
     nixpkgs.overlays = [
@@ -41,7 +42,7 @@
         "niri-epireyn.cachix.org-1:tlVyFN7CtsDT+ZcLPS+ekFWeT1X6X4OqvWqbBMyIzFA="
         "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       ];
-      trusted-users = ["root" "howird"];
+      trusted-users = ["root"] ++ hostUsers;
     };
 
     nix.gc = {
@@ -63,6 +64,7 @@
   den.aspects.nixpkgs-settings.darwin = {
     inputs,
     lib,
+    hostUsers,
     ...
   }: {
     nixpkgs.config.allowUnfree = true;
@@ -82,7 +84,7 @@
         "pi.cachix.org-1:lGeoGJaZ5ZDabuRzkcD5EBTNnDM4HJ1vqeOxlWk1Flk="
         "ryoppippi.cachix.org-1:b2LbtWNvJeL/qb1B6TYOMK+apaCps4SCbzlPRfSQIms="
       ];
-      trusted-users = ["root" "howird"];
+      trusted-users = ["root"] ++ hostUsers;
     };
   };
 }

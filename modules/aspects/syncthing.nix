@@ -3,17 +3,19 @@
     host,
     lib,
     config,
+    hostUsers,
     ...
   }: let
     hostName = host.name;
-    home = config.users.users.howird.home;
+    user = lib.head hostUsers;
+    home = config.users.users.${user}.home;
   in {
     systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true";
     services.syncthing = let
       devices = builtins.filter (e: e != hostName) ["yerm" "bofa" "boox" "supernote"];
     in {
       openDefaultPorts = true;
-      user = "howird";
+      inherit user;
       dataDir = home;
       configDir = "${home}/.config/syncthing";
       settings = {

@@ -1,5 +1,8 @@
 {den, ...}: {
   den.aspects.howird.includes = [
+    den.batteries.define-user
+    den.batteries.primary-user
+    (den.batteries.user-shell "zsh")
     den.batteries.host-aspects
     den.aspects.stylix
 
@@ -23,6 +26,11 @@
     den.aspects.gpg
     den.aspects.thunar
   ];
+
+  den.aspects.howird.nixos.users.users.howird = {
+    description = "Howard Nguyen-Huu";
+    extraGroups = ["docker" "audio" "video" "render" "kvm" "adbusers"];
+  };
 
   den.aspects.howird.homeManager = {
     programs.niri.enable = true;

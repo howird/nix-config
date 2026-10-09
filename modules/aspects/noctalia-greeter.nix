@@ -7,17 +7,18 @@
   den.aspects.noctalia-greeter.nixos = {
     config,
     lib,
+    hostUsers,
     ...
   }: {
     imports = [inputs.noctalia-greeter.nixosModules.default];
 
     services.displayManager.noctalia-greeter = {
       enable = true;
-      passwordless-sync-users = ["howird"];
+      passwordless-sync-users = hostUsers;
       cursorTheme.package = config.stylix.cursor.package;
       settings = {
         session.default = "Niri";
-        user.default = "howird";
+        user.default = lib.head hostUsers;
 
         appearance = {
           # The look is the shell's, pushed here by Sync (Settings ->

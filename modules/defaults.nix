@@ -26,9 +26,11 @@
     den.aspects.tailscale
   ];
 
+  den.default.includes = [den.batteries.hostname];
+
   den.default.nixos = {
     host,
-    pkgs,
+    lib,
     ...
   }: {
     # Makes `inputs` available as a plain specialArg to every nixos-class
@@ -36,8 +38,9 @@
     # `den.aspects.<name>.nixos` (den's own context-injection only threads
     # `host`/`user`, not `inputs`) or nested content.
     _module.args.inputs = inputs;
-
-    networking.hostName = host.name;
+    # Account names of the users declared on this host, for host-scope
+    # aspects that need to name them (greeter, weylus, trusted-users, ...).
+    _module.args.hostUsers = map (u: u.userName) (lib.attrValues host.users);
 
     time.timeZone = "America/Toronto";
     i18n.defaultLocale = "en_US.UTF-8";
@@ -58,13 +61,6 @@
       alsa.support32Bit = true;
       pulse.enable = true;
       jack.enable = true;
-    };
-
-    users.users.howird = {
-      isNormalUser = true;
-      description = "Howard Nguyen-Huu";
-      extraGroups = ["networkmanager" "wheel" "docker" "audio" "video" "render" "kvm" "adbusers"];
-      shell = pkgs.zsh;
     };
 
     services.flatpak.enable = true;
@@ -145,13 +141,16 @@
       );
   };
 
-  den.default.darwin = {host, ...}: {
+  den.default.darwin = {
+    host,
+    lib,
+    ...
+  }: {
     _module.args.inputs = inputs;
+    _module.args.hostUsers = map (u: u.userName) (lib.attrValues host.users);
 
     nix.settings.experimental-features = ["nix-command" "flakes"];
     programs.zsh.enable = true;
-
-    networking.hostName = host.name;
 
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;

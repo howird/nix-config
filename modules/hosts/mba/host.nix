@@ -20,22 +20,15 @@
     den.aspects.kanata
   ];
 
-  den.aspects.mba.darwin = {pkgs, ...}: {
+  den.aspects.mba.darwin = {config, ...}: {
     imports = [inputs.nix-homebrew.darwinModules.nix-homebrew];
 
-    system.primaryUser = "howird";
     networking.computerName = "mba";
-    networking.hostName = "mba";
     networking.localHostName = "mba";
-
-    users.users.howird = {
-      home = "/Users/howird";
-      shell = pkgs.zsh;
-    };
 
     nix-homebrew = {
       enable = true;
-      user = "howird";
+      user = config.system.primaryUser;
     };
 
     services.kanata = {
