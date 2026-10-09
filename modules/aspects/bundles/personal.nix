@@ -3,7 +3,6 @@
   # the work box (howard@vip). Anything here is a thing those two machines
   # have and vip deliberately doesn't.
   den.aspects.bundles.personal.includes = [
-    den.aspects.apps
     den.aspects.rclone
   ];
 
