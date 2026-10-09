@@ -4,6 +4,7 @@
   # host's users through den.batteries.host-aspects.
   den.aspects.roles.workstation.includes = [
     den.aspects.bundles.desktop
+    den.aspects.apps
     den.aspects.graphics
     den.aspects.emulators
     den.aspects.input-devices

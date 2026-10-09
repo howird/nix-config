@@ -14,10 +14,16 @@
     den.aspects.granola
     den.aspects.chromium
     den.aspects.zen
-    den.aspects.linux-apps
   ];
 
-  den.aspects.bundles.desktop.homeManager = {
+  den.aspects.bundles.desktop.homeManager = {pkgs, ...}: {
+    imports = [../_apps/default-apps.nix];
+
     programs.niri.enable = true;
+
+    home.packages = with pkgs; [
+      networkmanager
+      dex
+    ];
   };
 }
