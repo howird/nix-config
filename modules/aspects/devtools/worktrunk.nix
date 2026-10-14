@@ -8,6 +8,8 @@
         # config.toml is left to wt (no `settings`), so the skill can edit it
         configurationSkill = true;
       };
+      enableZshIntegration = true;
+      enableNushellIntegration = true;
     };
 
     # /wt-switch-create re-roots the session with claude's EnterWorktree tool
