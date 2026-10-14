@@ -103,11 +103,7 @@
           app-id = "^chrome-.*$";
           title = "^.*Fizzy.*$";
         }
-        {app-id = "obsidian";}
-        {
-          app-id = "electron";
-          title = "^.*Obsidian.*$";
-        }
+        {app-id = "md.obsidian.Obsidian";}
         {app-id = "Zotero";}
         {app-id = "zen-twilight";}
       ];

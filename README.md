@@ -6,7 +6,7 @@
 
 - Make the follwing changes the default nixos config with
   `sudoedit /etc/nixos/configuration.nix`
-  - Add `nix.settings.experimental-features = "nix-command flakes";`
+  - Add `nix.settings.experimental-features = ["nix-command" "flakes"];`
   - Add `git` to `environment.systemPackages`
 
 - Apply the updates: `sudo nixos-rebuild switch`
