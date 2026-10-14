@@ -9,6 +9,7 @@
     den.aspects.noctalia-greeter
     den.aspects.kanshi
     den.aspects.record
+    den.aspects.voxtype
     den.aspects.thunar
     den.aspects.life
     den.aspects.granola
