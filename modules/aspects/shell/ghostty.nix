@@ -22,6 +22,9 @@
         // {
           background-opacity = 0.9;
           background-blur = true;
+          # Without this, helix (termina backend) re-sends the queried
+          # background via OSC 11 and the window stops being transparent
+          osc-color-report-format = "none";
           confirm-close-surface = false;
           keybind = [
             "ctrl+shift+j=unbind"
