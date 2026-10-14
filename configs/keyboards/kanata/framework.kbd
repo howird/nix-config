@@ -68,6 +68,20 @@
   stb S-tab
   zi C-+
   zo C--
+
+  ;; VOXTYPE: niri binds M-C-d to `voxtype record start` and M-C-S-d to
+  ;; `voxtype record stop`. Every press starts recording (a no-op if it
+  ;; already is). Releasing the first tap queues a stop 250ms out, which any
+  ;; key press cancels: a second Ctrl press keeps recording going (double
+  ;; tap), otherwise it stops (hold to talk, or tap to end a double tap).
+  vt1 (multi (on-press tap-vkey vstart) (on-release tap-vkey vstop))
+  vt2 (on-press tap-vkey vstart)
+  vox (tap-dance-eager 250 (@vt1 @vt2))
+)
+
+(defvirtualkeys
+  vstart M-C-d
+  vstop  (macro-cancel-on-press 250 M-C-S-d)
 )
 
 
@@ -76,7 +90,7 @@
   XX   q    w    e    r    t    y    u    i    o    p    XX   XX
   XX   @a   @s   @d   @f   g    h    @j   @k   @l   @;   XX
   z    @x   c    v    b    esc  n    m    ,    @.   /    XX
-  XX   @tbs bspc             spc          @rtn XX
+  @vox @tbs bspc             spc          @rtn XX
 )
 
 (deflayer numarrows
