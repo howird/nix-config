@@ -16,17 +16,15 @@
       defaultEditor = true;
       package =
         (
-          inputs.helix-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
-          # .override {
-          # # may be necessary next nix flake bump
-          # # glibc 2.44 makes bsearch a C23 _Generic macro, which breaks the perl
-          # # grammar's own bsearch definition; gnu17 keeps the plain prototype.
-          #   grammarOverlays = [
-          #     (_: prev: {
-          #       perl = prev.perl.overrideAttrs (o: {FLAGS = o.FLAGS ++ ["-std=gnu17"];});
-          #     })
-          #   ];
-          # }
+          inputs.helix-flake.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+            # glibc 2.44 makes bsearch a C23 _Generic macro, which breaks the perl
+            # grammar's own bsearch definition; gnu17 keeps the plain prototype.
+            grammarOverlays = [
+              (_: prev: {
+                perl = prev.perl.overrideAttrs (o: {FLAGS = o.FLAGS ++ ["-std=gnu17"];});
+              })
+            ];
+          }
         ).overrideAttrs (oldAttrs: {
           cargoBuildFlags = (oldAttrs.cargoBuildFlags or []) ++ ["--features" "steel,git"];
         });
