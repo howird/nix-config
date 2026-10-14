@@ -12,7 +12,17 @@
     brightness.enable_ddcutil = false;
 
     calendar.enabled = false;
-    weather.enabled = false;
+    # Open-Meteo forecast for the coordinates [location] resolves
+    weather = {
+      enabled = true;
+      unit = "celsius";
+    };
+
+    # Geocoded once through api.noctalia.dev rather than located by IP
+    location = {
+      auto_locate = false;
+      address = "Toronto, ON";
+    };
     nightlight.enabled = false;
     hot_corners.enabled = false;
     dock.enabled = false;

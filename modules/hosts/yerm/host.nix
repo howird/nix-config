@@ -23,6 +23,13 @@
       ./_hardware-configuration.nix
     ];
 
+    # The noctalia lock screen checks passwords against the "login" PAM stack
+    # while it reads the fingerprint sensor itself over D-Bus. With
+    # pam_fprintd in that stack, a typed password first waits on a finger.
+    # Workaround for noctalia-dev/noctalia#3277; once #4132 lands, point
+    # lockscreen.pam_service at a dedicated stack and leave login alone.
+    security.pam.services.login.fprintAuth = false;
+
     # services.kanata.keyboards.foldable.configFile = ../../../configs/keyboards/kanata/protoarc.kbd;
   };
 
