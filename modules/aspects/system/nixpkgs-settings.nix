@@ -22,7 +22,7 @@
     nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
 
     nix.settings = {
-      experimental-features = "nix-command flakes";
+      experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
       substituters = [
         "https://cache.nixos.org"

@@ -1,13 +1,12 @@
 {
-  den,
   lib,
   ...
 }: {
   # Facts a host declares about itself. Aspects read them off the `host` arg
   # and gate themselves, so a host sets a fact instead of also including the
   # aspect that consumes it. Strict: a misspelled key is an eval error.
+  den.schema.host.isStrict = true;
   den.schema.host.imports = [
-    den.lib.strict
     {
       options = {
         gpu = lib.mkOption {
