@@ -14,6 +14,7 @@
     den.aspects.roles.workstation
     den.aspects.roles.laptop
     den.aspects.paseo
+    den.aspects.paseo-daemon
   ];
 
   den.aspects.yerm.nixos = {

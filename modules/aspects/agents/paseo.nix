@@ -4,8 +4,6 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  # The desktop app spawns its own daemon (port 6767, state in ~/.paseo)
-  # unless one is already running there; `paseo` is the CLI for that daemon.
   den.aspects.paseo.homeManager = {pkgs, ...}: let
     paseo = inputs.paseo.packages.${pkgs.stdenv.hostPlatform.system};
   in {
@@ -15,11 +13,6 @@
     ];
   };
 
-  # Always-on daemon for reaching this host's agents from other machines.
-  # It runs as howird on ~/.paseo, so agents use howird's tools and logins,
-  # and a local desktop app attaches to it instead of starting its own.
-  # Bound on all interfaces but the port stays closed in the firewall, so
-  # only the trusted tailscale0 interface reaches it; no hosted relay.
   den.aspects.paseo-daemon.nixos = {config, ...}: {
     imports = [inputs.paseo.nixosModules.paseo];
 
@@ -34,10 +27,6 @@
     };
   };
 
-  # paseo-daemon for machines we don't have root on (howard@vip), as a user
-  # service like tailscale-userspace. It binds localhost: the userspace
-  # tailscaled forwards inbound tailnet connections there, so it is still
-  # reachable on the tailnet.
   den.aspects.paseo-user-daemon.homeManager = {
     config,
     lib,
