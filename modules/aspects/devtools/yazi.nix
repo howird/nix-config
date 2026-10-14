@@ -29,6 +29,30 @@
       };
       settings = {
         mgr.show_hidden = true;
+        # Every default open rule except vfs downloads lists `reveal`, so an entry
+        # appended here shows up in the `O` picker for all file types. Setting
+        # `reveal` replaces yazi's preset list, so the linux/unix defaults are
+        # restated. `ask` makes the portal show its GTK app chooser even after
+        # it has remembered an app for this mimetype.
+        opener.reveal = [
+          {
+            run = "xdg-open %d1";
+            desc = "Reveal";
+            for = "linux";
+          }
+          {
+            run = "clear; exiftool %s1; echo 'Press enter to exit'; read _";
+            desc = "Show EXIF";
+            for = "unix";
+            block = true;
+          }
+          {
+            run = "${pkgs.glib.bin}/bin/gdbus call --session --dest org.freedesktop.portal.Desktop --object-path /org/freedesktop/portal/desktop --method org.freedesktop.portal.OpenURI.OpenFile \"\" 3 \"{'ask': <true>}\" 3< %s1";
+            desc = "Open with… (portal)";
+            for = "linux";
+            orphan = true;
+          }
+        ];
         # git.yazi fetches status signs for files and directories alike.
         plugin.prepend_fetchers = [
           {
