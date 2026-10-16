@@ -6,8 +6,6 @@
       eyedropper
       warp
 
-      # intentional watching, not streaming!
-      # ^^^YOO!!!
       qbittorrent
       aria2
       openconnect_openssl
