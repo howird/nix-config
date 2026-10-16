@@ -1,6 +1,6 @@
 {den, ...}: {
   den.aspects.howard.includes = [
-    den.aspects.gnome
+    den.aspects.dconf
     den.aspects.stylix
 
     den.aspects.shell
