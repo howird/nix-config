@@ -93,7 +93,7 @@ in {
         open-focused = true;
         open-on-workspace = ws.note;
         matches = [
-          {app-id = "md.Obsidian";}
+          {app-id = "md.obsidian.Obsidian";}
           {app-id = "org.qbittorrent.qBittorrent";}
           {app-id = "^libreoffice-.*$";}
 
