@@ -48,8 +48,11 @@
       };
     "lockscreen-time@${output}" = clock output 0.5 0.13 500.0 180.0 "{:%-I:%M %p}";
     "lockscreen-date@${output}" = clock output 0.5 0.22 420.0 50.0 "{:%A, %B %-d}";
-    "lockscreen-weather@${output}" =
-      at output 0.52 0.29
+  };
+
+  weather = {
+    "lockscreen-weather@eDP-1" =
+      at "eDP-1" 0.52 0.29
       // {
         type = "weather";
         settings = {
@@ -88,7 +91,7 @@ in {
 
     lockscreen_widgets = {
       enabled = true;
-      widget = lib.mergeAttrsList (map widgetsFor outputs);
+      widget = lib.mergeAttrsList (map widgetsFor outputs) // weather;
     };
   };
 
