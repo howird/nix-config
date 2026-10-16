@@ -41,8 +41,8 @@
       };
     };
     hardware.url = "github:nixos/nixos-hardware";
-    helix-flake = {
-      url = "github:mattwparas/helix/steel-event-system";
+    helix-plugins = {
+      url = "git+https://codeberg.org/maxschipper/helix-plugins-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -50,6 +50,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     import-tree.url = "github:denful/import-tree";
+    math-hx = {
+      url = "github:howird/math.hx";
+      inputs = {
+        helix-plugins.follows = "helix-plugins";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
     mattpocock-skills = {
       url = "github:mattpocock/skills";
       flake = false;

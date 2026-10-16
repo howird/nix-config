@@ -12,6 +12,7 @@
     system = "x86_64-linux";
     overlays = [
       inputs.nixgl.overlay
+      inputs.helix-plugins.overlays.default
     ];
     config = {allowUnfree = true;};
   };

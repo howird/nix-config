@@ -8,6 +8,7 @@
   }: {
     nixpkgs.overlays = [
       inputs.niri.overlays.niri
+      inputs.helix-plugins.overlays.default
     ];
     nixpkgs.config = {
       allowUnfree = true;
@@ -67,6 +68,9 @@
     hostUsers,
     ...
   }: {
+    nixpkgs.overlays = [
+      inputs.helix-plugins.overlays.default
+    ];
     nixpkgs.config.allowUnfree = true;
 
     nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
