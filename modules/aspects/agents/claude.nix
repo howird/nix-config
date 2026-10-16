@@ -53,6 +53,10 @@
           # ~/.claude/settings.json instead of replacing it with a store link
           mutableSettings = true;
           environmentVariables.CLAUDE_CODE_DISABLE_AUTO_MEMORY = "1";
+          settings.attribution = {
+            commit = "";
+            pr = "";
+          };
           context = ''
             @~/AGENTS.md
           '';
