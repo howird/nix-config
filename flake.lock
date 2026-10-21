@@ -152,11 +152,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791576129,
-        "narHash": "sha256-/h/GeWMLZ/6I+bN+110/LmtMDm+v6fheMJOPnuCTREg=",
+        "lastModified": 1792447336,
+        "narHash": "sha256-q1hJKXuv8ZGQr7otykirVQa/CixnF9dGgkS6w+wet/0=",
         "owner": "ryoppippi",
         "repo": "nix-claude-code",
-        "rev": "81be531ae2e78817d59152162d45140409076fe5",
+        "rev": "c66b9b15c1b1b73536460eea026c3bdffee98a52",
         "type": "github"
       },
       "original": {
@@ -175,11 +175,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791759714,
-        "narHash": "sha256-00cUg5PxzcE8v3mATHg5edwT9SU5c9LuNIqsyKuxmB0=",
+        "lastModified": 1792416610,
+        "narHash": "sha256-sKxvQrHYb5VFYHYO3MrjWw6KWgUNCWXPCAzmwT8kBdw=",
         "owner": "heytcass",
         "repo": "claude-desktop-linux-flake",
-        "rev": "2a7af2f82921a4df381a504bb3dff079399708bb",
+        "rev": "faa45e0649f908839d73350bca35752e8d13f1bd",
         "type": "github"
       },
       "original": {
@@ -874,11 +874,11 @@
         "nixpkgs-x86_64-darwin": "nixpkgs-x86_64-darwin"
       },
       "locked": {
-        "lastModified": 1791892157,
-        "narHash": "sha256-HwskvVBJpc4F5d+mnIQwbEeMvAKEVNE6IXczHx3wA3I=",
+        "lastModified": 1792488423,
+        "narHash": "sha256-tQUEKrHfHmxHmy8TBAOiIzGAJzZ/lsZSzd9jc/mNPlc=",
         "owner": "lukasl-dev",
         "repo": "pi.nix",
-        "rev": "f49d69d52582b5781e1705608b607e77a43e3071",
+        "rev": "dfc2498b887211f27ccc06f04b40026c3a54a26a",
         "type": "github"
       },
       "original": {
