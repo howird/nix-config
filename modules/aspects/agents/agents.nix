@@ -4,6 +4,5 @@
     den.aspects.pi
     den.aspects.mcp
     den.aspects.skills
-    den.aspects.antigravity
   ];
 }

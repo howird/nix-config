@@ -9,59 +9,32 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  den.aspects.claude.homeManager = {
-    config,
+  den.aspects.claude.homeManager = {pkgs, ...}: {
+    programs.claude-code = {
+      enable = true;
+      package = inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      mutableSettings = true;
+      settings = {
+        autoMemoryEnabled = false;
+        idleCompaction = false;
+        attribution = {
+          commit = "";
+          pr = "";
+        };
+      };
+      context = ''
+        @~/AGENTS.md
+      '';
+    };
+  };
+
+  den.aspects.claude-desktop.homeManager = {
     pkgs,
     lib,
     ...
-  }: let
-    inherit (pkgs.stdenv.hostPlatform) system;
-    cfg = config.programs.claude-code;
-    claude = inputs.claude-code.packages.${system}.default;
-  in {
-    # set on the claude binary itself, so ~/.claude/settings.json stays claude code's own
-    options.programs.claude-code.environmentVariables = lib.mkOption {
-      type = with lib.types; attrsOf str;
-      default = {};
-      description = "Environment variables set on the claude binary.";
-    };
-
-    config = lib.mkMerge [
-      # wrapper: implements environmentVariables
-      {
-        programs.claude-code.package = pkgs.symlinkJoin {
-          # name keeps the version visible to home-manager's version-gated features
-          name = "claude-${lib.getVersion claude}";
-          paths = [claude];
-          nativeBuildInputs = [pkgs.makeWrapper];
-          postBuild = ''
-            wrapProgram $out/bin/claude ${lib.concatStringsSep " " (lib.mapAttrsToList (name: value: "--set ${name} ${lib.escapeShellArg value}") cfg.environmentVariables)}
-          '';
-          meta.mainProgram = "claude";
-        };
-      }
-
-      # settings
-      {
-        home.packages = lib.optionals pkgs.stdenv.hostPlatform.isLinux [
-          inputs.claude-desktop.packages.${system}.claude-desktop
-        ];
-
-        programs.claude-code = {
-          enable = true;
-          # merge declared settings (e.g. worktrunk's hooks) into a writable
-          # ~/.claude/settings.json instead of replacing it with a store link
-          mutableSettings = true;
-          environmentVariables.CLAUDE_CODE_DISABLE_AUTO_MEMORY = "1";
-          settings.attribution = {
-            commit = "";
-            pr = "";
-          };
-          context = ''
-            @~/AGENTS.md
-          '';
-        };
-      }
+  }: {
+    home.packages = lib.optionals pkgs.stdenv.hostPlatform.isLinux [
+      inputs.claude-desktop.packages.${pkgs.stdenv.hostPlatform.system}.claude-desktop
     ];
   };
 }

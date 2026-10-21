@@ -5,14 +5,15 @@
     (den.batteries.user-shell "zsh")
     den.batteries.host-aspects
 
+    # zellij's tab bar reads stylix colors, so this user needs stylix even
+    # on a host without gui.
+    den.aspects.stylix
+
     den.aspects.shell
     den.aspects.editors
     den.aspects.agents
     den.aspects.devtools
-    den.aspects.docs
-
-    den.aspects.rclone
-    den.aspects.syncthing
+    den.aspects.typesetting
   ];
 
   den.aspects.howird.nixos.users.users.howird = {

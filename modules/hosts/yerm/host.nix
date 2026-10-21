@@ -11,9 +11,10 @@
   };
 
   den.aspects.yerm.includes = [
+    den.aspects.rclone
+    den.aspects.syncthing
     den.aspects.roles.workstation
     den.aspects.roles.laptop
-    den.aspects.paseo
     den.aspects.paseo-daemon
   ];
 
