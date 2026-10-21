@@ -11,10 +11,11 @@
   };
 
   den.aspects.bofa.includes = [
+    den.aspects.rclone
+    den.aspects.syncthing
     den.aspects.roles.workstation
     den.aspects.roles.server
     den.aspects.llms
-    den.aspects.paseo
     den.aspects.paseo-daemon
   ];
 

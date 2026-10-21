@@ -1,4 +1,9 @@
-{
+{den, ...}: {
+  den.aspects.reading.includes = [
+    den.aspects.sioyek
+    den.aspects.zotero
+  ];
+
   den.aspects.reading.homeManager = {pkgs, ...}: {
     home.packages = import ./_available.nix pkgs (with pkgs; [
       foliate

@@ -5,6 +5,8 @@
     ...
   }: {
     programs.ghostty = {
+      # Not for howard@vip: gl issues on non-NixOS.
+      enable = true;
       # nixpkgs' ghostty doesn't build on darwin; use the upstream app.
       package = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin pkgs.ghostty-bin;
       enableZshIntegration = true;

@@ -3,7 +3,7 @@
     programs.sioyek = {
       enable = true;
       bindings = {
-        "goto_beginning" = "G";
+        "goto_beginning" = "gg";
         "goto_end" = "ge";
         "prev_state" = "<C-o>";
         "next_state" = "<C-i>";

@@ -27,6 +27,7 @@
         character = "╎";
         skip-levels = 0;
       };
+      soft-wrap.enable = true;
 
       auto-save = {
         focus-lost = true;

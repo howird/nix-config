@@ -7,7 +7,7 @@
     den.aspects.editors
     den.aspects.agents
     den.aspects.devtools
-    den.aspects.docs
+    den.aspects.typesetting
 
     den.aspects.tailscale-userspace
     den.aspects.paseo-user-daemon
@@ -44,7 +44,6 @@
 
     stylix.autoEnable = false;
     stylix.targets.zellij.enable = true;
-    stylix.targets.zed.enable = true;
     stylix.targets.gnome.enable = true;
     stylix.targets.gtk.enable = true;
   };
