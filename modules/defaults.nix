@@ -119,6 +119,9 @@
 
     nix.settings.experimental-features = ["nix-command" "flakes"];
     programs.zsh.enable = true;
+    # Terminal apps set this themselves, but an ssh session gets the C locale,
+    # where zsh measures multibyte prompt glyphs by bytes and misdraws the line.
+    environment.variables.LANG = "en_US.UTF-8";
 
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
