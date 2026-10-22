@@ -15,8 +15,7 @@
       env.ZOTERO_LOCAL = "true";
     };
   in {
-    programs.claude-code.mcpServers.zotero = zotero-mcp;
-    programs.pi.coding-agent.mcp.mcpServers.zotero = zotero-mcp;
+    myMcp.servers.zotero = zotero-mcp;
 
     home.packages = with pkgs; [
       # zotero 10 targets gecko 140 (app/config.sh GECKO_VERSION_LINUX), but
