@@ -19,7 +19,6 @@
       flake = config.myShell.flakePath;
     };
 
-    services.lorri.enable = true;
     programs.ripgrep.enable = true;
     programs.uv.enable = true;
     programs.fd.enable = true;
