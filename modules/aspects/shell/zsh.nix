@@ -11,6 +11,7 @@
       syntaxHighlighting.enable = true;
       historySubstringSearch.enable = true;
       shellAliases = config.myShell.aliases;
+      localVariables.ZLE_RPROMPT_INDENT = 0;
 
       initContent = lib.mkBefore (
         if config.programs.zellij.enable
