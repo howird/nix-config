@@ -68,6 +68,20 @@
       };
     };
 
+    # Declared here, not in `mcp`, so an aspect like `zotero` can add its
+    # server without depending on the agents being included. `mcp` renders
+    # the enabled ones into each agent's config.
+    options.myMcp.servers = lib.mkOption {
+      type = lib.types.attrsOf (lib.types.submodule {
+        freeformType = lib.types.attrsOf lib.types.anything;
+        options.enable = lib.mkOption {
+          type = lib.types.bool;
+          default = true;
+        };
+      });
+      default = {};
+    };
+
     options.desktop.internalScale = lib.mkOption {
       type = lib.types.float;
       # A standalone home's synthetic host has no schema facts.

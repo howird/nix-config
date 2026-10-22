@@ -28,5 +28,6 @@
 
   den.aspects.sticker-mac-mini.homeManager = {lib, ...}: {
     services.gpg-agent.enable = lib.mkForce false;
+    myMcp.servers.plane.enable = false;
   };
 }
