@@ -9,7 +9,6 @@
       fastfetch
       lsof
       pciutils
-      cachix
       wget
       python3
       ffmpeg-headless
