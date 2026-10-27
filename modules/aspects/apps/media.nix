@@ -13,6 +13,10 @@
       # ncspot
       # fretboard
 
+      vlc
+      showtime
+      rhythmbox # music
+      loupe # image viewer
       gimp
       krita
       # darktable

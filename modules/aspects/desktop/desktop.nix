@@ -24,6 +24,8 @@
     home.packages = with pkgs; [
       networkmanager
       dex
+      monitor # system monitor
+      emote # emoji picker
     ];
   };
 }

@@ -3,8 +3,8 @@
 pkgs: let
   inherit (pkgs) lib stdenv;
   # meta.platforms claims darwin, but the build pulls in something that
-  # doesn't: chromium (percollate), webkitgtk (foliate).
-  darwinDenylist = ["percollate" "foliate"];
+  # doesn't: chromium (percollate), webkitgtk (foliate), glycin-loaders (loupe).
+  darwinDenylist = ["percollate" "foliate" "loupe"];
 in
   builtins.filter (p:
     lib.meta.availableOn stdenv.hostPlatform p
