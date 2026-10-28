@@ -69,6 +69,7 @@ in {
             at-startup = true;
           }
           {app-id = "claude-desktop";}
+          {app-id = "Paseo";}
           {app-id = "code";}
           {app-id = "cursor";}
           {app-id = "dev.zed.Zed";}

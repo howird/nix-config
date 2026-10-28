@@ -1,10 +1,8 @@
 {
-  # howird-only (matches the pre-migration repo's home-manager/rclone.nix,
-  # only ever imported by nixos-only.nix).
   den.aspects.rclone.homeManager = {pkgs, ...}: {
     home.packages = [pkgs.rclone];
 
-    systemd.user.services.example-mounts = let
+    systemd.user.services.rclone-gdrive = let
       gdrive-sync-dir = "gdrive";
     in {
       Unit = {

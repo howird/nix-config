@@ -6,6 +6,7 @@
     mirror_session true
     copy_command "wl-copy"
     attach_to_session true
+    session_serialization false
     show_startup_tips false
     show_release_notes false
 
