@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+# Prompt for a link and open it as a chromium app window. Whitespace
+# (including newlines, e.g. from a URL wrapped by a terminal) is stripped
+# before validation. Submitting an empty box falls back to the clipboard,
+# which is shown in the dialog's description.
+# Usage: chromium-app [prefill-text]
+
+title="Open in Chromium app"
+text="${1:-}"
+
+# Strip all whitespace; add https:// to bare hosts. Prints the URL, or fails.
+normalize() {
+  local url="${1//[[:space:]]/}"
+  [[ -n "$url" ]] || return 1
+  [[ "$url" =~ ^[A-Za-z][A-Za-z0-9+.-]*:// ]] || url="https://$url"
+  [[ "$url" =~ ^(https?|file)://([A-Za-z0-9._~%-]+(:[^@/]*)?@)?(\[[0-9A-Fa-f:.]+\]|[A-Za-z0-9.-]+)(:[0-9]{1,5})?([/?#][[:graph:]]*)?$ ]] || return 1
+  # host needs a dot unless it's localhost or an IPv6 literal (file:// may be hostless)
+  local host="${BASH_REMATCH[4]}"
+  [[ "${BASH_REMATCH[1]}" == file || "$host" == localhost || "$host" == \[* || "$host" == *.* ]] || return 1
+  printf '%s' "$url"
+}
+
+# zenity --entry labels are plain text where "_" marks a mnemonic, and
+# unbroken URLs don't wrap. Shows up to 3 hard-wrapped lines, "_" escaped.
+preview() {
+  local s="${1//[[:space:]]/}" out="" i
+  for ((i = 0; i < ${#s} && i < 210; i += 70)); do
+    out+=$'\n'"${s:i:70}"
+  done
+  ((${#s} <= 210)) || out+="…"
+  printf '%s' "${out//_/__}"
+}
+
+while true; do
+  clip=$(wl-paste --no-newline 2>/dev/null || true)
+  if [[ -n "${clip//[[:space:]]/}" ]]; then
+    desc="Leave empty to use your clipboard text:$(preview "$clip")"
+  else
+    desc="Enter a link (clipboard is empty)"
+  fi
+
+  input=$(zenity --entry --title="$title" --width=700 \
+    --text="$desc" --entry-text="$text" \
+    --ok-label="Go" --cancel-label="Cancel") || exit 0
+
+  if [[ -z "${input//[[:space:]]/}" ]]; then
+    input="$clip"
+    if [[ -z "${input//[[:space:]]/}" ]]; then
+      zenity --error --title="$title" --text="No link given and the clipboard is empty."
+      text=""
+      continue
+    fi
+  fi
+
+  if url=$(normalize "$input"); then
+    exec chromium --app="$url"
+  fi
+
+  zenity --error --title="$title" --no-markup \
+    --text="Not a valid link:"$'\n\n'"${input//[[:space:]]/}"
+  text="$input"
+done

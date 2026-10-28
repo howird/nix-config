@@ -8,7 +8,7 @@
 
     "Mod+T".action = spawn "ghostty";
     "Mod+O".action = spawn "xdg-terminal-exec" "yazi";
-    "Mod+B".action = spawn "zen-twilight";
+    "Mod+B".action = spawn "chromium-app";
     "Mod+M".action = spawn "spotify";
     "Mod+I".action = spawn "vesktop";
 

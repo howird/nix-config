@@ -4,6 +4,26 @@
     lib,
     ...
   }: {
+    # zenity prompt that opens a (possibly line-wrapped) link as a chromium app window
+    home.packages = let
+      name = "chromium-app";
+      script = pkgs.writeShellApplication {
+        inherit name;
+        runtimeInputs = with pkgs; [zenity wl-clipboard-rs];
+        text = builtins.readFile ./_chromium/chromium-app;
+      };
+    in [
+      script
+      (pkgs.makeDesktopItem {
+        inherit name;
+        desktopName = "Chromium App Link";
+        exec = "${script}/bin/${name}";
+        comment = "Open a link as a Chromium app window";
+        icon = "chromium";
+        terminal = false;
+      })
+    ];
+
     programs.chromium = {
       enable = true;
       # linux only
