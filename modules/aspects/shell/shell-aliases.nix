@@ -26,8 +26,9 @@
     };
 
     home.packages = with pkgs; [
-      (writeShellScriptBin "nv-users" (builtins.readFile ./_shell-aliases/scripts/nv-users))
-      (writeShellScriptBin "link2epub" (builtins.readFile ./_shell-aliases/scripts/link2epub))
+      (writers.writeNuBin "nv-users" (builtins.readFile ./_shell-aliases/scripts/nv-users.nu))
+      # percollate and pandoc come from the reading and typesetting aspects.
+      (writers.writeNuBin "link2epub" (builtins.readFile ./_shell-aliases/scripts/link2epub.nu))
     ];
 
     # Point legacy `<nixpkgs>` lookups (nix-shell, nix-instantiate, etc) at the
