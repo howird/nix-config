@@ -2,7 +2,7 @@
   den.aspects.howird.includes = [
     den.batteries.define-user
     den.batteries.primary-user
-    (den.batteries.user-shell "zsh")
+    (den.batteries.user-shell "nushell")
     den.batteries.host-aspects
 
     # zellij's tab bar reads stylix colors, so this user needs stylix even

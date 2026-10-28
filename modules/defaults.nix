@@ -131,6 +131,25 @@
     _module.args.inputs = inputs;
     _module.args.hostUsers = map (u: u.userName) (lib.attrValues host.users);
 
+    # nix-darwin has no programs.nushell, which den's user-shell battery sets;
+    # mirror the NixOS module so `user-shell "nushell"` works on darwin too.
+    imports = [
+      ({
+        config,
+        pkgs,
+        ...
+      }: {
+        options.programs.nushell = {
+          enable = lib.mkEnableOption "nushell";
+          package = lib.mkPackageOption pkgs "nushell" {};
+        };
+        config = lib.mkIf config.programs.nushell.enable {
+          environment.systemPackages = [config.programs.nushell.package];
+          environment.shells = [config.programs.nushell.package];
+        };
+      })
+    ];
+
     nix.settings.experimental-features = ["nix-command" "flakes"];
     programs.zsh.enable = true;
     # Terminal apps set this themselves, but an ssh session gets the C locale,
