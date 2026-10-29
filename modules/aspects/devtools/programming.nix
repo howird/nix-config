@@ -12,6 +12,8 @@
       ast-grep # abstract code grep
       scooter # search and replace tui
       glow # markdown reader tui
+      fastfetch
+      yt-dlp
     ];
 
     programs.nh = {

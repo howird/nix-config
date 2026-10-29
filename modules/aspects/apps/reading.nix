@@ -10,6 +10,7 @@
       percollate
       wordbook
       wike
+      papers
     ]);
   };
 }

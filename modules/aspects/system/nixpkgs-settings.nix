@@ -1,4 +1,30 @@
-{
+let
+  # caches every host pulls from; linux-only ones are added in the nixos block
+  caches = [
+    {
+      url = "https://cache.nixos.org";
+      key = "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=";
+    }
+    {
+      url = "https://nixpkgs-python.cachix.org";
+      key = "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU=";
+    }
+    {
+      url = "https://pi.cachix.org";
+      key = "pi.cachix.org-1:lGeoGJaZ5ZDabuRzkcD5EBTNnDM4HJ1vqeOxlWk1Flk=";
+    }
+    {
+      url = "https://ryoppippi.cachix.org";
+      key = "ryoppippi.cachix.org-1:b2LbtWNvJeL/qb1B6TYOMK+apaCps4SCbzlPRfSQIms=";
+    }
+  ];
+  cacheSettings = extra: let
+    all = caches ++ extra;
+  in {
+    substituters = map (c: c.url) all;
+    trusted-public-keys = map (c: c.key) all;
+  };
+in {
   den.aspects.nixpkgs-settings.nixos = {
     inputs,
     lib,
@@ -22,29 +48,26 @@
     # To make nix3 commands consistent with your flake
     nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
 
-    nix.settings = {
-      experimental-features = ["nix-command" "flakes"];
-      auto-optimise-store = true;
-      substituters = [
-        "https://cache.nixos.org"
-        "https://cache.nixos-cuda.org"
-        "https://nixpkgs-python.cachix.org"
-        "https://pi.cachix.org"
-        "https://ryoppippi.cachix.org"
-        "https://niri-epireyn.cachix.org"
-        "https://noctalia.cachix.org"
-      ];
-      trusted-public-keys = [
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
-        "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU="
-        "pi.cachix.org-1:lGeoGJaZ5ZDabuRzkcD5EBTNnDM4HJ1vqeOxlWk1Flk="
-        "ryoppippi.cachix.org-1:b2LbtWNvJeL/qb1B6TYOMK+apaCps4SCbzlPRfSQIms="
-        "niri-epireyn.cachix.org-1:tlVyFN7CtsDT+ZcLPS+ekFWeT1X6X4OqvWqbBMyIzFA="
-        "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
-      ];
-      trusted-users = ["root"] ++ hostUsers;
-    };
+    nix.settings =
+      cacheSettings [
+        {
+          url = "https://cache.nixos-cuda.org";
+          key = "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M=";
+        }
+        {
+          url = "https://niri-epireyn.cachix.org";
+          key = "niri-epireyn.cachix.org-1:tlVyFN7CtsDT+ZcLPS+ekFWeT1X6X4OqvWqbBMyIzFA=";
+        }
+        {
+          url = "https://noctalia.cachix.org";
+          key = "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=";
+        }
+      ]
+      // {
+        experimental-features = ["nix-command" "flakes"];
+        auto-optimise-store = true;
+        trusted-users = ["root"] ++ hostUsers;
+      };
 
     nix.gc = {
       automatic = true;
@@ -75,20 +98,10 @@
 
     nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
 
-    nix.settings = {
-      substituters = [
-        "https://cache.nixos.org"
-        "https://nixpkgs-python.cachix.org"
-        "https://pi.cachix.org"
-        "https://ryoppippi.cachix.org"
-      ];
-      trusted-public-keys = [
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU="
-        "pi.cachix.org-1:lGeoGJaZ5ZDabuRzkcD5EBTNnDM4HJ1vqeOxlWk1Flk="
-        "ryoppippi.cachix.org-1:b2LbtWNvJeL/qb1B6TYOMK+apaCps4SCbzlPRfSQIms="
-      ];
-      trusted-users = ["root"] ++ hostUsers;
-    };
+    nix.settings =
+      cacheSettings []
+      // {
+        trusted-users = ["root"] ++ hostUsers;
+      };
   };
 }

@@ -5,6 +5,9 @@
       typora
       drawio
       linear
+      libreoffice
+      gnome-text-editor
+      xournalpp
     ]);
   };
 }
