@@ -20,4 +20,6 @@
     description = "Howard Nguyen-Huu";
     extraGroups = ["docker" "audio" "video" "render" "kvm" "adbusers"];
   };
+
+  den.aspects.howird.nixos.services.tailscale.extraSetFlags = ["--operator=howird"];
 }
