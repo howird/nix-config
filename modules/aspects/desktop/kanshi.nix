@@ -69,6 +69,25 @@
               }
             ];
           }
+          {
+            profile.name = "dual_lenovo";
+            profile.outputs = [
+              {
+                criteria = "Lenovo Group Limited LEN T24i-20 VKCM7658";
+                position = "0,0";
+                mode = "1920x1080@60Hz";
+              }
+              {
+                criteria = "Lenovo Group Limited T24i-30 V5TAN269";
+                position = "1920,0";
+                mode = "1920x1080@60Hz";
+              }
+              {
+                criteria = "eDP-1";
+                status = "disable";
+              }
+            ];
+          }
         ]
         ++ (let
           imapAttrs0 = f: attrs: lib.imap0 (i: kv: f i kv.name kv.value) (lib.attrsToList attrs);

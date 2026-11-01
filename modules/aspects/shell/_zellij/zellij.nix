@@ -4,7 +4,6 @@
     pane_frames false
     stacked_pane_list false
     mirror_session true
-    copy_command "wl-copy"
     attach_to_session true
     session_serialization false
     show_startup_tips false
