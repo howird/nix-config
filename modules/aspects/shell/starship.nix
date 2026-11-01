@@ -24,8 +24,8 @@
         format = icon-txt-fmt c "$symbol" env;
       };
     in {
-      format = "$directory[─](fg:bright-black)$git_branch$git_status ";
-      right_format = "$status$cmd_duration$battery$time[─](fg:bright-black)$all$os$username$hostname";
+      format = "$directory( $git_branch$git_status) ";
+      right_format = "($status$cmd_duration$battery$time )$all$os$username$hostname";
       add_newline = false;
       line_break.disabled = true;
       profiles.transient = "$character";
