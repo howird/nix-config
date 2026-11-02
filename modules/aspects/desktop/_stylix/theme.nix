@@ -5,7 +5,6 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
     image = ./wallpapers/van-gogh-green-wheat-fields-auvers.jpg;
 
-    polarity = "light";
     opacity.terminal = 0.7;
 
     cursor = {
