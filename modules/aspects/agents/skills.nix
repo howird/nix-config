@@ -56,7 +56,7 @@
     # every agent but claude reads skills from here
     dir = "${config.xdg.configHome}/skills";
   in {
-    options.programs.pi.coding-agent.excludedClaudeSkills = lib.mkOption {
+    options.programs.pi-coding-agent.excludedClaudeSkills = lib.mkOption {
       type = with lib.types; listOf str;
       default = [];
       description = "Skills in programs.claude-code.skills not shared with pi, e.g. ones that drive claude-only tools.";
@@ -70,9 +70,9 @@
       # pi gets the same list
       xdg.configFile =
         lib.mapAttrs' (name: content: lib.nameValuePair "skills/${name}" {source = toSkillDir name content;})
-        (removeAttrs config.programs.claude-code.skills config.programs.pi.coding-agent.excludedClaudeSkills);
+        (removeAttrs config.programs.claude-code.skills config.programs.pi-coding-agent.excludedClaudeSkills);
 
-      programs.pi.coding-agent.settings.skills = [dir];
+      programs.pi-coding-agent.settings.skills = [dir];
     };
   };
 }

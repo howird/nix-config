@@ -10,10 +10,6 @@ let
       key = "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU=";
     }
     {
-      url = "https://pi.cachix.org";
-      key = "pi.cachix.org-1:lGeoGJaZ5ZDabuRzkcD5EBTNnDM4HJ1vqeOxlWk1Flk=";
-    }
-    {
       url = "https://ryoppippi.cachix.org";
       key = "ryoppippi.cachix.org-1:b2LbtWNvJeL/qb1B6TYOMK+apaCps4SCbzlPRfSQIms=";
     }

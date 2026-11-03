@@ -13,6 +13,6 @@
     };
 
     # /wt-switch-create re-roots the session with claude's EnterWorktree tool
-    programs.pi.coding-agent.excludedClaudeSkills = ["wt-switch-create"];
+    programs.pi-coding-agent.excludedClaudeSkills = ["wt-switch-create"];
   };
 }

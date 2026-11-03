@@ -88,7 +88,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     pi = {
-      url = "github:lukasl-dev/pi.nix";
+      url = "github:earendil-works/pi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
