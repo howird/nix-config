@@ -15,7 +15,14 @@
   };
 
   den.aspects.paseo-desktop.homeManager = {pkgs, ...}: {
-    home.packages = [inputs.paseo.packages.${pkgs.stdenv.hostPlatform.system}.desktop];
+    # Upstream's nix build skips npm scripts, so the postinstall that applies
+    # patches/ never runs and opening a chat crashes with React error #130.
+    # https://github.com/getpaseo/paseo/issues/7673
+    home.packages = [
+      (inputs.paseo.packages.${pkgs.stdenv.hostPlatform.system}.desktop.overrideAttrs {
+        preBuild = "npm run postinstall";
+      })
+    ];
   };
 
   den.aspects.paseo-daemon.includes = [den.aspects.paseo];
