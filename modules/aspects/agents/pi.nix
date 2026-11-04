@@ -1,6 +1,9 @@
 {inputs, ...}: {
   flake-file.inputs = {
-    pi.url = "github:earendil-works/pi/main";
+    pi = {
+      url = "github:earendil-works/pi";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   den.aspects.pi.homeManager = {
