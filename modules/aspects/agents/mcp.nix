@@ -15,22 +15,30 @@
     myMcp.servers = {
       linear.url = "https://mcp.linear.app/mcp";
       plane.url = "https://mcp.plane.so/http/mcp";
+      # opens diagrams in the browser at app.diagrams.net; the diagram rides
+      # in the url fragment, so it never reaches their server. node goes on
+      # PATH for the package's `#!/usr/bin/env node`
+      drawio.command = toString (pkgs.writeShellScript "drawio-mcp" ''
+        PATH=${pkgs.nodejs}/bin:$PATH exec npx -y @drawio/mcp@1.10.0
+      '');
     };
 
     programs.claude-code.mcpServers = servers;
     # The Home Manager pi-coding-agent module has no MCP option, so merge our
     # servers into pi's mcp.json the same way it merges settings.json:
     # declared values win, unmanaged entries are kept.
-    home.activation.piCodingAgentMcp = lib.hm.dag.entryAfter ["linkGeneration"] (
-      lib.hm.generators.mkImpureConfigMerger {
-        inherit pkgs;
-        format = "json";
-        empty = "{}";
-        mode = "600";
-        path = "${piDir}/mcp.json";
-        staticSettings = (pkgs.formats.json {}).generate "pi-mcp.json" {mcpServers = servers;};
-        jqOperation = "$dynamic * $static";
-      }
+    home.activation.piCodingAgentMcp = lib.mkIf (servers != {}) (
+      lib.hm.dag.entryAfter ["linkGeneration"] (
+        lib.hm.generators.mkImpureConfigMerger {
+          inherit pkgs;
+          format = "json";
+          empty = "{}";
+          mode = "600";
+          path = "${piDir}/mcp.json";
+          staticSettings = (pkgs.formats.json {}).generate "pi-mcp.json" {mcpServers = servers;};
+          jqOperation = "$dynamic * $static";
+        }
+      )
     );
   };
 }
