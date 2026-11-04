@@ -137,6 +137,8 @@
   };
 
   den.aspects.sticker-mac-mini.homeManager = {lib, ...}: {
+    # Remote Login (sshd) is managed by macOS, not services.openssh.enable.
+    programs.zellij.webServer.enable = true;
     services.gpg-agent.enable = lib.mkForce false;
     myMcp.servers.plane.enable = false;
   };

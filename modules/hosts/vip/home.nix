@@ -1,8 +1,14 @@
-{inputs, ...}: {
+{inputs, den, ...}: {
   flake-file.inputs.nixgl = {
     url = "github:nix-community/nixGL";
     inputs.nixpkgs.follows = "nixpkgs";
     inputs.flake-utils.follows = "flake-utils";
+  };
+
+  # sshd is managed outside Nix on this standalone host.
+  den.homes.x86_64-linux."howard@vip".aspect = {
+    includes = [den.aspects.howard];
+    homeManager.programs.zellij.webServer.enable = true;
   };
 
   # den.homes standalone configs default to a plain, non-overlaid

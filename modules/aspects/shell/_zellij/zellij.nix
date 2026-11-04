@@ -1,5 +1,24 @@
-{config, ...}: {
-  xdg.configFile."zellij/config.kdl".text = ''
+{
+  config,
+  lib,
+  osConfig ? {},
+  ...
+}: {
+  options.programs.zellij = {
+    webServer.enable = lib.mkOption {
+      type = lib.types.bool;
+      # nix-darwin uses null when Remote Login is left unmanaged.
+      default = (osConfig.services.openssh.enable or false) == true;
+      description = "Start Zellij's localhost web server; defaults to whether this host runs sshd.";
+    };
+    webSharing = lib.mkOption {
+      type = lib.types.enum ["on" "off" "disabled"];
+      default = if config.programs.zellij.webServer.enable then "on" else "off";
+      description = "Whether new Zellij sessions are shared through the local web server.";
+    };
+  };
+
+  config.xdg.configFile."zellij/config.kdl".text = ''
     default_mode "locked"
     pane_frames false
     stacked_pane_list false
@@ -8,6 +27,8 @@
     session_serialization false
     show_startup_tips false
     show_release_notes false
+    web_server ${lib.boolToString config.programs.zellij.webServer.enable}
+    web_sharing "${config.programs.zellij.webSharing}"
 
     keybinds clear-defaults=true {
         locked {
