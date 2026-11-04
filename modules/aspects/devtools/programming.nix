@@ -1,6 +1,7 @@
 {
   den.aspects.programming.homeManager = {
     config,
+    lib,
     pkgs,
     ...
   }: {
@@ -38,8 +39,20 @@
     programs.fzf = {
       enable = true;
       enableZshIntegration = config.programs.zsh.enable;
-      enableNushellIntegration = config.programs.nushell.enable;
+      # Sourced below instead, with the completer patched.
+      enableNushellIntegration = false;
     };
+    # fzf's completer still takes the positional `spans` input, which nushell
+    # 0.116 deprecates with a warning on every tab completion. `--replace-fail`
+    # flags when upstream migrates and this can go back to the integration above.
+    programs.nushell.extraConfig = lib.mkAfter ''
+      source ${pkgs.runCommand "nushell-fzf-integration.nu" {} ''
+        ${lib.getExe config.programs.fzf.package} --nushell > $out
+        substituteInPlace $out --replace-fail \
+          'let fzf_wrapper_completer = {|spans|' \
+          'let fzf_wrapper_completer = {|place| let spans = $place.command'
+      ''}
+    '';
     programs.zoxide = {
       enable = true;
       enableZshIntegration = config.programs.zsh.enable;
