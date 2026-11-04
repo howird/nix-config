@@ -1,8 +1,9 @@
 # Pin the current repo's flake inputs to the revisions locked in the nix
 # config flake, so both evaluate against the same nixpkgs (and store paths).
 
-# The nix module that builds this script swaps in `myShell.flakePath`.
-const CONFIG_FLAKE = ("~/nix/config" | path expand)
+# Prefer nh's configured flake; the nix module substitutes myShell.flakePath
+# as a fallback for callers (such as direnv) without NH_FLAKE in their environment.
+def config-flake [] { $env.NH_FLAKE? | default ("~/nix/config" | path expand) | path expand }
 
 # A flake ref that pins exactly what a flake.lock node's `locked` describes.
 def locked-ref [l: record] {
@@ -38,7 +39,7 @@ def find-repo [] {
   let root = ^git rev-parse --show-toplevel | complete
   let repo = if $root.exit_code == 0 { $root.stdout | str trim } else { $env.PWD }
   if not ($repo | path join flake.nix | path exists) { return }
-  if ($repo | path expand) == ($CONFIG_FLAKE | path expand) { return }
+  if ($repo | path expand) == (config-flake) { return }
   $repo
 }
 
@@ -46,7 +47,7 @@ def find-repo [] {
 # {name, ref, ours, theirs}, where `ref` pins the config's revision.
 def outdated [repo: string, names: list<string>] {
   let ours = root-inputs (open --raw ($repo | path join flake.lock) | from json)
-  let theirs = root-inputs (open --raw ($CONFIG_FLAKE | path join flake.lock) | from json)
+  let theirs = root-inputs (open --raw ((config-flake) | path join flake.lock) | from json)
   for n in ($names | where $it not-in $ours.name) { print -e $"skip ($n): not an input of ($repo)" }
 
   $ours | each {|o|
@@ -57,7 +58,7 @@ def outdated [repo: string, names: list<string>] {
       $o.name in $names
     }
     if not $wanted { return }
-    if $t == null { print -e $"skip ($o.name): not an input of ($CONFIG_FLAKE)"; return }
+    if $t == null { print -e $"skip ($o.name): not an input of (config-flake)"; return }
     let ref = locked-ref $t.locked
     if $ref == null { print -e $"skip ($o.name): can't pin a ($t.locked.type) input"; return }
     if $o.locked == $t.locked { return }

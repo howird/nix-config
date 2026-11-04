@@ -10,6 +10,18 @@
     host ? null,
     ...
   }: let
+    # Resolve the flake at invocation time, in either zsh or Nushell. Keep the
+    # configured path as a fallback for sessions without Home Manager's env.
+    nixwird = pkgs.writeShellScriptBin "nixwird" ''
+      flake="''${NH_FLAKE:-${config.myShell.flakePath}}"
+      ${
+        if isNixos
+        then ''exec sudo nixos-rebuild switch --flake "$flake" "$@"''
+        else if isDarwin
+        then ''exec sudo darwin-rebuild switch --flake "$flake#${host.name}" "$@"''
+        else ''exec home-manager switch --flake "$flake${config.myShell.hmFlakeArgs}" "$@"''
+      }
+    '';
     # Reads the config's flake.lock from the working tree at run time, so it
     # follows `nix flake update` here without needing a rebuild.
     flake-sync = pkgs.writers.writeNuBin "flake-sync" (builtins.replaceStrings
@@ -19,18 +31,9 @@
   in {
     myShell.aliases = {
       uw-vpn = "sudo openconnect -v cn-vpn.uwaterloo.ca";
-      wifitui = "nmtui";
       tree = "eza --tree";
       cat = "bat";
-      open = "xdg-open";
 
-      # Rebuild this flake the way this machine is actually managed.
-      nixwird =
-        if isNixos
-        then "sudo nixos-rebuild switch --flake ${config.myShell.flakePath}"
-        else if isDarwin
-        then "sudo darwin-rebuild switch --flake ${config.myShell.flakePath}#${host.name}"
-        else "home-manager switch --flake ${config.myShell.flakePath}${config.myShell.hmFlakeArgs}";
     };
 
     home.packages = with pkgs; [
@@ -38,6 +41,7 @@
       # percollate and pandoc come from the reading and typesetting aspects.
       (writers.writeNuBin "link2epub" (builtins.readFile ./_shell-aliases/scripts/link2epub.nu))
       flake-sync
+      nixwird
     ];
 
     # direnv sources this before every .envrc, so each direnv repo warns when
