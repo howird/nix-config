@@ -36,8 +36,6 @@ in {
       allowUnfree = true;
       # rocmSupport = true;
       # cudaSupport = true;
-      permittedInsecurePackages = [
-      ];
     };
 
     # This will add each flake input as a registry

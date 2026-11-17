@@ -22,7 +22,12 @@
       };
     };
 
-    gestures.hot-corners.enable = true;
+    gestures.hot-corners = {
+      top-left = true;
+      top-right = false;
+      bottom-left = false;
+      bottom-right = false;
+    };
 
     input = {
       keyboard = {

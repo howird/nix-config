@@ -1,11 +1,15 @@
-{inputs, ...}: {
+{
+  den.aspects.zotero.nixos = {
+    nixpkgs.config.permittedInsecurePackages = [
+      "firefox-esr-140-bin-unwrapped-140.17.0esr" # TODO(howird): drop when fixed
+    ];
+  };
+
   den.aspects.zotero.homeManager = {
     pkgs,
     lib,
     ...
   }: let
-    stable = inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-
     # reads zotero.sqlite directly; needs zotero's "Allow other applications on
     # this computer to communicate with Zotero" (settings -> advanced). writes
     # need a one-time `zotero-mcp authorize-local` (zotero 10+)
@@ -17,11 +21,6 @@
   in {
     myMcp.servers.zotero = zotero-mcp;
 
-    home.packages = with pkgs; [
-      # zotero 10 targets gecko 140 (app/config.sh GECKO_VERSION_LINUX), but
-      # unstable dropped esr 140 and builds it on esr 153, which breaks
-      # fetch_xulrunner's ActorManagerParent edits. Feed it stable's esr 140.
-      (zotero.override {firefox-esr-153-unwrapped = stable.firefox-esr-140-unwrapped;})
-    ];
+    home.packages = [pkgs.zotero];
   };
 }
