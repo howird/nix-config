@@ -24,6 +24,8 @@
       };
       context = ''
         @~/AGENTS.md
+
+        ${builtins.readFile ./instructions.md}
       '';
     };
   };

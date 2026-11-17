@@ -22,8 +22,16 @@
     home.file = {
       ".pi/agent/AGENTS.md".source =
         config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/AGENTS.md";
-      ".pi/agent/APPEND_SYSTEM.md".source = ./_pi/APPEND_SYSTEM.md;
+      ".pi/agent/APPEND_SYSTEM.md".source = ./instructions.md;
     };
+
+    # Copy a session from another host and fork it into a local directory.
+    home.packages = [
+      (pkgs.writers.writeNuBin "pi-pull" {
+          makeWrapperArgs = ["--prefix" "PATH" ":" (lib.makeBinPath [pkgs.openssh pkgs.coreutils])];
+        }
+        (builtins.readFile ./_pi/pi-pull.nu))
+    ];
 
     programs.pi-coding-agent = {
       enable = true;
