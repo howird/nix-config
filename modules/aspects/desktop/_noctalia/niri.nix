@@ -22,6 +22,11 @@
       "Mod+Return".action = msg ["panel-toggle" "launcher"];
       "Mod+N".action = msg ["panel-toggle" "control-center"];
       "Super+Shift+Q".action = msg ["session" "lock"];
+      "Super+Ctrl+Shift+Q".action.spawn = [
+        "sh"
+        "-c"
+        "noctalia msg session lock && sleep 1 && noctalia msg dpms-off"
+      ];
       "Mod+V".action = msg ["panel-toggle" "clipboard"];
 
       "Mod+Shift+N".action = msg ["notification-dnd-toggle"];

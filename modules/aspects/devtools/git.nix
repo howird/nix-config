@@ -23,6 +23,11 @@
       };
     };
 
+    programs.gh = {
+      enable = true;
+      settings.editor = "hx";
+    };
+
     home.packages = with pkgs; [
       git-filter-repo
       gitui

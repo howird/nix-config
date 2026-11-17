@@ -8,7 +8,6 @@
       loupe # image viewer
 
       # fretboard
-      ncspot
       spotify
       rhythmbox
 
