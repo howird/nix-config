@@ -2,7 +2,13 @@
   den.aspects.howird.includes = [
     den.batteries.define-user
     den.batteries.primary-user
-    (den.batteries.user-shell "nushell")
+    # Use Zsh for macOS account shells; Nushell remains available in the home.
+    ({host, user}:
+      den.batteries.user-shell (
+        if (host.class or null) == "darwin"
+        then "zsh"
+        else "nushell"
+      ))
     den.batteries.host-aspects
 
     # zellij's tab bar reads stylix colors, so this user needs stylix even

@@ -45,7 +45,7 @@
     lib,
     config,
     host,
-    isDarwin,
+    pkgs,
     ...
   }: {
     # Declared here, not in `shell-aliases`, so any aspect may read them
@@ -89,7 +89,7 @@
       description = "Scale for the built-in laptop panel.";
     };
 
-    config =
+    config = lib.mkMerge [
       {
         _module.args.inputs = inputs;
 
@@ -100,7 +100,7 @@
         home = {
           username = lib.mkDefault "howird";
           homeDirectory = lib.mkDefault (
-            if isDarwin
+            if pkgs.stdenv.hostPlatform.isDarwin
             then "/Users/${config.home.username}"
             else "/home/${config.home.username}"
           );
@@ -110,17 +110,15 @@
         # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
         home.stateVersion = "23.11";
       }
-      // (
-        if isDarwin
-        then {
-          targets.darwin.linkApps.enable = false;
-          targets.darwin.copyApps.enable = true;
-        }
-        else {
-          # Nicely reload system units when changing configs
-          systemd.user.startServices = "sd-switch";
-        }
-      );
+      (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
+        targets.darwin.linkApps.enable = false;
+        targets.darwin.copyApps.enable = true;
+      })
+      (lib.mkIf (!pkgs.stdenv.hostPlatform.isDarwin) {
+        # Nicely reload system units when changing configs
+        systemd.user.startServices = "sd-switch";
+      })
+    ];
   };
 
   den.default.darwin = {
@@ -130,25 +128,6 @@
   }: {
     _module.args.inputs = inputs;
     _module.args.hostUsers = map (u: u.userName) (lib.attrValues host.users);
-
-    # nix-darwin has no programs.nushell, which den's user-shell battery sets;
-    # mirror the NixOS module so `user-shell "nushell"` works on darwin too.
-    imports = [
-      ({
-        config,
-        pkgs,
-        ...
-      }: {
-        options.programs.nushell = {
-          enable = lib.mkEnableOption "nushell";
-          package = lib.mkPackageOption pkgs "nushell" {};
-        };
-        config = lib.mkIf config.programs.nushell.enable {
-          environment.systemPackages = [config.programs.nushell.package];
-          environment.shells = [config.programs.nushell.package];
-        };
-      })
-    ];
 
     nix.settings.experimental-features = ["nix-command" "flakes"];
     programs.zsh.enable = true;

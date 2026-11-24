@@ -18,17 +18,18 @@
   };
 
   den.aspects.stylix.homeManager = {
-    isNixos,
-    isDarwin,
+    isNixOS,
+    host,
     lib,
     pkgs,
     ...
   }: {
     imports =
-      lib.optional (!isNixos) inputs.stylix.homeModules.stylix
+      lib.optional (!isNixOS) inputs.stylix.homeModules.stylix
       ++ [./_stylix/theme.nix];
 
-    config = lib.mkIf isDarwin {
+    # Overlays determine pkgs, so platform detection must not depend on pkgs.
+    config = lib.mkIf (lib.hasSuffix "-darwin" host.system) {
       home.pointerCursor = lib.mkForce {
         enable = false;
         package = pkgs.bibata-cursors;

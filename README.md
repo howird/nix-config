@@ -1,8 +1,8 @@
 # nix-config
 
-### Initial System Setup
+## Initial System Setup
 
-#### NixOS Machines:
+### NixOS Machines
 
 - Make the follwing changes the default nixos config with
   `sudoedit /etc/nixos/configuration.nix`
@@ -26,7 +26,7 @@ git clone git@github.com:howird/nix-config /home/howird/nix/config
 sudo nixos-rebuild switch --flake .#<hostname>
 ```
 
-#### non-NixOS Machines:
+#### non-NixOS Machines
 
 - Install nix [here](https://nixos.org/download/)
 - Install standalone home-manager, with
@@ -43,7 +43,7 @@ echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
 home-manager switch --flake .#howard@vip
 ```
 
-#### macOS Machines:
+#### macOS Machines
 
 - Install Nix (multi-user daemon install — nix-darwin manages it from here,
   which conflicts with the Determinate Systems installer's own daemon
@@ -68,17 +68,24 @@ mkdir -p ~/nix
 git clone git@github.com:howird/nix-config ~/nix/config
 ```
 
+The following system commands are for **`mba` only**.
+
 - Bootstrap (no `darwin-rebuild` binary exists yet on a fresh machine):
 
 ```bash
-sudo nix run nix-darwin -- switch --flake ~/nix/config#<hostname>
+sudo nix run nix-darwin -- switch --flake ~/nix/config#mba
 ```
 
 - Apply subsequent updates:
 
 ```bash
-darwin-rebuild switch --flake ~/nix/config#<hostname>
+sudo darwin-rebuild switch --flake ~/nix/config#mba
 ```
+
+The MBA configuration declares nixpkgs Zsh for `howird`. The company mini's
+system configuration leaves existing account login shells unmanaged. Nushell
+remains available and configured through personal Home Manager; Linux login
+shells are unchanged.
 
 ## Next Times
 

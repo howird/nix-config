@@ -17,8 +17,8 @@
 
   den.policies.host-guards = {host ? {}, ...}: [
     (den.lib.policy.resolve {
-      isNixos = (host.class or null) == "nixos";
-      isDarwin = (host.class or null) == "darwin";
+      isNixOS = (host.class or null) == "nixos";
+      isNixDarwin = (host.class or null) == "darwin";
     })
   ];
   den.default.includes = [den.policies.host-guards];

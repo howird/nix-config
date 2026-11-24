@@ -5,9 +5,9 @@
     config,
     lib,
     pkgs,
-    isNixos,
-    isDarwin,
-    host ? null,
+    host ? {},
+    isNixOS,
+    isNixDarwin,
     ...
   }: let
     # Resolve the flake at invocation time, in either zsh or Nushell. Keep the
@@ -15,9 +15,11 @@
     nixwird = pkgs.writeShellScriptBin "nixwird" ''
       flake="''${NH_FLAKE:-${config.myShell.flakePath}}"
       ${
-        if isNixos
+        # Activation follows the managed OS class, not the HM platform:
+        # standalone Darwin homes must not invoke darwin-rebuild.
+        if isNixOS
         then ''exec sudo nixos-rebuild switch --flake "$flake" "$@"''
-        else if isDarwin
+        else if isNixDarwin
         then ''exec sudo darwin-rebuild switch --flake "$flake#${host.name}" "$@"''
         else ''exec home-manager switch --flake "$flake${config.myShell.hmFlakeArgs}" "$@"''
       }
@@ -33,7 +35,6 @@
       uw-vpn = "sudo openconnect -v cn-vpn.uwaterloo.ca";
       tree = "eza --tree";
       cat = "bat";
-
     };
 
     home.packages = with pkgs; [

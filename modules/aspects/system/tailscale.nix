@@ -4,8 +4,12 @@
     networking.firewall.trustedInterfaces = ["tailscale0"];
   };
 
-  den.aspects.tailscale.darwin = {
+  den.aspects.tailscale.darwin = {lib, ...}: {
     services.tailscale.enable = true;
+
+    # Let tailscaled manage this resolver as a regular file. Its confined
+    # filesystem access rejects nix-darwin's symlink into /nix/store.
+    environment.etc."resolver/ts.net".enable = lib.mkForce false;
   };
 
   # Unprivileged tailscaled for machines we don't have root on (howard@vip,
