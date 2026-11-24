@@ -91,6 +91,14 @@
       url = "github:earendil-works/pi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    pi-helix = {
+      url = "github:howird/pi-helix";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+        pi.follows = "pi";
+      };
+    };
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";

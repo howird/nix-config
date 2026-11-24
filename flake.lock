@@ -775,6 +775,32 @@
         "type": "github"
       }
     },
+    "pi-helix": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "pi": [
+          "pi"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795540114,
+        "narHash": "sha256-LLqOK7LsKCyo2CPYU1BdyFyV/SPP42qFIYKxqYMIlBk=",
+        "owner": "howird",
+        "repo": "pi-helix",
+        "rev": "6d7433c562b66787820c795f4341a81d03fcbe77",
+        "type": "github"
+      },
+      "original": {
+        "owner": "howird",
+        "repo": "pi-helix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "claude-code": "claude-code",
@@ -802,6 +828,7 @@
         "noctalia-greeter": "noctalia-greeter",
         "paseo": "paseo",
         "pi": "pi",
+        "pi-helix": "pi-helix",
         "stylix": "stylix",
         "voxtype": "voxtype",
         "zen-browser": "zen-browser",

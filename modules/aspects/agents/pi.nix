@@ -4,6 +4,14 @@
       url = "github:earendil-works/pi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    pi-helix = {
+      url = "github:howird/pi-helix";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+        pi.follows = "pi";
+      };
+    };
   };
 
   den.aspects.pi.homeManager = {
@@ -14,7 +22,7 @@
   }: {
     imports = [
       ./_pi/binds.nix
-      ./_pi/plugins.nix
+      ./_pi/extensions.nix
       ./_pi/settings.nix
       ./_pi/themes.nix
     ];
