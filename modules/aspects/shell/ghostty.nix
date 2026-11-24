@@ -28,6 +28,8 @@
           # background via OSC 11 and the window stops being transparent
           osc-color-report-format = "none";
           confirm-close-surface = false;
+          working-directory = "home";
+          window-inherit-working-directory = false;
           keybind = [
             "ctrl+shift+j=unbind"
           ];

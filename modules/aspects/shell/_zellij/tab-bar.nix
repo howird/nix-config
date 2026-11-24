@@ -24,6 +24,7 @@ in {
         else " ${cfg.settings}"
       );
     settings = (import ./zjstatus-theme.nix) {
+      inherit pkgs;
       colors = config.lib.stylix.colors;
     };
   };

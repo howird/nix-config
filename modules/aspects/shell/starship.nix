@@ -2,6 +2,7 @@
   den.aspects.starship.homeManager = {
     config,
     lib,
+    pkgs,
     ...
   }: {
     programs.starship = {
@@ -23,9 +24,63 @@
         symbol = s;
         format = icon-txt-fmt c "$symbol" env;
       };
+      identity = {
+        os = {
+          format = icon-fmt "red" "$symbol";
+          disabled = false;
+          symbols = {
+            Linux = " ";
+            Macos = " ";
+            NixOS = " ";
+            Ubuntu = " ";
+            Windows = "󰍲 ";
+            Unknown = " ";
+          };
+        };
+        username = {
+          format = "[ $user](fg:white bg:black)";
+          show_always = true;
+        };
+        hostname = {
+          format = txt-fmt "@$hostname$ssh_symbol";
+          ssh_symbol = "  ";
+          ssh_only = false;
+        };
+      };
+      identityConfig = (pkgs.formats.toml {}).generate "starship-identity.toml" (identity
+        // {
+          format = "$os$username$hostname";
+          profiles.ssh = "${icon-fmt "red" "  "}[](fg:red)";
+          add_newline = false;
+          inherit (config.programs.starship.settings) palette palettes;
+        });
+      identityCommand = pkgs.writers.writeNu "starship-identity" ''
+        if ($env.ZELLIJ? | default "" | is-not-empty) {
+          let ssh = [$env.SSH_CONNECTION? $env.SSH_CLIENT? $env.SSH_TTY?]
+            | any {|value| $value | default "" | is-not-empty }
+          if $ssh {
+            with-env { STARSHIP_CONFIG: "${identityConfig}" } {
+              ^${pkgs.starship}/bin/starship prompt --profile ssh
+            }
+          }
+        } else {
+          with-env { STARSHIP_CONFIG: "${identityConfig}" } {
+            ^${pkgs.starship}/bin/starship prompt
+          }
+        }
+      '';
     in {
       format = "$directory( $git_branch$git_status) ";
-      right_format = "($status$cmd_duration$battery$time )$all$os$username$hostname";
+      right_format = "($status$cmd_duration$battery$time )$all\${custom.identity}";
+      custom.identity = {
+        command = "${identityCommand}";
+        shell = [pkgs.runtimeShell "-c"];
+        use_stdin = false;
+        when = true;
+        format = "$output";
+        # Preserve the ANSI styles emitted by the nested identity-only prompt.
+        unsafe_no_escape = true;
+      };
       add_newline = false;
       line_break.disabled = true;
       profiles.transient = "$character";
@@ -115,29 +170,10 @@
         disabled = true;
       };
 
-      os = {
-        format = icon-fmt "red" "$symbol";
-        disabled = false;
-        symbols = {
-          Linux = " ";
-          Macos = " ";
-          NixOS = " ";
-          Ubuntu = " ";
-          Windows = "󰍲 ";
-          Unknown = " ";
-        };
-      };
-
-      username = {
-        format = "[ $user](fg:white bg:black)";
-        show_always = true;
-      };
-
-      hostname = {
-        format = txt-fmt "@$hostname$ssh_symbol";
-        ssh_symbol = "  ";
-        ssh_only = false;
-      };
+      # Render these through custom.identity, not a second time through $all.
+      os.disabled = true;
+      username.disabled = true;
+      hostname.disabled = true;
 
       aws = lang-fmt "orange" "  ";
       buf = lang-fmt "blue" " ";
