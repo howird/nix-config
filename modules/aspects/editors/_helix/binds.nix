@@ -15,9 +15,6 @@
   };
 
   programs.helix.settings.keys.normal = {
-    # oil.hx (configured in init.scm): open the current buffer's directory,
-    # or jump straight to its git root
-    "-" = ":oil";
-    "_" = [":oil" ":oil-root"];
+    "-" = ":dugtrio-open";
   };
 }

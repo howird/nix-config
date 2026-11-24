@@ -50,13 +50,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     import-tree.url = "github:denful/import-tree";
-    math-hx = {
-      url = "github:howird/math.hx";
-      inputs = {
-        helix-plugins.follows = "helix-plugins";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
     mattpocock-skills = {
       url = "github:mattpocock/skills";
       flake = false;
