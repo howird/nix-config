@@ -37,8 +37,8 @@
   '';
 in ''
   {
-        format_left   " ${box-fmt base0D "" "{session}"} {tabs}"
-        format_center ""
+        format_left   " {tabs}"
+        format_center "${box-fmt base0D "" "{session}"}"
         format_right  "{command_host}{mode} "
         format_space  ""
         format_hide_on_overlength "true"
