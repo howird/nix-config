@@ -745,11 +745,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795540114,
-        "narHash": "sha256-LLqOK7LsKCyo2CPYU1BdyFyV/SPP42qFIYKxqYMIlBk=",
+        "lastModified": 1795560123,
+        "narHash": "sha256-UIoBeTTa5FOEWAL2VW7kCfMJz8PW2pYNjCC3cSKjwQI=",
         "owner": "howird",
         "repo": "pi-helix",
-        "rev": "6d7433c562b66787820c795f4341a81d03fcbe77",
+        "rev": "ee2350bc4fb234558b8a69aa19204b146c89cb17",
         "type": "github"
       },
       "original": {
