@@ -10,7 +10,6 @@
     den.aspects.typesetting
 
     den.aspects.tailscale-userspace
-    den.aspects.paseo-user-daemon
   ];
 
   den.aspects.howard.homeManager = {

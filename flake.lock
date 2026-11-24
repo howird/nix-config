@@ -711,26 +711,6 @@
         "type": "github"
       }
     },
-    "paseo": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1794798435,
-        "narHash": "sha256-mpRFwdybeRbaFI58s3euEjUwOoo9ttDAWtZslYQGRs4=",
-        "owner": "getpaseo",
-        "repo": "paseo",
-        "rev": "4f97abc62aadec13cb088c2eedf991a6a533db0a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "getpaseo",
-        "repo": "paseo",
-        "type": "github"
-      }
-    },
     "pi": {
       "inputs": {
         "nixpkgs": [
@@ -802,7 +782,6 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "noctalia": "noctalia",
         "noctalia-greeter": "noctalia-greeter",
-        "paseo": "paseo",
         "pi": "pi",
         "pi-helix": "pi-helix",
         "stylix": "stylix",

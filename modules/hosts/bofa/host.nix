@@ -16,7 +16,6 @@
     den.aspects.roles.workstation
     den.aspects.roles.server
     den.aspects.llms
-    den.aspects.paseo-daemon
   ];
 
   den.aspects.bofa.nixos = {pkgs, ...}: {

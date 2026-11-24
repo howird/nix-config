@@ -76,10 +76,6 @@
       url = "github:noctalia-dev/noctalia-greeter";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    paseo = {
-      url = "github:getpaseo/paseo";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     pi = {
       url = "github:earendil-works/pi";
       inputs.nixpkgs.follows = "nixpkgs";

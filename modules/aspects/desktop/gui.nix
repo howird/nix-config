@@ -10,6 +10,5 @@
     den.aspects.vscode
     den.aspects.zed
     den.aspects.claude-desktop
-    den.aspects.paseo-desktop
   ];
 }
