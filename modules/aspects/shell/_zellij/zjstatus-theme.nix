@@ -1,8 +1,6 @@
 {
   pkgs,
   colors,
-  format_left ? "{mode}",
-  format_center ? "{tabs}",
 }: let
   inherit (colors) base00 base01 base04 base05 base07 base08 base09 base0A base0B base0D base0E base0F;
   bg-col = base00;
@@ -39,9 +37,9 @@
   '';
 in ''
   {
-        format_left   " ${format_left}"
-        format_center "${format_center}"
-        format_right  "{command_host}${box-fmt base0D "" "{session}"} "
+        format_left   " ${box-fmt base0D "" "{session}"} {tabs}"
+        format_center ""
+        format_right  "{command_host}{mode} "
         format_space  ""
         format_hide_on_overlength "true"
         format_precedence "crl"
