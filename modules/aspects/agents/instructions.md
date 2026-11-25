@@ -9,3 +9,4 @@ This machine's user configuration is managed declaratively in `~/nix/config`.
 ## Git commits
 
 - Never run `git commit` (or otherwise create commits) unless the user explicitly tells you to commit.
+- Use the conventional commits specification for commit messages unless specified otherwise.

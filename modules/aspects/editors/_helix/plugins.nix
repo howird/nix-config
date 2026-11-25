@@ -8,8 +8,8 @@
       src = pkgs.fetchFromGitHub {
         owner = "howird";
         repo = "dugtrio.hx";
-        rev = "3e851d505d02b84bcd250d480247d320ddda94f2";
-        hash = "sha256-n1Tga02qz8/JSlT1v6InwzJhyNFcToOPxDNPd21QIBk=";
+        rev = "eafb3db650f04927926f6ac2be989519f6a82ca5";
+        hash = "sha256-O9tM64WfrCuhrV8wJWy8VJ6TaKlDpwYy1KOo58WHqgM=";
       };
 
       passthru = {
