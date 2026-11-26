@@ -1,0 +1,21 @@
+{
+	"name": "claude-review",
+	"version": "0.1.0",
+	"private": true,
+	"description": "Report-only Claude Code review command for Pi",
+	"type": "module",
+	"keywords": [
+		"pi-package"
+	],
+	"scripts": {
+		"test": "node --test test/*.test.ts"
+	},
+	"peerDependencies": {
+		"@earendil-works/pi-coding-agent": ">=0.85.0"
+	},
+	"pi": {
+		"extensions": [
+			"./src/index.ts"
+		]
+	}
+}

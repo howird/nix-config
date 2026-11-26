@@ -5,8 +5,8 @@
 }: {
   programs.pi-coding-agent.settings = {
     npmCommand = [(lib.getExe pkgs.bun)];
-    defaultProvider = "openai";
-    defaultModel = "gpt-6.2-sol";
+    defaultProvider = "claude-code";
+    defaultModel = "claude-opus-5-5";
     enabledModels = [
       "openai/gpt-6.2-astra"
       "openai/gpt-6.2-sol"

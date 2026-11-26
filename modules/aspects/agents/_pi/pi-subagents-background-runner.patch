@@ -1,0 +1,1052 @@
+diff --git a/README.md b/README.md
+index 6e7f58f2c36507e82e744ddd43397a17ceaf4d2b..094f0c82ca37a7438c39686a809bb6cd78273acf 100644
+--- a/README.md
++++ b/README.md
+@@ -43 +43 @@ Two axes matter:
+-`background` means headless. Pi starts a `pi -p` child process without opening a pane.
++`background` means headless. For a named Pi agent, Pi starts a `pi -p` child process without opening a pane.
+@@ -1002,0 +1003,30 @@ Zellij 0.44.x needs a short focus transaction for directional and stacked placem
++## Background runner API for companion extensions
++
++A trusted Pi extension can submit a report-only background job. This is an in-process `pi.events` API, not a Pi tool, child-session format, or process launcher. Like `/subagents`, the API is available only when at least one named agent is enabled. A submitted job does not use that agent.
++
++From an extension command, emit `pi-subagents:background-runner:v1:submit` with this payload and check for a synchronous reply before the handler continues:
++
++```ts
++type Report = {
++  ok: boolean;
++  report: string;
++  saveReport?: boolean;
++  cleanupWarning?: string;
++};
++
++type Reply = { id: string; completion: Promise<void> } | { error: string };
++
++type Submission = {
++  name: string;
++  title: string;
++  timeoutSeconds: number;
++  run: (input: { cwd: string; signal: AbortSignal }) => Promise<Report>;
++  reply: (result: Reply) => void;
++};
++```
++
++- `name` is a lower-kebab handle of at most 32 characters; `title` is a printable label of at most 100 characters. `timeoutSeconds` is a whole-run wall-clock budget (0.001 to 2147483.647 seconds).
++- An absent reply means that v1 is unavailable; show an error rather than falling back to another execution path. An `{ error }` reply means the request was rejected without starting the job. An accepted reply provides the run ID and a completion promise; clients without UI can await it. Neither package needs to be loaded first.
++- The fork supplies the origin session's `cwd` and `AbortSignal` and tracks the job in `/subagents` under the shared concurrency limit. It aborts on timeout, kill, or origin-session shutdown. The callback must observe abort, release its external resources (including subprocesses), and settle **after** cleanup; Pi cannot forcibly interrupt arbitrary extension code. The slot remains occupied while cleanup runs. Aborted runs cannot report success; an optional `cleanupWarning` is retained even if the normal report was discarded.
++- Return a nonempty, render-safe `report` and mark partial/failed reports with `ok: false`. If `saveReport` is set and the parent has a session path, the report is also saved as `<name>-<id>.md` in the normal session artifact directory. No report is saved or delivered after the origin starts closing. Otherwise the report is displayed in the origin session without triggering a model turn. There is no child transcript, model accounting, or resume action.
++
+diff --git a/src/launch/background.ts b/src/launch/background.ts
+index 4c0ce74b03b7ad40363dc0dc15e081bd83684c9f..69c1ca96125beb752693a480015efa9f0180d7e9 100644
+--- a/src/launch/background.ts
++++ b/src/launch/background.ts
+@@ -8 +8 @@ import { getSubagentToolLaunchArgs } from "../tools/policy.ts";
+-import type { RunningSubagent, SubagentParamsInput } from "../types.ts";
++import type { RunningPiSubagent, SubagentParamsInput } from "../types.ts";
+@@ -135 +135 @@ export async function launchBackgroundSubagent(
+-): Promise<RunningSubagent> {
++): Promise<RunningPiSubagent> {
+@@ -159 +159 @@ export async function launchBackgroundSubagent(
+-	const running: RunningSubagent = {
++	const running: RunningPiSubagent = {
+diff --git a/src/launch/interactive.ts b/src/launch/interactive.ts
+index 33cfe06202126dd4f52ea7f0ccec40a289fb6e35..4471ddbd51714b4fdcfc9ea98125788c99682755 100644
+--- a/src/launch/interactive.ts
++++ b/src/launch/interactive.ts
+@@ -11 +11 @@ import { SET_TAB_TITLE_TOOL_NAME } from "../tools/tool-names.ts";
+-import type { RunningSubagent, SubagentParamsInput } from "../types.ts";
++import type { RunningPiSubagent, SubagentParamsInput } from "../types.ts";
+@@ -50 +50 @@ export async function launchInteractiveSubagent(
+-): Promise<RunningSubagent> {
++): Promise<RunningPiSubagent> {
+diff --git a/src/launch/prep.ts b/src/launch/prep.ts
+index 74f766dbed6959872f72b95f7c18862dc0e2749b..be886214ece9a2c4497bf92ecf8c7e80fcf71586 100644
+--- a/src/launch/prep.ts
++++ b/src/launch/prep.ts
+@@ -318 +318 @@ export function cleanupNoSessionSessionFile(running: Pick<RunningSubagent, "noSe
+-	if (!running.noSession || !existsSync(running.sessionFile)) return;
++	if (!running.noSession || !running.sessionFile || !existsSync(running.sessionFile)) return;
+diff --git a/src/runtime/background-watch.ts b/src/runtime/background-watch.ts
+index c7d3900290266a93db22265ac99a228eb978b740..abba579f233e10e349073d8b3fdfcf967cb309b2 100644
+--- a/src/runtime/background-watch.ts
++++ b/src/runtime/background-watch.ts
+@@ -7 +7 @@ import { writeSubagentTimeoutSidecar } from "../session/timeout-sidecar.ts";
+-import type { RunningSubagent, SessionEntryLike, SubagentResult, SubagentSummarySource } from "../types.ts";
++import type { RunningPiSubagent, RunningSubagent, SessionEntryLike, SubagentResult, SubagentSummarySource } from "../types.ts";
+@@ -89 +89 @@ function buildBackgroundRestartTimeoutResult(
+-	running: RunningSubagent,
++	running: RunningPiSubagent,
+@@ -132,0 +133 @@ export function watchBackgroundSubagent(
++	if (running.runner) throw new Error("Companion runs do not have a Pi background watcher.");
+@@ -137 +138 @@ async function watchBackgroundSubagentUntilFinal(
+-	running: RunningSubagent,
++	running: RunningPiSubagent,
+@@ -187 +188 @@ function watchBackgroundGeneration(
+-	running: RunningSubagent,
++	running: RunningPiSubagent,
+diff --git a/src/runtime/final-context-usage.ts b/src/runtime/final-context-usage.ts
+index 25cedad7cacb1450b597d79ae698f075e7279f80..0ee94bc9ba7432185870adbfaba39a754ad1fc57 100644
+--- a/src/runtime/final-context-usage.ts
++++ b/src/runtime/final-context-usage.ts
+@@ -117 +117 @@ export function resolveFinalContextUsage(
+-	if (running.noSession || !running.modelContextWindow || !existsSync(running.sessionFile)) {
++	if (running.noSession || !running.modelContextWindow || !running.sessionFile || !existsSync(running.sessionFile)) {
+@@ -146 +146 @@ function wasContextWarned(running: RunningSubagent): { contextWarned?: true } {
+-	return endedUnderContextPressure(running.sessionFile) ? { contextWarned: true } : {};
++	return running.sessionFile && endedUnderContextPressure(running.sessionFile) ? { contextWarned: true } : {};
+diff --git a/src/runtime/interactive-watch.ts b/src/runtime/interactive-watch.ts
+index c19d512e7da9ad53f11f1fd78f5592aad47b5931..93244d463283f8cd2bb5ba1dc49122f30c19ab4c 100644
+--- a/src/runtime/interactive-watch.ts
++++ b/src/runtime/interactive-watch.ts
+@@ -10 +10 @@ import { writeSubagentTimeoutSidecar } from "../session/timeout-sidecar.ts";
+-import type { RunningSubagent, SubagentResult, SubagentSummarySource } from "../types.ts";
++import type { RunningPiSubagent, RunningSubagent, SubagentResult, SubagentSummarySource } from "../types.ts";
+@@ -72 +72 @@ function buildInteractiveRestartTimeoutResult(
+-	running: RunningSubagent,
++	running: RunningPiSubagent,
+@@ -118 +118 @@ function recordTimeoutOutcome(
+-	running: RunningSubagent,
++	running: RunningPiSubagent,
+@@ -143,0 +144 @@ export async function watchSubagent(
++	if (running.runner) throw new Error("This runner does not support interactive launches.");
+@@ -189 +190 @@ async function watchInteractiveGeneration(
+-	running: RunningSubagent,
++	running: RunningPiSubagent,
+@@ -394 +395 @@ function getSummary(
+-	running: RunningSubagent,
++	running: RunningPiSubagent,
+@@ -411 +412 @@ async function pollForZellijFiles(
+-	running: RunningSubagent,
++	running: RunningPiSubagent,
+diff --git a/src/runtime/result-router.ts b/src/runtime/result-router.ts
+index 4d019b3604a4f69dbde5591bff7ec3c1372899b5..e7a181185f4bbab77bba12b1d654954587cc4293 100644
+--- a/src/runtime/result-router.ts
++++ b/src/runtime/result-router.ts
+@@ -76 +76,2 @@ export function deliverCompletedSubagentResult(
+-	const deliverAs = getCompletedResultDeliveryMode();
++	const companionRun = completed.runner === "companion";
++	const deliverAs = companionRun ? "steer" : getCompletedResultDeliveryMode();
+@@ -80 +81 @@ export function deliverCompletedSubagentResult(
+-	outstandingWork.delivery(completed.id, () => pi.sendMessage(
++	const send = () => pi.sendMessage(
+@@ -87,2 +88,6 @@ export function deliverCompletedSubagentResult(
+-		{ triggerTurn: true, deliverAs },
+-	), deliverAs === "nextTurn");
++		{ triggerTurn: !companionRun, deliverAs },
++	);
++	// A command report doesn't own a future parent turn. Persist it without
++	// a continuation lease (which would otherwise leave Herdr showing work).
++	if (companionRun) send();
++	else outstandingWork.delivery(completed.id, send, deliverAs === "nextTurn");
+@@ -129,0 +135,3 @@ function getCompletedResultDetails(completed: CompletedSubagentResult): Record<s
++		...(completed.runner === "companion"
++			? { runner: completed.runner, title: completed.title, summary: completed.summary }
++			: {}),
+@@ -174,0 +183,8 @@ function deliverSubagentPing(
++export function formatCompanionReport(
++	completed: CompletedSubagentResult,
++	formatElapsed: (elapsed: number) => string,
++): string {
++	const status = completed.timedOut ? "timed out" : completed.status;
++	return `Companion run "${completed.title ?? completed.name}" ${status} (${formatElapsed(completed.elapsed)}).\n\n${completed.summary}`;
++}
++
+@@ -179,0 +196 @@ function getCompletedSubagentContent(
++	if (completed.runner === "companion") return formatCompanionReport(completed, formatElapsed);
+diff --git a/src/runtime/running-registry.ts b/src/runtime/running-registry.ts
+index 504f59ac58d3c545f01fbbf5c3d1800b171b1f6d..b716590a580d4e704605c1717ccac902cb33aa0e 100644
+--- a/src/runtime/running-registry.ts
++++ b/src/runtime/running-registry.ts
+@@ -113,0 +114,5 @@ export async function stopRunningSubagent(
++	if (running.runner === "companion") {
++		// The companion releases its own resources after abort.
++		await running.completionPromise;
++		return;
++	}
+diff --git a/src/runtime/shutdown.ts b/src/runtime/shutdown.ts
+index bd1575b4b42595b4aab6f5dca212245acb9c092d..3e4c76f49c93f89823c86973a92666e8561ae1f2 100644
+--- a/src/runtime/shutdown.ts
++++ b/src/runtime/shutdown.ts
+@@ -64,0 +65 @@ export async function shutdownSubagentsForParentExit(
++	const runnerStops: Promise<unknown>[] = [];
+@@ -88,0 +90 @@ export async function shutdownSubagentsForParentExit(
++			if (agent.runner) runnerStops.push(agent.completionPromise);
+@@ -94,0 +97 @@ export async function shutdownSubagentsForParentExit(
++	await Promise.allSettled(runnerStops);
+diff --git a/src/runtime/state.ts b/src/runtime/state.ts
+index fa2367b938e677711a2f7e1b6ebba8de01f79339..3d597f0aad78431d30a1cf017015b30c1a2c94b7 100644
+--- a/src/runtime/state.ts
++++ b/src/runtime/state.ts
+@@ -13 +13 @@ function getSubagentCompletionStatus(
+-	running?: Pick<RunningSubagent, "mode" | "autoExit">,
++	running?: Pick<RunningSubagent, "mode" | "autoExit" | "runner">,
+@@ -24 +24 @@ function getSubagentCompletionStatus(
+-	if (getSubagentTerminalStopReason(result.summary)) return "failed";
++	if (!running?.runner && getSubagentTerminalStopReason(result.summary)) return "failed";
+@@ -48,0 +49 @@ export function buildCompletedSubagentResult(
++		...(running.runner ? { runner: running.runner, title: running.title } : {}),
+diff --git a/src/runtime/timeout-wrap-up.ts b/src/runtime/timeout-wrap-up.ts
+index 99e913d0cc55e856639f709833402664c6ddc43a..71fe619d94b6f85eadce3027fe07c342aaebb233 100644
+--- a/src/runtime/timeout-wrap-up.ts
++++ b/src/runtime/timeout-wrap-up.ts
+@@ -35 +35 @@ import { SPAWNING_TOOL_NAMES } from "../tools/tool-names.ts";
+-import type { RunningSubagent } from "../types.ts";
++import type { RunningPiSubagent, RunningSubagent } from "../types.ts";
+@@ -82 +82 @@ function getWrapUpPrompt(running: RunningSubagent): string {
+-async function getWrapUpLaunchParts(running: RunningSubagent, signal?: AbortSignal): Promise<{
++async function getWrapUpLaunchParts(running: RunningPiSubagent, signal?: AbortSignal): Promise<{
+@@ -155,0 +156 @@ export async function restartSubagentForTimeoutWrapUp(
++	if (running.runner) throw new Error("This runner does not support a timeout wrap-up restart.");
+diff --git a/src/runtime/wait-result.ts b/src/runtime/wait-result.ts
+index 02ca073e3e20b7b1f7dc8dbc00bcee8bee04a6fa..6d081403ff7c513de8684e5219fe9ad39127c43a 100644
+--- a/src/runtime/wait-result.ts
++++ b/src/runtime/wait-result.ts
+@@ -3,0 +4 @@ import { formatContextExitNotice, formatFinalContextUsage, formatSessionRef } fr
++import { formatCompanionReport } from "./result-router.ts";
+@@ -40 +41,3 @@ function getSubagentWaitSuccessResult(cached: CompletedSubagentResult) {
+-	if (cached.timedOut) {
++	if (cached.runner) {
++		text = formatCompanionReport(cached, formatElapsed);
++	} else if (cached.timedOut) {
+@@ -91,0 +95 @@ function getSubagentWaitSuccessResult(cached: CompletedSubagentResult) {
++			...(cached.runner ? { runner: cached.runner, title: cached.title } : {}),
+diff --git a/src/runtime/widget.ts b/src/runtime/widget.ts
+index edea15ec9bd4442c32fa0cee9af5f7e57fcff608..b44557b6f526936ce06bc98e77ac744f2e5209d9 100644
+--- a/src/runtime/widget.ts
++++ b/src/runtime/widget.ts
+@@ -247,0 +248 @@ export class SubagentWidgetManager {
++		if (!agent.sessionFile) return;
+diff --git a/src/subagents.ts b/src/subagents.ts
+index 8f4739dcda6dd9145c98c913f3bae32ae45d5aa7..a9cab96fcf8b25697ae9abbf3d728b4adc5c87b3 100644
+--- a/src/subagents.ts
++++ b/src/subagents.ts
+@@ -77,0 +78 @@ import {
++import { registerBackgroundRunnerSubmission } from "./runtime/background-runner.ts";
+@@ -152,0 +154 @@ export default function subagentsExtension(pi: ExtensionAPI) {
++	const setBackgroundRunnerSession = registerBackgroundRunnerSubmission(pi, formatElapsed);
+@@ -176,0 +179 @@ export default function subagentsExtension(pi: ExtensionAPI) {
++		setBackgroundRunnerSession(ctx);
+@@ -354,0 +358,2 @@ export default function subagentsExtension(pi: ExtensionAPI) {
++		// Reject new companion submissions and suppress reports before async teardown.
++		setBackgroundRunnerSession();
+diff --git a/src/tools/message-renderers.ts b/src/tools/message-renderers.ts
+index 0fb89d45821832aed3957ee70713bfe339b9ec17..022a0de99b7c9d5f0cea36e1161cad3c20fd8651 100644
+--- a/src/tools/message-renderers.ts
++++ b/src/tools/message-renderers.ts
+@@ -148 +148 @@ function formatSubagentCompletionHeader(
+-	const name = details?.name ?? fallbackName;
++	const name = (details?.runner ? details.title : undefined) ?? details?.name ?? fallbackName;
+@@ -156 +156,3 @@ function formatSubagentCompletionHeader(
+-		details?.status === "cancelled"
++		details?.runner === "companion"
++			? details.timedOut ? "timed out" : details.status ?? "failed"
++			: details?.status === "cancelled"
+diff --git a/src/tools/overlay/data.ts b/src/tools/overlay/data.ts
+index cf46bded6112134b573acd0ca6b27c7d56ca2975..9bd7a30d30a82f4956ba02df92d43e5e06e2347f 100644
+--- a/src/tools/overlay/data.ts
++++ b/src/tools/overlay/data.ts
+@@ -215,0 +216 @@ function buildRuntimeSection(isRunning: boolean, r: RunningSubagent | CompletedS
++	if (running.runner) fields.push({ label: "runner", value: running.title ?? running.name });
+@@ -421 +422 @@ export function buildRunningItems(ctx: OverlayContext): OverlayItem[] {
+-		const meta = safeMeta(a.sessionFile);
++		const meta = a.sessionFile ? safeMeta(a.sessionFile) : undefined;
+@@ -423 +424 @@ export function buildRunningItems(ctx: OverlayContext): OverlayItem[] {
+-		const sections = buildSections(defs, meta);
++		const sections = a.runner ? [] : buildSections(defs, meta);
+@@ -455 +456 @@ export function buildRunningItems(ctx: OverlayContext): OverlayItem[] {
+-				ctx.ui.notify(`Stopped ${a.name}`, "info");
++				ctx.ui.notify(a.runner ? `Stop requested for ${a.name}` : `Stopped ${a.name}`, "info");
+@@ -488 +489 @@ export async function buildCompletedItems(ctx: OverlayContext): Promise<OverlayI
+-		const sections = buildSections(defs, meta);
++		const sections = r.runner ? [] : buildSections(defs, meta);
+@@ -493 +494 @@ export async function buildCompletedItems(ctx: OverlayContext): Promise<OverlayI
+-				exitCode: r.exitCode,
++				exitCode: r.runner ? undefined : r.exitCode,
+@@ -513 +514 @@ export async function buildCompletedItems(ctx: OverlayContext): Promise<OverlayI
+-			canResume: true,
++			canResume: Boolean(r.sessionFile),
+diff --git a/src/types.ts b/src/types.ts
+index e57a0665493333c07cdfe21b19101f3a5126469a..2ca05823959c634e1d1213c6512081d72e8f18e4 100644
+--- a/src/types.ts
++++ b/src/types.ts
+@@ -103,0 +104,2 @@ export interface CompletedSubagentResult extends SubagentResult {
++	runner?: "companion";
++	title?: string;
+@@ -117 +119 @@ export interface CompletedSubagentResult extends SubagentResult {
+-export interface RunningSubagent {
++interface RunningSubagentState {
+@@ -160 +161,0 @@ export interface RunningSubagent {
+-	sessionFile: string;
+@@ -194,0 +196,16 @@ export interface RunningSubagent {
++export interface RunningPiSubagent extends RunningSubagentState {
++	runner?: undefined;
++	sessionFile: string;
++}
++
++export interface RunningCompanion extends RunningSubagentState {
++	runner: "companion";
++	sessionFile?: never;
++	mode: "background";
++	childProcess?: never;
++	abortController: AbortController;
++	completionPromise: Promise<SubagentResult>;
++}
++
++export type RunningSubagent = RunningPiSubagent | RunningCompanion;
++
+@@ -238,0 +256,2 @@ export interface SubagentResultMessageDetails {
++	runner?: "companion";
++	title?: string;
+diff --git a/test/runtime/background-watch-timeout.test.ts b/test/runtime/background-watch-timeout.test.ts
+index b8811f6131f2b4d44e01fb925ba1a869cd1c48cf..3d899c511945717ec343518d3062157af4639042 100644
+--- a/test/runtime/background-watch-timeout.test.ts
++++ b/test/runtime/background-watch-timeout.test.ts
+@@ -10 +10 @@ import { readSubagentTimeoutSidecar } from "../../src/session/timeout-sidecar.ts
+-import type { RunningSubagent, SubagentTimeoutBudget } from "../../src/types.ts";
++import type { RunningPiSubagent, RunningSubagent, SubagentTimeoutBudget } from "../../src/types.ts";
+@@ -124 +124 @@ function makeRunning(
+-	overrides: Partial<RunningSubagent> = {},
++	overrides: Partial<RunningPiSubagent> = {},
+@@ -539 +539 @@ describe("background watcher timeout budgets", () => {
+-			{ timeoutWarnThreshold: 50 } as Partial<RunningSubagent>,
++			{ timeoutWarnThreshold: 50 } as Partial<RunningPiSubagent>,
+@@ -576 +576 @@ describe("background watcher timeout budgets", () => {
+-			{ timeoutWarnThreshold: 50 } as Partial<RunningSubagent>,
++			{ timeoutWarnThreshold: 50 } as Partial<RunningPiSubagent>,
+@@ -611 +611 @@ describe("background watcher timeout budgets", () => {
+-			{ timeoutWarnThreshold: 50 } as Partial<RunningSubagent>,
++			{ timeoutWarnThreshold: 50 } as Partial<RunningPiSubagent>,
+@@ -654 +654 @@ describe("background watcher timeout budgets", () => {
+-			{ timeoutWarnThreshold: 50 } as Partial<RunningSubagent>,
++			{ timeoutWarnThreshold: 50 } as Partial<RunningPiSubagent>,
+@@ -703 +703 @@ describe("background watcher timeout budgets", () => {
+-			{ timeoutWarnThreshold: 25, abortController: controller } as Partial<RunningSubagent>,
++			{ timeoutWarnThreshold: 25, abortController: controller } as Partial<RunningPiSubagent>,
+diff --git a/test/runtime/interactive-watch-timeout.test.ts b/test/runtime/interactive-watch-timeout.test.ts
+index cf48e77f5abff8f2ffc9118c89fddd6cee8f6fe7..6b0840192b7ff1dd288defcaeb257a4c01af3740 100644
+--- a/test/runtime/interactive-watch-timeout.test.ts
++++ b/test/runtime/interactive-watch-timeout.test.ts
+@@ -6 +6 @@ import { readSubagentTimeoutSidecar } from "../../src/session/timeout-sidecar.ts
+-import type { RunningSubagent } from "../../src/types.ts";
++import type { RunningPiSubagent, RunningSubagent } from "../../src/types.ts";
+@@ -45 +45 @@ function makeSession(): string {
+-function makeRunning(sessionFile: string, overrides: Partial<RunningSubagent> = {}): RunningSubagent {
++function makeRunning(sessionFile: string, overrides: Partial<RunningPiSubagent> = {}): RunningSubagent {
+diff --git a/test/runtime/outstanding-work.test.ts b/test/runtime/outstanding-work.test.ts
+index 2f9d22e88677d8d9a9b564b6db7031984940c8e0..7912c34d9e97d24f515b07ff904679da8f870886 100644
+--- a/test/runtime/outstanding-work.test.ts
++++ b/test/runtime/outstanding-work.test.ts
+@@ -13 +13 @@ import { getLaunchedSubagentResult, wireSubagentSteerBack } from "../../src/runt
+-import type { RunningSubagent, SubagentResult } from "../../src/types.ts";
++import type { RunningPiSubagent, SubagentResult } from "../../src/types.ts";
+@@ -15 +15 @@ import type { RunningSubagent, SubagentResult } from "../../src/types.ts";
+-function child(id: string): RunningSubagent {
++function child(id: string): RunningPiSubagent {
+diff --git a/test/runtime/result-router.test.ts b/test/runtime/result-router.test.ts
+index 999a8101904bf7190dd98a319f7676ffb43a7609..99120bfd72818f8243ba6c81b49134ce4f2a7b88 100644
+--- a/test/runtime/result-router.test.ts
++++ b/test/runtime/result-router.test.ts
+@@ -3 +3 @@ import { buildCompletedSubagentResult, requestSubagentBatchStop } from "../../sr
+-import type { RunningSubagent, SubagentResult } from "../../src/types.ts";
++import type { RunningPiSubagent, RunningSubagent, SubagentResult } from "../../src/types.ts";
+@@ -14 +14 @@ import {
+-function makeRunning(overrides: Partial<RunningSubagent> = {}): RunningSubagent {
++function makeRunning(overrides: Partial<RunningPiSubagent> = {}): RunningSubagent {
+diff --git a/test/runtime/timeout-budget.test.ts b/test/runtime/timeout-budget.test.ts
+index b8e0b01b80c0ffff250de64ac161775a57c41ee9..9d390d698cd6986eeb28007423139d7cee513ca1 100644
+--- a/test/runtime/timeout-budget.test.ts
++++ b/test/runtime/timeout-budget.test.ts
+@@ -11 +11 @@ import { resolveSubagentTimeoutState } from "../../src/launch/policy.ts";
+-import type { RunningSubagent } from "../../src/types.ts";
++import type { RunningPiSubagent, RunningSubagent } from "../../src/types.ts";
+@@ -14 +14 @@ import { assert, describe, it } from "../support/index.ts";
+-function makeRunning(overrides: Partial<RunningSubagent> = {}): RunningSubagent {
++function makeRunning(overrides: Partial<RunningPiSubagent> = {}): RunningSubagent {
+diff --git a/test/runtime/timeout-result-delivery.test.ts b/test/runtime/timeout-result-delivery.test.ts
+index 045b76c0da4520932921ae9936fed9e689717713..1ba9098d1c5152ebbb2bbc5978260a5d1f0cd162 100644
+--- a/test/runtime/timeout-result-delivery.test.ts
++++ b/test/runtime/timeout-result-delivery.test.ts
+@@ -3 +3 @@ import { formatSessionRef } from "../../src/runtime/final-context-usage.ts";
+-import type { RunningSubagent, SubagentResult } from "../../src/types.ts";
++import type { RunningPiSubagent, RunningSubagent, SubagentResult } from "../../src/types.ts";
+@@ -6 +6 @@ import { afterEach, assert, describe, it, resetSubagentStateForTest, setRunningS
+-function makeRunning(overrides: Partial<RunningSubagent> = {}): RunningSubagent {
++function makeRunning(overrides: Partial<RunningPiSubagent> = {}): RunningSubagent {
+diff --git a/test/test.ts b/test/test.ts
+index 5249d49e182223ffefdea8a827e4cec704930102..f7dfc5fa5aa24effe88691fbacea01ffc2f1c5c2 100644
+--- a/test/test.ts
++++ b/test/test.ts
+@@ -59,0 +60 @@ import "./runtime/background-watch.test.ts";
++import "./runtime/background-runner.test.ts";
+diff --git a/src/runtime/background-runner.ts b/src/runtime/background-runner.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..b3872dbae8a7cd21b9a937db65dfadf9e4432066
+--- /dev/null
++++ b/src/runtime/background-runner.ts
+@@ -0,0 +1,273 @@
++import { randomUUID } from "node:crypto";
++import { mkdirSync, writeFileSync } from "node:fs";
++import { dirname } from "node:path";
++import type {
++	ExtensionAPI,
++	ExtensionContext,
++} from "@earendil-works/pi-coding-agent";
++import { resolveSessionArtifactPath } from "../artifact-storage.ts";
++import type { RunningCompanion, SubagentResult } from "../types.ts";
++import { routeSubagentOutcome } from "./result-router.ts";
++import {
++	claimSpawnWidthSlot,
++	getSpawnWidthLimit,
++	tryAcquireSlots,
++} from "./spawn-width.ts";
++import { runningSubagents, widgetManager } from "./state.ts";
++import {
++	checkSubagentTimeout,
++	formatTimeoutSeconds,
++	getSubagentHardDeadlineAt,
++} from "./timeout-budget.ts";
++
++const SUBMIT_CHANNEL = "pi-subagents:background-runner:v1:submit";
++const MAX_TIMER_MS = 2 ** 31 - 1;
++
++interface RunnerReport {
++	ok: boolean;
++	report: string;
++	saveReport?: boolean;
++	cleanupWarning?: string;
++}
++
++type SubmissionReply =
++	| { id: string; completion: Promise<void> }
++	| { error: string };
++
++interface Submission {
++	name: string;
++	title: string;
++	timeoutSeconds: number;
++	run(input: { cwd: string; signal: AbortSignal }): Promise<RunnerReport>;
++	reply(response: SubmissionReply): void;
++}
++
++function isRecord(value: unknown): value is Record<string, unknown> {
++	return typeof value === "object" && value !== null;
++}
++
++function isSubmission(
++	value: Record<string, unknown>,
++): value is Record<string, unknown> & Submission {
++	return (
++		typeof value.reply === "function" &&
++		typeof value.run === "function" &&
++		typeof value.name === "string" &&
++		/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value.name) &&
++		value.name.length <= 32 &&
++		typeof value.title === "string" &&
++		value.title.trim().length > 0 &&
++		value.title.length <= 100 &&
++		!/\p{Cc}/u.test(value.title) &&
++		typeof value.timeoutSeconds === "number" &&
++		value.timeoutSeconds >= 0.001 &&
++		value.timeoutSeconds * 1000 <= MAX_TIMER_MS
++	);
++}
++
++function isRunnerReport(value: unknown): value is RunnerReport {
++	return (
++		isRecord(value) &&
++		typeof value.ok === "boolean" &&
++		typeof value.report === "string" &&
++		value.report.trim().length > 0 &&
++		(value.saveReport === undefined || typeof value.saveReport === "boolean") &&
++		(value.cleanupWarning === undefined ||
++			typeof value.cleanupWarning === "string")
++	);
++}
++
++function errorMessage(error: unknown): string {
++	return (error instanceof Error ? error.message : String(error)).replace(
++		/\p{Cc}/gu,
++		"",
++	);
++}
++
++function saveRunnerReport(
++	cwd: string,
++	sessionId: string,
++	filename: string,
++	report: string,
++): string {
++	try {
++		const path = resolveSessionArtifactPath(cwd, sessionId, filename);
++		mkdirSync(dirname(path), { recursive: true, mode: 0o700 });
++		writeFileSync(path, report, { encoding: "utf8", flag: "wx", mode: 0o600 });
++		return `\n\nReport saved to: ${path.replace(/\p{Cc}/gu, "")}`;
++	} catch (error) {
++		const code = (error as NodeJS.ErrnoException).code;
++		return `\n\nCould not save the report artifact${code ? ` (${code})` : ""}; the report is shown above.`;
++	}
++}
++
++async function runWithLifecycle(
++	running: RunningCompanion,
++	submit: Submission,
++	cwd: string,
++	sessionId: string | undefined,
++	ownerSignal: AbortSignal,
++): Promise<SubagentResult> {
++	const signal = AbortSignal.any([running.abortController.signal, ownerSignal]);
++	const deadlineAt = getSubagentHardDeadlineAt(running);
++	let timer: ReturnType<typeof setTimeout> | undefined;
++	function enforceDeadline(schedule: boolean) {
++		if (signal.aborted) return;
++		const expiry = checkSubagentTimeout(running, Date.now());
++		if (expiry) {
++			running.timeoutExpiry = expiry;
++			running.abortController.abort();
++		} else if (schedule && deadlineAt !== undefined) {
++			timer = setTimeout(
++				() => enforceDeadline(true),
++				Math.max(1, Math.min(MAX_TIMER_MS, deadlineAt - Date.now())),
++			);
++		}
++	}
++
++	let outcome: RunnerReport = {
++		ok: false,
++		report: "The runner did not start.",
++	};
++	let summarySource: SubagentResult["summarySource"] = "runtime";
++	try {
++		enforceDeadline(true);
++		if (!signal.aborted) {
++			const result = await submit.run({ cwd, signal });
++			if (!isRunnerReport(result))
++				throw new Error("Invalid background runner result.");
++			outcome = result;
++			summarySource = "subagent";
++		}
++	} catch (error) {
++		outcome = { ok: false, report: `Runner failed: ${errorMessage(error)}` };
++	} finally {
++		// Check again in case completion raced the timer callback.
++		enforceDeadline(false);
++		clearTimeout(timer);
++	}
++
++	const expiry = running.timeoutExpiry;
++	let summary = expiry
++		? `Exceeded the ${formatTimeoutSeconds(expiry.seconds)} whole-run limit; no complete report was accepted.`
++		: signal.aborted
++			? "Run cancelled."
++			: outcome.report;
++	if (outcome.cleanupWarning) summary += `\n\n${outcome.cleanupWarning}`;
++	if (!signal.aborted && outcome.saveReport && sessionId) {
++		summary += saveRunnerReport(
++			cwd,
++			sessionId,
++			`${running.name}-${running.id}.md`,
++			summary,
++		);
++	}
++	return {
++		name: running.name,
++		task: running.task,
++		summary,
++		summarySource: signal.aborted ? "runtime" : summarySource,
++		exitCode: !signal.aborted && outcome.ok && !outcome.cleanupWarning ? 0 : 1,
++		elapsed: Math.floor((Date.now() - running.startTime) / 1000),
++		...(expiry
++			? { timedOut: expiry.kind, timedOutAfter: expiry.seconds }
++			: signal.aborted
++				? { error: "cancelled" }
++				: {}),
++		...(outcome.cleanupWarning ? { timeoutKillFailed: true } : {}),
++	};
++}
++
++export function registerBackgroundRunnerSubmission(
++	pi: ExtensionAPI,
++	formatElapsed: (seconds: number) => string,
++): (ctx?: ExtensionContext) => void {
++	let origin:
++		| { ctx: ExtensionContext; controller: AbortController }
++		| undefined;
++	pi.events?.on(SUBMIT_CHANNEL, (data) => {
++		if (!isRecord(data) || typeof data.reply !== "function") return;
++		if (!isSubmission(data)) {
++			data.reply({ error: "Invalid v1 background runner submission." });
++			return;
++		}
++		if (!origin) {
++			data.reply({
++				error: "No active Pi session for background runner submission.",
++			});
++			return;
++		}
++		const { ctx, controller } = origin;
++		const cwd = ctx.cwd;
++		const sessionId = ctx.sessionManager.getSessionFile()
++			? ctx.sessionManager.getSessionId()
++			: undefined;
++		if (!tryAcquireSlots(1, getSpawnWidthLimit())) {
++			data.reply({
++				error:
++					"Subagent concurrency limit reached; wait for another run to finish.",
++			});
++			return;
++		}
++
++		const running: RunningCompanion = {
++			id: randomUUID().slice(0, 8),
++			runner: "companion",
++			name: data.name,
++			title: data.title,
++			task: data.title,
++			mode: "background",
++			executionState: "running",
++			activity: "running",
++			deliveryState: "detached",
++			parentClosePolicy: "terminate",
++			async: true,
++			noSession: true,
++			reportContextUsage: false,
++			timeoutBudget: { timeoutSeconds: data.timeoutSeconds },
++			abortController: new AbortController(),
++			startTime: Date.now(),
++			// Defer execution until the slot, watcher and acknowledgement are installed.
++			completionPromise: Promise.resolve().then(async () => {
++				const result = await runWithLifecycle(
++					running,
++					data,
++					cwd,
++					sessionId,
++					controller.signal,
++				);
++				if (controller.signal.aborted) running.allowSteerDelivery = false;
++				try {
++					routeSubagentOutcome({
++						pi,
++						running,
++						result,
++						formatElapsed,
++						updateWidget: () => widgetManager.update(),
++					});
++				} catch (error) {
++					// Never fall back to the Pi-child watcher error path: it starts a turn.
++					console.error(
++						`Could not route companion result (${running.id}):`,
++						error,
++					);
++				}
++				return result;
++			}),
++		};
++		claimSpawnWidthSlot(running);
++		runningSubagents.set(running.id, running);
++		data.reply({
++			id: running.id,
++			completion: running.completionPromise.then(() => {}),
++		});
++		if (ctx.hasUI) widgetManager.startRefresh();
++	});
++	// Pi can rebind extensions without re-evaluating their imported modules.
++	// Each origin gets a fresh signal, independent of the module's lifetime.
++	return (ctx) => {
++		const previous = origin;
++		origin = ctx ? { ctx, controller: new AbortController() } : undefined;
++		previous?.controller.abort();
++	};
++}
+diff --git a/test/runtime/background-runner.test.ts b/test/runtime/background-runner.test.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..4d2caae5a9e4b0cdcc2c6d86a10db9547b608b70
+--- /dev/null
++++ b/test/runtime/background-runner.test.ts
+@@ -0,0 +1,387 @@
++import type { TestContext } from "node:test";
++import type {
++	ExtensionAPI,
++	ExtensionContext,
++} from "@earendil-works/pi-coding-agent";
++import { resolveSessionArtifactPath } from "../../src/artifact-storage.ts";
++import { outstandingWork } from "../../src/runtime/outstanding-work.ts";
++import { getLiveSlotCount } from "../../src/runtime/spawn-width.ts";
++import { runningSubagents, widgetManager } from "../../src/runtime/wiring.ts";
++import {
++	buildCompletedItems,
++	buildRunningItems,
++} from "../../src/tools/overlay/data.ts";
++import {
++	assert,
++	createTestDir,
++	describe,
++	existsSync,
++	getCompletedSubagentResultForTest,
++	it,
++	join,
++	mkdirSync,
++	readFileSync,
++	resetSubagentStateForTest,
++	rmSync,
++	sleep,
++	subagentsExtension,
++	writeFileSync,
++} from "../support/index.ts";
++
++const SUBMIT = "pi-subagents:background-runner:v1:submit";
++type Reply =
++	| { id: string; completion: Promise<void> }
++	| { error: string }
++	| undefined;
++type RunInput = { cwd: string; signal: AbortSignal };
++
++function setup(t: TestContext, { enabled = true, persistent = true } = {}) {
++	resetSubagentStateForTest();
++	const dir = createTestDir();
++	const cwd = join(dir, "work with spaces");
++	const config = join(dir, "config");
++	mkdirSync(cwd);
++	mkdirSync(join(config, "agents"), { recursive: true });
++	if (enabled)
++		writeFileSync(
++			join(config, "agents", "worker.md"),
++			"---\nname: worker\n---\nWorker body.\n",
++		);
++	process.env.PI_CODING_AGENT_DIR = config;
++	process.env.PI_ARTIFACT_PROJECT_ROOT = join(dir, "artifacts");
++	process.env.PI_SUBAGENT_SPAWN_WIDTH = "1";
++	process.env.PI_SUBAGENT_SPAWN_WIDTH_EFFECTIVE = "1";
++
++	const topics = new Map<string, (data: unknown) => void>();
++	const handlers = new Map<
++		string,
++		Array<
++			(event: { reason: string }, ctx: ExtensionContext) => void | Promise<void>
++		>
++	>();
++	const sent: Array<Parameters<ExtensionAPI["sendMessage"]>> = [];
++	const pi = {
++		on(
++			event: string,
++			handler: (
++				event: { reason: string },
++				ctx: ExtensionContext,
++			) => void | Promise<void>,
++		) {
++			const registered = handlers.get(event) ?? [];
++			registered.push(handler);
++			handlers.set(event, registered);
++		},
++		events: {
++			on: (topic: string, handle: (data: unknown) => void) =>
++				topics.set(topic, handle),
++		},
++		registerCommand() {},
++		registerTool() {},
++		registerShortcut() {},
++		registerMessageRenderer() {},
++		getActiveTools: () => [],
++		setActiveTools() {},
++		appendEntry() {},
++		sendMessage(...args: Parameters<ExtensionAPI["sendMessage"]>) {
++			sent.push(args);
++		},
++	} as unknown as ExtensionAPI;
++	const ctx = {
++		cwd,
++		hasUI: true,
++		ui: {
++			notify() {},
++			setWidget() {},
++			theme: {
++				fg: (_tone: string, text: string) => text,
++				bold: (text: string) => text,
++			},
++		},
++		sessionManager: {
++			getSessionId: () => "parent",
++			getSessionFile: () =>
++				persistent ? join(dir, "parent-not-written.jsonl") : undefined,
++		},
++	} as unknown as ExtensionContext;
++	const prevCwd = process.cwd();
++	process.chdir(cwd);
++	try {
++		subagentsExtension(pi);
++	} finally {
++		process.chdir(prevCwd);
++	}
++	async function emitSession(event: string, reason: string) {
++		for (const handler of handlers.get(event) ?? [])
++			await handler({ reason }, ctx);
++	}
++	t.after(async () => {
++		await emitSession("session_shutdown", "quit");
++		resetSubagentStateForTest();
++		widgetManager.attachContext({ hasUI: false } as ExtensionContext);
++		rmSync(dir, { recursive: true, force: true });
++	});
++	return {
++		ctx,
++		cwd,
++		sent,
++		start: () => emitSession("session_start", "startup"),
++		shutdown: () => emitSession("session_shutdown", "new"),
++		submit(
++			run: (input: RunInput) => unknown,
++			metadata: Record<string, unknown> = {},
++			topic = SUBMIT,
++		): Reply {
++			let ack: Reply;
++			topics.get(topic)?.({
++				name: "local-report",
++				title: "Local workspace report",
++				timeoutSeconds: 1,
++				run,
++				...metadata,
++				reply(result: Reply) {
++					ack = result;
++				},
++			});
++			return ack;
++		},
++	};
++}
++
++function accepted(reply: Reply) {
++	assert.ok(reply && "id" in reply, JSON.stringify(reply));
++	return reply;
++}
++
++function deferred() {
++	let finish!: () => void;
++	const done = new Promise<void>((resolve) => {
++		finish = resolve;
++	});
++	return { done, finish };
++}
++
++function waitForAbort(signal: AbortSignal) {
++	return new Promise<void>((resolve) =>
++		signal.addEventListener("abort", () => resolve(), { once: true }),
++	);
++}
++
++const report =
++	"# Report findings\n\n" +
++	"context ".repeat(1500) +
++	"\n\n- src/foo.ts:42: lost update 🧪";
++
++describe("background runner submission v1", () => {
++	it("uses the origin cwd, enforces shared width, and routes the complete report without a turn", async (t) => {
++		const { ctx, cwd, sent, start, submit } = setup(t);
++		await start();
++		const pending = deferred();
++		t.after(pending.finish);
++		const { id, completion } = accepted(
++			submit(async ({ cwd: actualCwd, signal }) => {
++				assert.equal(actualCwd, cwd);
++				assert.equal(signal.aborted, false);
++				await Promise.race([pending.done, waitForAbort(signal)]);
++				return { ok: true, report, saveReport: true };
++			}),
++		);
++		const running = runningSubagents.get(id);
++		assert.equal(running?.mode, "background");
++		assert.equal(running.sessionFile, undefined);
++		assert.equal(running.modelRef, undefined);
++		assert.equal(getLiveSlotCount(), 1);
++		const [item] = buildRunningItems(ctx);
++		assert.ok(item.canKill);
++		assert.ok(!item.canResume);
++		assert.match(
++			widgetManager.renderForTest().join("\n"),
++			/Local workspace report/,
++		);
++		assert.match(
++			(submit(() => assert.fail("over width")) as { error: string }).error,
++			/concurrency limit reached/,
++		);
++		assert.equal(sent.length, 0);
++
++		t.after(outstandingWork.subscribe(() => {}));
++		pending.finish();
++		await completion;
++		assert.equal(getLiveSlotCount(), 0);
++		assert.equal(runningSubagents.size, 0);
++		assert.equal(outstandingWork.count, 0);
++		assert.equal(getCompletedSubagentResultForTest(id)?.status, "completed");
++		assert.equal(sent.length, 1);
++		const [[message, delivery]] = sent;
++		assert.equal(message.customType, "subagent_result");
++		assert.equal(message.display, true);
++		assert.equal(delivery?.triggerTurn, false);
++		const path = resolveSessionArtifactPath(
++			cwd,
++			"parent",
++			`local-report-${id}.md`,
++		);
++		assert.ok(
++			String(message.content).endsWith(`${report}\n\nReport saved to: ${path}`),
++		);
++		assert.doesNotMatch(
++			String(message.content),
++			/Resume:|Session:|Sub-agent context:/,
++		);
++		assert.equal(readFileSync(path, "utf8"), report);
++		const sessionFile = ctx.sessionManager.getSessionFile();
++		assert.ok(sessionFile && !existsSync(sessionFile));
++		const [finished] = await buildCompletedItems(ctx);
++		assert.equal(finished.id, id);
++		assert.ok(!finished.canResume);
++	});
++
++	it("cancels through the overlay and awaits cleanup even if the callback returns a successful report", async (t) => {
++		const { ctx, sent, start, submit } = setup(t);
++		await start();
++		let cleaned = false;
++		const ready = deferred();
++		const { id } = accepted(
++			submit(async ({ signal }) => {
++				ready.finish();
++				await waitForAbort(signal);
++				await sleep(20);
++				cleaned = true;
++				return { ok: true, report };
++			}),
++		);
++		await ready.done;
++		const { onKill } = buildRunningItems(ctx)[0];
++		assert.ok(onKill);
++		await onKill();
++		assert.ok(cleaned);
++		assert.equal(getCompletedSubagentResultForTest(id)?.status, "cancelled");
++		assert.equal(getLiveSlotCount(), 0);
++		assert.match(String(sent[0][0].content), /cancelled/);
++		assert.equal(sent[0][1]?.triggerTurn, false);
++	});
++
++	it("aborts at the deadline and rejects a late success while keeping its cleanup diagnostic", async (t) => {
++		const { sent, start, submit } = setup(t);
++		await start();
++		const { id, completion } = accepted(
++			submit(
++				async ({ signal }) => {
++					await waitForAbort(signal);
++					await sleep(20);
++					return {
++						ok: true,
++						report,
++						saveReport: true,
++						cleanupWarning: "Resource cleanup could not be confirmed.",
++					};
++				},
++				{ timeoutSeconds: 0.1 },
++			),
++		);
++		await completion;
++		const result = getCompletedSubagentResultForTest(id);
++		assert.equal(result?.timedOut, "timeout");
++		assert.equal(result?.timedOutAfter, 0.1);
++		assert.equal(result?.status, "failed");
++		assert.match(
++			String(sent[0][0].content),
++			/timed out[\s\S]+Resource cleanup could not be confirmed/,
++		);
++		assert.doesNotMatch(
++			String(sent[0][0].content),
++			/# Report findings|Report saved to:/,
++		);
++		assert.equal(sent[0][1]?.triggerTurn, false);
++	});
++
++	it("cancels on session replacement, awaits cleanup, and suppresses the origin report", async (t) => {
++		const { sent, start, submit, shutdown } = setup(t);
++		await start();
++		let cleaned = false;
++		const ready = deferred();
++		accepted(
++			submit(async ({ signal }) => {
++				ready.finish();
++				await waitForAbort(signal);
++				await sleep(20);
++				cleaned = true;
++				return { ok: true, report, saveReport: true };
++			}),
++		);
++		await ready.done;
++		await shutdown();
++		assert.ok(cleaned);
++		assert.equal(runningSubagents.size, 0);
++		assert.equal(getLiveSlotCount(), 0);
++		assert.equal(sent.length, 0);
++		assert.match(
++			(submit(() => assert.fail()) as { error: string }).error,
++			/No active Pi session/,
++		);
++
++		// Pi can reuse imported modules on replacement. The next session still runs.
++		await start();
++		const next = accepted(submit(async () => ({ ok: true, report })));
++		await next.completion;
++		assert.equal(
++			getCompletedSubagentResultForTest(next.id)?.status,
++			"completed",
++		);
++		assert.equal(sent.length, 1);
++	});
++
++	it("validates submissions and reports, and keeps runner failures on the no-turn path", async (t) => {
++		const { sent, start, submit } = setup(t, { persistent: false });
++		const unexpected = () => assert.fail("invalid submission started");
++		assert.match(
++			(submit(unexpected) as { error: string }).error,
++			/No active Pi session/,
++		);
++		await start();
++		assert.equal(
++			submit(unexpected, {}, "pi-subagents:background-runner:v2:submit"),
++			undefined,
++		);
++		for (const bad of [
++			{ name: "../oops" },
++			{ title: "\u001b[1m" },
++			{ timeoutSeconds: Infinity },
++			{ run: 1 },
++		]) {
++			assert.match(
++				(submit(unexpected, bad) as { error: string }).error,
++				/Invalid v1/,
++			);
++		}
++		const malformed = accepted(submit(async () => ({ ok: 1, report })));
++		await malformed.completion;
++		const rejected = accepted(
++			submit(async () => {
++				throw new Error("callback failed");
++			}),
++		);
++		await rejected.completion;
++		const partial = accepted(
++			submit(async () => ({ ok: false, report, saveReport: true })),
++		);
++		await partial.completion;
++		assert.equal(getLiveSlotCount(), 0);
++		assert.ok(sent.every((entry) => entry[1]?.triggerTurn === false));
++		assert.match(
++			String(sent[0][0].content),
++			/Invalid background runner result/,
++		);
++		assert.match(String(sent[1][0].content), /callback failed/);
++		assert.doesNotMatch(String(sent[2][0].content), /Report saved to:/);
++	});
++
++	it("does not expose the API when the named-agent surface is disabled", async (t) => {
++		const { submit, start } = setup(t, { enabled: false });
++		await start();
++		assert.equal(
++			submit(() => assert.fail("runner started without an enabled agent")),
++			undefined,
++		);
++	});
++});
