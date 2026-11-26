@@ -42,7 +42,8 @@ in ''
         format_right  "{command_host}{mode} "
         format_space  ""
         format_hide_on_overlength "true"
-        format_precedence "crl"
+        // Keep tabs and the right-hand status ahead of the session title.
+        format_precedence "lrc"
 
         border_enabled  "false"
         border_char     "─"
